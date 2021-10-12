@@ -5,11 +5,11 @@ import ProgressionComponent from "./components/ProgressionComponent";
 const App = () => {
   return (
     <main className="App">
-      <h1>Kord Prog</h1>
+      <h1>Kord</h1>
       <ProgressionComponent
         tonality="C"
         quality="major"
-        progression_list="I VI III"
+        chords_list="I-V-vi-IV"
       />
     </main>
   );

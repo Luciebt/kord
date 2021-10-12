@@ -1,12 +1,8 @@
 // This  defines a simple Progression interface, which will be passed in as props into a new component.
-export default interface Progression {
+export default interface ProgressionInterface {
   tonality: string;
   quality: string;
-  progression_list: string;
+  chords_list: string;
   mood?: string;
   genre?: string;
 }
-
-// const firstProg: Progression {
-
-// }
