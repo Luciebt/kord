@@ -1,39 +1,38 @@
-import * as React from "react";
-import ProgressionInterface from "../ProgressionInterface";
+import React from "react";
+import { Note, Key, Progression } from "@tonaljs/tonal";
+import IProgression from "../IProgression";
 import KeyButton from "./KeyButton";
 import QualityButton from "./QualityButton";
 
-// The ProgressionInterface has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the ProgressionInterface type and in the render function, the data will be displayed.
-
-// export default interface ProgressionState {
-//   tonality: string;
-//   quality: string;
-//   chords_list: string;
-//   mood?: string;
-//   genre?: string;
-// }
+// The IProgression has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the IProgression type and in the render function, the data will be displayed.
 
 export default class ProgressionComponent extends React.Component<
-  ProgressionInterface,
+  IProgression,
   {}
 > {
-  constructor(props: ProgressionInterface) {
+  QualityCallback = (quality: string) => {
+    console.log(quality);
+  };
+  KeyCallback = (tonality: string) => {
+    console.log(tonality);
+  };
+
+  constructor(props: IProgression) {
     super(props);
-    this.state = {
-      tonality: "F",
-      quality: "major",
-      chords_list: "V VI III",
-    };
   }
 
+  aProg: string[] = Progression.fromRomanNumerals("C", ["I", "V", "VIm", "IV"]);
+
   render() {
-    let children = this.props.children;
     return (
       <div>
-        <KeyButton />
-        <QualityButton />
-        {console.log(children)}
-        <h3>Progression Component</h3>
+        <KeyButton parentCallback={this.KeyCallback} />
+        <QualityButton parentCallback={this.QualityCallback} />
+        <h3>Progression:</h3>
+        {this.aProg}
+        <br />
+        <br />
+        <p>testing:</p>
         key <b>{this.props.tonality}</b>
         <br />
         quality <b>{this.props.quality}</b>

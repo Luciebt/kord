@@ -1,3 +1,8 @@
+export default interface IRoman {
+  rootNote?: string;
+  chords_list: string[];
+}
+
 // import { IProgression } from "./types/progression";
 // interface IProgression {
 //   _id: string;

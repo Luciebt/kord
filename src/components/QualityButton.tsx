@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 
-interface IQualityButton {}
+interface IQualityButton {
+  parentCallback?: any;
+}
 
-const QualityButton: React.FC<IQualityButton> = ({}) => {
+const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
   const [theQuality, setQuality] = useState("");
 
   return (
     <div className="">
       <h3>Set the quality: {theQuality}</h3>
-      <button onClick={() => setQuality("Major")}>Major</button>
-      <button onClick={() => setQuality("Minor")}>Minor</button>
-      <button onClick={() => setQuality("Augmented")}>Augmented</button>
-      <button onClick={() => setQuality("Diminished")}>Diminished</button>
+
+      <button
+        onClick={() => {
+          const newQual = "Major";
+          setQuality(newQual);
+          parentCallback(newQual);
+        }}
+      >
+        Major
+      </button>
+      <button
+        onClick={() => {
+          const newQual = "Minor";
+          setQuality(newQual);
+          parentCallback(newQual);
+        }}
+      >
+        Minor
+      </button>
     </div>
   );
 };

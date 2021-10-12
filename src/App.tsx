@@ -1,6 +1,7 @@
 import { hot } from "react-hot-loader";
 import React from "react";
 import ProgressionComponent from "./components/ProgressionComponent";
+import "./index.css";
 
 const App = () => {
   return (
