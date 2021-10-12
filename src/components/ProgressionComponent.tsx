@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Note, Key, Progression } from "@tonaljs/tonal";
 import IProgression from "../IProgression";
 import KeyButton from "./KeyButton";
@@ -12,39 +12,45 @@ interface IProgressionComponent {
   quality?: string;
 }
 
-export default class ProgressionComponent extends React.Component<
-  IProgressionComponent,
-  {}
-> {
-  QualityCallback = (quality: string) => {
-    console.log(quality);
+const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
+  const [tonality, setTonality] = useState("C");
+  const [quality, setQuality] = useState("Major");
+  const [chordsList, setChordsList] = useState("V VI");
+
+  // QualityCallback = (quality: string) => {
+  //   console.log(quality);
+  // };
+
+  // KeyCallback = (tonality: string) => {
+  //   setTonality(tonality);
+  //   console.log(tonality);
+  // };
+
+  const Prog: IProgression = DetermineChordProg(tonality, quality);
+
+  return (
+    <div>
+      <KeyButton parentCallback={setTonality(tonality)} />
+      {/* <QualityButton parentCallback={this.QualityCallback} /> */}
+      <ProgressionDisplayComponent
+        tonality={this.Prog.tonality}
+        quality={this.Prog.quality}
+        chords_list={this.Prog.chords_list}
+      />
+      <br />
+    </div>
+  );
+};
+
+function DetermineChordProg(tonality: string, quality: string): IProgression {
+  const arrProg: string[] = ["I", "V", "VIm", "IV"];
+  const arrChords: string[] = Progression.fromRomanNumerals(tonality, arrProg);
+  const Prog: IProgression = {
+    tonality: tonality,
+    quality: quality,
+    chords_list: arrChords.join(" "),
   };
-
-  KeyCallback = (tonality: string) => {
-    console.log(tonality);
-  };
-
-  constructor(props: IProgression) {
-    super(props);
-  }
-
-  aProg: string[] = Progression.fromRomanNumerals("C", ["I", "V", "VIm", "IV"]);
-
-  render() {
-    return (
-      <div>
-        <KeyButton parentCallback={this.KeyCallback} />
-        <QualityButton parentCallback={this.QualityCallback} />
-        {/* {this.aProg} */}
-        <ProgressionDisplayComponent
-          tonality="C"
-          quality="major"
-          chords_list="I-V-vi-IV"
-        />
-        <br />
-      </div>
-    );
-  }
+  return Prog;
 }
 
-function DetermineChordProg(tonality: string, quality: string) {}
+export default ProgressionComponent;
