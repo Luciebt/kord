@@ -3,16 +3,23 @@ import { Note, Key, Progression } from "@tonaljs/tonal";
 import IProgression from "../IProgression";
 import KeyButton from "./KeyButton";
 import QualityButton from "./QualityButton";
+import ProgressionDisplayComponent from "./views/ProgressionDisplay";
 
 // The IProgression has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the IProgression type and in the render function, the data will be displayed.
 
+interface IProgressionComponent {
+  tonality?: string;
+  quality?: string;
+}
+
 export default class ProgressionComponent extends React.Component<
-  IProgression,
+  IProgressionComponent,
   {}
 > {
   QualityCallback = (quality: string) => {
     console.log(quality);
   };
+
   KeyCallback = (tonality: string) => {
     console.log(tonality);
   };
@@ -28,17 +35,16 @@ export default class ProgressionComponent extends React.Component<
       <div>
         <KeyButton parentCallback={this.KeyCallback} />
         <QualityButton parentCallback={this.QualityCallback} />
-        <h3>Progression:</h3>
-        {this.aProg}
+        {/* {this.aProg} */}
+        <ProgressionDisplayComponent
+          tonality="C"
+          quality="major"
+          chords_list="I-V-vi-IV"
+        />
         <br />
-        <br />
-        <p>testing:</p>
-        key <b>{this.props.tonality}</b>
-        <br />
-        quality <b>{this.props.quality}</b>
-        <br />
-        chords_list <b>{this.props.chords_list}</b>
       </div>
     );
   }
 }
+
+function DetermineChordProg(tonality: string, quality: string) {}

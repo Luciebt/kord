@@ -7,11 +7,7 @@ const App = () => {
   return (
     <main className="App">
       <h1>Kord</h1>
-      <ProgressionComponent
-        tonality="C"
-        quality="major"
-        chords_list="I-V-vi-IV"
-      />
+      <ProgressionComponent />
     </main>
   );
 };
