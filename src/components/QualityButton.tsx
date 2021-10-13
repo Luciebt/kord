@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import IProgression, { TQuality } from "../IProgression";
+import IProgression from "../IProgression";
+import { TQuality } from "../type.d";
 
 interface IQualityButton {
   parentCallback?: any;
@@ -14,6 +15,7 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
   for (let quality of qualities) {
     qualitiesButtons.push(
       <button
+        key={quality}
         onClick={() => {
           setQuality(quality);
           parentCallback(quality);
@@ -26,7 +28,7 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
 
   return (
     <div className="">
-      <h3>Set the quality: {theQuality}</h3>
+      <h3>Set the type: {theQuality}</h3>
       {qualitiesButtons}
     </div>
   );

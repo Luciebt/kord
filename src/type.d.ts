@@ -1,30 +1,39 @@
-export default interface IRoman {
+export type IRoman = {
   rootNote?: string;
   chords_list: string[];
-}
+};
 
-// import { IProgression } from "./types/progression";
-// interface IProgression {
-//   _id: string;
-//   key: string;
-//   quality: string;
-//   progression_list: string;
-//   mood?: string;
-//   genre?: string;
-//   createdAt?: string;
-//   updatedAt?: string;
-// }
+// TODO: move types to relevant file
+export type TQuality = "Major" | "Minor" | "Mixed";
 
-// interface ProgressionProps {
-//   progression: IProgression;
-// }
+export type TMood = "All" | "Jazzy" | "Melancholic" | "Energised" | "Pop";
 
-// type ApiDataType = {
-//   key: string;
-//   quality: string;
-//   progression_list: string;
-//   mood?: string;
-//   genre?: string;
-//   progressions: IProgression[];
-//   progression?: IProgression;
-// };
+export type TChords =
+  | "Major"
+  | "Minor"
+  | "Augmented"
+  | "Diminished"
+  | "Dominant 7"
+  | "Minor 7"
+  | "Diminished 7"
+  | "Half Diminished";
+
+export type TKey =
+  | "C"
+  | "C#"
+  | "D"
+  | "D#"
+  | "E"
+  | "F"
+  | "F#"
+  | "G"
+  | "G#"
+  | "A"
+  | "A#"
+  | "Bb"
+  | "B";
+
+export type TProgression = {
+  mood?: TMood;
+  progression_list: string;
+};

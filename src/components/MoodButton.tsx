@@ -5,18 +5,19 @@ interface IMoodButton {
 }
 
 const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
-  const [theMood, setMood] = useState("");
+  const [theMood, setMood] = useState("All");
 
   useEffect(() => {
     // nothing for now.
   });
 
-  const moods: string[] = ["Jazzy", "Melancholic", "Energised", "Pop"];
+  const moods: string[] = ["All", "Jazzy", "Melancholic", "Energised", "Pop"];
   const moodsButtons: JSX.Element[] = [];
 
   for (let mood of moods) {
     moodsButtons.push(
       <button
+        key={mood}
         onClick={() => {
           setMood(mood);
           parentCallback(mood);

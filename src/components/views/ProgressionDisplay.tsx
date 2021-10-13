@@ -1,30 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import ProgressionComponent from "../ProgressionComponent";
 import IProgression from "../../IProgression";
+import ChordDisplay from "./ChordDisplay";
 
 export interface IProgressionDisplayProps {
-  tonality: string;
+  tonic: string;
   quality: string;
   mood?: string;
   chords_list: string;
-  children?: React.ReactChild | React.ReactChild[];
+  chordsList?: any;
+  onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
 }
 
 const ProgressionDisplayComponent = ({
-  tonality,
+  tonic,
   quality,
   mood,
   chords_list,
-  children,
 }: IProgressionDisplayProps): JSX.Element => {
+  const [chordState, setChordState] = useState(false);
+  const [chordSelected, setChordSelected] = useState("");
+
+  const chordsArr: string[] = chords_list.split(" | ");
+  let chordsBloc: JSX.Element[] = [];
+
+  chordsArr.forEach((chords) => {
+    chordsBloc.push(
+      <button
+        key={chords}
+        onClick={() => {
+          setChordState(true), setChordSelected(chords);
+        }}
+      >
+        {chords}
+      </button>
+    );
+  });
+
   return (
     <div className="prog-box">
-      <h3>My Progression</h3>
-      key <b>{tonality}</b>
+      <b>Tonic: {tonic} </b>
       <br />
-      quality <b>{quality}</b>
+      <b>Quality: {quality} </b>
       <br />
-      chords_list <b>{chords_list}</b>
+      <b>{mood ? mood : ""}</b>
+      <br />
+      <b>{chordsBloc}</b>
+      {chordState ? <ChordDisplay chord={chordSelected} /> : null}
     </div>
   );
 };

@@ -1,72 +1,72 @@
 import React, { useState, useEffect } from "react";
-import { Note, Key, Progression } from "@tonaljs/tonal";
-import IProgression from "../IProgression";
+import IProgression, {
+  DetermineChordsList,
+  findChordsScale,
+} from "../IProgression";
 import KeyButton from "./KeyButton";
 import QualityButton from "./QualityButton";
 import MoodButton from "./MoodButton";
 import ProgressionDisplayComponent from "./views/ProgressionDisplay";
+import ChordsScaleDisplayComponent from "./views/ScaleDisplay";
 
 // The IProgression has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the IProgression type and in the render function, the data will be displayed.
 
 export interface IProgressionComponent {
-  tonality?: string;
+  tonic?: string;
   quality?: string;
   mood?: string;
   chords_list?: string;
 }
 
 const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
-  const [tonality, setTonality] = useState("");
+  const [tonic, settonic] = useState("");
   const [quality, setQuality] = useState("");
   const [mood, setMood] = useState("");
-  // const [chordsList, setChordsList] = useState("");
+  const [chordsList, setChordsList] = useState("");
+  const [chordsScale, setchordsScale] = useState("");
 
   const QualityCallback = (quality: string) => {
     setQuality(quality);
-    console.log(quality);
+    if (tonic) {
+      setChordsList(DetermineChordsList(tonic, quality, mood));
+      setchordsScale(findChordsScale(tonic, quality));
+    }
   };
 
-  const KeyCallback = (tonality: string) => {
-    setTonality(tonality);
-    console.log(tonality);
+  const KeyCallback = (tonic: string) => {
+    settonic(tonic);
+    if (quality) {
+      setChordsList(DetermineChordsList(tonic, quality, mood));
+      setchordsScale(findChordsScale(tonic, quality));
+    }
   };
 
   const MoodCallback = (mood: string) => {
     setMood(mood);
-    console.log(mood);
+    if (tonic && quality) {
+      setChordsList(DetermineChordsList(tonic, quality, mood));
+    }
   };
 
-  const Prog: IProgression = DetermineChordProg(tonality, quality);
-
   return (
-    <div>
+    <div className="centered-box">
       <KeyButton parentCallback={KeyCallback} />
       <QualityButton parentCallback={QualityCallback} />
       <MoodButton parentCallback={MoodCallback} />
-      {/* <ProgressionDisplayComponent
-        tonality={this.Prog.tonality}
-        quality={this.Prog.quality}
-        chords_list={this.Prog.chords_list}
-      /> */}
       <ProgressionDisplayComponent
-        tonality={tonality}
+        tonic={tonic}
         quality={quality}
-        chords_list="I VI III"
+        mood={mood ? mood : ""}
+        chords_list={chordsList ? chordsList : ""}
       />
+      {/* <ChordsScaleDisplayComponent
+        tonic={tonic}
+        quality={quality}
+        chords_scale={chordsScale}
+      /> */}
       <br />
     </div>
   );
 };
-
-function DetermineChordProg(tonality: string, quality: string): IProgression {
-  const arrProg: string[] = ["I", "V", "VIm", "IV"];
-  const arrChords: string[] = Progression.fromRomanNumerals(tonality, arrProg);
-  const Prog: IProgression = {
-    tonality: tonality,
-    quality: quality,
-    chords_list: arrChords.join(" "),
-  };
-  return Prog;
-}
 
 export default ProgressionComponent;
