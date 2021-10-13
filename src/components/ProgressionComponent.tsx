@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Note, Key, Progression } from "@tonaljs/tonal";
 import IProgression from "../IProgression";
 import KeyButton from "./KeyButton";
 import QualityButton from "./QualityButton";
+import MoodButton from "./MoodButton";
 import ProgressionDisplayComponent from "./views/ProgressionDisplay";
 
 // The IProgression has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the IProgression type and in the render function, the data will be displayed.
@@ -13,30 +14,37 @@ interface IProgressionComponent {
 }
 
 const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
-  const [tonality, setTonality] = useState("C");
-  const [quality, setQuality] = useState("Major");
-  const [chordsList, setChordsList] = useState("V VI");
+  const [tonality, setTonality] = useState("");
+  const [quality, setQuality] = useState("");
+  const [mood, setMood] = useState("");
+  const [chordsList, setChordsList] = useState("");
 
-  // QualityCallback = (quality: string) => {
-  //   console.log(quality);
-  // };
+  const QualityCallback = (quality: string) => {
+    console.log(quality);
+  };
 
-  // KeyCallback = (tonality: string) => {
-  //   setTonality(tonality);
-  //   console.log(tonality);
-  // };
+  const KeyCallback = (tonality: string) => {
+    setTonality(tonality);
+    console.log(tonality);
+  };
+
+  const MoodCallback = (mood: string) => {
+    setMood(mood);
+    console.log(mood);
+  };
 
   const Prog: IProgression = DetermineChordProg(tonality, quality);
 
   return (
     <div>
-      <KeyButton parentCallback={setTonality(tonality)} />
-      {/* <QualityButton parentCallback={this.QualityCallback} /> */}
-      <ProgressionDisplayComponent
+      <KeyButton parentCallback={KeyCallback} />
+      <QualityButton parentCallback={QualityCallback} />
+      <MoodButton parentCallback={MoodCallback} />
+      {/* <ProgressionDisplayComponent
         tonality={this.Prog.tonality}
         quality={this.Prog.quality}
         chords_list={this.Prog.chords_list}
-      />
+      /> */}
       <br />
     </div>
   );
