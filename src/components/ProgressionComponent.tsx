@@ -8,18 +8,21 @@ import ProgressionDisplayComponent from "./views/ProgressionDisplay";
 
 // The IProgression has been imported and passed down as the props of the ProgressionComponent. In the constructor, we checked that the props passed are of the IProgression type and in the render function, the data will be displayed.
 
-interface IProgressionComponent {
+export interface IProgressionComponent {
   tonality?: string;
   quality?: string;
+  mood?: string;
+  chords_list?: string;
 }
 
 const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   const [tonality, setTonality] = useState("");
   const [quality, setQuality] = useState("");
   const [mood, setMood] = useState("");
-  const [chordsList, setChordsList] = useState("");
+  // const [chordsList, setChordsList] = useState("");
 
   const QualityCallback = (quality: string) => {
+    setQuality(quality);
     console.log(quality);
   };
 
@@ -45,6 +48,11 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
         quality={this.Prog.quality}
         chords_list={this.Prog.chords_list}
       /> */}
+      <ProgressionDisplayComponent
+        tonality={tonality}
+        quality={quality}
+        chords_list="I VI III"
+      />
       <br />
     </div>
   );
