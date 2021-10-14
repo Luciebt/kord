@@ -5,7 +5,7 @@ import { Piano } from "@tonejs/piano";
 const piano = new Piano({
   velocities: 5,
   maxPolyphony: 6,
-}).toMaster();
+}).toDestination();
 
 piano.load().then(() => {
   console.log("loaded!");
@@ -23,9 +23,9 @@ function playMidiNotes(chordNotes: string[]): void {
 }
 
 export function PlayPianoChord(chord: string) {
-  console.log("chord received in PlayPianoChord__" + chord);
+  // console.log("chord received in PlayPianoChord__" + chord);
   const chordNotes: string[] = BuildChordNotes(chord);
-  console.log("Chord Notes____" + chordNotes);
+  // console.log("Chord Notes____" + chordNotes);
 
   playMidiNotes(chordNotes);
 }
@@ -83,9 +83,12 @@ function ChordsArrayGenerator(chord: string): string[] {
   return [chordType, homeNote];
 }
 
-function BuildChordNotes(chord: string): string[] {
+export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
   console.log("chordAfterGenerator___" + chord);
+
+  const testing = Chord.getChord(chordType, homeNote).notes;
+  console.log("Chord.getChord___" + testing);
 
   return Chord.getChord(chordType, homeNote).notes;
 }

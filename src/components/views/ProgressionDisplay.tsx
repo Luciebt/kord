@@ -18,7 +18,7 @@ const ProgressionDisplayComponent = ({
   mood,
   chords_list,
 }: IProgressionDisplayProps): JSX.Element => {
-  const [chordState, setChordState] = useState(false);
+  const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
   const chordsArr: string[] = chords_list.split(" | ");
@@ -29,7 +29,7 @@ const ProgressionDisplayComponent = ({
       <button
         key={chords}
         onClick={() => {
-          setChordState(true), setChordSelected(chords);
+          setChordsState(true), setChordSelected(chords);
         }}
       >
         {chords}
@@ -46,7 +46,7 @@ const ProgressionDisplayComponent = ({
       <b>{mood ? mood : ""}</b>
       <br />
       <b>{chordsBloc}</b>
-      {chordState ? <ChordDisplay chord={chordSelected} /> : null}
+      {chordsState ? <ChordDisplay chord={chordSelected} /> : null}
     </div>
   );
 };
