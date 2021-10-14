@@ -9,8 +9,8 @@ export type TQuality = "Major" | "Minor" | "Mixed";
 export type TMood = "All" | "Jazzy" | "Melancholic" | "Energised" | "Pop";
 
 export type TChords =
-  | "Major"
-  | "Minor"
+  | "maj"
+  | "min"
   | "Augmented"
   | "Diminished"
   | "Dominant 7"
