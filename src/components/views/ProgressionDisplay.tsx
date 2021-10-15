@@ -21,6 +21,7 @@ const ProgressionDisplayComponent = ({
   const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
+  // TODO: update chords_list when changing tonality or quality.
   const chordsArr: string[] = chords_list.split(" | ");
   let chordsBloc: JSX.Element[] = [];
 
