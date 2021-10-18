@@ -40,12 +40,11 @@ const ProgressionDisplayComponent = ({
 
   return (
     <div className="prog-box">
-      <b>Tonic: {tonic} </b>
-      <br />
-      <b>Quality: {quality} </b>
-      <br />
-      <b>{mood ? mood : ""}</b>
-      <br />
+      <h2>
+        {tonic && quality ? tonic + " | " + quality : ""}
+        {mood ? " | " + mood : ""}
+      </h2>
+      <h2>{tonic && quality ? "Suggested progressions" : ""}</h2>
       <b>{chordsBloc}</b>
       {chordsState ? <ChordDisplay chord={chordSelected} /> : null}
     </div>

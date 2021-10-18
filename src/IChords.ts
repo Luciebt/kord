@@ -11,9 +11,8 @@ piano.load().then(() => {
   console.log("loaded!");
 });
 
-function playMidiNotes(chordNotes: string[]): void {
+function PlayMidiNotes(chordNotes: string[]): void {
   const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
-  console.log("midiChordNotes___" + midiChordNotes);
 
   midiChordNotes.forEach((midiNote) => {
     piano.keyDown({ note: midiNote });
@@ -22,12 +21,20 @@ function playMidiNotes(chordNotes: string[]): void {
   });
 }
 
+/////// Flow:
+// PlayPianoChord
+// BuildChordNotes
+// ChordsArrayGenerator --> [chordType, homeNote]
+// Chord.getChord(chordType, homeNote).notes --> string[]
+// PlayMidiNotes
+// BuildMidiChordNotes(chordNotes)
+
 export function PlayPianoChord(chord: string) {
   // console.log("chord received in PlayPianoChord__" + chord);
   const chordNotes: string[] = BuildChordNotes(chord);
   // console.log("Chord Notes____" + chordNotes);
 
-  playMidiNotes(chordNotes);
+  PlayMidiNotes(chordNotes);
 }
 
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
@@ -62,6 +69,10 @@ function ChordsArrayGenerator(chord: string): string[] {
     chordType = "m7";
   } else if (chord.includes("sus")) {
     chordType = "sus";
+  } else if (chord.includes("d")) {
+    chordType = "d";
+  } else if (chord.includes("dim7")) {
+    chordType = "dim7";
   } else {
     chordType = "M";
   }
@@ -87,7 +98,8 @@ export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
   console.log("chordAfterGenerator___" + chord);
 
-  const testing = Chord.getChord(chordType, homeNote).notes;
+  // const testing = Chord.getChord(chordType, homeNote).notes;
+  const testing = Chord.getChord("Dm7", homeNote).notes;
   console.log("Chord.getChord___" + testing);
 
   return Chord.getChord(chordType, homeNote).notes;

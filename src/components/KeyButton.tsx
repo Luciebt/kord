@@ -44,7 +44,9 @@ const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
 
   return (
     <div className="">
-      <h3>Set the key: {theTonic}</h3>
+      <h3>
+        Set the key: <mark>{theTonic}</mark>
+      </h3>
       {notesButtons}
     </div>
   );

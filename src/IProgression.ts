@@ -1,7 +1,7 @@
+import { ProgressionCollection } from "./ProgressionStore";
 import { IRoman, TProgression, TQuality, TMood } from "./type.d";
 import { Note, Key, Progression, Mode } from "@tonaljs/tonal";
 
-// This  defines a simple Progression interface, which will be passed in as props into a new component.
 export default interface IProgression {
   tonic: string;
   quality: string;
@@ -12,21 +12,6 @@ export default interface IProgression {
 }
 
 ////////////////////////////////////////////
-
-// TODO: Move this to data folder
-const ProgressionCollection: Record<TQuality, TProgression[]> = {
-  Major: [
-    { progression_list: "I, IV, VIm, V", mood: "Pop" },
-    { progression_list: "V, IV, I, V", mood: "Jazzy" },
-  ],
-  Minor: [
-    { progression_list: "Im, Vm, IVm, Im", mood: "Melancholic" },
-    { progression_list: "Im, IVm, V7, Im", mood: "Melancholic" },
-    { progression_list: "Im, III, VII, VI", mood: "Melancholic" },
-  ],
-  // TODO: set "Mixed" collections. Those are wrong.
-  Mixed: [{ progression_list: "I IV VIm V", mood: "Jazzy" }],
-};
 
 function FindProgListFromQuality(
   progressionCollectionForQuality: TProgression[]
@@ -69,6 +54,10 @@ function FindProgListWithMood(quality: string, mood: string): string[] {
   let Progressions: TProgression[] | undefined = undefined;
   let Results: string[] = [];
 
+  if (mood == "All") {
+    return FindProgListWithoutMood(quality);
+  }
+
   switch (quality) {
     case "Major":
       Progressions = ProgressionCollection.Major;
@@ -76,14 +65,12 @@ function FindProgListWithMood(quality: string, mood: string): string[] {
     case "Minor":
       Progressions = ProgressionCollection.Minor;
       break;
-    case "All":
-      Progressions = ProgressionCollection.Mixed;
-      break;
     case "Mixed":
       Progressions = ProgressionCollection.Mixed;
       break;
   }
 
+  // TODO: find a better way to deal with mood filtering.
   if (Progressions) {
     for (const v of Object.values(Progressions)) {
       if (v["mood"] == mood) {
@@ -98,10 +85,13 @@ function FindProgListWithMood(quality: string, mood: string): string[] {
 function ConvertProgToChords(tonic: string, progArr: string[]): string[] {
   let Results: string[] = [];
 
+  // Filter progression array from empty elements
   progArr = progArr.filter((e) => e);
 
   progArr.forEach((prog) => {
+    // Build an array with progression nums, separated by commas for tonals js.
     const newList: string[] = prog.split(", ");
+    // Convert the progression to actual chords.
     const newProg: string[] = Progression.fromRomanNumerals(tonic, newList);
     Results.push(newProg.toString());
   });
