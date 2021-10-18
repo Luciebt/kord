@@ -14,11 +14,12 @@ const PianoDisplayComponent = ({
   let chordsArray: string[] = ShowChord(chord);
 
   useEffect(() => {
-    setChordsToShow(chordsArray);
-    if (chordsToShow) {
-      chordsToShow.forEach((note) => {
+    // setChordsToShow(chordsArray);
+    if (chordsArray) {
+      chordsArray.forEach((note) => {
         const noteFound = document.getElementById(note);
         if (noteFound) {
+          console.log(noteFound);
           noteFound.classList.add("pressed");
         }
       });
@@ -32,6 +33,8 @@ const PianoDisplayComponent = ({
           key.classList.remove("pressed");
         });
       }
+
+      chordsArray = [""];
     };
   }, [chord]);
 
