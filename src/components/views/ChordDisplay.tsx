@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PlayPianoChord } from "../../IChords";
 import PianoDisplay from "./PianoDisplay";
 import { useKeyPress } from "../hooks/KeyPressHook";
@@ -15,15 +15,15 @@ const ChordDisplayComponent = ({
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
   const chordArr: string[] = chord.split(",");
+  let chordButton: JSX.Element[] = [];
 
+  // Use numerical keys to play chords of one progression.
   const FirstNumKey = useKeyPress("1");
   const SecondNumKey = useKeyPress("2");
   const ThirdNumKey = useKeyPress("3");
   const FourthNumKey = useKeyPress("4");
   const FifthNumKey = useKeyPress("5");
   const SixthNumKey = useKeyPress("6");
-
-  let chordButton: JSX.Element[] = [];
 
   if (FirstNumKey) {
     PlayPianoChord(chordArr[0]);

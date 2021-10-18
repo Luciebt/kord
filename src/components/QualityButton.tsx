@@ -28,9 +28,7 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
 
   return (
     <div className="">
-      <h3>
-        Set the type: <mark>{theQuality}</mark>
-      </h3>
+      <h3>Type</h3>
       {qualitiesButtons}
     </div>
   );

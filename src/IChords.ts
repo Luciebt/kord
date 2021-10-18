@@ -30,9 +30,7 @@ function PlayMidiNotes(chordNotes: string[]): void {
 // BuildMidiChordNotes(chordNotes)
 
 export function PlayPianoChord(chord: string) {
-  // console.log("chord received in PlayPianoChord__" + chord);
   const chordNotes: string[] = BuildChordNotes(chord);
-  // console.log("Chord Notes____" + chordNotes);
 
   PlayMidiNotes(chordNotes);
 }
@@ -57,6 +55,7 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
 // home note = D, D# or Db
 // quality = m, M, 7, m7, sus...
 
+// TODO: improve this function
 function ChordsArrayGenerator(chord: string): string[] {
   let chordType: string = "";
   let homeNote: string = chord[0];
@@ -98,8 +97,7 @@ export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
   console.log("chordAfterGenerator___" + chord);
 
-  // const testing = Chord.getChord(chordType, homeNote).notes;
-  const testing = Chord.getChord("Dm7", homeNote).notes;
+  const testing = Chord.getChord(chordType, homeNote).notes;
   console.log("Chord.getChord___" + testing);
 
   return Chord.getChord(chordType, homeNote).notes;

@@ -51,12 +51,12 @@ function FindProgListWithoutMood(quality: string): string[] {
 }
 
 function FindProgListWithMood(quality: string, mood: string): string[] {
-  let Progressions: TProgression[] | undefined = undefined;
-  let Results: string[] = [];
-
   if (mood == "All") {
     return FindProgListWithoutMood(quality);
   }
+
+  let Progressions: TProgression[] | undefined = undefined;
+  let Results: string[] = [];
 
   switch (quality) {
     case "Major":

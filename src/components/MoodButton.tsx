@@ -30,9 +30,7 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
 
   return (
     <div className="">
-      <h3>
-        Set the mood: <mark>{theMood}</mark>
-      </h3>
+      <h3>Mood</h3>
       {moodsButtons}
     </div>
   );

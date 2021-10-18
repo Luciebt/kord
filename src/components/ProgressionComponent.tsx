@@ -19,7 +19,7 @@ export interface IProgressionComponent {
 }
 
 const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
-  const [tonic, settonic] = useState("");
+  const [tonic, setTonic] = useState("");
   const [quality, setQuality] = useState("");
   const [mood, setMood] = useState("");
   const [chordsList, setChordsList] = useState("");
@@ -34,7 +34,7 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   };
 
   const KeyCallback = (tonic: string) => {
-    settonic(tonic);
+    setTonic(tonic);
     if (quality) {
       setChordsList(DetermineChordsList(tonic, quality, mood));
       setchordsScale(findChordsScale(tonic, quality));
