@@ -10,9 +10,7 @@ const PianoDisplayComponent = ({
   key,
   chord,
 }: IPianoDisplayProps): JSX.Element => {
-  // const [chordsToShow, setChordsToShow] = useState(Array.from(chord));
   const [chordsToShow, setChordsToShow] = useState([""]);
-
   let chordsArray: string[] = ShowChord(chord);
 
   useEffect(() => {
@@ -35,7 +33,7 @@ const PianoDisplayComponent = ({
         });
       }
     };
-  }, [chordsToShow]);
+  }, [chord]);
 
   // TODO: Play chords w keys a - l.
   return (
@@ -97,7 +95,7 @@ const PianoDisplayComponent = ({
         <li id="F2" className="white">
           F
         </li>
-        <li id="F#" className="black">
+        <li id="F#2" className="black">
           F#
         </li>
         <li id="G2" className="white offset">
