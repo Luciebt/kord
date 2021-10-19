@@ -5,7 +5,7 @@ interface noteId {
 }
 
 // Access to key id using noteNumForKeys["C#"];
-let noteNumForKeys: noteId = {
+const noteNumForKeys: noteId = {
   C: 0,
   "C#": 1,
   D: 2,
@@ -45,26 +45,39 @@ function ReturnSharpFromFlatNotes(chord: string): string {
   return chord;
 }
 
+export function AddOctaveToNoteIfNeeded(
+  notesArr: string[],
+  forMidi: boolean = false
+): void {
+  // This solution doesn't work with inverted chords. TODO: Make it work with inversions!
+  const firstNote = notesArr[0];
+  const firstNum = noteNumForKeys[firstNote];
+  notesArr.forEach((note, i) => {
+    // Regex helper to dynamically change the notesArr.
+    const re = new RegExp(note, "g");
+    const numForKey = noteNumForKeys[note];
+    if (numForKey < firstNum) {
+      if (forMidi) {
+        notesArr[i] = notesArr[i].replace(re, (note += "4"));
+      } else {
+        notesArr[i] = notesArr[i].replace(re, (note += "2"));
+      }
+    } else {
+      if (forMidi) {
+        notesArr[i] = notesArr[i].replace(re, (note += "3"));
+      }
+    }
+  });
+}
+
 export function ShowChord(chord: string): string[] {
   const chordsWithoutFlats = ReturnSharpFromFlatNotes(chord);
   console.log("ShowChord: chordsWithoutFlats_____" + chordsWithoutFlats);
 
   let notesArr: string[] = BuildChordNotes(chordsWithoutFlats);
 
-  // This solution doesn't work with inverted chords. TODO: Make it work with inversions!
-  const firstNote = notesArr[0];
-  const firstNum = noteNumForKeys[firstNote];
+  AddOctaveToNoteIfNeeded(notesArr);
 
-  // TODO: document this before I forget.
-  notesArr.forEach((note, i) => {
-    const numForKey = noteNumForKeys[note];
-    if (numForKey < firstNum) {
-      // Regex helper to dynamically change the notesArr.
-      const re = new RegExp(note, "g");
-      notesArr[i] = notesArr[i].replace(re, (note += "2"));
-      // console.log("notesArr[i]______" + notesArr[i]);
-    }
-  });
   console.log("notesArr______" + notesArr);
 
   return notesArr;

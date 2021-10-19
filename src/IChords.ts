@@ -1,6 +1,7 @@
 import { IRoman, TProgression, TQuality, TMood } from "./type.d";
 import { Note, Midi, Chord } from "@tonaljs/tonal";
 import { Piano } from "@tonejs/piano";
+import { AddOctaveToNoteIfNeeded } from "./IPianoChart";
 
 const piano = new Piano({
   velocities: 5,
@@ -36,10 +37,12 @@ export function PlayPianoChord(chord: string) {
 }
 
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
+  AddOctaveToNoteIfNeeded(chordNotes, true);
+
   console.log("chordNotes going to BuildMidi__" + chordNotes);
   let Results: string[] = [];
   chordNotes.forEach((note) => {
-    const NoteFound: any = Note.midi(note + "3");
+    const NoteFound: any = Note.midi(note);
     if (NoteFound) {
       Results.push(NoteFound.toString());
     }
@@ -48,7 +51,6 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
   return Results;
 }
 
-// FIXME: _D#m7 -> the seventh note is forgotten? Why?
 // From D#m I want: ["m", "D#"]
 // From D# I want: ["M", "D#"]
 // From D I want: ["M", "D"]
@@ -115,7 +117,7 @@ function ReturnSharpFromFlatNotes(chord: string[]): string[] {
 
 export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
-  console.log("chordAfterGenerator___" + [chordType, homeNote]);
+  // console.log("chordAfterGenerator___" + [chordType, homeNote]);
 
   let chordArr: string[] = Chord.getChord(chordType, homeNote).notes;
 
@@ -128,7 +130,7 @@ export function BuildChordNotes(chord: string): string[] {
 
   // Get rid of flat notes to only keep sharps. A simplification to display chords visually.
   chordArr = ReturnSharpFromFlatNotes(chordArr);
-  console.log("chordAfterGetChord + ReturnSharp + Simplify___" + chordArr);
+  console.log("chordArr from BuildChordNotes___" + chordArr);
 
   return chordArr;
 }
