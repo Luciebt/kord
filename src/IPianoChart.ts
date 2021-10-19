@@ -29,6 +29,11 @@ const fromFlatToSharp = {
 };
 
 function ReturnSharpFromFlatNotes(chord: string): string {
+  // Not sure why this happens, but I sometimes get E#m and that is NOT okay.
+  if (chord.includes("E#")) {
+    chord = chord.replace(/E/g, "F");
+  }
+
   if (chord.includes("b")) {
     chord = chord.replace(/Db/g, "C#");
     chord = chord.replace(/Eb/g, "D#");

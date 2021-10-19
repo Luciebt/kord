@@ -48,6 +48,7 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
   return Results;
 }
 
+// FIXME: _D#m7 -> the seventh note is forgotten? Why?
 // From D#m I want: ["m", "D#"]
 // From D# I want: ["M", "D#"]
 // From D I want: ["M", "D"]
@@ -57,15 +58,32 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
 
 // TODO: improve this function
 function ChordsArrayGenerator(chord: string): string[] {
-  let chordType: string = "";
   let homeNote: string = chord[0];
+  let chordType: string = "";
 
+  switch (chord[1]) {
+    case "b":
+      homeNote += "b";
+      break;
+    case "#":
+      homeNote += "#";
+      break;
+    case "##":
+      // TODO: Make sure that this works.
+      homeNote = Note.transpose(homeNote, "2M");
+      break;
+    default:
+      break;
+  }
+
+  // FIXME: this is ugly AF.
   if (chord.includes("m")) {
     chordType = "m";
+    if (chord.includes("7")) {
+      chordType = "m7";
+    }
   } else if (chord.includes("7")) {
     chordType = "7";
-  } else if (chord.includes("m7")) {
-    chordType = "m7";
   } else if (chord.includes("sus")) {
     chordType = "sus";
   } else if (chord.includes("d")) {
@@ -76,29 +94,41 @@ function ChordsArrayGenerator(chord: string): string[] {
     chordType = "M";
   }
 
-  switch (chord[1]) {
-    case "b":
-      homeNote += "b";
-      break;
-    case "#":
-      homeNote += "#";
-      break;
-    case "##":
-      homeNote += "##";
-      break;
-    default:
-      break;
+  return [chordType, homeNote];
+}
+
+function ReturnSharpFromFlatNotes(chord: string[]): string[] {
+  let notesList = chord.join(",");
+  if (notesList.includes("E#")) {
+    notesList = notesList.replace(/E#/g, "F");
+  }
+  if (notesList.includes("b")) {
+    notesList = notesList.replace(/Db/g, "C#");
+    notesList = notesList.replace(/Eb/g, "D#");
+    notesList = notesList.replace(/Gb/g, "F#");
+    notesList = notesList.replace(/Ab/g, "G#");
+    notesList = notesList.replace(/Bb/g, "A#");
   }
 
-  return [chordType, homeNote];
+  return notesList.split(",");
 }
 
 export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
-  console.log("chordAfterGenerator___" + chord);
+  console.log("chordAfterGenerator___" + [chordType, homeNote]);
 
-  const testing = Chord.getChord(chordType, homeNote).notes;
-  console.log("Chord.getChord___" + testing);
+  let chordArr: string[] = Chord.getChord(chordType, homeNote).notes;
 
-  return Chord.getChord(chordType, homeNote).notes;
+  console.log(chordArr);
+
+  // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
+  chordArr.forEach((chord, i) => {
+    chordArr[i] = Note.simplify(chord);
+  });
+
+  // Get rid of flat notes to only keep sharps. A simplification to display chords visually.
+  chordArr = ReturnSharpFromFlatNotes(chordArr);
+  console.log("chordAfterGetChord + ReturnSharp + Simplify___" + chordArr);
+
+  return chordArr;
 }
