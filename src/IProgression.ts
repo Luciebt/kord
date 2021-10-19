@@ -1,6 +1,6 @@
 import { ProgressionCollection } from "./ProgressionStore";
 import { IRoman, TProgression, TQuality, TMood } from "./type.d";
-import { Note, Key, Progression, Mode } from "@tonaljs/tonal";
+import { Note, Key, Progression } from "@tonaljs/tonal";
 
 export default interface IProgression {
   tonic: string;
@@ -11,7 +11,36 @@ export default interface IProgression {
   DetermineChordsList?: any;
 }
 
-////////////////////////////////////////////
+//--------- NOTE UTILS
+
+function ReturnSharpFromFlatNotes(chord: string): string {
+  if (chord.includes("b")) {
+    chord = chord.replaceAll(/Db/g, "C#");
+    chord = chord.replaceAll(/Eb/g, "D#");
+    chord = chord.replaceAll(/Gb/g, "F#");
+    chord = chord.replaceAll(/Ab/g, "G#");
+    chord = chord.replaceAll(/Bb/g, "A#");
+  }
+
+  return chord;
+}
+
+function CleanChords(chordStr: string): string {
+  chordStr = chordStr.replaceAll("C##", "D");
+  chordStr = chordStr.replaceAll("D##", "E");
+  chordStr = chordStr.replaceAll("E#", "F");
+  chordStr = chordStr.replaceAll("F##", "G");
+  chordStr = chordStr.replaceAll("G##", "A");
+  chordStr = chordStr.replaceAll("A##", "B");
+  chordStr = chordStr.replaceAll("B#", "C");
+
+  chordStr = ReturnSharpFromFlatNotes(chordStr);
+
+  console.log(chordStr);
+  return chordStr;
+}
+
+//------- Find progressions helpers
 
 function FindProgListFromQuality(
   progressionCollectionForQuality: TProgression[]
@@ -25,7 +54,6 @@ function FindProgListFromQuality(
     }
   }
 
-  console.log("FindProgList_Results  " + Results);
   return Results;
 }
 
@@ -98,6 +126,7 @@ function ConvertProgToChords(tonic: string, progArr: string[]): string[] {
   return Results;
 }
 
+//------------ Export function for ProgressionComponent.tsx
 export function DetermineChordsList(
   tonic: string,
   quality: string,
@@ -119,9 +148,12 @@ export function DetermineChordsList(
     return "";
   }
   const ChordsList: string[] = ConvertProgToChords(tonic, ProgList);
-  return ChordsList.join(" | ");
+  const ChordsStr: string = ChordsList.join(" | ");
+
+  return CleanChords(ChordsStr);
 }
 
+// TODO: finish Scale feature.
 export function findChordsScale(tonic: string, quality: string): any {
   switch (quality) {
     case "Mixed":

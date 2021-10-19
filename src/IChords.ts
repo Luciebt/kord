@@ -70,14 +70,17 @@ function ChordsArrayGenerator(chord: string): string[] {
     case "#":
       homeNote += "#";
       break;
-    case "##":
-      // TODO: Make sure that this works.
-      homeNote = Note.transpose(homeNote, "2M");
-      break;
     default:
       break;
   }
 
+  // FIXME: This doesn't work. Need to replace then the ##. But this should be done before in IProgression.ts which has the responsibility of cleaning chords now.
+  // const newChord = Note.transpose(chord, "2M").replace("##", "");
+  // if (chord[1] == "#" && chord[2] == "#") {
+  //   homeNote = Note.transpose(homeNote, "2M");
+  // }
+
+  // TODO: Add diminished and augmented chords. Incl. 7.
   // FIXME: this is ugly AF.
   if (chord.includes("m")) {
     chordType = "m";
@@ -121,13 +124,12 @@ export function BuildChordNotes(chord: string): string[] {
 
   let chordArr: string[] = Chord.getChord(chordType, homeNote).notes;
 
-  console.log(chordArr);
-
   // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
   chordArr.forEach((chord, i) => {
     chordArr[i] = Note.simplify(chord);
   });
 
+  console.log(chordArr);
   // Get rid of flat notes to only keep sharps. A simplification to display chords visually.
   chordArr = ReturnSharpFromFlatNotes(chordArr);
   console.log("chordArr from BuildChordNotes___" + chordArr);

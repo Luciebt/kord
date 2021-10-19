@@ -1,4 +1,5 @@
 import { BuildChordNotes } from "./IChords";
+import { Note } from "@tonaljs/tonal";
 
 interface noteId {
   [key: string]: number;
@@ -28,23 +29,6 @@ const fromFlatToSharp = {
   Bb: "A#",
 };
 
-function ReturnSharpFromFlatNotes(chord: string): string {
-  // Not sure why this happens, but I sometimes get E#m and that is NOT okay.
-  if (chord.includes("E#")) {
-    chord = chord.replace(/E/g, "F");
-  }
-
-  if (chord.includes("b")) {
-    chord = chord.replace(/Db/g, "C#");
-    chord = chord.replace(/Eb/g, "D#");
-    chord = chord.replace(/Gb/g, "F#");
-    chord = chord.replace(/Ab/g, "G#");
-    chord = chord.replace(/Bb/g, "A#");
-  }
-
-  return chord;
-}
-
 export function AddOctaveToNoteIfNeeded(
   notesArr: string[],
   forMidi: boolean = false
@@ -71,10 +55,7 @@ export function AddOctaveToNoteIfNeeded(
 }
 
 export function ShowChord(chord: string): string[] {
-  const chordsWithoutFlats = ReturnSharpFromFlatNotes(chord);
-  console.log("ShowChord: chordsWithoutFlats_____" + chordsWithoutFlats);
-
-  let notesArr: string[] = BuildChordNotes(chordsWithoutFlats);
+  let notesArr: string[] = BuildChordNotes(chord);
 
   AddOctaveToNoteIfNeeded(notesArr);
 
