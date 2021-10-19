@@ -14,7 +14,6 @@ const PianoDisplayComponent = ({
   let chordsArray: string[] = ShowChord(chord);
 
   useEffect(() => {
-    // setChordsToShow(chordsArray);
     if (chordsArray) {
       chordsArray.forEach((note) => {
         const noteFound = document.getElementById(note);
@@ -41,8 +40,7 @@ const PianoDisplayComponent = ({
   // TODO: Play chords w keys a - l.
   return (
     <div className="">
-      <h3>Piano display</h3>
-      <p>{chord}</p>
+      <h3>{chord}</h3>
       <ul id="keyboard">
         <li id="C" className="white">
           C

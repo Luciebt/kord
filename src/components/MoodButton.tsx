@@ -14,10 +14,10 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
   const moods: string[] = ["All", "Jazzy", "Melancholic", "Energised", "Pop"];
   const moodsButtons: JSX.Element[] = [];
 
-  for (let mood of moods) {
+  moods.forEach((mood, i) => {
     moodsButtons.push(
       <button
-        key={mood}
+        key={i}
         onClick={() => {
           setMood(mood);
           parentCallback(mood);
@@ -26,7 +26,7 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
         {mood}
       </button>
     );
-  }
+  });
 
   return (
     <div className="">

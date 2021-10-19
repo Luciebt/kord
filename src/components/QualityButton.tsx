@@ -12,10 +12,10 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
   const qualities: TQuality[] = ["Major", "Minor", "Mixed"];
   const qualitiesButtons: JSX.Element[] = [];
 
-  for (let quality of qualities) {
+  qualities.forEach((quality, i) => {
     qualitiesButtons.push(
       <button
-        key={quality}
+        key={i}
         onClick={() => {
           setQuality(quality);
           parentCallback(quality);
@@ -24,7 +24,7 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
         {quality}
       </button>
     );
-  }
+  });
 
   return (
     <div className="">

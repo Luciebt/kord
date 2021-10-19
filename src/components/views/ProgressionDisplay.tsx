@@ -25,10 +25,10 @@ const ProgressionDisplayComponent = ({
   const chordsArr: string[] = chords_list.split(" | ");
   let chordsBloc: JSX.Element[] = [];
 
-  chordsArr.forEach((chords) => {
+  chordsArr.forEach((chords, i) => {
     chordsBloc.push(
       <button
-        key={chords}
+        key={i}
         onClick={() => {
           setChordsState(true), setChordSelected(chords);
         }}

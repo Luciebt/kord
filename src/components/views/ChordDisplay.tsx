@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { PlayPianoChord } from "../../IChords";
-import PianoDisplay from "./PianoDisplay";
 import { useKeyPress } from "../hooks/KeyPressHook";
+import { useDidUpdate } from "../hooks/useDidUpdate";
+import PianoDisplay from "./PianoDisplay";
 
 export interface IChordDisplayProps {
   key?: number;
@@ -14,8 +15,14 @@ const ChordDisplayComponent = ({
 }: IChordDisplayProps): JSX.Element => {
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
-  const chordArr: string[] = chord.split(",");
+  let chordArr: string[] = chord.split(",");
   let chordButton: JSX.Element[] = [];
+
+  const SetAndPlayActiveChord = (chord: string) => {
+    setChordState(true);
+    setChordSelected(chord);
+    PlayPianoChord(chord);
+  };
 
   // Use numerical keys to play chords of one progression.
   const FirstNumKey = useKeyPress("1");
@@ -25,6 +32,7 @@ const ChordDisplayComponent = ({
   const FifthNumKey = useKeyPress("5");
   const SixthNumKey = useKeyPress("6");
 
+  // TODO: not only play chords, but also show the piano display.
   if (FirstNumKey) {
     PlayPianoChord(chordArr[0]);
   }
@@ -43,23 +51,33 @@ const ChordDisplayComponent = ({
   if (SixthNumKey && chordArr.length > 5) {
     PlayPianoChord(chordArr[5]);
   }
+  if (SixthNumKey && chordArr.length > 6) {
+    PlayPianoChord(chordArr[6]);
+  }
 
-  chordArr.forEach((c) => {
-    chordButton.push(
-      <button
-        key={c}
-        onClick={() => {
-          setChordState(true), setChordSelected(c), PlayPianoChord(c);
-        }}
-      >
-        {c}
-      </button>
-    );
-  });
+  // FIXME: empty button?
+  // TODO: useEffect: build the buttons when mounted, clear all buttons when unmounted.
+  if (chordArr) {
+    chordArr.forEach((c, i) => {
+      chordButton.push(
+        <button
+          key={i}
+          onClick={() => {
+            SetAndPlayActiveChord(c);
+          }}
+        >
+          {c}
+        </button>
+      );
+    });
+  }
 
   return (
-    <div className="">
-      <h3>{chordButton}</h3>
+    <div className="chords-box">
+      <h3>{chordButton && chordButton}</h3>
+      {chordSelected
+        ? console.log("chordSelected in ChordDisplay.tsx___" + chordSelected)
+        : null}
       {chordState ? <PianoDisplay chord={chordSelected} /> : null}
     </div>
   );

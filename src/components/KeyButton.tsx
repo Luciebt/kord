@@ -8,9 +8,8 @@ interface IKeyButton {
 const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
   const [theTonic, setTonic] = useState("");
 
-  useEffect(() => {
-    // nothing for now.
-  });
+  // useEffect(() => {
+  // });
 
   const notes: TKey[] = [
     "C",
@@ -23,24 +22,33 @@ const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
     "G",
     "G#",
     "A",
-    "Bb",
+    "A#",
     "B",
   ];
   const notesButtons: JSX.Element[] = [];
 
-  for (let note of notes) {
+  const setBtnPressed = (note: string): void => {
+    const selectedBtn = document.getElementById(note);
+    if (selectedBtn) {
+      console.log(selectedBtn);
+      selectedBtn.classList.add("btn-pressed");
+    }
+  };
+
+  notes.forEach((note, i) => {
     notesButtons.push(
       <button
-        key={note}
+        key={i}
         onClick={() => {
           setTonic(note);
+          setBtnPressed(note);
           parentCallback(note);
         }}
       >
         {note}
       </button>
     );
-  }
+  });
 
   return (
     <div className="">
