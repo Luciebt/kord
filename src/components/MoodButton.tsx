@@ -14,13 +14,25 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
   const moods: string[] = ["All", "Jazzy", "Melancholic", "Energised", "Pop"];
   const moodsButtons: JSX.Element[] = [];
 
+  const handleClick = (event: any, mood: string) => {
+    setMood(mood);
+    parentCallback(mood);
+
+    const toUnpress = document.getElementsByClassName("mood-btn-pressed");
+    if (toUnpress) {
+      Array.from(toUnpress).forEach((button) => {
+        button.classList.remove("mood-btn-pressed");
+      });
+    }
+    event.target.classList.add("mood-btn-pressed");
+  };
+
   moods.forEach((mood, i) => {
     moodsButtons.push(
       <button
         key={i}
-        onClick={() => {
-          setMood(mood);
-          parentCallback(mood);
+        onClick={(e) => {
+          handleClick(e, mood);
         }}
       >
         {mood}

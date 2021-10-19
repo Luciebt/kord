@@ -39,8 +39,7 @@ const PianoDisplayComponent = ({
 
   // TODO: Play chords w keys a - l.
   return (
-    <div className="">
-      <h3>{chord}</h3>
+    <div className="keyboard-box">
       <ul id="keyboard">
         <li id="C" className="white">
           C

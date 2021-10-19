@@ -18,9 +18,18 @@ const ChordDisplayComponent = ({
   let chordArr: string[] = chord.split(",");
   let chordButton: JSX.Element[] = [];
 
-  const SetAndPlayActiveChord = (chord: string) => {
+  const handleClick = (event: any, chord: string) => {
     setChordState(true);
     setChordSelected(chord);
+
+    const toUnpress = document.getElementsByClassName("chord-btn-pressed");
+    if (toUnpress) {
+      Array.from(toUnpress).forEach((button) => {
+        button.classList.remove("chord-btn-pressed");
+      });
+    }
+    event.target.classList.add("chord-btn-pressed");
+
     PlayPianoChord(chord);
   };
 
@@ -62,9 +71,10 @@ const ChordDisplayComponent = ({
       chordButton.push(
         <button
           key={i}
-          onClick={() => {
-            SetAndPlayActiveChord(c);
+          onClick={(e) => {
+            handleClick(e, c);
           }}
+          className="chord-btn"
         >
           {c}
         </button>
@@ -75,10 +85,13 @@ const ChordDisplayComponent = ({
   return (
     <div className="chords-box">
       <h3>{chordButton && chordButton}</h3>
+      {/* <p>{chordArr ? "Press numerical keys to play chords" : ""}</p> */}
       {chordSelected
         ? console.log("chordSelected in ChordDisplay.tsx___" + chordSelected)
         : null}
-      {chordState ? <PianoDisplay chord={chordSelected} /> : null}
+      {chordState && chordSelected ? (
+        <PianoDisplay chord={chordSelected} />
+      ) : null}
     </div>
   );
 };

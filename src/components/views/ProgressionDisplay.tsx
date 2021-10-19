@@ -21,16 +21,28 @@ const ProgressionDisplayComponent = ({
   const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
-  // TODO: update chords_list when changing tonality or quality.
-  const chordsArr: string[] = chords_list.split(" | ");
+  let chordsArr: string[] = chords_list.split(" | ");
   let chordsBloc: JSX.Element[] = [];
+
+  const handleClick = (event: any, chords: string) => {
+    setChordsState(true);
+    setChordSelected(chords);
+
+    const toUnpress = document.getElementsByClassName("prog-btn-pressed");
+    if (toUnpress) {
+      Array.from(toUnpress).forEach((button) => {
+        button.classList.remove("prog-btn-pressed");
+      });
+    }
+    event.target.classList.add("prog-btn-pressed");
+  };
 
   chordsArr.forEach((chords, i) => {
     chordsBloc.push(
       <button
         key={i}
-        onClick={() => {
-          setChordsState(true), setChordSelected(chords);
+        onClick={(e) => {
+          handleClick(e, chords);
         }}
       >
         {chords}

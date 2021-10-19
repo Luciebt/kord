@@ -12,13 +12,25 @@ const QualityButton: React.FC<IQualityButton> = ({ parentCallback }) => {
   const qualities: TQuality[] = ["Major", "Minor", "Mixed"];
   const qualitiesButtons: JSX.Element[] = [];
 
+  const handleClick = (event: any, quality: string) => {
+    setQuality(quality);
+    parentCallback(quality);
+
+    const toUnpress = document.getElementsByClassName("qual-btn-pressed");
+    if (toUnpress) {
+      Array.from(toUnpress).forEach((button) => {
+        button.classList.remove("qual-btn-pressed");
+      });
+    }
+    event.target.classList.add("qual-btn-pressed");
+  };
+
   qualities.forEach((quality, i) => {
     qualitiesButtons.push(
       <button
         key={i}
-        onClick={() => {
-          setQuality(quality);
-          parentCallback(quality);
+        onClick={(e) => {
+          handleClick(e, quality);
         }}
       >
         {quality}

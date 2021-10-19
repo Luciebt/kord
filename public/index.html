@@ -18,6 +18,7 @@
     
     body, button {
         font-family: 'Space Mono', monospace;
+        color: var(--dominant-dark);
     }
     
     html {
@@ -26,6 +27,7 @@
     
     body {
         margin: 0;
+        color: var(--dominant-dark);
     }
     
     *,
@@ -37,17 +39,49 @@
 
     h1 {
         text-align: center;
+        color: var(--dominant-dark);
+        background-color: var(--dominant-light);
+        margin: 1em;
+        text-decoration: underline;
     }
 
     button {
-        font-size: 1.6em;
+        border-radius: 0% !important;
+        min-width: 2.2em;
+        font-size: 1.2em;
         padding: .2em;
         margin: .2em;
         cursor: pointer;
     }
 
+    /* palette: https://colorhunt.co/palette/716f81b97a95f6ae99f2e1c1 */
+
+    #export-midi-btn {
+        font-size: .8em;
+        text-decoration: underline;
+    }
+
+    .key-btn-pressed, .qual-btn-pressed, .mood-btn-pressed, .prog-btn-pressed {
+        transition: background-color 0.2s ease;
+        border-radius: 0% !important;
+        color: #F4EEFF;
+        border: 2px solid var(--dominant-dark);
+        background-color: var(--dominant-dark);
+    }
+
+    .chord-btn-pressed {
+        border-radius: 0% !important;
+        color: #F4EEFF;
+        border: 2px solid var(--pressed-color);
+        background-color: var(--pressed-color);
+    }
+
+    button.chord-btn:hover {
+        border: 2px solid var(--pressed-color) !important;
+    }
+    
     button:hover {
-        color: palevioletred;
+        border: 2px solid var(--dominant-dark);;
     }
 
     .centered-box {
@@ -55,15 +89,17 @@
     }
 
     .prog-box {
-        background-color: rgb(230, 195, 223);
+        background-color: var(--dominant-light);
+        margin: 1em;
         padding: 1.8rem;
+    }
+    
+    mark {
+        background-color: #DCD6F7;
     }
     
     /* PIANO STYLING */
     :root {
-        --keyboard: hsl(300, 100%, 16%);
-        --keyboard-shadow: hsla(19, 50%, 66%, 0.2);
-        --keyboard-border: hsl(20, 91%, 5%);
         --black-10: hsla(0, 0%, 0%, 0.1);
         --black-20: hsla(0, 0%, 0%, 0.2);
         --black-30: hsla(0, 0%, 0%, 0.3);
@@ -72,7 +108,15 @@
         --white-20: hsla(0, 0%, 100%, 0.2);
         --white-50: hsla(0, 0%, 100%, 0.5);
         --white-80: hsla(0, 0%, 100%, 0.8);
-        --pressed-color: hsla(299, 77%, 74%, 0.8);
+        --dominant-dark: #716F81;
+        --dominant-blue:  #B97A95;
+        --dominant-light: #F2E1C1;
+        --pressed-color:   #B97A95;
+    }
+
+
+    #keyboard {
+        display: flex;
     }
 
     .white,
@@ -84,14 +128,6 @@
         align-items: flex-end;
         padding: 0.5rem 0;
         user-select: none;
-    }
-
-    #keyboard li:first-child {
-        border-radius: 5px 0 5px 5px;
-    }
-
-    #keyboard li:last-child {
-        border-radius: 0 5px 5px 5px;
     }
 
     .white {
@@ -110,21 +146,22 @@
         margin: 0 0 0 -1rem;
         z-index: 2;
         border: 1px solid black;
-        border-radius: 0 0 3px 3px;
-        background: linear-gradient(45deg, hsl(0, 0%, 13%) 0%, hsl(0, 0%, 33%) 100%);
-        color: var(--white-50);
+        background-color: var(--dominant-dark);
+        color: var(--white-80);
     }
-
+    
     .white.pressed {
         border-top: 1px solid hsl(0, 0%, 47%);
         border-left: 1px solid hsl(0, 0%, 60%);
         border-bottom: 1px solid hsl(0, 0%, 60%);
-        background: palevioletred;
+        color: var(--white-80);
+        background: var(--pressed-color);
         outline: none;
     }
-
+    
     .black.pressed {
-        background: palevioletred;
+
+        background: var(--pressed-color);
         outline: none;
     }
 
