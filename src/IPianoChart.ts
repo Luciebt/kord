@@ -54,10 +54,10 @@ export function AddOctaveToNoteIfNeeded(
   });
 }
 
-export function ShowChord(chord: string): string[] {
+export function ShowChord(chord: string, forMidi: boolean = false): string[] {
   let notesArr: string[] = BuildChordNotes(chord);
 
-  AddOctaveToNoteIfNeeded(notesArr);
+  AddOctaveToNoteIfNeeded(notesArr, forMidi);
 
   console.log("notesArr______" + notesArr);
 

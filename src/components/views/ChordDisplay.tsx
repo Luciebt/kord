@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { PlayChord } from "../../IChords";
 import { useKeyPress } from "../hooks/KeyPressHook";
 import PianoDisplay from "./PianoDisplay";
+import MidiButton from "./MidiButton";
+import LoopButton from "../LoopButton";
 
 export interface IChordDisplayProps {
   key?: number;
@@ -84,7 +86,6 @@ const ChordDisplayComponent = ({
     // comp mounts.
     return () => {
       // cleanups.
-      console.log("cleanups from chordisplay----");
       setChordState(false);
 
       const toUnpress = document.getElementsByClassName("chord-btn-pressed");
@@ -101,10 +102,11 @@ const ChordDisplayComponent = ({
       <div className="chord-box">
         <h3>{chordButton && chordButton}</h3>
       </div>
-      <p>{chordButton ? "Press number keys to play chords" : ""}</p>
+      {/* <p>{chordButton ? "Press number keys to play chords" : ""}</p> */}
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />
       ) : null}
+      <b>{chordArr ? <MidiButton chords_list={chordArr} /> : null}</b>
     </div>
   );
 };
