@@ -58,17 +58,12 @@ const ProgressionDisplayComponent = ({
 
   return (
     <div className="prog-box">
-      <h3>{chords_list ? "Progressions found" : ""}</h3>
+      <h3>Progressions </h3>
       {/* Progressions buttons: */}
       <div className="prog-btn-box">
         <b>{chords_list ? chordsBloc : ""}</b>
       </div>
       {/* Chords buttons: */}
-      {/* {chordSelected
-        ? console.log(
-            "chordSelected in ProgressionDisplay.tsx___" + chordSelected
-          )
-        : null} */}
       {chords_list && chordsState ? (
         <ChordDisplay chord={chordSelected} />
       ) : null}

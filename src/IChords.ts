@@ -1,4 +1,4 @@
-import { IRoman, TProgression, TQuality, TMood } from "./type.d";
+import { TProgression, TQuality, TMood } from "./type.d";
 import { Note, Midi, Chord } from "@tonaljs/tonal";
 import { Piano } from "@tonejs/piano";
 import { AddOctaveToNoteIfNeeded } from "./IPianoChart";
@@ -33,7 +33,7 @@ function PlayMidiNotes(chordNotes: string[]): void {
 export function PlayPianoChord(chord: string) {
   const chordNotes: string[] = BuildChordNotes(chord);
 
-  PlayMidiNotes(chordNotes);
+  // PlayMidiNotes(chordNotes);
 }
 
 function BuildMidiChordNotes(chordNotes: string[]): string[] {

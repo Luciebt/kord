@@ -80,6 +80,22 @@ const ChordDisplayComponent = ({
     });
   }
 
+  useEffect(() => {
+    // comp mounts.
+    return () => {
+      // cleanups.
+      console.log("cleanups from chordisplay----");
+      setChordState(false);
+
+      const toUnpress = document.getElementsByClassName("chord-btn-pressed");
+      if (toUnpress) {
+        Array.from(toUnpress).forEach((button) => {
+          button.classList.remove("chord-btn-pressed");
+        });
+      }
+    };
+  }, [chord]);
+
   return (
     <div className="chords-box">
       <h3>{chordButton && chordButton}</h3>

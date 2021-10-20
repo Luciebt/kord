@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import IProgression, {
-  DetermineChordsList,
-  findChordsScale,
-} from "../IProgression";
+import IProgression, { DetermineChordsList } from "../IProgression";
+import { findChordsScale } from "../IScale";
 import KeyButton from "./KeyButton";
 import QualityButton from "./QualityButton";
 import MoodButton from "./MoodButton";
@@ -36,7 +34,8 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
 
   const KeyCallback = (tonic: string) => {
     setTonic(tonic);
-    if (quality) {
+    if (quality && tonic) {
+      setChordsList("");
       setChordsList(DetermineChordsList(tonic, quality, mood));
       setchordsScale(findChordsScale(tonic, quality));
     }
@@ -44,7 +43,8 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
 
   const MoodCallback = (mood: string) => {
     setMood(mood);
-    if (tonic && quality) {
+    if (tonic && quality && mood) {
+      setChordsList("");
       setChordsList(DetermineChordsList(tonic, quality, mood));
     }
   };

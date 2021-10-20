@@ -1,9 +1,3 @@
-export type IRoman = {
-  rootNote?: string;
-  chords_list: string[];
-};
-
-// TODO: move types to relevant file
 export type TQuality = "Major" | "Minor" | "Mixed";
 
 export type TMood = "All" | "Jazzy" | "Melancholic" | "Energised" | "Pop";
