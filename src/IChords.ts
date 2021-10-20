@@ -1,45 +1,42 @@
 import { TProgression, TQuality, TMood } from "./type.d";
 import { Note, Midi, Chord } from "@tonaljs/tonal";
-import { Piano } from "@tonejs/piano";
 import { AddOctaveToNoteIfNeeded } from "./IPianoChart";
-
-const piano = new Piano({
-  velocities: 5,
-  maxPolyphony: 6,
-}).toDestination();
-
-piano.load().then(() => {
-  console.log("loaded!");
-});
+import { PlaySynthChords } from "./audio/Synth";
+import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 
 function PlayMidiNotes(chordNotes: string[]): void {
-  const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
+  // TODO: create a choice between synth and piano sounds.
+  // TODO: create audio sampler to give piano keys mp3.
+  // TODO: allow not to play sound. Use React context for preference for audio sounds and on/off?
 
-  midiChordNotes.forEach((midiNote) => {
-    piano.keyDown({ note: midiNote });
-    piano.keyUp({ note: midiNote, time: "+1.5" });
-    console.log(midiNote);
-  });
+  // SYNTH SOUND
+  AddOctaveToNoteIfNeeded(chordNotes, true);
+  PlaySynthChords(chordNotes);
+
+  // PIANO SOUND. Needs MIDI
+  // const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
+  // SetupPiano();
+  // PlayPianoChords(midiChordNotes);
 }
 
 /////// Flow:
-// PlayPianoChord
+// PlayChord
 // BuildChordNotes
 // ChordsArrayGenerator --> [chordType, homeNote]
 // Chord.getChord(chordType, homeNote).notes --> string[]
 // PlayMidiNotes
 // BuildMidiChordNotes(chordNotes)
 
-export function PlayPianoChord(chord: string) {
+export function PlayChord(chord: string) {
   const chordNotes: string[] = BuildChordNotes(chord);
 
-  // PlayMidiNotes(chordNotes);
+  PlayMidiNotes(chordNotes);
 }
 
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
   AddOctaveToNoteIfNeeded(chordNotes, true);
 
-  console.log("chordNotes going to BuildMidi__" + chordNotes);
+  // console.log("chordNotes going to BuildMidi__" + chordNotes);
   let Results: string[] = [];
   chordNotes.forEach((note) => {
     const NoteFound: any = Note.midi(note);
@@ -132,7 +129,6 @@ export function BuildChordNotes(chord: string): string[] {
   console.log(chordArr);
   // Get rid of flat notes to only keep sharps. A simplification to display chords visually.
   chordArr = ReturnSharpFromFlatNotes(chordArr);
-  console.log("chordArr from BuildChordNotes___" + chordArr);
 
   return chordArr;
 }

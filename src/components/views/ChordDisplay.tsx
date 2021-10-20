@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PlayPianoChord } from "../../IChords";
+import { PlayChord } from "../../IChords";
 import { useKeyPress } from "../hooks/KeyPressHook";
 import PianoDisplay from "./PianoDisplay";
 
@@ -18,7 +18,7 @@ const ChordDisplayComponent = ({
   let chordButton: JSX.Element[] = [];
 
   const handleClick = (chord: string, event?: any) => {
-    PlayPianoChord(chord);
+    PlayChord(chord);
     setChordState(true);
     setChordSelected(chord);
 
@@ -41,25 +41,25 @@ const ChordDisplayComponent = ({
 
   // TODO: not only play chords, but also show the piano display.
   if (FirstNumKey) {
-    PlayPianoChord(chordArr[0]);
+    PlayChord(chordArr[0]);
   }
   if (SecondNumKey) {
-    PlayPianoChord(chordArr[1]);
+    PlayChord(chordArr[1]);
   }
   if (ThirdNumKey && chordArr.length > 2) {
-    PlayPianoChord(chordArr[2]);
+    PlayChord(chordArr[2]);
   }
   if (FourthNumKey && chordArr.length > 3) {
-    PlayPianoChord(chordArr[3]);
+    PlayChord(chordArr[3]);
   }
   if (FifthNumKey && chordArr.length > 4) {
-    PlayPianoChord(chordArr[4]);
+    PlayChord(chordArr[4]);
   }
   if (SixthNumKey && chordArr.length > 5) {
-    PlayPianoChord(chordArr[5]);
+    PlayChord(chordArr[5]);
   }
   if (SixthNumKey && chordArr.length > 6) {
-    PlayPianoChord(chordArr[6]);
+    PlayChord(chordArr[6]);
   }
 
   // FIXME: empty button?

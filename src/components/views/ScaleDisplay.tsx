@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDidUpdate } from "../hooks/useDidUpdate";
 import { findChordsScale } from "../../IScale";
-import { PlayPianoChord } from "../../IChords";
+import { PlayChord } from "../../IChords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
 
 export interface IChordsScaleDisplayComponent {
@@ -26,7 +26,7 @@ const ChordsScaleDisplayComponent = ({
   let chordsBloc: JSX.Element[] = [];
 
   const handleClick = (chord: string, event?: any) => {
-    PlayPianoChord(chord);
+    PlayChord(chord);
     setChordState(true);
     setChordSelected(chord);
 
