@@ -98,9 +98,10 @@ const ChordDisplayComponent = ({
 
   return (
     <div className="chords-box">
-      <h3>{chordButton && chordButton}</h3>
+      <div className="chord-box">
+        <h3>{chordButton && chordButton}</h3>
+      </div>
       <p>{chordButton ? "Press number keys to play chords" : ""}</p>
-
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />
       ) : null}

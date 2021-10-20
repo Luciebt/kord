@@ -26,8 +26,9 @@
     }
     
     body {
-        margin: 0;
+        margin: 0 auto;
         color: var(--dominant-dark);
+        max-width: 888px;
     }
     
     *,
@@ -67,14 +68,15 @@
         border: 2px solid var(--dominant-dark);
         background-color: var(--dominant-dark);
     }
-
+    
     .chord-btn-pressed, .scale-chord-btn-pressed {
+        transition: background-color 0.2s ease;
         border-radius: 0% !important;
         color: #F4EEFF;
         border: 2px solid var(--pressed-color);
         background-color: var(--pressed-color);
     }
-
+    
     button.chord-btn:hover, button.scale-chord-btn:hover {
         border: 2px solid var(--pressed-color) !important;
     }
@@ -86,11 +88,15 @@
     .centered-box {
         text-align: center;
     }
-
+    
     .prog-box {
         background-color: var(--dominant-light);
         margin: 1em;
         padding: 1.8rem;
+    }
+    
+    .chord-box {
+        background-color: #bae0ba;
     }
     
     .scale-box {
@@ -118,12 +124,12 @@
         --dominant-light: #F2E1C1;
         --pressed-color:   #B97A95;
     }
-
-
+    
+    
     #keyboard {
         display: flex;
     }
-
+    
     .white,
     .black {
         position: relative;
@@ -134,7 +140,7 @@
         padding: 0.5rem 0;
         user-select: none;
     }
-
+    
     .white {
         height: 12.5rem;
         width: 3.5rem;
@@ -144,7 +150,7 @@
         background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
         color: var(--black-30);
     }
-
+    
     .black {
         height: 8rem;
         width: 2rem;
@@ -165,7 +171,6 @@
     }
     
     .black.pressed {
-
         background: var(--pressed-color);
         outline: none;
     }
