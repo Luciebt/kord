@@ -10,7 +10,6 @@ const PianoDisplayComponent = ({
   key,
   chord,
 }: IPianoDisplayProps): JSX.Element => {
-  const [chordsToShow, setChordsToShow] = useState([""]);
   let chordsArray: string[] = ShowChord(chord);
 
   useEffect(() => {
@@ -18,7 +17,6 @@ const PianoDisplayComponent = ({
       chordsArray.forEach((note) => {
         const noteFound = document.getElementById(note);
         if (noteFound) {
-          console.log(noteFound);
           noteFound.classList.add("pressed");
         }
       });

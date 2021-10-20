@@ -23,11 +23,12 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   const [quality, setQuality] = useState("");
   const [mood, setMood] = useState("");
   const [chordsList, setChordsList] = useState("");
-  const [chordsScale, setchordsScale] = useState("");
+  const [chordsScale, setchordsScale] = useState([""]);
 
   const QualityCallback = (quality: string) => {
     setQuality(quality);
-    if (tonic) {
+    if (tonic && quality) {
+      setChordsList("");
       setChordsList(DetermineChordsList(tonic, quality, mood));
       setchordsScale(findChordsScale(tonic, quality));
     }
@@ -59,11 +60,11 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
         mood={mood ? mood : ""}
         chords_list={chordsList ? chordsList : ""}
       />
-      {/* <ChordsScaleDisplayComponent
+      <ChordsScaleDisplayComponent
         tonic={tonic}
         quality={quality}
         chords_scale={chordsScale}
-      /> */}
+      />
       <br />
     </div>
   );

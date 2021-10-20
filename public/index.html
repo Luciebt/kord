@@ -40,7 +40,6 @@
     h1 {
         text-align: center;
         color: var(--dominant-dark);
-        background-color: var(--dominant-light);
         margin: 1em;
         text-decoration: underline;
     }
@@ -69,14 +68,14 @@
         background-color: var(--dominant-dark);
     }
 
-    .chord-btn-pressed {
+    .chord-btn-pressed, .scale-chord-btn-pressed {
         border-radius: 0% !important;
         color: #F4EEFF;
         border: 2px solid var(--pressed-color);
         background-color: var(--pressed-color);
     }
 
-    button.chord-btn:hover {
+    button.chord-btn:hover, button.scale-chord-btn:hover {
         border: 2px solid var(--pressed-color) !important;
     }
     
@@ -90,6 +89,12 @@
 
     .prog-box {
         background-color: var(--dominant-light);
+        margin: 1em;
+        padding: 1.8rem;
+    }
+    
+    .scale-box {
+        background-color: #bae0ba;
         margin: 1em;
         padding: 1.8rem;
     }
@@ -109,7 +114,7 @@
         --white-50: hsla(0, 0%, 100%, 0.5);
         --white-80: hsla(0, 0%, 100%, 0.8);
         --dominant-dark: #716F81;
-        --dominant-blue:  #B97A95;
+        --dominant-orange:  #F6AE99;
         --dominant-light: #F2E1C1;
         --pressed-color:   #B97A95;
     }
@@ -161,6 +166,21 @@
     
     .black.pressed {
 
+        background: var(--pressed-color);
+        outline: none;
+    }
+
+    /* ScalePianoDisplay */
+    .white.s-pressed {
+        border-top: 1px solid hsl(0, 0%, 47%);
+        border-left: 1px solid hsl(0, 0%, 60%);
+        border-bottom: 1px solid hsl(0, 0%, 60%);
+        color: var(--white-80);
+        background: var(--pressed-color);
+        outline: none;
+    }
+    
+    .black.s-pressed {
         background: var(--pressed-color);
         outline: none;
     }

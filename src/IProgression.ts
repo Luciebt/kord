@@ -1,6 +1,6 @@
 import { ProgressionCollection } from "./ProgressionStore";
-import { IRoman, TProgression, TQuality, TMood } from "./type.d";
-import { Note, Key, Progression } from "@tonaljs/tonal";
+import { TProgression, TQuality, TMood } from "./type.d";
+import { Progression } from "@tonaljs/tonal";
 
 export default interface IProgression {
   tonic: string;
@@ -25,18 +25,20 @@ function ReturnSharpFromFlatNotes(chord: string): string {
   return chord;
 }
 
-function CleanChords(chordStr: string): string {
-  chordStr = chordStr.replaceAll("C##", "D");
-  chordStr = chordStr.replaceAll("D##", "E");
+export function CleanChords(chordStr: string): string {
   chordStr = chordStr.replaceAll("E#", "F");
-  chordStr = chordStr.replaceAll("F##", "G");
-  chordStr = chordStr.replaceAll("G##", "A");
-  chordStr = chordStr.replaceAll("A##", "B");
   chordStr = chordStr.replaceAll("B#", "C");
+
+  if (chordStr.includes("##")) {
+    chordStr = chordStr.replaceAll("C##", "D");
+    chordStr = chordStr.replaceAll("D##", "E");
+    chordStr = chordStr.replaceAll("F##", "G");
+    chordStr = chordStr.replaceAll("G##", "A");
+    chordStr = chordStr.replaceAll("A##", "B");
+  }
 
   chordStr = ReturnSharpFromFlatNotes(chordStr);
 
-  console.log(chordStr);
   return chordStr;
 }
 
@@ -138,35 +140,16 @@ export function DetermineChordsList(
 
   if (!mood) {
     ProgList = FindProgListWithoutMood(quality);
-  }
-  if (mood) {
+  } else if (mood) {
     ProgList = FindProgListWithMood(quality, mood);
   }
 
   if (!ProgList) {
-    console.log("NO PROG LIST");
     return "";
   }
+
   const ChordsList: string[] = ConvertProgToChords(tonic, ProgList);
   const ChordsStr: string = ChordsList.join(" | ");
 
   return CleanChords(ChordsStr);
-}
-
-// TODO: finish Scale feature.
-export function findChordsScale(tonic: string, quality: string): any {
-  switch (quality) {
-    case "Mixed":
-      return [];
-      break;
-    case "Major":
-      return Key.majorKey(tonic).chords;
-      break;
-    case "Minor":
-      return Key.minorKey(tonic).natural.chords;
-      break;
-    default:
-      return [];
-      break;
-  }
 }

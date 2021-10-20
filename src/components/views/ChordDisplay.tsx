@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PlayPianoChord } from "../../IChords";
 import { useKeyPress } from "../hooks/KeyPressHook";
-import { useDidUpdate } from "../hooks/useDidUpdate";
 import PianoDisplay from "./PianoDisplay";
 
 export interface IChordDisplayProps {
@@ -18,7 +17,8 @@ const ChordDisplayComponent = ({
   let chordArr: string[] = chord.split(",");
   let chordButton: JSX.Element[] = [];
 
-  const handleClick = (event: any, chord: string) => {
+  const handleClick = (chord: string, event?: any) => {
+    PlayPianoChord(chord);
     setChordState(true);
     setChordSelected(chord);
 
@@ -29,8 +29,6 @@ const ChordDisplayComponent = ({
       });
     }
     event.target.classList.add("chord-btn-pressed");
-
-    PlayPianoChord(chord);
   };
 
   // Use numerical keys to play chords of one progression.
@@ -72,7 +70,7 @@ const ChordDisplayComponent = ({
         <button
           key={i}
           onClick={(e) => {
-            handleClick(e, c);
+            handleClick(c, e);
           }}
           className="chord-btn"
         >
@@ -85,10 +83,8 @@ const ChordDisplayComponent = ({
   return (
     <div className="chords-box">
       <h3>{chordButton && chordButton}</h3>
-      {/* <p>{chordArr ? "Press numerical keys to play chords" : ""}</p> */}
-      {chordSelected
-        ? console.log("chordSelected in ChordDisplay.tsx___" + chordSelected)
-        : null}
+      <p>{chordButton ? "Press number keys to play chords" : ""}</p>
+
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />
       ) : null}

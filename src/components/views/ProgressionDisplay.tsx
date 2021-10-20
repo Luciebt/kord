@@ -50,16 +50,28 @@ const ProgressionDisplayComponent = ({
     );
   });
 
+  // Reset chord selected when changing tonality or quality.
+  useDidUpdate(() => {
+    // console.log("chordSelected changed");
+    setChordSelected("");
+  }, [tonic, quality]);
+
   return (
     <div className="prog-box">
-      <h2>
-        {tonic && !quality ? tonic : ""}
-        {!tonic && quality ? quality : ""}
-        {tonic && quality ? tonic + " | " + quality : ""}
-        {mood && tonic && quality ? " | " + mood : ""}
-      </h2>
-      <b>{chordsBloc}</b>
-      {chordsState ? <ChordDisplay chord={chordSelected} /> : null}
+      <h3>{chords_list ? "Progressions found" : ""}</h3>
+      {/* Progressions buttons: */}
+      <div className="prog-btn-box">
+        <b>{chords_list ? chordsBloc : ""}</b>
+      </div>
+      {/* Chords buttons: */}
+      {/* {chordSelected
+        ? console.log(
+            "chordSelected in ProgressionDisplay.tsx___" + chordSelected
+          )
+        : null} */}
+      {chords_list && chordsState ? (
+        <ChordDisplay chord={chordSelected} />
+      ) : null}
     </div>
   );
 };
