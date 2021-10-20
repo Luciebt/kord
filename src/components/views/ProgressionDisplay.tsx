@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDidUpdate } from "../hooks/useDidUpdate";
 import ProgressionComponent from "../ProgressionComponent";
 import IProgression from "../../IProgression";
 import ChordDisplay from "./ChordDisplay";
@@ -52,9 +53,8 @@ const ProgressionDisplayComponent = ({
 
   // Reset chord selected when changing tonality or quality.
   useDidUpdate(() => {
-    // console.log("chordSelected changed");
-    setChordSelected("");
-  }, [tonic, quality]);
+    setChordsState(false);
+  }, [tonic, quality, mood]);
 
   return (
     <div className="prog-box">
