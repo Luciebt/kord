@@ -11,7 +11,15 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
     // nothing for now.
   });
 
-  const moods: string[] = ["All", "Jazzy", "Melancholic", "Energised", "Pop"];
+  const moods: string[] = [
+    "All",
+    "Jazzy",
+    "Sad",
+    "Hopeful",
+    "Happy",
+    "Dark",
+    "Weird",
+  ];
   const moodsButtons: JSX.Element[] = [];
 
   const handleClick = (event: any, mood: string) => {

@@ -1,6 +1,15 @@
 export type TQuality = "Major" | "Minor" | "Mixed";
 
-export type TMood = "All" | "Jazzy" | "Melancholic" | "Energised" | "Pop";
+export type TMood =
+  | "All"
+  | "Jazzy"
+  | "Melancholic"
+  | "Energised"
+  | "Happy"
+  | "Sad"
+  | "Dark"
+  | "Hopeful"
+  | "Weird";
 
 export type TChords =
   | "maj"
