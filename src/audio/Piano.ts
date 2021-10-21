@@ -17,6 +17,5 @@ export function PlayPianoChords(midiChordNotes: string[]): void {
   midiChordNotes.forEach((midiNote) => {
     piano.keyDown({ note: midiNote });
     piano.keyUp({ note: midiNote, time: "+1.5" });
-    console.log(midiNote);
   });
 }

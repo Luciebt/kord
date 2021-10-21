@@ -59,7 +59,5 @@ export function ShowChord(chord: string, forMidi: boolean = false): string[] {
 
   AddOctaveToNoteIfNeeded(notesArr, forMidi);
 
-  console.log("notesArr______" + notesArr);
-
   return notesArr;
 }

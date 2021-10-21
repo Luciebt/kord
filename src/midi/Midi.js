@@ -26,8 +26,6 @@ export function GenerateMidi(chords_list) {
     fifthChord = ShowChord(chords_list[4], true);
   }
 
-  console.log("firstChord____________" + firstChord);
-
   if (track && chords_list) {
     track.addEvent(
       [
@@ -59,7 +57,6 @@ export function GenerateMidi(chords_list) {
     }
 
     const write = new MidiWriter.Writer(track);
-    console.log(write.dataUri());
     return write.dataUri();
   }
 }

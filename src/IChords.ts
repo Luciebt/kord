@@ -36,7 +36,6 @@ export function PlayChord(chord: string) {
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
   AddOctaveToNoteIfNeeded(chordNotes, true);
 
-  // console.log("chordNotes going to BuildMidi__" + chordNotes);
   let Results: string[] = [];
   chordNotes.forEach((note) => {
     const NoteFound: any = Note.midi(note);
@@ -44,7 +43,6 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
       Results.push(NoteFound.toString());
     }
   });
-  console.log("BuildMidiChordNotes_RESULTS___" + Results);
   return Results;
 }
 
@@ -117,7 +115,6 @@ function ReturnSharpFromFlatNotes(chord: string[]): string[] {
 
 export function BuildChordNotes(chord: string): string[] {
   const [chordType, homeNote]: string[] = ChordsArrayGenerator(chord);
-  // console.log("chordAfterGenerator___" + [chordType, homeNote]);
 
   let chordArr: string[] = Chord.getChord(chordType, homeNote).notes;
 
@@ -126,7 +123,6 @@ export function BuildChordNotes(chord: string): string[] {
     chordArr[i] = Note.simplify(chord);
   });
 
-  console.log(chordArr);
   // Get rid of flat notes to only keep sharps. A simplification to display chords visually.
   chordArr = ReturnSharpFromFlatNotes(chordArr);
 

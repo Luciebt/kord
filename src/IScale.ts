@@ -20,6 +20,5 @@ export function findChordsScale(tonic: string, quality: string): string[] {
       break;
   }
 
-  console.log("Results findChordsScale___" + Results);
   return Results.toString().split(",");
 }

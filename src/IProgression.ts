@@ -73,7 +73,7 @@ function FindProgListWithoutMood(quality: string): string[] {
       return FindProgListFromQuality(ProgressionCollection.Mixed);
       break;
     default:
-      console.log("ERROR: No PROG LIST FOUND");
+      // TODO: Error handling
       return ["Oops"];
       break;
   }

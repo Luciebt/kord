@@ -42,7 +42,6 @@ const ChordsScaleDisplayComponent = ({
   };
 
   if (chords_scale) {
-    console.log(chords_scale);
     chords_scale.forEach((chords, i) => {
       chordsBloc.push(
         <button
@@ -58,7 +57,6 @@ const ChordsScaleDisplayComponent = ({
     });
   }
   useEffect(() => {
-    console.log("chords_scale updated");
     return () => {
       // Anything in here is fired on component unmount.
     };
