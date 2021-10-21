@@ -44,33 +44,61 @@ const ChordDisplayComponent = ({
   // TODO: not only play chords, but also show the piano display.
   if (FirstNumKey) {
     PlayChord(chordArr[0]);
+    // const btn = document.getElementById("btn-0");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (SecondNumKey) {
     PlayChord(chordArr[1]);
+    // PlayChord(chordArr[1]);
+    // const btn = document.getElementById("btn-1");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (ThirdNumKey && chordArr.length > 2) {
     PlayChord(chordArr[2]);
+    // const btn = document.getElementById("btn-2");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (FourthNumKey && chordArr.length > 3) {
     PlayChord(chordArr[3]);
+    // const btn = document.getElementById("btn-3");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (FifthNumKey && chordArr.length > 4) {
     PlayChord(chordArr[4]);
+    // const btn = document.getElementById("btn-4");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (SixthNumKey && chordArr.length > 5) {
     PlayChord(chordArr[5]);
+    // const btn = document.getElementById("btn-5");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
   if (SixthNumKey && chordArr.length > 6) {
     PlayChord(chordArr[6]);
+    // const btn = document.getElementById("btn-6");
+    // if (btn) {
+    //   btn.click();
+    // }
   }
 
-  // FIXME: empty button?
-  // TODO: useEffect: build the buttons when mounted, clear all buttons when unmounted.
   if (chordArr) {
     chordArr.forEach((c, i) => {
       chordButton.push(
         <button
           key={i}
+          id={"btn-" + i.toString()}
           onClick={(e) => {
             handleClick(c, e);
           }}
@@ -100,8 +128,11 @@ const ChordDisplayComponent = ({
   return (
     <div className="chords-box">
       <div className="chord-box">
-        <h3>{chordButton && chordButton}</h3>
+        <b>{chordArr ? <LoopButton chords_list={chordArr} /> : null}</b>
+        <b>{chordButton && chordButton}</b>
+        <br />
       </div>
+
       {/* <p>{chordButton ? "Press number keys to play chords" : ""}</p> */}
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />
