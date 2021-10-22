@@ -40,19 +40,22 @@
     
 
     h1 {
+        font-size: 2.8em;
         text-align: center;
         color: var(--dominant-dark);
-        margin: 1em;
+        margin-top: 1em;
+        margin-bottom: 0;
     }
 
     button {
         border-radius: 3% !important;
+        border-color: lightgrey;
         min-width: 2.2em;
         font-size: 1.2em;
         padding: .2em;
         margin: .2em;
         cursor: pointer;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
     }
     
     button:hover {
@@ -106,6 +109,57 @@
     
     button:hover {
         border: 2px solid var(--dominant-dark);;
+    }
+
+    #settings-box {
+        font-size: .75em;
+        margin: 0 auto;
+        padding: .3em;
+        width: 248px;
+        background-color: rgb(234, 234, 234);
+        text-align: center;
+    }
+    
+    .settings-panel {
+        font-size: .75em;
+        margin: 0 auto;
+        padding: .4em;
+        width: 248px;
+        height: auto;
+        background-color: lightgrey;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #audio-btn, #sound-btn, #shortcuts-btn {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .audio-selected-btn, .sound-selected-btn, .shortcuts-selected-btn  {
+        color: white !important;
+        background-color: var(--dominant-dark) !important;
+    }
+    
+    /* .panel-btn {
+        background-color: transparent;
+        cursor: pointer;
+        border: 2px solid var(--dominant-dark);
+    } */
+
+    /* .panel-btn:hover {
+        background-color: transparent;
+        cursor: pointer;
+        border: 2px solid var(--dominant-dark);
+    } */
+
+    #audio-btn:hover, #sound-btn:hover, #shortcuts-btn:hover {
+        color: white;
+        background-color: var(--dominant-dark);
     }
 
     .centered-box {
