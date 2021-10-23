@@ -66,6 +66,13 @@ button.scale-chord-btn:hover {
   border: 2px solid var(--pressed-color);
   margin-bottom: 0.6em;
 }
+.loop-btn-pressed {
+  font-size: 1.4em;
+  background-color: var(--pressed-color);
+  color: white;
+  border: 2px solid var(--pressed-color);
+  margin-bottom: 0.6em;
+}
 
 /* Export to MIDI button */
 

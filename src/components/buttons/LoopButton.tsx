@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import { StartLoop, StopLoop } from "../../audio/Synth";
+import React from "react";
+import { StartLoop, StopLoop, PlayLoop } from "../../audio/Synth";
+import { useToggle } from "../hooks/useToggle";
+import { Transport } from "tone";
 import './Buttons.css';
 
 interface ILoopButton {
   parentCallback?: any;
-  chords_list?: string[];
+  chords_list: string[];
 }
 
 const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
-  const [loopState, setLoopState] = useState(false);
+  const [loopState, setLoopState] = useToggle(false);
 
-  const handleClick = (event: any, chords: string[] | undefined) => {
+  const handleClick = (event: any) => {
     setLoopState(!loopState);
 
-    if (loopState) {
-      StartLoop(chords_list);
+    if (Transport.state !== 'started' && chords_list) {
+      PlayLoop(chords_list);
+      Transport.start();
     } else {
-      StopLoop();
+      Transport.stop();
     }
-
-    // const toUnpress = document.getElementsByClassName("loop-btn-pressed");
-    // if (toUnpress) {
-    //   Array.from(toUnpress).forEach((button) => {
-    //     button.classList.remove("loop-btn-pressed");
-    //   });
-    // }
-    // event.target.classList.add("loop-btn-pressed");
   };
 
   return (
@@ -33,11 +28,11 @@ const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
       <button
         key="loop"
         onClick={(e) => {
-          handleClick(e, chords_list);
+          handleClick(e);
         }}
-        className="loop-btn"
+        className={loopState ? "loop-btn-pressed" : "loop-btn"}
       >
-        ▶
+        {loopState ? "■" : "▶"}
       </button>
     </div>
   );

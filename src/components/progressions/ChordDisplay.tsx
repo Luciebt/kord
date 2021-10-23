@@ -129,6 +129,7 @@ const ChordDisplayComponent = ({
   return (
     <div className="chords-box">
       <div className="chord-box">
+        {/* TODO: update loop button when changing progressions */}
         <b>{chordArr ? <LoopButton chords_list={chordArr} /> : null}</b>
         <b>{chordButton && chordButton}</b>
         <br />
