@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { GenerateMidi, DownloadMidi } from "../../midi/Midi";
+import React from "react";
+import { GenerateMidi, DownloadMidi } from "../../midi/MidiWriter";
+import './Buttons.css';
 
 interface IMidiButtonProps {
   chords_list: string[];

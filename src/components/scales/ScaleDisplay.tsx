@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDidUpdate } from "../hooks/useDidUpdate";
-import { findChordsScale } from "../../IScale";
-import { PlayChord } from "../../IChords";
+import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
+import './Scales.css';
 
 export interface IChordsScaleDisplayComponent {
   tonic: string;
-  quality: string;
+  mode: string;
   chords_scale: string[];
 }
 
 const ChordsScaleDisplayComponent = ({
   tonic,
-  quality,
+  mode,
   chords_scale,
 }: IChordsScaleDisplayComponent): JSX.Element => {
-  // chords_scale should be an array of chords
-  // use ShowChords for each chord to get the notes
-  // Display each of them in a button.
-  // Display piano chart.
-
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
@@ -62,14 +57,14 @@ const ChordsScaleDisplayComponent = ({
     };
   }, [chords_scale]);
 
-  // Reset chord selected when changing tonality or quality.
+  // Reset chord selected when changing tonality or mode.
   useDidUpdate(() => {
     setChordState(false);
-  }, [tonic, quality]);
+  }, [tonic, mode]);
 
   return (
     <div className="scale-box">
-      <h3>{chords_scale ? "Chords on Scale " + tonic + " " + quality : ""}</h3>
+      <h3>{chords_scale ? "Chords on Scale " + tonic + " " + mode : ""}</h3>
       <b>{chordsBloc && chordsBloc}</b>
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
     </div>

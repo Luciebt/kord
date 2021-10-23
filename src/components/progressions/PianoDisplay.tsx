@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { ShowChord } from "../../IPianoChart";
+import React, { useEffect } from "react";
+import { ShowChord } from "../../PianoChart";
+import './Progressions.css';
 
 export interface IPianoDisplayProps {
   key?: number;

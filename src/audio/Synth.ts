@@ -1,5 +1,4 @@
 import * as Tone from "tone";
-import { PlayChord } from "../IChords";
 
 // Better for performance to instantiate all synths before calling PlaySynthChords.
 let synth1 = new Tone.Synth().toDestination();

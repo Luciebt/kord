@@ -1,0 +1,15 @@
+.centered-box {
+  text-align: center;
+}
+
+.prog-box {
+  background-color: var(--dominant-light);
+  margin: 1em;
+  padding: 1.8rem;
+}
+
+.chord-box {
+  background-color: #bae0ba;
+  padding: 0.6em;
+  margin-top: 0.6em;
+}

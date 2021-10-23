@@ -1,4 +1,5 @@
 import React from "react";
+import './Settings.css';
 
 interface IShortcutsProps {
   onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;

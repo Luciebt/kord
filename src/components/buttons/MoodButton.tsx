@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import './Buttons.css';
 
 interface IMoodButton {
   parentCallback?: any;
@@ -6,10 +7,6 @@ interface IMoodButton {
 
 const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
   const [theMood, setMood] = useState("All");
-
-  useEffect(() => {
-    // nothing for now.
-  });
 
   const moods: string[] = [
     "All",

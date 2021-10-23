@@ -1,0 +1,59 @@
+/* Settings UI containers */
+
+#settings-box {
+  font-size: 0.75em;
+  margin: 0 auto;
+  padding: 0.3em;
+  width: 248px;
+  background-color: rgb(234, 234, 234);
+  text-align: center;
+}
+
+/* Detailed panel to select settings */
+.settings-panel {
+  font-size: 0.75em;
+  margin: 0 auto;
+  padding: 0.4em;
+  width: 248px;
+  height: auto;
+  background-color: lightgrey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#audio-btn,
+#sound-btn,
+#shortcuts-btn {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#audio-btn:hover,
+#sound-btn:hover,
+#shortcuts-btn:hover {
+  color: white;
+  background-color: var(--dominant-dark);
+}
+
+.audio-selected-btn,
+.sound-selected-btn,
+.shortcuts-selected-btn {
+  color: white !important;
+  background-color: var(--dominant-dark) !important;
+}
+
+/* .panel-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid var(--dominant-dark);
+} */
+
+/* .panel-btn:hover {
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid var(--dominant-dark);
+} */

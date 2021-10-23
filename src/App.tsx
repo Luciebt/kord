@@ -1,8 +1,8 @@
 import { hot } from "react-hot-loader";
 import React from "react";
 import ProgressionComponent from "./components/ProgressionComponent";
-import Settings from "./components/Settings";
-import "./index.css";
+import Settings from "./components/settings/Settings";
+import "./App.css";
 
 // TODO: use React.Context to set the preferences like sound on/off and instrument type?
 const App = () => {

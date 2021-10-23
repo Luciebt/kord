@@ -3,9 +3,9 @@ import { CleanChords } from "./IProgression";
 
 // TODO: finish Scale feature. Move this somewhere else.
 // NOTE: Why not using key scales?
-export function findChordsScale(tonic: string, quality: string): string[] {
+export function findChordsScale(tonic: string, mode: string): string[] {
   let Results: string[] = [];
-  switch (quality) {
+  switch (mode) {
     case "Major":
       const majorChords: string = Key.majorKey(tonic).chords.toString();
       Results.push(CleanChords(majorChords));

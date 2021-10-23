@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { StartLoop, StopLoop } from "../audio/Synth";
+import React, { useState } from "react";
+import { StartLoop, StopLoop } from "../../audio/Synth";
+import './Buttons.css';
 
 interface ILoopButton {
   parentCallback?: any;

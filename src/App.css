@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+
+body {
+  font-family: "Space Mono", monospace;
+  color: var(--dominant-dark);
+  margin: 0 auto;
+  max-width: 888px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1 {
+  font-size: 2.8em;
+  text-align: center;
+  color: var(--dominant-dark);
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+/* palette: https://colorhunt.co/palette/716f81b97a95f6ae99f2e1c1 */

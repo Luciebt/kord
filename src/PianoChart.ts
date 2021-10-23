@@ -1,5 +1,4 @@
-import { BuildChordNotes } from "./IChords";
-import { Note } from "@tonaljs/tonal";
+import { BuildChordNotes } from "./Chords";
 
 interface noteId {
   [key: string]: number;
@@ -21,13 +20,13 @@ const noteNumForKeys: noteId = {
   B: 11,
 };
 
-const fromFlatToSharp = {
-  Db: "C#",
-  Eb: "D#",
-  Gb: "F#",
-  Ab: "G#",
-  Bb: "A#",
-};
+// const fromFlatToSharp = {
+//   Db: "C#",
+//   Eb: "D#",
+//   Gb: "F#",
+//   Ab: "G#",
+//   Bb: "A#",
+// };
 
 export function AddOctaveToNoteIfNeeded(
   notesArr: string[],

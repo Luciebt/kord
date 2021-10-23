@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { ShowChord } from "../../IPianoChart";
-import ScalePianoDisplay from "./ScalePianoDisplay";
+import React, { useEffect } from "react";
+import { ShowChord } from "../../PianoChart";
+import '../progressions/Piano.css';
 
 export interface IScalePianoDisplayProps {
   key?: number;

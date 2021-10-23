@@ -1,6 +1,6 @@
-import { TProgression, TQuality, TMood } from "./type.d";
+import { TProgression, TMode, TMood } from "./type.d";
 
-export const ProgressionCollection: Record<TQuality, TProgression[]> = {
+export const ProgressionCollection: Record<TMode, TProgression[]> = {
   Major: [
     { progression_list: "IV, V, VIm, I", mood: "Hopeful" },
     { progression_list: "I, IV, VIm, V", mood: "Happy" },

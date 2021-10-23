@@ -1,4 +1,4 @@
-export type TQuality = "Major" | "Minor" | "Mixed";
+export type TMode = "Major" | "Minor" | "Mixed";
 
 export type TMood =
   | "All"

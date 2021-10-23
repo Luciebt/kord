@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { TKey } from "../type.d";
+import React, { useState } from "react";
+import { TKey } from "../../type";
+import './Buttons.css';
+
 
 interface IKeyButton {
   parentCallback?: any;

@@ -1,11 +1,11 @@
 const MidiWriter = require("midi-writer-js");
-import { ShowChord, AddOctaveToNoteIfNeeded } from "../IPianoChart";
+import { ShowChord } from "../PianoChart";
 
 let track = undefined;
 
-export function DownloadMidi(dataurl, filename = "MyProgression.mid") {
+export function DownloadMidi(dataUrl, filename = "MyProgression.mid") {
   const link = document.createElement("a");
-  link.href = dataurl;
+  link.href = dataUrl;
   link.download = filename;
   link.click();
 }

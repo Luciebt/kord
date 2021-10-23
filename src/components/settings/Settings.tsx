@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useToggle } from "../components/hooks/useToggle";
-import ShortcutsPanel from "./views/ShortcutsSettingsPanel";
-import SoundsSettingsPanel from "./views/ShortcutsSettingsPanel";
+import { useToggle } from "../hooks/useToggle";
+import ShortcutsPanel from "./ShortcutsSettingsPanel";
+import SoundsSettingsPanel from "./ShortcutsSettingsPanel";
+import './Settings.css';
 
 interface ISettings {
   parentCallback?: any;

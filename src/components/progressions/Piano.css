@@ -1,0 +1,87 @@
+/* PIANO STYLING */
+:root {
+  --black-10: hsla(0, 0%, 0%, 0.1);
+  --black-20: hsla(0, 0%, 0%, 0.2);
+  --black-30: hsla(0, 0%, 0%, 0.3);
+  --black-50: hsla(0, 0%, 0%, 0.5);
+  --black-60: hsla(0, 0%, 0%, 0.6);
+  --white-20: hsla(0, 0%, 100%, 0.2);
+  --white-50: hsla(0, 0%, 100%, 0.5);
+  --white-80: hsla(0, 0%, 100%, 0.8);
+  --dominant-dark: #716f81;
+  --dominant-orange: #f6ae99;
+  --dominant-light: #f2e1c1;
+  --pressed-color: #b97a95;
+}
+
+#keyboard {
+  display: flex;
+}
+
+.keyboard-box {
+  margin-left: -2.2em;
+}
+
+.white,
+.black {
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.white {
+  height: 12.5rem;
+  width: 3.5rem;
+  z-index: 1;
+  border-left: 1px solid hsl(0, 0%, 73%);
+  border-bottom: 1px solid hsl(0, 0%, 73%);
+  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
+  color: var(--black-30);
+}
+
+.black {
+  height: 8rem;
+  width: 2rem;
+  margin: 0 0 0 -1rem;
+  z-index: 2;
+  border: 1px solid black;
+  background-color: var(--dominant-dark);
+  color: var(--white-80);
+}
+
+.white.pressed {
+  border-top: 1px solid hsl(0, 0%, 47%);
+  border-left: 1px solid hsl(0, 0%, 60%);
+  border-bottom: 1px solid hsl(0, 0%, 60%);
+  color: var(--white-80);
+  background: var(--pressed-color);
+  outline: none;
+}
+
+.black.pressed {
+  background: var(--pressed-color);
+  outline: none;
+}
+
+/* ScalePianoDisplay */
+.white.s-pressed {
+  border-top: 1px solid hsl(0, 0%, 47%);
+  border-left: 1px solid hsl(0, 0%, 60%);
+  border-bottom: 1px solid hsl(0, 0%, 60%);
+  color: var(--white-80);
+  background: var(--pressed-color);
+  outline: none;
+}
+
+.black.s-pressed {
+  background: var(--pressed-color);
+  outline: none;
+}
+
+.offset {
+  margin: 0 0 0 -1rem;
+}

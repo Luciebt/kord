@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { PlayChord } from "../../IChords";
-import { useKeyPress } from "../hooks/KeyPressHook";
+import { PlayChord } from "../../Chords";
+import { useKeyPress } from "../hooks/keyPressHook";
 import PianoDisplay from "./PianoDisplay";
-import MidiButton from "./MidiButton";
-import LoopButton from "../LoopButton";
+import MidiButton from "../buttons/MidiButton";
+import LoopButton from "../buttons/LoopButton";
+import './Progressions.css';
 
 export interface IChordDisplayProps {
   key?: number;
