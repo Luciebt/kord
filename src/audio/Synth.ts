@@ -8,15 +8,15 @@ let synth3 = new Tone.Synth().toDestination();
 let synth4 = new Tone.Synth().toDestination();
 
 export function PlaySynthChords(chordNotes: string[]): void {
-  synth1.oscillator.type = "pwm";
-  synth2.oscillator.type = "pwm";
-  synth3.oscillator.type = "pwm";
+  synth1.oscillator.type = "sine";
+  synth2.oscillator.type = "sine";
+  synth3.oscillator.type = "sine";
 
   synth1.triggerAttackRelease(chordNotes[0], "+0.05", 1);
   synth2.triggerAttackRelease(chordNotes[1], "+0.05", 1);
   synth3.triggerAttackRelease(chordNotes[2], "+0.05", 1);
   if (chordNotes[3]) {
-    synth4.oscillator.type = "pwm";
+    synth4.oscillator.type = "sine";
     synth4.triggerAttackRelease(chordNotes[3], "+0.05", 1);
   }
 }
