@@ -1,43 +1,52 @@
-import React, { useState } from "react";
-import { StartLoop, StopLoop } from "../../audio/Synth";
-import './Buttons.css';
+import React, { useEffect } from "react";
+import { PlayLoop, StopLoop } from "../../audio/Synth";
+import { useToggle } from "../hooks/useToggle";
+import { Transport } from "tone";
+import "./Buttons.css";
 
 interface ILoopButton {
   parentCallback?: any;
-  chords_list?: string[];
+  chords_list: string[];
 }
 
 const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
-  const [loopState, setLoopState] = useState(false);
+  const [loopState, setLoopState] = useToggle(false);
 
-  const handleClick = (event: any, chords: string[] | undefined) => {
-    setLoopState(!loopState);
-
-    if (loopState) {
-      StartLoop(chords_list);
+  const handleClick = (event: any) => {
+    if (Transport.state !== "started") {
+      PlayLoop(chords_list);
+      Transport.start();
     } else {
+      Transport.stop();
       StopLoop();
     }
-
-    // const toUnpress = document.getElementsByClassName("loop-btn-pressed");
-    // if (toUnpress) {
-    //   Array.from(toUnpress).forEach((button) => {
-    //     button.classList.remove("loop-btn-pressed");
-    //   });
-    // }
-    // event.target.classList.add("loop-btn-pressed");
+    setLoopState(!loopState);
   };
+
+  // Restore the initial state of the loop button and stop transport when clicking on another progression button.
+  useEffect(() => {
+    return () => {
+      // StopLoop();
+      Transport.stop();
+      const btn = document.getElementById("loop");
+      if (btn) {
+        btn.classList.remove("loop-btn-pressed");
+        btn.classList.add("loop-btn");
+        btn.innerText = "▶";
+      }
+    };
+  }, [chords_list]); // Empty array ensures that effect is only run on mount and unmount
 
   return (
     <div className="">
       <button
-        key="loop"
+        id="loop"
         onClick={(e) => {
-          handleClick(e, chords_list);
+          handleClick(e);
         }}
-        className="loop-btn"
+        className={loopState ? "loop-btn-pressed" : "loop-btn"}
       >
-        ▶
+        {loopState ? "■" : "▶"}
       </button>
     </div>
   );
