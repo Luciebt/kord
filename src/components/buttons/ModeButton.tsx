@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { TMode } from "../../type";
-import './Buttons.css';
+import "./Buttons.css";
 
 interface IModeButton {
-  parentCallback?: any;
+  onPressMode?: any;
 }
 
-const ModeButton: React.FC<IModeButton> = ({ parentCallback }) => {
-  const [theMode, setMode] = useState("");
-
+const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
   const modes: TMode[] = ["Major", "Minor", "Mixed"];
-  const modesButtons: JSX.Element[] = [];
 
   const handleClick = (event: any, mode: string) => {
-    setMode(mode);
-    parentCallback(mode);
+    onPressMode(mode);
 
     const toUnpress = document.getElementsByClassName("mode-btn-pressed");
     if (toUnpress) {
@@ -25,23 +21,21 @@ const ModeButton: React.FC<IModeButton> = ({ parentCallback }) => {
     event.target.classList.add("mode-btn-pressed");
   };
 
-  modes.forEach((mode, i) => {
-    modesButtons.push(
-      <button
-        key={i}
-        onClick={(e) => {
-          handleClick(e, mode);
-        }}
-      >
-        {mode}
-      </button>
-    );
-  });
+  const modesList: JSX.Element[] = modes.map((mode, i) => (
+    <button
+      key={i}
+      onClick={(e) => {
+        handleClick(e, mode);
+      }}
+    >
+      {mode}
+    </button>
+  ));
 
   return (
     <div className="">
       <h3>Mode</h3>
-      {modesButtons}
+      {modesList}
     </div>
   );
 };

@@ -1,18 +1,15 @@
 import React from "react";
 import { GenerateMidi, DownloadMidi } from "../../midi/MidiWriter";
-import './Buttons.css';
+import "./Buttons.css";
 
 interface IMidiButtonProps {
-  chords_list: string[];
-  onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
+  chordsList: string[];
 }
 
-const MidiButtonComponent = ({
-  chords_list,
-}: IMidiButtonProps): JSX.Element => {
+const MidiButtonComponent = ({ chordsList }: IMidiButtonProps): JSX.Element => {
   const handleClick = (event: any, chords: string[]) => {
     // TODO: handleClick. Use midi writer from Midi.ts.
-    const dataUri = GenerateMidi(chords_list);
+    const dataUri = GenerateMidi(chordsList);
     DownloadMidi(dataUri);
   };
 
@@ -20,7 +17,7 @@ const MidiButtonComponent = ({
     <button
       id="export-midi-btn"
       onClick={(e) => {
-        handleClick(e, chords_list);
+        handleClick(e, chordsList);
       }}
     >
       Export progression to MIDI

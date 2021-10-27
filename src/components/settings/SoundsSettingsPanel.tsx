@@ -1,12 +1,11 @@
 import React from "react";
-import './Settings.css';
+import "./Settings.css";
 
-interface ISoundsSettingsProps {
-  onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
-}
+interface ISoundsSettingsProps {}
 
 // TODO: Handle click outside.
-const SoundsSettingsPanel: React.FC<ISoundsSettingsProps> = ({}) => {
+
+const SoundsSettingsPanel = ({}: ISoundsSettingsProps): JSX.Element => {
   return <div className="settings-panel">Sounds types. Coming soon...</div>;
 };
 
