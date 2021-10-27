@@ -60,6 +60,7 @@ function PlayChordEvent(
   // console.log("chordArr from PlayChordEvent__________" + chordArr);
 
   chordEvent = new ToneEvent((time) => {
+    // polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     console.log(chordArr, noteDuration, time);
   });
@@ -72,11 +73,28 @@ function PlayChordEvent(
   // console.log(chordEvent.progress);
 }
 
+// function PlayPartEvent(
+//   chordArr: string[],
+//   noteDuration: number,
+//   noteStart: number = 0
+// ): void {
+//   const chordToPlay = [
+//     {
+//       time: noteStart,
+//       note: chordArr,
+//       velocity: 0.5,
+//     },
+//   ];
+//   const part = new Tone.Part((time, chord) => {
+//     // the chord is an object which contains both the note and the velocity
+//     polySynth.triggerAttackRelease(chord.note, "8n", time, chord.velocity);
+//     console.log(chord.note, "8n", time, chord.velocity);
+//   }, chordToPlay).start(0);
+//   Tone.Transport.start();
+// }
+
 export function PlayLoop(chordArr: string[]): void {
-  // polySynth.toDestination();
-
-  Tone.start();
-
+  // Tone.start();
   Transport.bpm.value = 120;
 
   let Chords = {
@@ -95,13 +113,12 @@ export function PlayLoop(chordArr: string[]): void {
   PlayChordEvent(Chords.secondChord, 2, 2);
   PlayChordEvent(Chords.thirdChord, 2, 4);
   PlayChordEvent(Chords.fourthChord, 2, 6);
-
-  // Transport.stop();
 }
 
 export function StopLoop(): void {
-  if (polySynth) {
-    polySynth.disconnect();
+  if (polySynth && !polySynth.disposed) {
+    console.log("Disposing polySynth");
+    polySynth.dispose();
   }
 
   // FIXME: why chords are repeated every time the loop is stopped and started?

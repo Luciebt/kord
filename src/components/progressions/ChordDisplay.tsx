@@ -4,7 +4,7 @@ import { useKeyPress } from "../hooks/keyPressHook";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
-import './Progressions.css';
+import "./Progressions.css";
 
 export interface IChordDisplayProps {
   key?: number;
@@ -123,13 +123,13 @@ const ChordDisplayComponent = ({
           button.classList.remove("chord-btn-pressed");
         });
       }
+      chordArr = [];
     };
   }, [chord]);
 
   return (
     <div className="chords-box">
       <div className="chord-box">
-        {/* TODO: update loop button when changing progressions */}
         <b>{chordArr ? <LoopButton chords_list={chordArr} /> : null}</b>
         <b>{chordButton && chordButton}</b>
         <br />
