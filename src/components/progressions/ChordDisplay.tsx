@@ -4,7 +4,7 @@ import { useKeyPress } from "../hooks/keyPressHook";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
-import './Progressions.css';
+import "./Progressions.css";
 
 export interface IChordDisplayProps {
   key?: number;
@@ -123,6 +123,7 @@ const ChordDisplayComponent = ({
           button.classList.remove("chord-btn-pressed");
         });
       }
+      chordArr = [];
     };
   }, [chord]);
 

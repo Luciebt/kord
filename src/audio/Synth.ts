@@ -1,13 +1,13 @@
-// import * as Tone from "tone";
-// import { Synth, PolySynth, Transport, Sequence, Part, ToneEvent, Loop } from "tone";
+import { Synth, PolySynth, Transport, ToneEvent } from "tone";
 import * as Tone from "tone";
 import { PlayChord, BuildChordNotes } from "../Chords";
+import { ShowChord } from "../PianoChart";
 
-// Better for performance to instantiate all synths before calling PlaySynthChords.
-let synth1 = new Tone.Synth().toDestination();
-let synth2 = new Tone.Synth().toDestination();
-let synth3 = new Tone.Synth().toDestination();
-let synth4 = new Tone.Synth().toDestination();
+let synth1 = new Synth().toDestination();
+let synth2 = new Synth().toDestination();
+let synth3 = new Synth().toDestination();
+let synth4 = new Synth().toDestination();
+// let polySynth;
 
 
 //a polysynth composed of 6 Voices of Synth
@@ -39,9 +39,6 @@ export function PlaySynthChords(chordNotes: string[]): void {
   synth2.oscillator.type = "sine";
   synth3.oscillator.type = "sine";
 
-  // synth.triggerAttackRelease(chordNotes, "0.05");
-
-  // Using "+0.05" to play a little bit in advance. 
   synth1.triggerAttackRelease(chordNotes[0], "+0.00", 1);
   synth2.triggerAttackRelease(chordNotes[1], "+0.00", 1);
   synth3.triggerAttackRelease(chordNotes[2], "+0.00", 1);
@@ -51,94 +48,107 @@ export function PlaySynthChords(chordNotes: string[]): void {
   }
 }
 
-// Start loop
-// Need to create one loop per chord. so dynamically?
-// Next loop starts when the previous one stops.
-
-export function PlayLoop(chordArr: string[]): void {
-
-  // "note" takes an array of notes to play the chord ['A3', 'C4', 'E4']
-
-  // TODO: go through this: https://www.devbridge.com/articles/tonejs-coding-music-production-guide/
-  const Chords = {
-    firstChord: BuildChordNotes(chordArr[0]),
-    secondChord: BuildChordNotes(chordArr[1]),
-    thirdChord: BuildChordNotes(chordArr[2]),
-    fourthChord: BuildChordNotes(chordArr[3]),
-    fifthChord: BuildChordNotes(chordArr[4])
+export function DisposeChordSynths(): void {
+  synth1.dispose();
+  synth2.dispose();
+  synth3.dispose();
+  if (synth4) {
+    synth4.dispose();
   }
-
-  console.log(typeof Chords.firstChord);
-
-  const mainChords = [
-    { 'time': 0, 'note': Chords.firstChord, 'duration': '1m' },
-    { 'time': '1:0', 'note': Chords.secondChord, 'duration': '1m' },
-    { 'time': '2:0', 'note': Chords.thirdChord, 'duration': '1m' },
-    { 'time': '3:0', 'note': Chords.fifthChord, 'duration': '1m' },
-  ]
-
-  const part = new Tone.Part(function (time, note) {
-    synth.triggerAttackRelease(note.note, note.duration, time);
-  }, mainChords).start(0);
-
 }
 
-export function StartLoop(chordArr: string[] | undefined): void {
-  if (chordArr == undefined) return;
+const polySynth = new PolySynth(Tone.FMSynth, {
+  volume: -6,
+  oscillator: {
+    type: "sine",
+  },
+  envelope: {
+    attack: 0.05,
+    decay: 0.05,
+    sustain: 0.5,
+  },
+}).toDestination();
 
+// polySynth.set({
+//   filter: {
+//     type: "highpass",
+//   },
+// });
 
-  // PlayChord receives one chord as a string "Em, Am, C#"
+let chordEvent;
 
-  const Chords = {
-    firstChord: chordArr[0],
-    secondChord: chordArr[1],
-    thirdChord: chordArr[2],
-    fourthChord: chordArr[3],
-    fifthChord: chordArr[4]
-  }
+function PlayChordEvent(
+  chordArr: string[],
+  noteDuration: number,
+  noteStart: number = 0
+): void {
+  // console.log("chordArr from PlayChordEvent__________" + chordArr);
 
-  console.log("firstChord___" + Chords.firstChord);
+  chordEvent = new ToneEvent((time) => {
+    // polySynth.triggerAttackRelease(chordArr, noteDuration, time);
+    polySynth.triggerAttackRelease(chordArr, noteDuration, time);
+    console.log(chordArr, noteDuration, time);
+  });
+  // start the chord at the beginning of the transport timeline
+  chordEvent.start(noteStart);
+  // loop it every measure for 80 measures
+  chordEvent.loop = true;
+  chordEvent.loopEnd = "4m";
 
-  Tone.Transport.bpm.value = 120;
+  // console.log(chordEvent.progress);
+}
 
-  // const ChordsOnTone = Tone.Transport = () => {
-  //   Tone.Transport.scheduleOnce((time) => {
-  //     console.log("PlayChord 1");
-  //     PlayChord(Chords.firstChord);
-  //   }, "0");
+// function PlayPartEvent(
+//   chordArr: string[],
+//   noteDuration: number,
+//   noteStart: number = 0
+// ): void {
+//   const chordToPlay = [
+//     {
+//       time: noteStart,
+//       note: chordArr,
+//       velocity: 0.5,
+//     },
+//   ];
+//   const part = new Tone.Part((time, chord) => {
+//     // the chord is an object which contains both the note and the velocity
+//     polySynth.triggerAttackRelease(chord.note, "8n", time, chord.velocity);
+//     console.log(chord.note, "8n", time, chord.velocity);
+//   }, chordToPlay).start(0);
+//   Tone.Transport.start();
+// }
 
-  //   Tone.Transport.scheduleOnce((time) => {
-  //     console.log("PlayChord 2");
-  //     PlayChord(Chords.secondChord);
-  //   }, "2");
+export function PlayLoop(chordArr: string[]): void {
+  // Tone.start();
+  Transport.bpm.value = 120;
 
-  //   Tone.Transport.scheduleOnce((time) => {
-  //     console.log("PlayChord 3");
-  //     PlayChord(Chords.thirdChord);
-  //   }, "4");
+  let Chords = {
+    firstChord: ShowChord(chordArr[0], true),
+    secondChord: ShowChord(chordArr[1], true),
+    thirdChord: ShowChord(chordArr[2], true),
+    fourthChord: ShowChord(chordArr[3], true),
+  };
 
-  //   Tone.Transport.scheduleOnce((time) => {
-  //     console.log("PlayChord 4");
-  //     PlayChord(Chords.fourthChord);
-  //   }, "6");
+  // console.log("PlayLoop___ 1____" + Chords.firstChord);
+  // console.log("PlayLoop___ 2____" + Chords.secondChord);
+  // console.log("PlayLoop___ 3____" + Chords.thirdChord);
+  // console.log("PlayLoop___ 4____" + Chords.fourthChord);
 
-  // }
-
-  // Tone.Transport.scheduleRepeat((time) => {
-  //   ChordsOnTone.Transport();
-  // }, "8");
-
-
-  Tone.Transport.start();
-
-
-  // const loopA = new Tone.Loop((time: number) => {
-  //   ChordsOnTone.Transport();
-  // }, "0").start(0).stop(8);
-
-
+  PlayChordEvent(Chords.firstChord, 2, 0);
+  PlayChordEvent(Chords.secondChord, 2, 2);
+  PlayChordEvent(Chords.thirdChord, 2, 4);
+  PlayChordEvent(Chords.fourthChord, 2, 6);
 }
 
 export function StopLoop(): void {
-  Tone.Transport.stop();
+  if (polySynth && !polySynth.disposed) {
+    console.log("Disposing polySynth");
+    polySynth.dispose();
+  }
+
+  // FIXME: why chords are repeated every time the loop is stopped and started?
+  if (chordEvent) {
+    console.log(chordEvent.state);
+    chordEvent.stop();
+  }
 }

@@ -18,9 +18,7 @@ function PlayMidiNotes(chordNotes: string[], instrumentType: Instrument): void {
 
   if (Instrument.Synth) {
     PlaySynthChords(chordNotes);
-  }
-
-  else if (Instrument.Piano) {
+  } else if (Instrument.Piano) {
     const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
     SetupPiano();
     PlayPianoChords(midiChordNotes);
@@ -42,7 +40,7 @@ export function PlayChord(chord: string) {
   PlayMidiNotes(chordNotes, Instrument.Synth);
 }
 
-// To use only for grand piano sound. 
+// To use only for grand piano sound.
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
   let Results: string[] = [];
 
