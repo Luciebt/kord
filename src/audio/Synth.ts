@@ -47,6 +47,7 @@ function PlayChordEvent(
   noteStart: number = 0
 ): void {
   chordEvent = new ToneEvent((time) => {
+    // polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     console.log(chordArr, noteDuration, time);
   });
