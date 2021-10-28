@@ -40,76 +40,76 @@ const PianoDisplayComponent = ({
   return (
     <div className="keyboard-box">
       <ul id="keyboard">
-        <li id="C" className="white">
+        <li id="C3" className="white">
           C
         </li>
-        <li id="C#" className="black">
+        <li id="C#3" className="black">
           C#
         </li>
-        <li id="D" className="white offset">
+        <li id="D3" className="white offset">
           D
         </li>
-        <li id="D#" className="black">
+        <li id="D#3" className="black">
           D#
         </li>
-        <li id="E" className="white offset">
+        <li id="E3" className="white offset">
           E
         </li>
-        <li id="F" className="white">
+        <li id="F3" className="white">
           F
         </li>
-        <li id="F#" className="black">
+        <li id="F#3" className="black">
           F#
         </li>
-        <li id="G" className="white offset">
+        <li id="G3" className="white offset">
           G
         </li>
-        <li id="G#" className="black">
+        <li id="G#3" className="black">
           G#
         </li>
-        <li id="A" className="white offset">
+        <li id="A3" className="white offset">
           A
         </li>
-        <li id="A#" className="black">
+        <li id="A#3" className="black">
           A#
         </li>
-        <li id="B" className="white offset">
+        <li id="B3" className="white offset">
           B
         </li>
-        <li id="C2" className="white">
+        <li id="C4" className="white">
           C
         </li>
-        <li id="C#2" className="black">
+        <li id="C#4" className="black">
           C#
         </li>
-        <li id="D2" className="white offset">
+        <li id="D4" className="white offset">
           D
         </li>
-        <li id="D#2" className="black">
+        <li id="D#4" className="black">
           D#
         </li>
-        <li id="E2" className="white offset">
+        <li id="E4" className="white offset">
           E
         </li>
-        <li id="F2" className="white">
+        <li id="F4" className="white">
           F
         </li>
-        <li id="F#2" className="black">
+        <li id="F#4" className="black">
           F#
         </li>
-        <li id="G2" className="white offset">
+        <li id="G4" className="white offset">
           G
         </li>
-        <li id="G#2" className="black">
+        <li id="G#4" className="black">
           G#
         </li>
-        <li id="A2" className="white offset">
+        <li id="A4" className="white offset">
           A
         </li>
-        <li id="A#2" className="black">
+        <li id="A#4" className="black">
           A#
         </li>
-        <li id="B2" className="white offset">
+        <li id="B4" className="white offset">
           B
         </li>
       </ul>

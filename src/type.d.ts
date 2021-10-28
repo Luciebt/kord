@@ -1,4 +1,4 @@
-export type TMode = "Major" | "Minor" | "Mixed";
+export type TMode = "Major" | "Minor";
 
 export type TMood =
   | "All"
@@ -36,7 +36,7 @@ export type TKey =
   | "Bb"
   | "B";
 
-export type TProgression = {
+type TProgression = {
   mood?: TMood;
   progression_list: string;
 };
