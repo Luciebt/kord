@@ -1,5 +1,5 @@
 import { Note, Chord } from "@tonaljs/tonal";
-import { AddOctaveToNoteIfNeeded } from "./PianoChart";
+import { AddOctaveToNoteIfNeeded, ShowChord } from "./PianoChart";
 import { PlaySynthChords } from "./audio/Synth";
 import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 import { CleanChords } from "./IProgression";

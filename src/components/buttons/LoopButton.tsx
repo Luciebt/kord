@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { PlayLoop, StopLoop } from "../../audio/Synth";
+import { PlayLoop, StopLoop, SetupSynth } from "../../audio/Synth";
 import { useToggle } from "../hooks/useToggle";
 import { Transport } from "tone";
 import "./Buttons.css";
@@ -25,6 +25,7 @@ const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
 
   // Restore the initial state of the loop button and stop transport when clicking on another progression button.
   useEffect(() => {
+    SetupSynth();
     return () => {
       // StopLoop();
       Transport.stop();
