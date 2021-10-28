@@ -1,4 +1,4 @@
-export type TMode = "Major" | "Minor" | "Mixed";
+export type TMode = "Major" | "Minor";
 
 export type TMood =
   | "All"

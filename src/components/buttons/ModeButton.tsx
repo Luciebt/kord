@@ -7,7 +7,7 @@ interface IModeButton {
 }
 
 const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
-  const modes: TMode[] = ["Major", "Minor", "Mixed"];
+  const modes: TMode[] = ["Major", "Minor"];
 
   const handleClick = (event: any, mode: string) => {
     onPressMode(mode);

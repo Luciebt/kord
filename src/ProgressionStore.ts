@@ -20,6 +20,4 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "VIm, IIIm, V, IV", mood: "Dark" },
     { progression_list: "Im, VII, IV, IV", mood: "Jazzy" },
   ],
-  // TODO: set "Mixed" collections. Those are wrong.
-  Mixed: [{ progression_list: "I IV VIm V", mood: "Jazzy" }],
 };

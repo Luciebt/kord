@@ -100,9 +100,6 @@ function FindProgListWithMood(mode: string, mood: string): string[] {
     case "Minor":
       Progressions = ProgressionCollection.Minor;
       break;
-    case "Mixed":
-      Progressions = ProgressionCollection.Mixed;
-      break;
   }
 
   // TODO: find a better way to deal with mood filtering.
