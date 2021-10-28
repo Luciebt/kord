@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { TKey } from "../../type";
-import './Buttons.css';
-
+import "./Buttons.css";
 
 interface IKeyButton {
-  parentCallback?: any;
+  onPressKey?: any;
 }
 
-const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
-  const [theTonic, setTonic] = useState("");
-
+const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
   const notes: TKey[] = [
     "C",
     "C#",
@@ -24,11 +21,9 @@ const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
     "A#",
     "B",
   ];
-  const notesButtons: JSX.Element[] = [];
 
   const handleClick = (event: any, note: string) => {
-    setTonic(note);
-    parentCallback(note);
+    onPressKey(note);
 
     const toUnpress = document.getElementsByClassName("key-btn-pressed");
     if (toUnpress) {
@@ -39,25 +34,23 @@ const KeyButton: React.FC<IKeyButton> = ({ parentCallback }) => {
     event.target.classList.add("key-btn-pressed");
   };
 
-  notes.forEach((note, i) => {
-    notesButtons.push(
-      <button
-        key={i}
-        value={note}
-        onClick={(e) => {
-          handleClick(e, note);
-        }}
-        className="key-btn"
-      >
-        {note}
-      </button>
-    );
-  });
+  const notesList: JSX.Element[] = notes.map((note, i) => (
+    <button
+      key={i}
+      value={note}
+      onClick={(e) => {
+        handleClick(e, note);
+      }}
+      className="key-btn"
+    >
+      {note}
+    </button>
+  ));
 
   return (
     <div className="">
       <h3>Key</h3>
-      {notesButtons}
+      {notesList}
     </div>
   );
 };
