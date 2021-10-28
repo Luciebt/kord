@@ -30,7 +30,8 @@ const noteNumForKeys: noteId = {
 
 
 export function ShowChord(chord: string): string[] {
-  let notesArr: string[] = BuildChordNotes(chord);
-
-  return notesArr;
+  if (!chord) {
+    return [];
+  }
+  return BuildChordNotes(chord);
 }

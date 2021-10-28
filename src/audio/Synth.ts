@@ -27,42 +27,34 @@ export function SetupSynth(): void {
   }).toDestination();
 }
 
-
 export function PlaySynthChords(chordNotes: string[]): void {
   if (polySynth) {
     polySynth.triggerAttackRelease(chordNotes, "+0.00", 1);
   }
 }
 
-function DisposeChordSynths(): void {
-  if (polySynth) {
-    polySynth.dispose();
-  }
-}
-
-
-function PlayChordEvent(
+function PlayChordLoopEvent(
   chordArr: string[],
+  progressionLength: number,
   noteDuration: number,
   noteStart: number = 0
 ): void {
   chordEvent = new ToneEvent((time) => {
-    // polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     polySynth.triggerAttackRelease(chordArr, noteDuration, time);
     console.log(chordArr, noteDuration, time);
   });
   // start the chord at the beginning of the transport timeline
   chordEvent.start(noteStart);
-  // loop it every measure for 80 measures
+  // loop it every measure, depending on the number of chords to play.
+  let measuresToPlay: string = progressionLength.toString();
   chordEvent.loop = true;
-  chordEvent.loopEnd = "4m";
-
-  // console.log(chordEvent.progress);
+  chordEvent.loopEnd = measuresToPlay += "m";
 }
 
+// TODO: Refactor this.
 export function PlayLoop(chordArr: string[]): void {
-  // Tone.start();
-  Transport.bpm.value = 120;
+  // TODO: allow to set a different tempo.
+  Transport.bpm.value = 130;
 
   let Chords = {
     firstChord: ShowChord(chordArr[0]),
@@ -71,17 +63,14 @@ export function PlayLoop(chordArr: string[]): void {
     fourthChord: ShowChord(chordArr[3]),
   };
 
-  // console.log("PlayLoop___ 1____" + Chords.firstChord);
-  // console.log("PlayLoop___ 2____" + Chords.secondChord);
-  // console.log("PlayLoop___ 3____" + Chords.thirdChord);
-  // console.log("PlayLoop___ 4____" + Chords.fourthChord);
+  const progressionLength: number = chordArr.length;
 
-  PlayChordEvent(Chords.firstChord, 2, 0);
-  PlayChordEvent(Chords.secondChord, 2, 2);
-  PlayChordEvent(Chords.thirdChord, 2, 4);
-  PlayChordEvent(Chords.fourthChord, 2, 6);
-}
-
-export function StopLoop(): void {
-  // Should be handled by the view.
+  PlayChordLoopEvent(Chords.firstChord, progressionLength, 2, 0);
+  PlayChordLoopEvent(Chords.secondChord, progressionLength, 2, 2);
+  if (progressionLength > 2) {
+    PlayChordLoopEvent(Chords.thirdChord, progressionLength, 2, 4);
+  }
+  if (progressionLength > 3) {
+    PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 6);
+  }
 }
