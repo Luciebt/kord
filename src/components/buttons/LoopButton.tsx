@@ -5,16 +5,16 @@ import { Transport } from "tone";
 import "./Buttons.css";
 
 interface ILoopButton {
-  parentCallback?: any;
-  chords_list: string[];
+  onPressLoop?: any;
+  chordsList: string[];
 }
 
-const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
+const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   const [loopState, setLoopState] = useToggle(false);
 
   const handleClick = (event: any) => {
     if (Transport.state !== "started") {
-      PlayLoop(chords_list);
+      PlayLoop(chordsList);
       Transport.start();
     } else {
       Transport.stop();
@@ -36,7 +36,7 @@ const LoopButton: React.FC<ILoopButton> = ({ parentCallback, chords_list }) => {
         btn.innerText = "▶";
       }
     };
-  }, [chords_list]); // Empty array ensures that effect is only run on mount and unmount
+  }, [chordsList]); // Empty array ensures that effect is only run on mount and unmount
 
   return (
     <div className="">

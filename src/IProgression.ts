@@ -5,7 +5,7 @@ import { Progression } from "@tonaljs/tonal";
 export default interface IProgression {
   tonic: string;
   mode: string;
-  chords_list: string;
+  chordsList: string;
   mood?: string;
   genre?: string;
   DetermineChordsList?: any;

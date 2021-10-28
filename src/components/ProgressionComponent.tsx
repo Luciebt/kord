@@ -6,16 +6,16 @@ import ModeButton from "./buttons/ModeButton";
 import MoodButton from "./buttons/MoodButton";
 import ProgressionDisplayComponent from "./progressions/ProgressionDisplay";
 import ChordsScaleDisplayComponent from "./scales/ScaleDisplay";
-import '../components/progressions/Progressions.css';
+import "../components/progressions/Progressions.css";
 
 export interface IProgressionComponent {
   tonic?: string;
   mode?: string;
   mood?: string;
-  chords_list?: string;
+  chordsList?: string;
 }
 
-const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
+const ProgressionComponent = ({}: IProgressionComponent): JSX.Element => {
   const [tonic, setTonic] = useState("");
   const [mode, setMode] = useState("");
   const [mood, setMood] = useState("");
@@ -25,7 +25,6 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   const ModeCallback = (mode: string) => {
     setMode(mode);
     if (tonic && mode) {
-      setChordsList("");
       setChordsList(DetermineChordsList(tonic, mode, mood));
       setchordsScale(findChordsScale(tonic, mode));
     }
@@ -34,7 +33,6 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   const KeyCallback = (tonic: string) => {
     setTonic(tonic);
     if (mode && tonic) {
-      setChordsList("");
       setChordsList(DetermineChordsList(tonic, mode, mood));
       setchordsScale(findChordsScale(tonic, mode));
     }
@@ -43,30 +41,31 @@ const ProgressionComponent: React.FC<IProgressionComponent> = ({}) => {
   const MoodCallback = (mood: string) => {
     setMood(mood);
     if (tonic && mode && mood) {
-      setChordsList("");
       setChordsList(DetermineChordsList(tonic, mode, mood));
     }
   };
 
   return (
     <div className="centered-box">
-      <KeyButton parentCallback={KeyCallback} />
-      <ModeButton parentCallback={ModeCallback} />
-      <MoodButton parentCallback={MoodCallback} />
+      <KeyButton onPressKey={KeyCallback} />
+      <ModeButton onPressMode={ModeCallback} />
+      <MoodButton onPressMood={MoodCallback} />
       <ProgressionDisplayComponent
         tonic={tonic}
         mode={mode}
         mood={mood ? mood : ""}
-        chords_list={chordsList ? chordsList : ""}
+        chordsList={chordsList ? chordsList : ""}
       />
       <ChordsScaleDisplayComponent
         tonic={tonic}
         mode={mode}
-        chords_scale={chordsScale}
+        chordsScale={chordsScale}
       />
       <br />
     </div>
   );
 };
+
+// const ProgressionComponent: React.FC<IProgressionComponent> = ({}) =>
 
 export default ProgressionComponent;

@@ -10,23 +10,23 @@ export function DownloadMidi(dataUrl, filename = "MyProgression.mid") {
   link.click();
 }
 
-export function GenerateMidi(chords_list) {
+export function GenerateMidi(chordsList) {
   track = new MidiWriter.Track();
 
   // TODO: Ugly. Refactor this.
-  const firstChord = ShowChord(chords_list[0], true);
-  const secondChord = ShowChord(chords_list[1], true);
-  const thirdChord = ShowChord(chords_list[2], true);
+  const firstChord = ShowChord(chordsList[0], true);
+  const secondChord = ShowChord(chordsList[1], true);
+  const thirdChord = ShowChord(chordsList[2], true);
   let fourthChord = null;
   let fifthChord = null;
-  if (chords_list[3]) {
-    fourthChord = ShowChord(chords_list[3], true);
+  if (chordsList[3]) {
+    fourthChord = ShowChord(chordsList[3], true);
   }
-  if (chords_list[4]) {
-    fifthChord = ShowChord(chords_list[4], true);
+  if (chordsList[4]) {
+    fifthChord = ShowChord(chordsList[4], true);
   }
 
-  if (track && chords_list) {
+  if (track && chordsList) {
     track.addEvent(
       [
         // One NoteEvent per chord.

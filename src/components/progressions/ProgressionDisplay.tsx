@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDidUpdate } from "../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
-import './Progressions.css';
+import "./Progressions.css";
 
 export interface IProgressionDisplayProps {
   tonic: string;
   mode: string;
   mood?: string;
-  chords_list: string;
-  chordsList?: any;
+  chordsList: string;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
 }
 
@@ -16,13 +15,12 @@ const ProgressionDisplayComponent = ({
   tonic,
   mode,
   mood,
-  chords_list,
+  chordsList,
 }: IProgressionDisplayProps): JSX.Element => {
   const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
-  let chordsArr: string[] = chords_list.split(" | ");
-  let chordsBloc: JSX.Element[] = [];
+  const chordsArr: string[] = chordsList.split(" | ");
 
   const handleClick = (event: any, chords: string) => {
     setChordsState(true);
@@ -37,18 +35,16 @@ const ProgressionDisplayComponent = ({
     event.target.classList.add("prog-btn-pressed");
   };
 
-  chordsArr.forEach((chords, i) => {
-    chordsBloc.push(
-      <button
-        key={i}
-        onClick={(e) => {
-          handleClick(e, chords);
-        }}
-      >
-        {chords}
-      </button>
-    );
-  });
+  const progressionsList: JSX.Element[] = chordsArr.map((chords, i) => (
+    <button
+      key={i}
+      onClick={(e) => {
+        handleClick(e, chords);
+      }}
+    >
+      {chords}
+    </button>
+  ));
 
   // Reset chord selected when changing tonality or mode.
   useDidUpdate(() => {
@@ -60,10 +56,10 @@ const ProgressionDisplayComponent = ({
       <h3>Progressions </h3>
       {/* Progressions buttons: */}
       <div className="prog-btn-box">
-        <b>{chords_list ? chordsBloc : ""}</b>
+        <b>{chordsList ? progressionsList : ""}</b>
       </div>
       {/* Chords buttons: */}
-      {chords_list && chordsState ? (
+      {chordsList && chordsState ? (
         <ChordDisplay chord={chordSelected} />
       ) : null}
     </div>

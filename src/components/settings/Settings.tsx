@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { useToggle } from "../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
 import SoundsSettingsPanel from "./ShortcutsSettingsPanel";
-import './Settings.css';
+import "./Settings.css";
 
 interface ISettings {
-  parentCallback?: any;
+  onSettings?: any;
 }
 
 // TODO: handle click outside.
 
-const Settings: React.FC<ISettings> = ({ parentCallback }) => {
+const Settings = ({ onSettings }: ISettings): JSX.Element => {
   // Whether the audio is on or off
   const [audioPref, setAudioPref] = useToggle(true);
   const [audioSound, setAudioSound] = useState([""]);

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import './Buttons.css';
+import React from "react";
+import "./Buttons.css";
 
 interface IMoodButton {
-  parentCallback?: any;
+  onPressMood?: any;
 }
 
-const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
-  const [theMood, setMood] = useState("All");
-
+const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   const moods: string[] = [
     "All",
     "Jazzy",
@@ -17,11 +15,9 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
     "Dark",
     "Weird",
   ];
-  const moodsButtons: JSX.Element[] = [];
 
   const handleClick = (event: any, mood: string) => {
-    setMood(mood);
-    parentCallback(mood);
+    onPressMood(mood);
 
     const toUnpress = document.getElementsByClassName("mood-btn-pressed");
     if (toUnpress) {
@@ -32,23 +28,21 @@ const MoodButton: React.FC<IMoodButton> = ({ parentCallback }) => {
     event.target.classList.add("mood-btn-pressed");
   };
 
-  moods.forEach((mood, i) => {
-    moodsButtons.push(
-      <button
-        key={i}
-        onClick={(e) => {
-          handleClick(e, mood);
-        }}
-      >
-        {mood}
-      </button>
-    );
-  });
+  const moodsList: JSX.Element[] = moods.map((mood, i) => (
+    <button
+      key={i}
+      onClick={(e) => {
+        handleClick(e, mood);
+      }}
+    >
+      {mood}
+    </button>
+  ));
 
   return (
     <div className="">
       <h3>Mood</h3>
-      {moodsButtons}
+      {moodsList}
     </div>
   );
 };
