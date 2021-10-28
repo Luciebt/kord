@@ -1,4 +1,4 @@
-import { TProgression, TMode, TMood } from "./type.d";
+import { TProgression, TMode } from "./type.d";
 
 export const ProgressionCollection: Record<TMode, TProgression[]> = {
   Major: [

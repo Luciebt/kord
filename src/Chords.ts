@@ -1,9 +1,12 @@
 import { Note, Chord } from "@tonaljs/tonal";
+import { detect } from "@tonaljs/chord-detect";
 import { PlaySynthChords } from "./audio/Synth";
 import { SetupPiano, PlayPianoChords } from "./audio/Piano";
-import { CleanChords } from "./IProgression";
+import { CleanChords } from "./NoteUtils";
 
-enum Instrument {
+// TODO: test accuracy of chords / their notes using chord-detect: https://github.com/tonaljs/tonal/tree/main/packages/chord-detect
+
+enum InstrumentType {
   Piano,
   Synth,
 }
@@ -15,59 +18,42 @@ if (PianoInSettings) {
   SetupPiano();
 }
 
-function PlayMidiNotes(chordNotes: string[], instrumentType: Instrument): void {
-  // TODO: create a choice between synth and piano sounds.
-  // TODO: create audio sampler to give piano keys mp3.
-  // TODO: allow not to play sound. Use React context for preference for audio sounds and on/off.
-
-
-  if (instrumentType == Instrument.Synth) {
-    PlaySynthChords(chordNotes);
-  } else if (instrumentType == Instrument.Piano) {
-    const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
-    PlayPianoChords(midiChordNotes);
+function PlayMidiNotes(chordNotes: string[], instrumentType: InstrumentType): void {
+  switch (instrumentType) {
+    case InstrumentType.Synth:
+      PlaySynthChords(chordNotes);
+      break;
+    case InstrumentType.Piano:
+      const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
+      PlayPianoChords(midiChordNotes);
+      break;
+    default:
+      break;
   }
 }
-
-/////// Flow:
-// PlayChord
-// BuildChordNotes
-// ChordsArrayGenerator --> [chordMode, homeNote]
-// Chord.getChord(chordMode, homeNote).notes --> string[]
-// PlayMidiNotes
-// BuildMidiChordNotes(chordNotes)
 
 // TODO: pass the enum instrument in PlayChord from the react component.
 export function PlayChord(chord: string) {
   const chordNotes: string[] = BuildChordNotes(chord);
 
-  PlayMidiNotes(chordNotes, Instrument.Synth);
+  PlayMidiNotes(chordNotes, InstrumentType.Synth);
 }
 
 // To use only for grand piano sound.
 function BuildMidiChordNotes(chordNotes: string[]): string[] {
-  let Results: string[] = [];
-
-  chordNotes.forEach((note) => {
+  return chordNotes.map((note) => {
     const NoteFound: any = Note.midi(note);
     if (NoteFound) {
-      Results.push(NoteFound.toString());
+      return NoteFound.toString();
     }
   });
-
-  return Results;
 }
 
 // TODO: improve this function
-function ChordsArrayGenerator(chord: string): string[] {
-  // From D#m I want: ["m", "D#"]
-  // From D# I want: ["M", "D#"]
-  // From D I want: ["M", "D"]
-
-  // home note = D, D# or Db
-  // mode = m, M, 7, m7, sus...
+function ChordsArrayBuilder(chord: string): string[] {
   let homeNote: string = chord[0];
-  let chordMode: string = "";
+  // Let major be the default mode.
+  let chordMode: string = "M";
 
   switch (chord[1]) {
     case "b":
@@ -83,34 +69,39 @@ function ChordsArrayGenerator(chord: string): string[] {
   // Add octave
   homeNote += "3";
 
-  // TODO: Add diminished and augmented chords. Incl. 7.
-  // FIXME: this is ugly AF.
-  if (chord.includes("m")) {
+  if (chord.includes("m", 1)) {
     chordMode = "m";
-    if (chord.includes("7")) {
-      chordMode = "m7";
-    }
-  } else if (chord.includes("7")) {
-    chordMode = "7";
-  } else if (chord.includes("sus")) {
+  } else if (chord.includes("dim", 1) || chord.includes("d", 1)) {
+    chordMode = "dim";
+  } else if (chord.includes("sus", 1)) {
     chordMode = "sus";
-  } else if (chord.includes("d")) {
-    chordMode = "d";
-  } else if (chord.includes("dim7")) {
-    chordMode = "dim7";
-  } else {
-    chordMode = "M";
+  } else if (chord.includes("aug", 1)) {
+    chordMode = "aug";
+  }
+
+  // Seventh chords.
+  if (chord.includes("7", 1)) {
+    if (chord.includes("sus", 1)) {
+      chordMode = "7sus";
+    }
+    else {
+      chordMode += "7";
+    }
   }
 
   return [chordMode, homeNote];
 }
 
 export function BuildChordNotes(chord: string): string[] {
-  const [chordMode, homeNote]: string[] = ChordsArrayGenerator(chord);
+  const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord);
+
+  // console.log("chord to find_____________" + chord);
 
   let chordArr: string[] = Chord.getChord(chordMode, homeNote).notes;
 
-  // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
+  // console.log("detectedChord after builder and getChord____" + detect(chordArr));
+
+  // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart. Why do they exist btw?
   chordArr.forEach((chord, i) => {
     chordArr[i] = Note.simplify(chord);
   });

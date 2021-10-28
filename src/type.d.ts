@@ -36,7 +36,7 @@ export type TKey =
   | "Bb"
   | "B";
 
-export type TProgression = {
+type TProgression = {
   mood?: TMood;
   progression_list: string;
 };

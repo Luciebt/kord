@@ -1,5 +1,5 @@
 import { Key } from "@tonaljs/tonal";
-import { CleanChords } from "./IProgression";
+import { CleanChords } from "./NoteUtils";
 
 // TODO: finish Scale feature. Move this somewhere else.
 // NOTE: Why not using key scales?
