@@ -1,6 +1,6 @@
 import { Piano } from "@tonejs/piano";
 
-let piano: any;
+let piano: Piano;
 
 export function SetupPiano(): void {
   piano = new Piano({

@@ -65,10 +65,10 @@ export function PlayLoop(chordArr: string[]): void {
   Transport.bpm.value = 120;
 
   let Chords = {
-    firstChord: ShowChord(chordArr[0], true),
-    secondChord: ShowChord(chordArr[1], true),
-    thirdChord: ShowChord(chordArr[2], true),
-    fourthChord: ShowChord(chordArr[3], true),
+    firstChord: ShowChord(chordArr[0]),
+    secondChord: ShowChord(chordArr[1]),
+    thirdChord: ShowChord(chordArr[2]),
+    fourthChord: ShowChord(chordArr[3]),
   };
 
   // console.log("PlayLoop___ 1____" + Chords.firstChord);

@@ -1,5 +1,4 @@
 import { Note, Chord } from "@tonaljs/tonal";
-import { AddOctaveToNoteIfNeeded, ShowChord } from "./PianoChart";
 import { PlaySynthChords } from "./audio/Synth";
 import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 import { CleanChords } from "./IProgression";
@@ -9,18 +8,23 @@ enum Instrument {
   Synth,
 }
 
+// TODO: only setup piano if Piano instrument is chosen from the settings panel.
+let PianoInSettings: boolean = false;
+
+if (PianoInSettings) {
+  SetupPiano();
+}
+
 function PlayMidiNotes(chordNotes: string[], instrumentType: Instrument): void {
   // TODO: create a choice between synth and piano sounds.
   // TODO: create audio sampler to give piano keys mp3.
   // TODO: allow not to play sound. Use React context for preference for audio sounds and on/off.
 
-  AddOctaveToNoteIfNeeded(chordNotes, true);
 
-  if (Instrument.Synth) {
+  if (instrumentType == Instrument.Synth) {
     PlaySynthChords(chordNotes);
-  } else if (Instrument.Piano) {
+  } else if (instrumentType == Instrument.Piano) {
     const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
-    SetupPiano();
     PlayPianoChords(midiChordNotes);
   }
 }
@@ -75,6 +79,9 @@ function ChordsArrayGenerator(chord: string): string[] {
     default:
       break;
   }
+
+  // Add octave
+  homeNote += "3";
 
   // TODO: Add diminished and augmented chords. Incl. 7.
   // FIXME: this is ugly AF.

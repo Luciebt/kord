@@ -28,35 +28,9 @@ const noteNumForKeys: noteId = {
 //   Bb: "A#",
 // };
 
-export function AddOctaveToNoteIfNeeded(
-  notesArr: string[],
-  forMidi: boolean = false
-): void {
-  // This solution doesn't work with inverted chords. TODO: Make it work with inversions!
-  const firstNote = notesArr[0];
-  const firstNum = noteNumForKeys[firstNote];
-  notesArr.forEach((note, i) => {
-    // Regex helper to dynamically change the notesArr.
-    const re = new RegExp(note, "g");
-    const numForKey = noteNumForKeys[note];
-    if (numForKey < firstNum) {
-      if (forMidi) {
-        notesArr[i] = notesArr[i].replace(re, (note += "4"));
-      } else {
-        notesArr[i] = notesArr[i].replace(re, (note += "2"));
-      }
-    } else {
-      if (forMidi) {
-        notesArr[i] = notesArr[i].replace(re, (note += "3"));
-      }
-    }
-  });
-}
 
-export function ShowChord(chord: string, forMidi: boolean = false): string[] {
+export function ShowChord(chord: string): string[] {
   let notesArr: string[] = BuildChordNotes(chord);
-
-  AddOctaveToNoteIfNeeded(notesArr, forMidi);
 
   return notesArr;
 }
