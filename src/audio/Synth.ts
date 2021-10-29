@@ -47,14 +47,19 @@ function PlayChordLoopEvent(
   chordEvent.start(noteStart);
   // loop it every measure, depending on the number of chords to play.
   let measuresToPlay: string = progressionLength.toString();
+  // console.log("measuresToPlay___" + measuresToPlay);
+
   chordEvent.loop = true;
   chordEvent.loopEnd = measuresToPlay += "m";
+
+  // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
+  // chordEvent.loopEnd = measuresToPlay += "n";
 }
 
 // TODO: Refactor this.
 export function PlayLoop(chordArr: string[]): void {
   // TODO: allow to set a different tempo.
-  Transport.bpm.value = 130;
+  Transport.bpm.value = 120;
 
   let Chords = {
     firstChord: ShowChord(chordArr[0]),
