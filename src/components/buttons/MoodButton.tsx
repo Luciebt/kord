@@ -1,4 +1,5 @@
 import React from "react";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IMoodButton {
@@ -19,13 +20,9 @@ const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   const handleClick = (event: any, mood: string) => {
     onPressMood(mood);
 
-    const toUnpress = document.getElementsByClassName("mood-btn-pressed");
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("mood-btn-pressed");
-      });
-    }
-    event.target.classList.add("mood-btn-pressed");
+    const style: string = "mood-btn-pressed";
+    unPressElementsStyleWithoutEvent(style);
+    event.target.classList.add(style);
   };
 
   const moodsList: JSX.Element[] = moods.map((mood, i) => (

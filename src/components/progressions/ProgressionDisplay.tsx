@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { useDidUpdate } from "../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
 import "./Progressions.css";
@@ -26,12 +27,8 @@ const ProgressionDisplayComponent = ({
     setChordsState(true);
     setChordSelected(chords);
 
-    const toUnpress = document.getElementsByClassName("prog-btn-pressed");
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("prog-btn-pressed");
-      });
-    }
+    const style: string = "prog-btn-pressed";
+    unPressElementsStyleWithoutEvent(style);
     event.target.classList.add("prog-btn-pressed");
   };
 

@@ -6,6 +6,7 @@ import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import "./Progressions.css";
 import { SetupSynth } from "../../audio/Synth";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
 export interface IChordDisplayProps {
   key?: number;
@@ -25,12 +26,9 @@ const ChordDisplayComponent = ({
     setChordState(true);
     setChordSelected(chord);
 
-    const toUnpress = document.getElementsByClassName("chord-btn-pressed");
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("chord-btn-pressed");
-      });
-    }
+    const style: string = "chord-btn-pressed";
+    unPressElementsStyleWithoutEvent(style);
+
     event.target.classList.add("chord-btn-pressed");
   };
 
@@ -72,12 +70,9 @@ const ChordDisplayComponent = ({
       // cleanups.
       setChordState(false);
 
-      const toUnpress = document.getElementsByClassName("chord-btn-pressed");
-      if (toUnpress) {
-        Array.from(toUnpress).forEach((button) => {
-          button.classList.remove("chord-btn-pressed");
-        });
-      }
+      const style: string = "chord-btn-pressed";
+      unPressElementsStyleWithoutEvent(style);
+
       chordArr = [];
     };
   }, [chord]);

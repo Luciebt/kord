@@ -1,5 +1,6 @@
 import React from "react";
 import { TMode } from "../../type";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IModeButton {
@@ -12,13 +13,9 @@ const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
   const handleClick = (event: any, mode: string) => {
     onPressMode(mode);
 
-    const toUnpress = document.getElementsByClassName("mode-btn-pressed");
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("mode-btn-pressed");
-      });
-    }
-    event.target.classList.add("mode-btn-pressed");
+    const style: string = "mode-btn-pressed";
+    unPressElementsStyleWithoutEvent(style);
+    event.target.classList.add(style);
   };
 
   const modesList: JSX.Element[] = modes.map((mode, i) => (

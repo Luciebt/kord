@@ -3,6 +3,8 @@ import { useDidUpdate } from "../hooks/useDidUpdate";
 import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
 import "./Scales.css";
+import { SetupSynth } from "../../audio/Synth";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
 export interface IChordsScaleDisplayComponent {
   tonic: string;
@@ -18,21 +20,17 @@ const ChordsScaleDisplayComponent = ({
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
+  const style: string = "scale-chord-btn-pressed";
+
   const handleClick = (chord: string, event?: any) => {
     PlayChord(chord);
     setChordState(true);
     setChordSelected(chord);
 
-    const toUnpress = document.getElementsByClassName(
-      "scale-chord-btn-pressed"
-    );
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("scale-chord-btn-pressed");
-      });
-    }
-    event.target.classList.add("scale-chord-btn-pressed");
+    unPressElementsStyleWithoutEvent(style);
+    event.target.classList.add(style);
   };
+
 
   const chordsScaleList: JSX.Element[] = chordsScale.map((chords, i) => (
     <button
@@ -47,10 +45,12 @@ const ChordsScaleDisplayComponent = ({
   ));
 
   useEffect(() => {
+    SetupSynth();
+    unPressElementsStyleWithoutEvent(style);
     return () => {
       // Anything in here is fired on component unmount.
     };
-  }, [chordsScale]);
+  }, []);
 
   // Reset chord selected when changing tonality or mode.
   useDidUpdate(() => {
@@ -60,7 +60,7 @@ const ChordsScaleDisplayComponent = ({
   return (
     <div className="scale-box">
       <h3>{chordsScale ? "Chords on Scale " + tonic + " " + mode : ""}</h3>
-      <b>{chordsScaleList}</b>
+      {chordsScaleList}
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
     </div>
   );

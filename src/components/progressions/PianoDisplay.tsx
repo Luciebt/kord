@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { ShowChord } from "../../PianoChart";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import './Progressions.css';
 
 export interface IPianoDisplayProps {
@@ -24,19 +25,13 @@ const PianoDisplayComponent = ({
     }
 
     return () => {
-      // Anything in here is fired on component unmount.
-      const toUnpress = document.getElementsByClassName("pressed");
-      if (toUnpress) {
-        Array.from(toUnpress).forEach((key) => {
-          key.classList.remove("pressed");
-        });
-      }
+      const style: string = "pressed";
+      unPressElementsStyleWithoutEvent(style);
 
       chordsArray = [""];
     };
   }, [chord]);
 
-  // TODO: Play chords w keys a - l.
   return (
     <div className="keyboard-box">
       <ul id="keyboard">

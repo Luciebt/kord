@@ -1,5 +1,6 @@
 import React from "react";
 import { TKey } from "../../type";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IKeyButton {
@@ -25,13 +26,9 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
   const handleClick = (event: any, note: string) => {
     onPressKey(note);
 
-    const toUnpress = document.getElementsByClassName("key-btn-pressed");
-    if (toUnpress) {
-      Array.from(toUnpress).forEach((button) => {
-        button.classList.remove("key-btn-pressed");
-      });
-    }
-    event.target.classList.add("key-btn-pressed");
+    const style: string = "key-btn-pressed";
+    unPressElementsStyleWithoutEvent(style);
+    event.target.classList.add(style);
   };
 
   const notesList: JSX.Element[] = notes.map((note, i) => (
