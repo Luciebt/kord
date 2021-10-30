@@ -22,7 +22,7 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -b main -d dist"
+    "deploy": "gh-pages -b gh-pages -d dist"
   },
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
