@@ -83151,6 +83151,57 @@ exports.ProgressionCollection = {
         { progression_list: "IIm7, V7, I7", mood: "Jazzy" },
         { progression_list: "I, VIm, IV, V", mood: "Melancholic" },
         { progression_list: "I, VIm, V, V", mood: "Weird" },
+        // TODO: Classify those.
+        { progression_list: "bIII, IIm, bII, I", mood: "Todo" },
+        { progression_list: "I, bIII, bVII, IV", mood: "Todo" },
+        { progression_list: "I, bIII, bVI, bVII", mood: "Todo" },
+        { progression_list: "I, bII, bIII, bII", mood: "Todo" },
+        { progression_list: "I, bII, I, IIIm", mood: "Todo" },
+        { progression_list: "I, bVII, bVI, bII", mood: "Todo" },
+        { progression_list: "I, bVII, IV, I", mood: "Todo" },
+        { progression_list: "I, bVI, I, bII", mood: "Todo" },
+        { progression_list: "I, I, IV, IIIm", mood: "Todo" },
+        { progression_list: "I, IIIm, IV, VIm", mood: "Todo" },
+        { progression_list: "I, IIIm, VIm, Isus4", mood: "Todo" },
+        { progression_list: "I, IIIm, VIm, IV", mood: "Todo" },
+        { progression_list: "I, IIM, IIIm, V6", mood: "Todo" },
+        { progression_list: "I, IV, bIII, bVI", mood: "Todo" },
+        { progression_list: "I, IV, bVII, IV", mood: "Todo" },
+        { progression_list: "I, IV, IIm, V", mood: "Todo" },
+        { progression_list: "I, IV, Isus2, IV", mood: "Todo" },
+        { progression_list: "I, IV, V, bVII", mood: "Todo" },
+        { progression_list: "I, IV, V, V", mood: "Todo" },
+        { progression_list: "I, IV, VIm, V", mood: "Todo" },
+        { progression_list: "I, V, bVII, IV", mood: "Todo" },
+        { progression_list: "I, V, I, IV", mood: "Todo" },
+        { progression_list: "I, V, IV, VIm", mood: "Todo" },
+        { progression_list: "I, V, VIm, IIm", mood: "Todo" },
+        { progression_list: "I, V, VIm, IIIm, IV", mood: "Todo" },
+        { progression_list: "I, V, VIm, IV", mood: "Todo" },
+        { progression_list: "I, V, VIm, V", mood: "Todo" },
+        { progression_list: "I, VIm, I, IV", mood: "Todo" },
+        { progression_list: "I, VIm, IIm, IV", mood: "Todo" },
+        { progression_list: "I, VIm, IIm, V", mood: "Todo" },
+        { progression_list: "I, VIm, IV, IIIm", mood: "Todo" },
+        { progression_list: "I, VIm, IV, V", mood: "Todo" },
+        { progression_list: "IIm, bII, I, bVII", mood: "Todo" },
+        { progression_list: "IIm, bVII7, I", mood: "Todo" },
+        { progression_list: "IIm, IV, V, V", mood: "Todo" },
+        { progression_list: "IIm, V, I, I", mood: "Todo" },
+        { progression_list: "IIm, V, I, IV", mood: "Todo" },
+        { progression_list: "IIm7, V9, I7, I7", mood: "Todo" },
+        { progression_list: "IIIm, VIm, IV, I", mood: "Todo" },
+        { progression_list: "IV, I, IIm, VIm", mood: "Todo" },
+        { progression_list: "IV, I, IIIm, IV", mood: "Todo" },
+        { progression_list: "IV, I, V, VIm", mood: "Todo" },
+        { progression_list: "IV, IV, I, V", mood: "Todo" },
+        { progression_list: "IV, VIm, IIIm, I", mood: "Todo" },
+        { progression_list: "V, I, VIm, V", mood: "Todo" },
+        { progression_list: "V, IV, VIm, I", mood: "Todo" },
+        { progression_list: "V, VIm, IV, I", mood: "Todo" },
+        { progression_list: "VIm, bVI, bVII, I", mood: "Todo" },
+        { progression_list: "VIm, IV, I, V", mood: "Todo" },
+        { progression_list: "VIm, V, IV, V", mood: "Todo" }
     ],
     Minor: [
         { progression_list: "Im, IV, VI, Vm", mood: "Happy" },
@@ -83160,6 +83211,7 @@ exports.ProgressionCollection = {
         { progression_list: "Im, III, VII, VI", mood: "Sad" },
         { progression_list: "VIm, IIIm, V, IV", mood: "Dark" },
         { progression_list: "Im, VII, IV, IV", mood: "Jazzy" },
+        // TODO: Tooooooooodoooooooooooo! 
         { progression_list: "Im, IIm, Vm, Im", mood: "Todo" },
         { progression_list: "Im, III, IVm, VI", mood: "Todo" },
         { progression_list: "Im, III, VII, VI", mood: "Todo" },
@@ -83170,7 +83222,7 @@ exports.ProgressionCollection = {
         { progression_list: "Im, IVm, VII, Im", mood: "Todo" },
         { progression_list: "Im, Vm, IVm, VII", mood: "Todo" },
         { progression_list: "Im, VI, bIm, Vm", mood: "Todo" },
-        { progression_list: "Im, VI, III, bIIm", mood: "Todo" },
+        { progression_list: "Im, VI, III, bII", mood: "Todo" },
         { progression_list: "Im, VI, III, VII", mood: "Todo" },
         { progression_list: "Im, VI, IVm, IIm", mood: "Todo" },
         { progression_list: "Im, VI, IVm, III", mood: "Todo" },
@@ -83205,61 +83257,10 @@ exports.ProgressionCollection = {
     ],
 };
 // TODO: add these major progressions.
-const samplesProg = [
-    ['bIIIM', 'ii', 'bIIM', 'I'],
-    ['I', 'bIIIM', 'bVIIM', 'IV'],
-    ['I', 'bIIIM', 'bVIM', 'bVIIM'],
-    ['I', 'bIIM', 'bIIIM', 'bIIM'],
-    ['I', 'bIIM', 'I', 'iii'],
-    ['I', 'bVIIM', 'bVIM', 'bIIM'],
-    ['I', 'bVIIM', 'IV', 'I'],
-    ['I', 'bVIM', 'I', 'bIIM'],
-    ['I', 'I', 'IV', 'iii'],
-    ['I', 'iii', 'IV', 'vi'],
-    ['I', 'iii', 'vi', 'Isus4'],
-    ['I', 'iii', 'vi', 'IV'],
-    ['I', 'IIM', 'iii', 'V6'],
-    ['I', 'IV', 'bIIIM', 'bVIM'],
-    ['I', 'IV', 'bVIIM', 'IV'],
-    ['I', 'IV', 'ii', 'V'],
-    ['I', 'IV', 'Isus2', 'IV'],
-    ['I', 'IV', 'V', 'bVIIM'],
-    ['I', 'IV', 'V', 'V'],
-    ['I', 'IV', 'vi', 'V'],
-    ['I', 'V', 'bVIIM', 'IV'],
-    ['I', 'V', 'I', 'IV'],
-    ['I', 'V', 'IV', 'vi'],
-    ['I', 'V', 'vi', 'ii'],
-    ['I', 'V', 'vi', 'iii', 'IV'],
-    ['I', 'V', 'vi', 'IV'],
-    ['I', 'V', 'vi', 'V'],
-    ['I', 'vi', 'I', 'IV'],
-    ['I', 'vi', 'ii', 'IV'],
-    ['I', 'vi', 'ii', 'V'],
-    ['I', 'vi', 'IV', 'iii'],
-    ['I', 'vi', 'IV', 'V'],
-    ['ii', 'bIIM', 'I', 'bVIIM'],
-    ['ii', 'bVIIM7', 'I'],
-    ['ii', 'IV', 'V', 'V'],
-    ['ii', 'V', 'I', 'I'],
-    ['ii', 'V', 'I', 'IV'],
-    ['ii7', 'V9', 'I7', 'I7'],
-    ['iii', 'vi', 'IV', 'I'],
-    ['IV', 'I', 'ii', 'vi'],
-    ['IV', 'I', 'iii', 'IV'],
-    ['IV', 'I', 'V', 'vi'],
-    ['IV', 'IV', 'I', 'V'],
-    ['IV', 'vi', 'iii', 'I'],
-    ['V', 'I', 'vi', 'V'],
-    ['V', 'IV', 'vi', 'I'],
-    ['V', 'vi', 'IV', 'I'],
-    ['vi', 'bVIM', 'bVIIM', 'I'],
-    ['vi', 'IV', 'I', 'V'],
-    ['vi', 'V', 'IV', 'V'],
-];
+const samplesProg = [];
 function convertProgForTonal(samples) {
     let results = [];
-    samples.forEach((sample, index) => {
+    samples.forEach((sample) => {
         let progression = sample.toString();
         progression = progression.replace(/i/g, "Im");
         progression = progression.replace(/ii/g, "IIm");
@@ -83270,10 +83271,10 @@ function convertProgForTonal(samples) {
         progression = progression.replace(/vii/g, "VIIm");
         results.push(progression);
     });
-    // console.log(results);
+    console.log(results);
     return results;
 }
-convertProgForTonal(samplesProg);
+// convertProgForTonal(samplesProg);
 
 
 /***/ }),
