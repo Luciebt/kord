@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { PlayLoop, SetupSynth } from "../../audio/Synth";
+import { PlayLoop } from "../../audio/Synth";
 import { useToggle } from "../hooks/useToggle";
 import { Transport } from "tone";
 import "./Buttons.css";
@@ -23,13 +23,12 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
       Transport.stop();
     }
   };
-  
+
   // Restore the initial state of the loop button and stop transport when clicking on another progression button.
   useEffect(() => {
-    SetupSynth();
     return () => {
       Transport.cancel();
-      Transport.stop();
+      // Transport.stop();
       const btn = document.getElementById("loop");
       if (btn) {
         btn.classList.remove("loop-btn-pressed");

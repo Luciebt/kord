@@ -1,30 +1,35 @@
 import { Synth, PolySynth, Transport, ToneEvent } from "tone";
 import { ShowChord } from "../PianoChart";
 
-let polySynth: PolySynth;
+let polySynth: PolySynth = new PolySynth(Synth, {
+  volume: -8,
+  detune: 0,
+  portamento: 0,
+  envelope: {
+    attack: 0.005,
+    attackCurve: "linear",
+    decay: 0.1,
+    decayCurve: "exponential",
+    release: 1,
+    releaseCurve: "exponential",
+    sustain: 0.3,
+  },
+  oscillator: {
+    partialCount: 0,
+    phase: 0,
+    type: "sine",
+  },
+}).toDestination();
+
 let chordEvent: ToneEvent;
 
+// TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
 // TODO: add a compressor at the end of the chain to avoid distorsion? 
-export function SetupSynth(): void {
-  polySynth = new PolySynth(Synth, {
-    volume: -8,
-    detune: 0,
-    portamento: 0,
-    envelope: {
-      attack: 0.005,
-      attackCurve: "linear",
-      decay: 0.1,
-      decayCurve: "exponential",
-      release: 1,
-      releaseCurve: "exponential",
-      sustain: 0.3,
-    },
-    oscillator: {
-      partialCount: 0,
-      phase: 0,
-      type: "sine",
-    },
-  }).toDestination();
+
+export function disposeSynth() {
+  if (polySynth && polySynth.disposed) {
+    polySynth.dispose();
+  }
 }
 
 export function PlaySynthChords(chordNotes: string[]): void {

@@ -5,7 +5,6 @@ import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import "./Progressions.css";
-import { SetupSynth } from "../../audio/Synth";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { Progression } from "@tonaljs/tonal";
 
@@ -68,7 +67,6 @@ const ChordDisplayComponent = ({
 
   useEffect(() => {
     // comp mounts.
-    SetupSynth();
     return () => {
       // cleanups.
       setChordState(false);

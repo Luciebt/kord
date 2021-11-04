@@ -3,7 +3,6 @@ import { useDidUpdate } from "../hooks/useDidUpdate";
 import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
 import "./Scales.css";
-import { SetupSynth } from "../../audio/Synth";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
 export interface IChordsScaleDisplayComponent {
@@ -45,7 +44,6 @@ const ChordsScaleDisplayComponent = ({
   ));
 
   useEffect(() => {
-    SetupSynth();
     unPressElementsStyleWithoutEvent(style);
     return () => {
       // Anything in here is fired on component unmount.
