@@ -1,4 +1,5 @@
 import { Synth, PolySynth, Transport, ToneEvent } from "tone";
+import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
 
 let polySynth: PolySynth = new PolySynth(Synth, {
@@ -35,6 +36,7 @@ export function disposeSynth() {
 export function PlaySynthChords(chordNotes: string[]): void {
   if (polySynth) {
     polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+    Tone.start();
   }
 }
 
