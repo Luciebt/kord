@@ -1,12 +1,12 @@
-import { PolySynth, Transport, ToneEvent } from "tone";
-import * as Tone from "tone";
+import { Synth, PolySynth, Transport, ToneEvent } from "tone";
 import { ShowChord } from "../PianoChart";
 
-let polySynth: Tone.PolySynth;
-let chordEvent: Tone.ToneEvent;
+let polySynth: PolySynth;
+let chordEvent: ToneEvent;
 
+// TODO: add a compressor at the end of the chain to avoid distorsion? 
 export function SetupSynth(): void {
-  polySynth = new PolySynth(Tone.Synth, {
+  polySynth = new PolySynth(Synth, {
     volume: -8,
     detune: 0,
     portamento: 0,
@@ -29,7 +29,7 @@ export function SetupSynth(): void {
 
 export function PlaySynthChords(chordNotes: string[]): void {
   if (polySynth) {
-    polySynth.triggerAttackRelease(chordNotes, "+0.00", 1);
+    polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
   }
 }
 
