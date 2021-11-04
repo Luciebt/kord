@@ -9,7 +9,8 @@ export type TMood =
   | "Sad"
   | "Dark"
   | "Hopeful"
-  | "Weird";
+  | "Weird"
+  | "Todo";
 
 export type TChords =
   | "maj"

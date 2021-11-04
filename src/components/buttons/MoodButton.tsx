@@ -15,6 +15,7 @@ const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
     "Happy",
     "Dark",
     "Weird",
+    "Todo"
   ];
 
   const handleClick = (event: any, mood: string) => {
