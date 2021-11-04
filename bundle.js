@@ -83353,61 +83353,45 @@ exports.PlayPianoChords = PlayPianoChords;
 /*!****************************!*\
   !*** ./src/audio/Synth.ts ***!
   \****************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayLoop = exports.PlaySynthChords = exports.SetupSynth = void 0;
+exports.PlayLoop = exports.PlaySynthChords = exports.disposeSynth = void 0;
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
-let polySynth;
+let polySynth = new tone_1.PolySynth(tone_1.Synth, {
+    volume: -8,
+    detune: 0,
+    portamento: 0,
+    envelope: {
+        attack: 0.005,
+        attackCurve: "linear",
+        decay: 0.1,
+        decayCurve: "exponential",
+        release: 1,
+        releaseCurve: "exponential",
+        sustain: 0.3,
+    },
+    oscillator: {
+        partialCount: 0,
+        phase: 0,
+        type: "sine",
+    },
+}).toDestination();
 let chordEvent;
-function SetupSynth() {
-    polySynth = new tone_1.PolySynth(Tone.Synth, {
-        volume: -8,
-        detune: 0,
-        portamento: 0,
-        envelope: {
-            attack: 0.005,
-            attackCurve: "linear",
-            decay: 0.1,
-            decayCurve: "exponential",
-            release: 1,
-            releaseCurve: "exponential",
-            sustain: 0.3,
-        },
-        oscillator: {
-            partialCount: 0,
-            phase: 0,
-            type: "sine",
-        },
-    }).toDestination();
+// TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
+// TODO: add a compressor at the end of the chain to avoid distorsion? 
+function disposeSynth() {
+    if (polySynth && polySynth.disposed) {
+        polySynth.dispose();
+    }
 }
-exports.SetupSynth = SetupSynth;
+exports.disposeSynth = disposeSynth;
 function PlaySynthChords(chordNotes) {
     if (polySynth) {
-        polySynth.triggerAttackRelease(chordNotes, "+0.00", 1);
+        polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
     }
 }
 exports.PlaySynthChords = PlaySynthChords;
@@ -83628,10 +83612,9 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
     };
     // Restore the initial state of the loop button and stop transport when clicking on another progression button.
     (0, react_1.useEffect)(() => {
-        (0, Synth_1.SetupSynth)();
         return () => {
             tone_1.Transport.cancel();
-            tone_1.Transport.stop();
+            // Transport.stop();
             const btn = document.getElementById("loop");
             if (btn) {
                 btn.classList.remove("loop-btn-pressed");
@@ -83917,7 +83900,6 @@ const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const ChordDisplayComponent = ({ tonic, chord, }) => {
@@ -83964,7 +83946,6 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
     }
     (0, react_1.useEffect)(() => {
         // comp mounts.
-        (0, Synth_1.SetupSynth)();
         return () => {
             // cleanups.
             setChordState(false);
@@ -84176,7 +84157,6 @@ const useDidUpdate_1 = __webpack_require__(/*! ../hooks/useDidUpdate */ "./src/c
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePianoDisplay */ "./src/components/scales/ScalePianoDisplay.tsx"));
 __webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
     const [chordState, setChordState] = (0, react_1.useState)(false);
@@ -84193,7 +84173,6 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
             handleClick(chords, e);
         }, className: "scale-chord-btn" }, chords)));
     (0, react_1.useEffect)(() => {
-        (0, Synth_1.SetupSynth)();
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
         return () => {
             // Anything in here is fired on component unmount.
