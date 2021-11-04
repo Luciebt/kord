@@ -5371,8 +5371,8 @@ module.exports = function (cssWithMappingToString) {
     var alreadyImportedModules = {};
 
     if (dedupe) {
-      for (var _i = 0; _i < this.length; _i++) {
-        var id = this[_i][0];
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
 
         if (id != null) {
           alreadyImportedModules[id] = true;
@@ -5380,8 +5380,8 @@ module.exports = function (cssWithMappingToString) {
       }
     }
 
-    for (var _i2 = 0; _i2 < modules.length; _i2++) {
-      var item = [].concat(modules[_i2]);
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
 
       if (dedupe && alreadyImportedModules[item[0]]) {
         continue;
@@ -38258,7 +38258,7 @@ __webpack_require__.r(__webpack_exports__);
 const createAnalyserNodeRendererFactory = (createNativeAnalyserNode, getNativeAudioNode, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeAnalyserNodes = new WeakMap();
-        const createAnalyserNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAnalyserNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAnalyserNode = getNativeAudioNode(proxy);
             // If the initially used nativeAnalyserNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeAnalyserNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeAnalyserNode, nativeOfflineAudioContext);
@@ -38275,16 +38275,16 @@ const createAnalyserNodeRendererFactory = (createNativeAnalyserNode, getNativeAu
                 nativeAnalyserNode = createNativeAnalyserNode(nativeOfflineAudioContext, options);
             }
             renderedNativeAnalyserNodes.set(nativeOfflineAudioContext, nativeAnalyserNode);
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAnalyserNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAnalyserNode);
             return nativeAnalyserNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeAnalyserNode = renderedNativeAnalyserNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAnalyserNode !== undefined) {
                     return Promise.resolve(renderedNativeAnalyserNode);
                 }
-                return createAnalyserNode(proxy, nativeOfflineAudioContext, trace);
+                return createAnalyserNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -38500,7 +38500,7 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
         const renderedNativeAudioBufferSourceNodes = new WeakMap();
         let start = null;
         let stop = null;
-        const createAudioBufferSourceNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioBufferSourceNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAudioBufferSourceNode = getNativeAudioNode(proxy);
             /*
              * If the initially used nativeAudioBufferSourceNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -38530,13 +38530,13 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
             renderedNativeAudioBufferSourceNodes.set(nativeOfflineAudioContext, nativeAudioBufferSourceNode);
             if (!nativeAudioBufferSourceNodeIsOwnedByContext) {
                 // Bug #149: Safari does not yet support the detune AudioParam.
-                await renderAutomation(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate);
             }
             else {
                 // Bug #149: Safari does not yet support the detune AudioParam.
-                await connectAudioParam(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioBufferSourceNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioBufferSourceNode);
             return nativeAudioBufferSourceNode;
         };
         return {
@@ -38546,12 +38546,12 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
             set stop(value) {
                 stop = value;
             },
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeAudioBufferSourceNode = renderedNativeAudioBufferSourceNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAudioBufferSourceNode !== undefined) {
                     return Promise.resolve(renderedNativeAudioBufferSourceNode);
                 }
-                return createAudioBufferSourceNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioBufferSourceNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -38796,18 +38796,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createAudioDestinationNodeRenderer": () => (/* binding */ createAudioDestinationNodeRenderer)
 /* harmony export */ });
 const createAudioDestinationNodeRenderer = (renderInputsOfAudioNode) => {
-    let nativeAudioDestinationNodePromise = null;
-    const createAudioDestinationNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const renderedNativeAudioDestinationNodes = new WeakMap();
+    const createAudioDestinationNode = async (proxy, nativeOfflineAudioContext) => {
         const nativeAudioDestinationNode = nativeOfflineAudioContext.destination;
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioDestinationNode, trace);
+        renderedNativeAudioDestinationNodes.set(nativeOfflineAudioContext, nativeAudioDestinationNode);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioDestinationNode);
         return nativeAudioDestinationNode;
     };
     return {
-        render(proxy, nativeOfflineAudioContext, trace) {
-            if (nativeAudioDestinationNodePromise === null) {
-                nativeAudioDestinationNodePromise = createAudioDestinationNode(proxy, nativeOfflineAudioContext, trace);
+        render(proxy, nativeOfflineAudioContext) {
+            const renderedNativeAudioDestinationNode = renderedNativeAudioDestinationNodes.get(nativeOfflineAudioContext);
+            if (renderedNativeAudioDestinationNode !== undefined) {
+                return Promise.resolve(renderedNativeAudioDestinationNode);
             }
-            return nativeAudioDestinationNodePromise;
+            return createAudioDestinationNode(proxy, nativeOfflineAudioContext);
         }
     };
 };
@@ -39806,7 +39808,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
     return (name, options, processorConstructor) => {
         const renderedNativeAudioNodes = new WeakMap();
         let processedBufferPromise = null;
-        const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAudioWorkletNode = getNativeAudioNode(proxy);
             let nativeOutputNodes = null;
             const nativeAudioWorkletNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_5__.isOwnedByContext)(nativeAudioWorkletNode, nativeOfflineAudioContext);
@@ -39885,7 +39887,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
                                 channelInterpretation: 'discrete',
                                 offset: audioParam.value
                             });
-                            await renderAutomation(partialOfflineAudioContext, audioParam, constantSourceNode.offset, trace);
+                            await renderAutomation(partialOfflineAudioContext, audioParam, constantSourceNode.offset);
                             return constantSourceNode;
                         }));
                         const inputChannelMergerNode = createNativeChannelMergerNode(partialOfflineAudioContext, {
@@ -39905,7 +39907,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
                             constantSourceNode.start(0);
                         }
                         inputChannelMergerNode.connect(partialOfflineAudioContext.destination);
-                        await Promise.all(gainNodes.map((gainNode) => renderInputsOfAudioNode(proxy, partialOfflineAudioContext, gainNode, trace)));
+                        await Promise.all(gainNodes.map((gainNode) => renderInputsOfAudioNode(proxy, partialOfflineAudioContext, gainNode)));
                         return renderNativeOfflineAudioContext(partialOfflineAudioContext);
                     };
                     processedBufferPromise = processBuffer(proxy, numberOfChannels === 0 ? null : await renderBuffer(), nativeOfflineAudioContext, options, outputChannelCount, processorConstructor, exposeCurrentFrameAndCurrentTime);
@@ -39940,27 +39942,27 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
                 for (const [nm, audioParam] of proxy.parameters.entries()) {
                     await renderAutomation(nativeOfflineAudioContext, audioParam, 
                     // @todo The definition that TypeScript uses of the AudioParamMap is lacking many methods.
-                    nativeAudioWorkletNode.parameters.get(nm), trace);
+                    nativeAudioWorkletNode.parameters.get(nm));
                 }
             }
             else {
                 for (const [nm, audioParam] of proxy.parameters.entries()) {
                     await connectAudioParam(nativeOfflineAudioContext, audioParam, 
                     // @todo The definition that TypeScript uses of the AudioParamMap is lacking many methods.
-                    nativeAudioWorkletNode.parameters.get(nm), trace);
+                    nativeAudioWorkletNode.parameters.get(nm));
                 }
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioWorkletNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioWorkletNode);
             return nativeAudioWorkletNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 deleteUnrenderedAudioWorkletNode(nativeOfflineAudioContext, proxy);
                 const renderedNativeAudioWorkletNodeOrGainNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAudioWorkletNodeOrGainNode !== undefined) {
                     return Promise.resolve(renderedNativeAudioWorkletNodeOrGainNode);
                 }
-                return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -40167,7 +40169,7 @@ __webpack_require__.r(__webpack_exports__);
 const createBiquadFilterNodeRendererFactory = (connectAudioParam, createNativeBiquadFilterNode, getNativeAudioNode, renderAutomation, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeBiquadFilterNodes = new WeakMap();
-        const createBiquadFilterNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createBiquadFilterNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeBiquadFilterNode = getNativeAudioNode(proxy);
             /*
              * If the initially used nativeBiquadFilterNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -40189,27 +40191,27 @@ const createBiquadFilterNodeRendererFactory = (connectAudioParam, createNativeBi
             }
             renderedNativeBiquadFilterNodes.set(nativeOfflineAudioContext, nativeBiquadFilterNode);
             if (!nativeBiquadFilterNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q);
+                await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune);
+                await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency);
+                await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeBiquadFilterNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeBiquadFilterNode);
             return nativeBiquadFilterNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeBiquadFilterNode = renderedNativeBiquadFilterNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeBiquadFilterNode !== undefined) {
                     return Promise.resolve(renderedNativeBiquadFilterNode);
                 }
-                return createBiquadFilterNode(proxy, nativeOfflineAudioContext, trace);
+                return createBiquadFilterNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -40312,7 +40314,7 @@ __webpack_require__.r(__webpack_exports__);
 const createChannelMergerNodeRendererFactory = (createNativeChannelMergerNode, getNativeAudioNode, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeAudioNodes = new WeakMap();
-        const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAudioNode = getNativeAudioNode(proxy);
             // If the initially used nativeAudioNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeAudioNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeAudioNode, nativeOfflineAudioContext);
@@ -40326,16 +40328,16 @@ const createChannelMergerNodeRendererFactory = (createNativeChannelMergerNode, g
                 nativeAudioNode = createNativeChannelMergerNode(nativeOfflineAudioContext, options);
             }
             renderedNativeAudioNodes.set(nativeOfflineAudioContext, nativeAudioNode);
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode);
             return nativeAudioNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAudioNode !== undefined) {
                     return Promise.resolve(renderedNativeAudioNode);
                 }
-                return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -40392,7 +40394,7 @@ __webpack_require__.r(__webpack_exports__);
 const createChannelSplitterNodeRendererFactory = (createNativeChannelSplitterNode, getNativeAudioNode, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeAudioNodes = new WeakMap();
-        const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAudioNode = getNativeAudioNode(proxy);
             // If the initially used nativeAudioNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeAudioNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeAudioNode, nativeOfflineAudioContext);
@@ -40406,16 +40408,16 @@ const createChannelSplitterNodeRendererFactory = (createNativeChannelSplitterNod
                 nativeAudioNode = createNativeChannelSplitterNode(nativeOfflineAudioContext, options);
             }
             renderedNativeAudioNodes.set(nativeOfflineAudioContext, nativeAudioNode);
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode);
             return nativeAudioNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAudioNode !== undefined) {
                     return Promise.resolve(renderedNativeAudioNode);
                 }
-                return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -40436,8 +40438,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createConnectAudioParam": () => (/* binding */ createConnectAudioParam)
 /* harmony export */ });
 const createConnectAudioParam = (renderInputsOfAudioParam) => {
-    return (nativeOfflineAudioContext, audioParam, nativeAudioParam, trace) => {
-        return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam, trace);
+    return (nativeOfflineAudioContext, audioParam, nativeAudioParam) => {
+        return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam);
     };
 };
 //# sourceMappingURL=connect-audio-param.js.map
@@ -40612,7 +40614,7 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
         const renderedNativeConstantSourceNodes = new WeakMap();
         let start = null;
         let stop = null;
-        const createConstantSourceNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createConstantSourceNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeConstantSourceNode = getNativeAudioNode(proxy);
             /*
              * If the initially used nativeConstantSourceNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -40636,12 +40638,12 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
             }
             renderedNativeConstantSourceNodes.set(nativeOfflineAudioContext, nativeConstantSourceNode);
             if (!nativeConstantSourceNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConstantSourceNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConstantSourceNode);
             return nativeConstantSourceNode;
         };
         return {
@@ -40651,12 +40653,12 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
             set stop(value) {
                 stop = value;
             },
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeConstantSourceNode = renderedNativeConstantSourceNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeConstantSourceNode !== undefined) {
                     return Promise.resolve(renderedNativeConstantSourceNode);
                 }
-                return createConstantSourceNode(proxy, nativeOfflineAudioContext, trace);
+                return createConstantSourceNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -40769,7 +40771,7 @@ __webpack_require__.r(__webpack_exports__);
 const createConvolverNodeRendererFactory = (createNativeConvolverNode, getNativeAudioNode, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeConvolverNodes = new WeakMap();
-        const createConvolverNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createConvolverNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeConvolverNode = getNativeAudioNode(proxy);
             // If the initially used nativeConvolverNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeConvolverNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_1__.isOwnedByContext)(nativeConvolverNode, nativeOfflineAudioContext);
@@ -40785,20 +40787,20 @@ const createConvolverNodeRendererFactory = (createNativeConvolverNode, getNative
             }
             renderedNativeConvolverNodes.set(nativeOfflineAudioContext, nativeConvolverNode);
             if ((0,_guards_native_audio_node_faker__WEBPACK_IMPORTED_MODULE_0__.isNativeAudioNodeFaker)(nativeConvolverNode)) {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode.inputs[0], trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode.inputs[0]);
             }
             else {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode, trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode);
             }
             return nativeConvolverNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeConvolverNode = renderedNativeConvolverNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeConvolverNode !== undefined) {
                     return Promise.resolve(renderedNativeConvolverNode);
                 }
-                return createConvolverNode(proxy, nativeOfflineAudioContext, trace);
+                return createConvolverNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -41049,7 +41051,7 @@ __webpack_require__.r(__webpack_exports__);
 const createDelayNodeRendererFactory = (connectAudioParam, createNativeDelayNode, getNativeAudioNode, renderAutomation, renderInputsOfAudioNode) => {
     return (maxDelayTime) => {
         const renderedNativeDelayNodes = new WeakMap();
-        const createDelayNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createDelayNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeDelayNode = getNativeAudioNode(proxy);
             // If the initially used nativeDelayNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeDelayNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeDelayNode, nativeOfflineAudioContext);
@@ -41065,21 +41067,21 @@ const createDelayNodeRendererFactory = (connectAudioParam, createNativeDelayNode
             }
             renderedNativeDelayNodes.set(nativeOfflineAudioContext, nativeDelayNode);
             if (!nativeDelayNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDelayNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDelayNode);
             return nativeDelayNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeDelayNode = renderedNativeDelayNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeDelayNode !== undefined) {
                     return Promise.resolve(renderedNativeDelayNode);
                 }
-                return createDelayNode(proxy, nativeOfflineAudioContext, trace);
+                return createDelayNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -41321,7 +41323,7 @@ __webpack_require__.r(__webpack_exports__);
 const createDynamicsCompressorNodeRendererFactory = (connectAudioParam, createNativeDynamicsCompressorNode, getNativeAudioNode, renderAutomation, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeDynamicsCompressorNodes = new WeakMap();
-        const createDynamicsCompressorNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createDynamicsCompressorNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeDynamicsCompressorNode = getNativeAudioNode(proxy);
             /*
              * If the initially used nativeDynamicsCompressorNode was not constructed on the same OfflineAudioContext it needs to be
@@ -41343,29 +41345,29 @@ const createDynamicsCompressorNodeRendererFactory = (connectAudioParam, createNa
             }
             renderedNativeDynamicsCompressorNodes.set(nativeOfflineAudioContext, nativeDynamicsCompressorNode);
             if (!nativeDynamicsCompressorNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack);
+                await renderAutomation(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee);
+                await renderAutomation(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio);
+                await renderAutomation(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release);
+                await renderAutomation(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDynamicsCompressorNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDynamicsCompressorNode);
             return nativeDynamicsCompressorNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeDynamicsCompressorNode = renderedNativeDynamicsCompressorNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeDynamicsCompressorNode !== undefined) {
                     return Promise.resolve(renderedNativeDynamicsCompressorNode);
                 }
-                return createDynamicsCompressorNode(proxy, nativeOfflineAudioContext, trace);
+                return createDynamicsCompressorNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -41622,7 +41624,7 @@ __webpack_require__.r(__webpack_exports__);
 const createGainNodeRendererFactory = (connectAudioParam, createNativeGainNode, getNativeAudioNode, renderAutomation, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeGainNodes = new WeakMap();
-        const createGainNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createGainNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeGainNode = getNativeAudioNode(proxy);
             // If the initially used nativeGainNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeGainNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeGainNode, nativeOfflineAudioContext);
@@ -41637,21 +41639,21 @@ const createGainNodeRendererFactory = (connectAudioParam, createNativeGainNode, 
             }
             renderedNativeGainNodes.set(nativeOfflineAudioContext, nativeGainNode);
             if (!nativeGainNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeGainNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeGainNode);
             return nativeGainNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeGainNode = renderedNativeGainNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeGainNode !== undefined) {
                     return Promise.resolve(renderedNativeGainNode);
                 }
-                return createGainNode(proxy, nativeOfflineAudioContext, trace);
+                return createGainNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -41934,7 +41936,7 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
     return (feedback, feedforward) => {
         const renderedNativeAudioNodes = new WeakMap();
         let filteredBufferPromise = null;
-        const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeAudioBufferSourceNode = null;
             let nativeIIRFilterNode = getNativeAudioNode(proxy);
             // If the initially used nativeIIRFilterNode was not constructed on the same OfflineAudioContext it needs to be created again.
@@ -41968,7 +41970,7 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
                     // Bug #17: Safari does not yet expose the length.
                     proxy.context.length, nativeOfflineAudioContext.sampleRate);
                     filteredBufferPromise = (async () => {
-                        await renderInputsOfAudioNode(proxy, partialOfflineAudioContext, partialOfflineAudioContext.destination, trace);
+                        await renderInputsOfAudioNode(proxy, partialOfflineAudioContext, partialOfflineAudioContext.destination);
                         const renderedBuffer = await renderNativeOfflineAudioContext(partialOfflineAudioContext);
                         return filterFullBuffer(renderedBuffer, nativeOfflineAudioContext, feedback, feedforward);
                     })();
@@ -41978,16 +41980,16 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
                 nativeAudioBufferSourceNode.start(0);
                 return nativeAudioBufferSourceNode;
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeIIRFilterNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeIIRFilterNode);
             return nativeIIRFilterNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeAudioNode !== undefined) {
                     return Promise.resolve(renderedNativeAudioNode);
                 }
-                return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -45597,7 +45599,7 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
         let periodicWave = null;
         let start = null;
         let stop = null;
-        const createOscillatorNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createOscillatorNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeOscillatorNode = getNativeAudioNode(proxy);
             // If the initially used nativeOscillatorNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeOscillatorNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_0__.isOwnedByContext)(nativeOscillatorNode, nativeOfflineAudioContext);
@@ -45621,14 +45623,14 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
             }
             renderedNativeOscillatorNodes.set(nativeOfflineAudioContext, nativeOscillatorNode);
             if (!nativeOscillatorNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune);
+                await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency);
             }
-            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeOscillatorNode, trace);
+            await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeOscillatorNode);
             return nativeOscillatorNode;
         };
         return {
@@ -45641,12 +45643,12 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
             set stop(value) {
                 stop = value;
             },
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeOscillatorNode = renderedNativeOscillatorNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeOscillatorNode !== undefined) {
                     return Promise.resolve(renderedNativeOscillatorNode);
                 }
-                return createOscillatorNode(proxy, nativeOfflineAudioContext, trace);
+                return createOscillatorNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -45798,7 +45800,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
     return () => {
         const renderedNativeAudioNodes = new WeakMap();
         let renderedBufferPromise = null;
-        const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeGainNode = null;
             let nativePannerNode = getNativeAudioNode(proxy);
             const commonAudioNodeOptions = {
@@ -45866,7 +45868,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
                                 channelInterpretation: 'discrete',
                                 offset: index === 0 ? 1 : 0
                             });
-                            await renderAutomation(partialOfflineAudioContext, audioParam, nativeConstantSourceNode.offset, trace);
+                            await renderAutomation(partialOfflineAudioContext, audioParam, nativeConstantSourceNode.offset);
                             return nativeConstantSourceNode;
                         }));
                         for (let i = 0; i < 6; i += 1) {
@@ -45878,7 +45880,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
                 }
                 const renderedBuffer = await renderedBufferPromise;
                 const inputGainNode = createNativeGainNode(nativeOfflineAudioContext, { ...commonAudioNodeOptions, gain: 1 });
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, inputGainNode, trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, inputGainNode);
                 const channelDatas = [];
                 for (let i = 0; i < renderedBuffer.numberOfChannels; i += 1) {
                     channelDatas.push(renderedBuffer.getChannelData(i));
@@ -45924,36 +45926,36 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
                 return nativeGainNode;
             }
             if (!nativePannerNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY, trace);
-                await renderAutomation(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX);
+                await renderAutomation(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY);
+                await renderAutomation(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ);
+                await renderAutomation(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX);
+                await renderAutomation(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY);
+                await renderAutomation(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY, trace);
-                await connectAudioParam(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ);
             }
             if ((0,_guards_native_audio_node_faker__WEBPACK_IMPORTED_MODULE_0__.isNativeAudioNodeFaker)(nativePannerNode)) {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode.inputs[0], trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode.inputs[0]);
             }
             else {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode, trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode);
             }
             return nativePannerNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeGainNodeOrNativePannerNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeGainNodeOrNativePannerNode !== undefined) {
                     return Promise.resolve(renderedNativeGainNodeOrNativePannerNode);
                 }
-                return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+                return createAudioNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -46008,10 +46010,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createRenderAutomation": () => (/* binding */ createRenderAutomation)
 /* harmony export */ });
 const createRenderAutomation = (getAudioParamRenderer, renderInputsOfAudioParam) => {
-    return (nativeOfflineAudioContext, audioParam, nativeAudioParam, trace) => {
+    return (nativeOfflineAudioContext, audioParam, nativeAudioParam) => {
         const audioParamRenderer = getAudioParamRenderer(audioParam);
         audioParamRenderer.replay(nativeAudioParam);
-        return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam, trace);
+        return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam);
     };
 };
 //# sourceMappingURL=render-automation.js.map
@@ -46030,15 +46032,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createRenderInputsOfAudioNode": () => (/* binding */ createRenderInputsOfAudioNode)
 /* harmony export */ });
 const createRenderInputsOfAudioNode = (getAudioNodeConnections, getAudioNodeRenderer, isPartOfACycle) => {
-    return async (audioNode, nativeOfflineAudioContext, nativeAudioNode, trace) => {
+    return async (audioNode, nativeOfflineAudioContext, nativeAudioNode) => {
         const audioNodeConnections = getAudioNodeConnections(audioNode);
-        const nextTrace = [...trace, audioNode];
         await Promise.all(audioNodeConnections.activeInputs
-            .map((connections, input) => Array.from(connections)
-            .filter(([source]) => !nextTrace.includes(source))
-            .map(async ([source, output]) => {
+            .map((connections, input) => Array.from(connections).map(async ([source, output]) => {
             const audioNodeRenderer = getAudioNodeRenderer(source);
-            const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext, nextTrace);
+            const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext);
             const destination = audioNode.context.destination;
             if (!isPartOfACycle(source) && (audioNode !== destination || !isPartOfACycle(audioNode))) {
                 renderedNativeAudioNode.connect(nativeAudioNode, output, input);
@@ -46063,11 +46062,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createRenderInputsOfAudioParam": () => (/* binding */ createRenderInputsOfAudioParam)
 /* harmony export */ });
 const createRenderInputsOfAudioParam = (getAudioNodeRenderer, getAudioParamConnections, isPartOfACycle) => {
-    return async (audioParam, nativeOfflineAudioContext, nativeAudioParam, trace) => {
+    return async (audioParam, nativeOfflineAudioContext, nativeAudioParam) => {
         const audioParamConnections = getAudioParamConnections(audioParam);
         await Promise.all(Array.from(audioParamConnections.activeInputs).map(async ([source, output]) => {
             const audioNodeRenderer = getAudioNodeRenderer(source);
-            const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext, trace);
+            const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext);
             if (!isPartOfACycle(source)) {
                 renderedNativeAudioNode.connect(nativeAudioParam, output);
             }
@@ -46182,14 +46181,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_wrap_audio_buffer_get_channel_data_method__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/wrap-audio-buffer-get-channel-data-method */ "./node_modules/standardized-audio-context/build/es2019/helpers/wrap-audio-buffer-get-channel-data-method.js");
 
 const createStartRendering = (audioBufferStore, cacheTestResult, getAudioNodeRenderer, getUnrenderedAudioWorkletNodes, renderNativeOfflineAudioContext, testAudioBufferCopyChannelMethodsOutOfBoundsSupport, wrapAudioBufferCopyChannelMethods, wrapAudioBufferCopyChannelMethodsOutOfBounds) => {
-    const trace = [];
     return (destination, nativeOfflineAudioContext) => getAudioNodeRenderer(destination)
-        .render(destination, nativeOfflineAudioContext, trace)
+        .render(destination, nativeOfflineAudioContext)
         /*
          * Bug #86 & #87: Invoking the renderer of an AudioWorkletNode might be necessary if it has no direct or indirect connection to the
          * destination.
          */
-        .then(() => Promise.all(Array.from(getUnrenderedAudioWorkletNodes(nativeOfflineAudioContext)).map((audioWorkletNode) => getAudioNodeRenderer(audioWorkletNode).render(audioWorkletNode, nativeOfflineAudioContext, trace))))
+        .then(() => Promise.all(Array.from(getUnrenderedAudioWorkletNodes(nativeOfflineAudioContext)).map((audioWorkletNode) => getAudioNodeRenderer(audioWorkletNode).render(audioWorkletNode, nativeOfflineAudioContext))))
         .then(() => renderNativeOfflineAudioContext(nativeOfflineAudioContext))
         .then((audioBuffer) => {
         // Bug #5: Safari does not support copyFromChannel() and copyToChannel().
@@ -46269,7 +46267,7 @@ __webpack_require__.r(__webpack_exports__);
 const createStereoPannerNodeRendererFactory = (connectAudioParam, createNativeStereoPannerNode, getNativeAudioNode, renderAutomation, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeStereoPannerNodes = new WeakMap();
-        const createStereoPannerNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createStereoPannerNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeStereoPannerNode = getNativeAudioNode(proxy);
             /*
              * If the initially used nativeStereoPannerNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -46287,26 +46285,26 @@ const createStereoPannerNodeRendererFactory = (connectAudioParam, createNativeSt
             }
             renderedNativeStereoPannerNodes.set(nativeOfflineAudioContext, nativeStereoPannerNode);
             if (!nativeStereoPannerNodeIsOwnedByContext) {
-                await renderAutomation(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan, trace);
+                await renderAutomation(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan);
             }
             else {
-                await connectAudioParam(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan, trace);
+                await connectAudioParam(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan);
             }
             if ((0,_guards_native_audio_node_faker__WEBPACK_IMPORTED_MODULE_0__.isNativeAudioNodeFaker)(nativeStereoPannerNode)) {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode.inputs[0], trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode.inputs[0]);
             }
             else {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode, trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode);
             }
             return nativeStereoPannerNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeStereoPannerNode = renderedNativeStereoPannerNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeStereoPannerNode !== undefined) {
                     return Promise.resolve(renderedNativeStereoPannerNode);
                 }
-                return createStereoPannerNode(proxy, nativeOfflineAudioContext, trace);
+                return createStereoPannerNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
@@ -47026,7 +47024,7 @@ __webpack_require__.r(__webpack_exports__);
 const createWaveShaperNodeRendererFactory = (createNativeWaveShaperNode, getNativeAudioNode, renderInputsOfAudioNode) => {
     return () => {
         const renderedNativeWaveShaperNodes = new WeakMap();
-        const createWaveShaperNode = async (proxy, nativeOfflineAudioContext, trace) => {
+        const createWaveShaperNode = async (proxy, nativeOfflineAudioContext) => {
             let nativeWaveShaperNode = getNativeAudioNode(proxy);
             // If the initially used nativeWaveShaperNode was not constructed on the same OfflineAudioContext it needs to be created again.
             const nativeWaveShaperNodeIsOwnedByContext = (0,_helpers_is_owned_by_context__WEBPACK_IMPORTED_MODULE_1__.isOwnedByContext)(nativeWaveShaperNode, nativeOfflineAudioContext);
@@ -47042,20 +47040,20 @@ const createWaveShaperNodeRendererFactory = (createNativeWaveShaperNode, getNati
             }
             renderedNativeWaveShaperNodes.set(nativeOfflineAudioContext, nativeWaveShaperNode);
             if ((0,_guards_native_audio_node_faker__WEBPACK_IMPORTED_MODULE_0__.isNativeAudioNodeFaker)(nativeWaveShaperNode)) {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode.inputs[0], trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode.inputs[0]);
             }
             else {
-                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode, trace);
+                await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode);
             }
             return nativeWaveShaperNode;
         };
         return {
-            render(proxy, nativeOfflineAudioContext, trace) {
+            render(proxy, nativeOfflineAudioContext) {
                 const renderedNativeWaveShaperNode = renderedNativeWaveShaperNodes.get(nativeOfflineAudioContext);
                 if (renderedNativeWaveShaperNode !== undefined) {
                     return Promise.resolve(renderedNativeWaveShaperNode);
                 }
-                return createWaveShaperNode(proxy, nativeOfflineAudioContext, trace);
+                return createWaveShaperNode(proxy, nativeOfflineAudioContext);
             }
         };
     };
