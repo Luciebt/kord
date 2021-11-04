@@ -5,7 +5,7 @@ button {
   color: var(--dominant-dark);
   border-radius: 3% !important;
   border-color: lightgrey;
-  min-width: 2.2em;
+  min-width: 3em !important;
   font-size: 1.2em;
   padding: 0.2em;
   margin: 0.2em;
@@ -16,6 +16,10 @@ button {
 button:hover {
   border-radius: 3% !important;
   border: 2px solid var(--dominant-dark);
+}
+
+.btn-caption {
+  font-size: 0.6em;
 }
 
 /* Key, Mod, Mood and Progression main buttons */

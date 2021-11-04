@@ -33,6 +33,8 @@ const ProgressionDisplayComponent = ({
   };
 
   const progressionsList: JSX.Element[] = chordsArr.map((chords, i) => (
+
+
     <button
       key={i}
       onClick={(e) => {
@@ -57,7 +59,7 @@ const ProgressionDisplayComponent = ({
       </div>
       {/* Chords buttons: */}
       {chordsList && chordsState ? (
-        <ChordDisplay chord={chordSelected} />
+        <ChordDisplay tonic={tonic} chord={chordSelected} />
       ) : null}
     </div>
   );

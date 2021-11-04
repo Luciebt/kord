@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { PlayChord } from "../../Chords";
-import { useKeyPress } from "../hooks/keyPressHook";
+import { useKeyPress } from "../hooks/KeyPressHook";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import "./Progressions.css";
 import { SetupSynth } from "../../audio/Synth";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { Progression } from "@tonaljs/tonal";
 
 export interface IChordDisplayProps {
-  key?: number;
+  tonic: string;
   chord: string;
 }
 
 const ChordDisplayComponent = ({
-  key,
+  tonic,
   chord,
 }: IChordDisplayProps): JSX.Element => {
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
   let chordArr: string[] = chord.split(",");
+
+  const romanNumerals = Progression.toRomanNumerals(tonic.toString(), chordArr);
 
   const handleClick = (chord: string, event?: any) => {
     PlayChord(chord);
@@ -87,6 +90,7 @@ const ChordDisplayComponent = ({
       className="chord-btn"
     >
       {c}
+      <p className="btn-caption">({romanNumerals[i]})</p>
     </button>
   ));
 
