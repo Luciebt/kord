@@ -35,6 +35,7 @@ export function disposeSynth() {
 
 export function PlaySynthChords(chordNotes: string[]): void {
   if (polySynth) {
+    polySynth.releaseAll();
     polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
     Tone.start();
   }
