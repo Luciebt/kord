@@ -7,6 +7,7 @@ import LoopButton from "../buttons/LoopButton";
 import "./Progressions.css";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { Progression } from "@tonaljs/tonal";
+import { SoundOnContext } from "../../App";
 
 export interface IChordDisplayProps {
   tonic: string;
@@ -17,6 +18,7 @@ const ChordDisplayComponent = ({
   tonic,
   chord,
 }: IChordDisplayProps): JSX.Element => {
+  const SoundOn = React.useContext(SoundOnContext);
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
   let chordArr: string[] = chord.split(",");
@@ -24,7 +26,9 @@ const ChordDisplayComponent = ({
   const romanNumerals = Progression.toRomanNumerals(tonic.toString(), chordArr);
 
   const handleClick = (chord: string, event?: any) => {
-    PlayChord(chord);
+    if (SoundOn) {
+      PlayChord(chord);
+    }
     setChordState(true);
     setChordSelected(chord);
 

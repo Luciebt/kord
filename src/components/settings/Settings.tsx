@@ -6,29 +6,35 @@ import "./Settings.css";
 
 interface ISettings {
   onSettings?: any;
+  onSoundOn: (sound: boolean) => void;
 }
 
 // TODO: handle click outside.
 
-const Settings = ({ onSettings }: ISettings): JSX.Element => {
+const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   // Whether the audio is on or off
-  const [audioPref, setAudioPref] = useToggle(true);
+  const [audioPref, setAudioPref] = useState(false);
   const [audioSound, setAudioSound] = useState([""]);
+
+  const handleClick = (event: any) => {
+    setAudioPref(!audioPref);
+    onSoundOn(audioPref);
+
+  }
 
   const [toggleShortcutsPanel, setToggleShortcutsPanel] = useToggle(false);
   const [toggleSoundsSettingsPanel, setToggleSoundsSettingsPanel] =
     useToggle(false);
 
-  const audioDropRef = useRef(null);
-  const soundDropRef = useRef(null);
-  const [isActive, setIsActive] = useState(false);
-  const handleClick = () => setIsActive(!isActive);
+  // const audioDropRef = useRef(null);
+  // const soundDropRef = useRef(null);
+  // const [isActive, setIsActive] = useState(false);
 
   return (
     <div>
       <div id="settings-box">
-        <button id="audio-btn" onClick={() => setAudioPref()}>
-          {audioPref ? "Audio on" : "Audio off"}
+        <button id="audio-btn" onClick={(e) => handleClick(e)}>
+          {audioPref ? "Audio OFF" : "Audio ON"}
         </button>
 
         <button

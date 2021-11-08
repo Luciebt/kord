@@ -8,14 +8,10 @@ import ProgressionDisplayComponent from "./progressions/ProgressionDisplay";
 import ChordsScaleDisplayComponent from "./scales/ScaleDisplay";
 import "../components/progressions/Progressions.css";
 
-export interface IProgressionComponent {
-  tonic?: string;
-  mode?: string;
-  mood?: string;
-  chordsList?: string;
+interface IProgressionComponent {
 }
 
-const ProgressionComponent = ({}: IProgressionComponent): JSX.Element => {
+const ProgressionComponent = (): JSX.Element => {
   const [tonic, setTonic] = useState("");
   const [mode, setMode] = useState("");
   const [mood, setMood] = useState("");
@@ -65,7 +61,5 @@ const ProgressionComponent = ({}: IProgressionComponent): JSX.Element => {
     </div>
   );
 };
-
-// const ProgressionComponent: React.FC<IProgressionComponent> = ({}) =>
 
 export default ProgressionComponent;

@@ -4,6 +4,7 @@ import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
 import "./Scales.css";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { SoundOnContext } from "../../App";
 
 export interface IChordsScaleDisplayComponent {
   tonic: string;
@@ -16,13 +17,16 @@ const ChordsScaleDisplayComponent = ({
   mode,
   chordsScale,
 }: IChordsScaleDisplayComponent): JSX.Element => {
+  const SoundOn = React.useContext(SoundOnContext);
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
   const style: string = "scale-chord-btn-pressed";
 
   const handleClick = (chord: string, event?: any) => {
-    PlayChord(chord);
+    if (SoundOn) {
+      PlayChord(chord);
+    }
     setChordState(true);
     setChordSelected(chord);
 

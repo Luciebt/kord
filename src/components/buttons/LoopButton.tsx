@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PlayLoop } from "../../audio/Synth";
 import { Transport } from "tone";
 import "./Buttons.css";
+import { SoundOnContext } from "../../App";
 
 interface ILoopButton {
   onPressLoop?: any;
@@ -9,23 +10,27 @@ interface ILoopButton {
 }
 
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
+  const SoundOn = React.useContext(SoundOnContext);
   const [loopState, setLoopState] = useState(false);
 
   const handleClick = (event: any) => {
-    if (Transport.state !== "started") {
-      setLoopState(!loopState);
-      PlayLoop(chordsList);
-      Transport.start();
-    } else {
-      setLoopState(!loopState);
-      Transport.cancel();
-      Transport.stop();
+    if (SoundOn) {
+      if (Transport.state !== "started") {
+        setLoopState(!loopState);
+        PlayLoop(chordsList);
+        Transport.start();
+      } else {
+        setLoopState(!loopState);
+        Transport.cancel();
+        Transport.stop();
+      }
     }
   };
 
   // Restore the initial state of the loop button and stop transport when clicking on another progression button.
   useEffect(() => {
     return () => {
+      // TODO: maybe use synth.releaseAll instead of Transport.cancel()?
       Transport.cancel();
       // Transport.stop();
       const btn = document.getElementById("loop");
@@ -44,7 +49,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         onClick={(e) => {
           handleClick(e);
         }}
-        className={loopState ? "loop-btn-pressed" : "loop-btn"}
+        className={SoundOn ? loopState ? "loop-btn-pressed" : "loop-btn" : "loop-btn-disabled"}
       >
         {loopState ? "■" : "▶"}
       </button>

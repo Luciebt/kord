@@ -33,8 +33,6 @@ const ProgressionDisplayComponent = ({
   };
 
   const progressionsList: JSX.Element[] = chordsArr.map((chords, i) => (
-
-
     <button
       key={i}
       onClick={(e) => {
