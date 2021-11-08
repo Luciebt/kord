@@ -5311,6 +5311,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".scale-box {\r\n  background-color: #b
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/settings/Settings.css":
+/*!************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/settings/Settings.css ***!
+  \************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#sound-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#sound-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.sound-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n/* .panel-btn {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n\r\n/* .panel-btn:hover {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA,sCAAsC;AACtC;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;;;EAGE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;;;EAGE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;;EAGE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;;;;GAIG;;AAEH;;;;GAIG","sourcesContent":["/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#sound-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#sound-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.sound-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n/* .panel-btn {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n\r\n/* .panel-btn:hover {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -57770,6 +57797,61 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/components/settings/Settings.css":
+/*!**********************************************!*\
+  !*** ./src/components/settings/Settings.css ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Settings_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Settings.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/settings/Settings.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Settings_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Settings_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Settings_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Settings_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -82824,19 +82906,48 @@ const version = "14.7.77";
 "use strict";
 /* module decorator */ module = __webpack_require__.nmd(module);
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SoundOnContext = void 0;
 const react_hot_loader_1 = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js");
-const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const ProgressionComponent_1 = __importDefault(__webpack_require__(/*! ./components/ProgressionComponent */ "./src/components/ProgressionComponent.tsx"));
+const Settings_1 = __importDefault(__webpack_require__(/*! ./components/settings/Settings */ "./src/components/settings/Settings.tsx"));
 __webpack_require__(/*! ./App.css */ "./src/App.css");
+exports.SoundOnContext = react_1.default.createContext(true);
 // TODO: use React.Context to set the preferences like sound on/off and instrument type?
 const App = () => {
+    const [soundOn, setSoundOn] = (0, react_1.useState)(true);
+    const SoundCallback = (sound) => {
+        setSoundOn(sound);
+        console.log("Sound is now " + sound);
+    };
     return (react_1.default.createElement("main", { className: "App" },
         react_1.default.createElement("h1", null, "Kord"),
-        react_1.default.createElement(ProgressionComponent_1.default, null)));
+        react_1.default.createElement(Settings_1.default, { onSoundOn: SoundCallback }),
+        react_1.default.createElement(exports.SoundOnContext.Provider, { value: soundOn },
+            react_1.default.createElement(ProgressionComponent_1.default, null))));
 };
 exports["default"] = (0, react_hot_loader_1.hot)(module)(App);
 
@@ -83409,6 +83520,7 @@ function disposeSynth() {
 exports.disposeSynth = disposeSynth;
 function PlaySynthChords(chordNotes) {
     if (polySynth) {
+        polySynth.releaseAll();
         polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
         Tone.start();
     }
@@ -83494,7 +83606,7 @@ const MoodButton_1 = __importDefault(__webpack_require__(/*! ./buttons/MoodButto
 const ProgressionDisplay_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionDisplay */ "./src/components/progressions/ProgressionDisplay.tsx"));
 const ScaleDisplay_1 = __importDefault(__webpack_require__(/*! ./scales/ScaleDisplay */ "./src/components/scales/ScaleDisplay.tsx"));
 __webpack_require__(/*! ../components/progressions/Progressions.css */ "./src/components/progressions/Progressions.css");
-const ProgressionComponent = ({}) => {
+const ProgressionComponent = () => {
     const [tonic, setTonic] = (0, react_1.useState)("");
     const [mode, setMode] = (0, react_1.useState)("");
     const [mood, setMood] = (0, react_1.useState)("");
@@ -83528,7 +83640,6 @@ const ProgressionComponent = ({}) => {
         react_1.default.createElement(ScaleDisplay_1.default, { tonic: tonic, mode: mode, chordsScale: chordsScale }),
         react_1.default.createElement("br", null)));
 };
-// const ProgressionComponent: React.FC<IProgressionComponent> = ({}) =>
 exports["default"] = ProgressionComponent;
 
 
@@ -83612,11 +83723,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
-const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const LoopButton = ({ onPressLoop, chordsList }) => {
-    const [loopState, setLoopState] = (0, useToggle_1.useToggle)(false);
+    const [loopState, setLoopState] = (0, react_1.useState)(false);
     const handleClick = (event) => {
         if (tone_1.Transport.state !== "started") {
             setLoopState(!loopState);
@@ -83921,13 +84031,17 @@ const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButt
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
+const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const ChordDisplayComponent = ({ tonic, chord, }) => {
+    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     let chordArr = chord.split(",");
     const romanNumerals = tonal_1.Progression.toRomanNumerals(tonic.toString(), chordArr);
     const handleClick = (chord, event) => {
-        (0, Chords_1.PlayChord)(chord);
+        if (SoundOn) {
+            (0, Chords_1.PlayChord)(chord);
+        }
         setChordState(true);
         setChordSelected(chord);
         const style = "chord-btn-pressed";
@@ -84177,12 +84291,16 @@ const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePianoDisplay */ "./src/components/scales/ScalePianoDisplay.tsx"));
 __webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
+    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     const style = "scale-chord-btn-pressed";
     const handleClick = (chord, event) => {
-        (0, Chords_1.PlayChord)(chord);
+        if (SoundOn) {
+            (0, Chords_1.PlayChord)(chord);
+        }
         setChordState(true);
         setChordSelected(chord);
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
@@ -84291,6 +84409,92 @@ const ScalePianoDisplayComponent = ({ chord, }) => {
             react_1.default.createElement("li", { id: "s-B4", className: "white offset" }, "B"))));
 };
 exports["default"] = ScalePianoDisplayComponent;
+
+
+/***/ }),
+
+/***/ "./src/components/settings/Settings.tsx":
+/*!**********************************************!*\
+  !*** ./src/components/settings/Settings.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
+const ShortcutsSettingsPanel_1 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
+const ShortcutsSettingsPanel_2 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
+__webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
+// TODO: handle click outside.
+const Settings = ({ onSettings, onSoundOn }) => {
+    // Whether the audio is on or off
+    const [audioPref, setAudioPref] = (0, react_1.useState)(false);
+    const [audioSound, setAudioSound] = (0, react_1.useState)([""]);
+    const handleClick = (event) => {
+        setAudioPref(!audioPref);
+        onSoundOn(audioPref);
+    };
+    const [toggleShortcutsPanel, setToggleShortcutsPanel] = (0, useToggle_1.useToggle)(false);
+    const [toggleSoundsSettingsPanel, setToggleSoundsSettingsPanel] = (0, useToggle_1.useToggle)(false);
+    // const audioDropRef = useRef(null);
+    // const soundDropRef = useRef(null);
+    // const [isActive, setIsActive] = useState(false);
+    return (react_1.default.createElement("div", null,
+        react_1.default.createElement("div", { id: "settings-box" },
+            react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF" : "Audio ON"),
+            react_1.default.createElement("button", { id: "sound-btn", className: toggleSoundsSettingsPanel ? "sound-selected-btn" : "", onClick: () => setToggleSoundsSettingsPanel() }, "Sound"),
+            react_1.default.createElement("button", { id: "shortcuts-btn", className: toggleShortcutsPanel ? "shortcuts-selected-btn" : "", onClick: () => setToggleShortcutsPanel() }, "Shortcuts")),
+        toggleShortcutsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_1.default, null) : "",
+        toggleSoundsSettingsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_2.default, null) : ""));
+};
+exports["default"] = Settings;
+
+
+/***/ }),
+
+/***/ "./src/components/settings/ShortcutsSettingsPanel.tsx":
+/*!************************************************************!*\
+  !*** ./src/components/settings/ShortcutsSettingsPanel.tsx ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+__webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
+// TODO: Handle click outside.
+const ShortcutsPanel = ({}) => {
+    return react_1.default.createElement("div", { className: "settings-panel" }, "Coming soon...");
+};
+exports["default"] = ShortcutsPanel;
 
 
 /***/ }),
