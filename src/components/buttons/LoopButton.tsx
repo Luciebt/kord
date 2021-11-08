@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PlayLoop } from "../../audio/Synth";
-import { useToggle } from "../hooks/useToggle";
 import { Transport } from "tone";
 import "./Buttons.css";
 
@@ -10,7 +9,7 @@ interface ILoopButton {
 }
 
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
-  const [loopState, setLoopState] = useToggle(false);
+  const [loopState, setLoopState] = useState(false);
 
   const handleClick = (event: any) => {
     if (Transport.state !== "started") {
