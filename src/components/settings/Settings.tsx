@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useToggle } from "../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
-import SoundsSettingsPanel from "./ShortcutsSettingsPanel";
+import { setSynthSound } from "../../audio/Synth";
 import "./Settings.css";
 
 interface ISettings {
@@ -14,21 +14,19 @@ interface ISettings {
 const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   // Whether the audio is on or off
   const [audioPref, setAudioPref] = useState(false);
-  const [audioSound, setAudioSound] = useState([""]);
 
   const handleClick = (event: any) => {
     setAudioPref(!audioPref);
     onSoundOn(audioPref);
-
   }
 
   const [toggleShortcutsPanel, setToggleShortcutsPanel] = useToggle(false);
-  const [toggleSoundsSettingsPanel, setToggleSoundsSettingsPanel] =
-    useToggle(false);
 
-  // const audioDropRef = useRef(null);
-  // const soundDropRef = useRef(null);
-  // const [isActive, setIsActive] = useState(false);
+  const ChooseSynth = (event: any): void => {
+    event.preventDefault();
+    setSynthSound(event.target.value);
+    console.log(event.target.value);
+  }
 
   return (
     <div>
@@ -37,13 +35,12 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
           {audioPref ? "Audio OFF" : "Audio ON"}
         </button>
 
-        <button
-          id="sound-btn"
-          className={toggleSoundsSettingsPanel ? "sound-selected-btn" : ""}
-          onClick={() => setToggleSoundsSettingsPanel()}
-        >
-          Sound
-        </button>
+        <select name="synthPartials" onChange={(e) => ChooseSynth(e)} className="sound-select">
+          <option value="cuteSine">Cute Sine</option>
+          <option value="imperatrice">Madame l'Imperatrice</option>
+          <option value="inDaChurch">In Da Church</option>
+        </select>
+
         <button
           id="shortcuts-btn"
           className={toggleShortcutsPanel ? "shortcuts-selected-btn" : ""}
@@ -53,7 +50,6 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         </button>
       </div>
       {toggleShortcutsPanel ? <ShortcutsPanel /> : ""}
-      {toggleSoundsSettingsPanel ? <SoundsSettingsPanel /> : ""}
     </div>
   );
 };

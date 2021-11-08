@@ -24,7 +24,6 @@
 }
 
 #audio-btn,
-#sound-btn,
 #shortcuts-btn {
   border: none;
   box-shadow: none;
@@ -33,27 +32,37 @@
 }
 
 #audio-btn:hover,
-#sound-btn:hover,
 #shortcuts-btn:hover {
   color: white;
   background-color: var(--dominant-dark);
 }
 
 .audio-selected-btn,
-.sound-selected-btn,
 .shortcuts-selected-btn {
   color: white !important;
   background-color: var(--dominant-dark) !important;
 }
 
-/* .panel-btn {
-    background-color: transparent;
-    cursor: pointer;
-    border: 2px solid var(--dominant-dark);
-} */
+.sound-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.4em;
+  width: 242px;
+  height: auto;
+  background-color: lightgrey;
+  text-align: center;
+}
 
-/* .panel-btn:hover {
-    background-color: transparent;
-    cursor: pointer;
-    border: 2px solid var(--dominant-dark);
-} */
+.sound-select option {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.sound-select option:hover {
+  color: white !important;
+  background-color: var(--dominant-dark) !important;
+}

@@ -2,30 +2,56 @@ import { Synth, PolySynth, Transport, ToneEvent } from "tone";
 import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
 
+const synthSounds = {
+  cuteSinePartials: [7, 6, 0.2],
+  imperatricePartials: [0, 2, 3, 4],
+  churchPartials: [2, 2, 2, 2, 2, 3],
+}
+
 let polySynth: PolySynth = new PolySynth(Synth, {
-  volume: -8,
+  volume: -9,
   detune: 0,
   portamento: 0,
   envelope: {
     attack: 0.005,
     attackCurve: "linear",
-    decay: 0.1,
+    decay: 0.2,
     decayCurve: "exponential",
     release: 1,
     releaseCurve: "exponential",
     sustain: 0.3,
   },
   oscillator: {
-    partialCount: 0,
+    partials: synthSounds.cuteSinePartials,
     phase: 0,
-    type: "sine",
+    type: "custom",
   },
+
 }).toDestination();
+
+export function setSynthSound(synthSound: string): void {
+  let newSound;
+
+  switch (synthSound) {
+    case "cuteSine":
+      newSound = synthSounds.cuteSinePartials;
+    case "imperatrice":
+      newSound = synthSounds.imperatricePartials;
+    case "inDaChurch":
+      newSound = synthSounds.churchPartials;
+  }
+
+  polySynth.set({
+    oscillator: {
+      partials: newSound,
+    }
+  }).toDestination();
+}
+
 
 let chordEvent: ToneEvent;
 
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
-// TODO: add a compressor at the end of the chain to avoid distorsion? 
 
 export function disposeSynth() {
   if (polySynth && polySynth.disposed) {
@@ -69,6 +95,8 @@ export function PlayLoop(chordArr: string[]): void {
   // TODO: allow to set a different tempo.
   Transport.bpm.value = 120;
 
+  polySynth.releaseAll();
+
   let Chords = {
     firstChord: ShowChord(chordArr[0]),
     secondChord: ShowChord(chordArr[1]),
@@ -85,5 +113,8 @@ export function PlayLoop(chordArr: string[]): void {
   }
   if (progressionLength > 3) {
     PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 6);
+  }
+  if (progressionLength > 4) {
+    PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 8);
   }
 }
