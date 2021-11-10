@@ -8,9 +8,6 @@ import ProgressionDisplayComponent from "./progressions/ProgressionDisplay";
 import ChordsScaleDisplayComponent from "./scales/ScaleDisplay";
 import "../components/progressions/Progressions.css";
 
-interface IProgressionComponent {
-}
-
 const ProgressionComponent = (): JSX.Element => {
   const [tonic, setTonic] = useState("");
   const [mode, setMode] = useState("");

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useToggle } from "../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
-import { setSynthSound } from "../../audio/Synth";
+import { SetSynthSound } from "../../audio/Synth";
 import "./Settings.css";
 
 interface ISettings {
@@ -24,7 +24,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
 
   const ChooseSynth = (event: any): void => {
     event.preventDefault();
-    setSynthSound(event.target.value);
+    SetSynthSound(event.target.value);
     console.log(event.target.value);
   }
 
@@ -36,6 +36,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         </button>
 
         <select name="synthPartials" onChange={(e) => ChooseSynth(e)} className="sound-select">
+          <option value="DEFAULT">Choose a sound</option>
           <option value="cuteSine">Cute Sine</option>
           <option value="imperatrice">Madame l'Imperatrice</option>
           <option value="inDaChurch">In Da Church</option>
