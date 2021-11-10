@@ -3,6 +3,7 @@ import { PlayLoop } from "../../audio/Synth";
 import { Transport } from "tone";
 import "./Buttons.css";
 import { SoundOnContext } from "../../App";
+import BpmRange from "../bpm/bpm";
 
 interface ILoopButton {
   onPressLoop?: any;
@@ -12,6 +13,11 @@ interface ILoopButton {
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   const SoundOn = React.useContext(SoundOnContext);
   const [loopState, setLoopState] = useState(false);
+  const [bpm, setBpm] = useState(120);
+
+  const BpmCallback = (bpm: number) => {
+    setBpm(bpm);
+  };
 
   const handleClick = (event: any) => {
     if (SoundOn) {
@@ -40,7 +46,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         btn.innerText = "▶";
       }
     };
-  }, [chordsList]); // Empty array ensures that effect is only run on mount and unmount
+  }, [chordsList, bpm]); // Empty array ensures that effect is only run on mount and unmount
 
   return (
     <div className="loop-box">
@@ -53,6 +59,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
       >
         {loopState ? "■" : "▶"}
       </button>
+      <BpmRange onBpmRange={BpmCallback} />
     </div>
   );
 };

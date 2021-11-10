@@ -1,63 +1,71 @@
 import { Synth, PolySynth, Transport, ToneEvent } from "tone";
 import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
+// TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
+
+//------ Global variables
+
+let polySynth: PolySynth;
+let chordEvent: ToneEvent;
 
 const synthSounds = {
   cuteSinePartials: [7, 6, 0.2],
   imperatricePartials: [0, 2, 3, 4],
-  churchPartials: [2, 2, 2, 2, 2, 3],
+  churchPartials: [1, 1, 1],
 }
 
-let polySynth: PolySynth = new PolySynth(Synth, {
-  volume: -9,
-  detune: 0,
-  portamento: 0,
-  envelope: {
-    attack: 0.005,
-    attackCurve: "linear",
-    decay: 0.2,
-    decayCurve: "exponential",
-    release: 1,
-    releaseCurve: "exponential",
-    sustain: 0.3,
-  },
-  oscillator: {
-    partials: synthSounds.cuteSinePartials,
-    phase: 0,
-    type: "custom",
-  },
+//------ Transport functions
 
-}).toDestination();
+export function SetupTempo(bpm: number = 200): void {
+  Transport.bpm.value = bpm;
+}
 
-export function setSynthSound(synthSound: string): void {
-  let newSound;
+//------ Synth utils
 
-  switch (synthSound) {
-    case "cuteSine":
-      newSound = synthSounds.cuteSinePartials;
-    case "imperatrice":
-      newSound = synthSounds.imperatricePartials;
-    case "inDaChurch":
-      newSound = synthSounds.churchPartials;
+function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void {
+  // Dispose the existing synth if it exists.
+  if (polySynth) {
+    polySynth.releaseAll();
+    polySynth.dispose();
   }
-
-  polySynth.set({
+  // Create a new synth with new partials, cuteSine being the defaults.
+  polySynth = new PolySynth(Synth, {
+    volume: -9,
+    detune: 0,
+    portamento: 0,
+    envelope: {
+      attack: 0.005,
+      attackCurve: "linear",
+      decay: 0.2,
+      decayCurve: "exponential",
+      release: 1,
+      releaseCurve: "exponential",
+      sustain: 0.3,
+    },
     oscillator: {
-      partials: newSound,
-    }
+      partials: newPartials,
+      phase: 0,
+      type: "custom",
+    },
+
   }).toDestination();
 }
 
+CreateSynth();
+SetupTempo();
 
-let chordEvent: ToneEvent;
-
-// TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
-
-export function disposeSynth() {
-  if (polySynth && polySynth.disposed) {
-    polySynth.dispose();
+export function SetSynthSound(synthSound: string): void {
+  switch (synthSound) {
+    case "cuteSine":
+      CreateSynth(synthSounds.cuteSinePartials);
+    case "imperatrice":
+      CreateSynth(synthSounds.imperatricePartials);
+    case "inDaChurch":
+      CreateSynth(synthSounds.churchPartials);
   }
 }
+
+//------ Make sounds with the synth!
 
 export function PlaySynthChords(chordNotes: string[]): void {
   if (polySynth) {
@@ -67,22 +75,22 @@ export function PlaySynthChords(chordNotes: string[]): void {
   }
 }
 
+//------ Loop chord progression.
+
 function PlayChordLoopEvent(
   chordArr: string[],
   progressionLength: number,
-  noteDuration: number,
-  noteStart: number = 0
+  noteStart: string = "0:0:0"
 ): void {
   chordEvent = new ToneEvent((time) => {
-    polySynth.triggerAttackRelease(chordArr, noteDuration, time);
-    console.log(chordArr, noteDuration, time);
+    polySynth.triggerAttackRelease(chordArr, "1m", time);
+    console.log(chordArr, "1m", time);
   });
   // start the chord at the beginning of the transport timeline
   chordEvent.start(noteStart);
   // loop it every measure, depending on the number of chords to play.
   let measuresToPlay: string = progressionLength.toString();
-  // console.log("measuresToPlay___" + measuresToPlay);
-
+  // Loop the progression forever and set its length.
   chordEvent.loop = true;
   chordEvent.loopEnd = measuresToPlay += "m";
 
@@ -92,9 +100,6 @@ function PlayChordLoopEvent(
 
 // TODO: Refactor this.
 export function PlayLoop(chordArr: string[]): void {
-  // TODO: allow to set a different tempo.
-  Transport.bpm.value = 120;
-
   polySynth.releaseAll();
 
   let Chords = {
@@ -106,15 +111,15 @@ export function PlayLoop(chordArr: string[]): void {
 
   const progressionLength: number = chordArr.length;
 
-  PlayChordLoopEvent(Chords.firstChord, progressionLength, 2, 0);
-  PlayChordLoopEvent(Chords.secondChord, progressionLength, 2, 2);
+  PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
+  PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
   if (progressionLength > 2) {
-    PlayChordLoopEvent(Chords.thirdChord, progressionLength, 2, 4);
+    PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
   }
   if (progressionLength > 3) {
-    PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 6);
+    PlayChordLoopEvent(Chords.fourthChord, progressionLength, "3:0:0");
   }
   if (progressionLength > 4) {
-    PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 8);
+    PlayChordLoopEvent(Chords.fourthChord, progressionLength, "4:0:0");
   }
 }
