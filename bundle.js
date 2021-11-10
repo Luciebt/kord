@@ -5203,6 +5203,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  font-family: \"Space Mono\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/bpm/Bpm.css":
+/*!**************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/bpm/Bpm.css ***!
+  \**************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\r\n  font-size: 1.4em;\r\n  /* height: 100%; */\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\r\n  font-size: 1.4em;\r\n  /* height: 100%; */\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/components/buttons/Buttons.css":
 /*!**********************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/components/buttons/Buttons.css ***!
@@ -5223,7 +5250,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,4BAA4B;EAC5B,uBAAuB;EACvB,yBAAyB;EACzB,gBAAgB;EAChB,cAAc;EACd,aAAa;EACb,eAAe;EACf,iDAAiD;AACnD;;AAEA;EACE,4BAA4B;EAC5B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;AAClB;;AAEA,gDAAgD;;AAEhD;;;;EAIE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;;EAEE,gBAAgB;AAClB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,gBAAgB;;AAEhB;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;EACtC,oBAAoB;AACtB;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;EACtC,oBAAoB;AACtB;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;EACtC,oBAAoB;AACtB;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B","sourcesContent":["/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n  margin-bottom: 0.6em;\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,4BAA4B;EAC5B,uBAAuB;EACvB,yBAAyB;EACzB,gBAAgB;EAChB,cAAc;EACd,aAAa;EACb,eAAe;EACf,iDAAiD;AACnD;;AAEA;EACE,4BAA4B;EAC5B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;AAClB;;AAEA,gDAAgD;;AAEhD;;;;EAIE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;;EAEE,gBAAgB;AAClB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B","sourcesContent":["/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5331,7 +5358,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#sound-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#sound-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.sound-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n/* .panel-btn {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n\r\n/* .panel-btn:hover {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA,sCAAsC;AACtC;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;;;EAGE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;;;EAGE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;;EAGE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;;;;GAIG;;AAEH;;;;GAIG","sourcesContent":["/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#sound-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#sound-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.sound-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n/* .panel-btn {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n\r\n/* .panel-btn:hover {\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    border: 2px solid var(--dominant-dark);\r\n} */\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n.sound-select {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 227px;\r\n  height: auto;\r\n  background-color: rgb(218, 216, 216);\r\n  text-align: center;\r\n}\r\n\r\n.sound-select option {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.sound-select option:hover {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA,sCAAsC;AACtC;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;;EAEE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;;EAEE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;EAEE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,iDAAiD;AACnD","sourcesContent":["/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 248px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n.sound-select {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 227px;\r\n  height: auto;\r\n  background-color: rgb(218, 216, 216);\r\n  text-align: center;\r\n}\r\n\r\n.sound-select option {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.sound-select option:hover {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -57577,6 +57604,61 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/components/bpm/Bpm.css":
+/*!************************************!*\
+  !*** ./src/components/bpm/Bpm.css ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Bpm_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Bpm.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/bpm/Bpm.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Bpm_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Bpm_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Bpm_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Bpm_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./src/components/buttons/Buttons.css":
 /*!********************************************!*\
   !*** ./src/components/buttons/Buttons.css ***!
@@ -83230,9 +83312,8 @@ const noteNumForKeys = {
 //   Bb: "A#",
 // };
 function ShowChord(chord) {
-    if (!chord) {
+    if (!chord)
         return [];
-    }
     return (0, Chords_1.BuildChordNotes)(chord);
 }
 exports.ShowChord = ShowChord;
@@ -83486,38 +83567,66 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayLoop = exports.PlaySynthChords = exports.disposeSynth = void 0;
+exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.SetupTempo = void 0;
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
-let polySynth = new tone_1.PolySynth(tone_1.Synth, {
-    volume: -8,
-    detune: 0,
-    portamento: 0,
-    envelope: {
-        attack: 0.005,
-        attackCurve: "linear",
-        decay: 0.1,
-        decayCurve: "exponential",
-        release: 1,
-        releaseCurve: "exponential",
-        sustain: 0.3,
-    },
-    oscillator: {
-        partialCount: 0,
-        phase: 0,
-        type: "sine",
-    },
-}).toDestination();
-let chordEvent;
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
-// TODO: add a compressor at the end of the chain to avoid distorsion? 
-function disposeSynth() {
-    if (polySynth && polySynth.disposed) {
+//------ Global variables
+let polySynth;
+let chordEvent;
+const synthSounds = {
+    cuteSinePartials: [7, 6, 0.2],
+    imperatricePartials: [0, 2, 3, 4],
+    churchPartials: [1, 1, 1],
+};
+//------ Transport functions
+function SetupTempo(bpm = 200) {
+    tone_1.Transport.bpm.value = bpm;
+}
+exports.SetupTempo = SetupTempo;
+//------ Synth utils
+function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
+    // Dispose the existing synth if it exists.
+    if (polySynth) {
+        polySynth.releaseAll();
         polySynth.dispose();
     }
+    // Create a new synth with new partials, cuteSine being the defaults.
+    polySynth = new tone_1.PolySynth(tone_1.Synth, {
+        volume: -9,
+        detune: 0,
+        portamento: 0,
+        envelope: {
+            attack: 0.005,
+            attackCurve: "linear",
+            decay: 0.2,
+            decayCurve: "exponential",
+            release: 1,
+            releaseCurve: "exponential",
+            sustain: 0.3,
+        },
+        oscillator: {
+            partials: newPartials,
+            phase: 0,
+            type: "custom",
+        },
+    }).toDestination();
 }
-exports.disposeSynth = disposeSynth;
+CreateSynth();
+SetupTempo();
+function SetSynthSound(synthSound) {
+    switch (synthSound) {
+        case "cuteSine":
+            CreateSynth(synthSounds.cuteSinePartials);
+        case "imperatrice":
+            CreateSynth(synthSounds.imperatricePartials);
+        case "inDaChurch":
+            CreateSynth(synthSounds.churchPartials);
+    }
+}
+exports.SetSynthSound = SetSynthSound;
+//------ Make sounds with the synth!
 function PlaySynthChords(chordNotes) {
     if (polySynth) {
         polySynth.releaseAll();
@@ -83526,16 +83635,17 @@ function PlaySynthChords(chordNotes) {
     }
 }
 exports.PlaySynthChords = PlaySynthChords;
-function PlayChordLoopEvent(chordArr, progressionLength, noteDuration, noteStart = 0) {
+//------ Loop chord progression.
+function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     chordEvent = new tone_1.ToneEvent((time) => {
-        polySynth.triggerAttackRelease(chordArr, noteDuration, time);
-        console.log(chordArr, noteDuration, time);
+        polySynth.triggerAttackRelease(chordArr, "1m", time);
+        console.log(chordArr, "1m", time);
     });
     // start the chord at the beginning of the transport timeline
     chordEvent.start(noteStart);
     // loop it every measure, depending on the number of chords to play.
     let measuresToPlay = progressionLength.toString();
-    // console.log("measuresToPlay___" + measuresToPlay);
+    // Loop the progression forever and set its length.
     chordEvent.loop = true;
     chordEvent.loopEnd = measuresToPlay += "m";
     // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
@@ -83543,8 +83653,7 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteDuration, noteStart
 }
 // TODO: Refactor this.
 function PlayLoop(chordArr) {
-    // TODO: allow to set a different tempo.
-    tone_1.Transport.bpm.value = 120;
+    polySynth.releaseAll();
     let Chords = {
         firstChord: (0, PianoChart_1.ShowChord)(chordArr[0]),
         secondChord: (0, PianoChart_1.ShowChord)(chordArr[1]),
@@ -83552,13 +83661,16 @@ function PlayLoop(chordArr) {
         fourthChord: (0, PianoChart_1.ShowChord)(chordArr[3]),
     };
     const progressionLength = chordArr.length;
-    PlayChordLoopEvent(Chords.firstChord, progressionLength, 2, 0);
-    PlayChordLoopEvent(Chords.secondChord, progressionLength, 2, 2);
+    PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
+    PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
     if (progressionLength > 2) {
-        PlayChordLoopEvent(Chords.thirdChord, progressionLength, 2, 4);
+        PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
     }
     if (progressionLength > 3) {
-        PlayChordLoopEvent(Chords.fourthChord, progressionLength, 2, 6);
+        PlayChordLoopEvent(Chords.fourthChord, progressionLength, "3:0:0");
+    }
+    if (progressionLength > 4) {
+        PlayChordLoopEvent(Chords.fourthChord, progressionLength, "4:0:0");
     }
 }
 exports.PlayLoop = PlayLoop;
@@ -83645,6 +83757,56 @@ exports["default"] = ProgressionComponent;
 
 /***/ }),
 
+/***/ "./src/components/bpm/bpm.tsx":
+/*!************************************!*\
+  !*** ./src/components/bpm/bpm.tsx ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
+__webpack_require__(/*! ./Bpm.css */ "./src/components/bpm/Bpm.css");
+const BpmRange = ({ onBpmRange }) => {
+    const [bpm, setBpm] = (0, react_1.useState)("120");
+    const handleClick = (event) => {
+        const newBpm = parseInt(bpm);
+        onBpmRange(newBpm);
+        (0, Synth_1.SetupTempo)(newBpm);
+    };
+    (0, react_1.useEffect)(() => {
+        return () => {
+        };
+    }, []); // Empty array ensures that effect is only run on mount and unmount
+    return (react_1.default.createElement("div", { className: "bpm-box" },
+        react_1.default.createElement("input", { type: "number", min: "60", max: "200", value: bpm, onChange: (event) => setBpm(event.target.value), onClick: handleClick, className: "bpm-input" })));
+};
+exports["default"] = BpmRange;
+
+
+/***/ }),
+
 /***/ "./src/components/buttons/KeyButton.tsx":
 /*!**********************************************!*\
   !*** ./src/components/buttons/KeyButton.tsx ***!
@@ -83720,15 +83882,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const bpm_1 = __importDefault(__webpack_require__(/*! ../bpm/bpm */ "./src/components/bpm/bpm.tsx"));
 const LoopButton = ({ onPressLoop, chordsList }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [loopState, setLoopState] = (0, react_1.useState)(false);
+    const [bpm, setBpm] = (0, react_1.useState)(120);
+    const BpmCallback = (bpm) => {
+        setBpm(bpm);
+    };
     const handleClick = (event) => {
         if (SoundOn) {
             if (tone_1.Transport.state !== "started") {
@@ -83756,11 +83926,12 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
                 btn.innerText = "▶";
             }
         };
-    }, [chordsList]); // Empty array ensures that effect is only run on mount and unmount
+    }, [chordsList, bpm]); // Empty array ensures that effect is only run on mount and unmount
     return (react_1.default.createElement("div", { className: "loop-box" },
         react_1.default.createElement("button", { id: "loop", onClick: (e) => {
                 handleClick(e);
-            }, className: SoundOn ? loopState ? "loop-btn-pressed" : "loop-btn" : "loop-btn-disabled" }, loopState ? "■" : "▶")));
+            }, className: SoundOn ? loopState ? "loop-btn-pressed" : "loop-btn" : "loop-btn-disabled" }, loopState ? "■" : "▶"),
+        react_1.default.createElement(bpm_1.default, { onBpmRange: BpmCallback })));
 };
 exports["default"] = LoopButton;
 
@@ -84452,29 +84623,32 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
 const ShortcutsSettingsPanel_1 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
-const ShortcutsSettingsPanel_2 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
+const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 __webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
 // TODO: handle click outside.
 const Settings = ({ onSettings, onSoundOn }) => {
     // Whether the audio is on or off
     const [audioPref, setAudioPref] = (0, react_1.useState)(false);
-    const [audioSound, setAudioSound] = (0, react_1.useState)([""]);
     const handleClick = (event) => {
         setAudioPref(!audioPref);
         onSoundOn(audioPref);
     };
     const [toggleShortcutsPanel, setToggleShortcutsPanel] = (0, useToggle_1.useToggle)(false);
-    const [toggleSoundsSettingsPanel, setToggleSoundsSettingsPanel] = (0, useToggle_1.useToggle)(false);
-    // const audioDropRef = useRef(null);
-    // const soundDropRef = useRef(null);
-    // const [isActive, setIsActive] = useState(false);
+    const ChooseSynth = (event) => {
+        event.preventDefault();
+        (0, Synth_1.SetSynthSound)(event.target.value);
+        console.log(event.target.value);
+    };
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("div", { id: "settings-box" },
             react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF" : "Audio ON"),
-            react_1.default.createElement("button", { id: "sound-btn", className: toggleSoundsSettingsPanel ? "sound-selected-btn" : "", onClick: () => setToggleSoundsSettingsPanel() }, "Sound"),
+            react_1.default.createElement("select", { name: "synthPartials", onChange: (e) => ChooseSynth(e), className: "sound-select" },
+                react_1.default.createElement("option", { value: "DEFAULT" }, "Choose a sound"),
+                react_1.default.createElement("option", { value: "cuteSine" }, "Cute Sine"),
+                react_1.default.createElement("option", { value: "imperatrice" }, "Madame l'Imperatrice"),
+                react_1.default.createElement("option", { value: "inDaChurch" }, "In Da Church")),
             react_1.default.createElement("button", { id: "shortcuts-btn", className: toggleShortcutsPanel ? "shortcuts-selected-btn" : "", onClick: () => setToggleShortcutsPanel() }, "Shortcuts")),
-        toggleShortcutsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_1.default, null) : "",
-        toggleSoundsSettingsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_2.default, null) : ""));
+        toggleShortcutsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_1.default, null) : ""));
 };
 exports["default"] = Settings;
 
