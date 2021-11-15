@@ -5223,7 +5223,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\r\n  font-size: 1.4em;\r\n  /* height: 100%; */\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\r\n  font-size: 1.4em;\r\n  /* height: 100%; */\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\r\n  font-size: 1.4em;\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,aAAa;EACb,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\r\n  font-size: 1.4em;\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5250,7 +5250,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,4BAA4B;EAC5B,uBAAuB;EACvB,yBAAyB;EACzB,gBAAgB;EAChB,cAAc;EACd,aAAa;EACb,eAAe;EACf,iDAAiD;AACnD;;AAEA;EACE,4BAA4B;EAC5B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;AAClB;;AAEA,gDAAgD;;AAEhD;;;;EAIE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;;EAEE,gBAAgB;AAClB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B","sourcesContent":["/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.visible {\r\n  display: inline-block;\r\n}\r\n\r\n.invisible {\r\n  display: none;\r\n}\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,4BAA4B;EAC5B,uBAAuB;EACvB,yBAAyB;EACzB,gBAAgB;EAChB,cAAc;EACd,aAAa;EACb,eAAe;EACf,iDAAiD;AACnD;;AAEA;EACE,4BAA4B;EAC5B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;AAClB;;AAEA,gDAAgD;;AAEhD;;;;EAIE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;AAClB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B","sourcesContent":["/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1.2em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.visible {\r\n  display: inline-block;\r\n}\r\n\r\n.invisible {\r\n  display: none;\r\n}\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83341,22 +83341,27 @@ exports.ProgressionCollection = {
         { progression_list: "IIm7, V7, I7", mood: "Jazzy" },
         { progression_list: "I, VIm, IV, V", mood: "Melancholic" },
         { progression_list: "I, VIm, V, V", mood: "Weird" },
+        { progression_list: "I, bIII, bVII, IV", mood: "Happy" },
+        { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful" },
+        { progression_list: "IIm7, V9, I7, I7", mood: "Sad" },
+        { progression_list: "I, VIm, IIm, V", mood: "Hopeful" },
+        { progression_list: "I, II, IIIm, V6", mood: "Happy" },
+        { progression_list: "I, IV, bVII, IV", mood: "Happy" },
+        { progression_list: "VIm, V, IV, V", mood: "Hopeful" },
+        // TODO: new moods?
+        // { progression_list: "I, I, IV, IIIm", mood: "Melancholic" },
+        // { progression_list: "VIm, IV, I, V", mood: "Love soup" },
         // TODO: Classify those.
         { progression_list: "bIII, IIm, bII, I", mood: "Todo" },
-        { progression_list: "I, bIII, bVII, IV", mood: "Todo" },
-        { progression_list: "I, bIII, bVI, bVII", mood: "Todo" },
         { progression_list: "I, bII, bIII, bII", mood: "Todo" },
         { progression_list: "I, bII, I, IIIm", mood: "Todo" },
         { progression_list: "I, bVII, bVI, bII", mood: "Todo" },
         { progression_list: "I, bVII, IV, I", mood: "Todo" },
         { progression_list: "I, bVI, I, bII", mood: "Todo" },
-        { progression_list: "I, I, IV, IIIm", mood: "Todo" },
         { progression_list: "I, IIIm, IV, VIm", mood: "Todo" },
         { progression_list: "I, IIIm, VIm, Isus4", mood: "Todo" },
         { progression_list: "I, IIIm, VIm, IV", mood: "Todo" },
-        { progression_list: "I, IIM, IIIm, V6", mood: "Todo" },
         { progression_list: "I, IV, bIII, bVI", mood: "Todo" },
-        { progression_list: "I, IV, bVII, IV", mood: "Todo" },
         { progression_list: "I, IV, IIm, V", mood: "Todo" },
         { progression_list: "I, IV, Isus2, IV", mood: "Todo" },
         { progression_list: "I, IV, V, bVII", mood: "Todo" },
@@ -83371,7 +83376,6 @@ exports.ProgressionCollection = {
         { progression_list: "I, V, VIm, V", mood: "Todo" },
         { progression_list: "I, VIm, I, IV", mood: "Todo" },
         { progression_list: "I, VIm, IIm, IV", mood: "Todo" },
-        { progression_list: "I, VIm, IIm, V", mood: "Todo" },
         { progression_list: "I, VIm, IV, IIIm", mood: "Todo" },
         { progression_list: "I, VIm, IV, V", mood: "Todo" },
         { progression_list: "IIm, bII, I, bVII", mood: "Todo" },
@@ -83379,7 +83383,6 @@ exports.ProgressionCollection = {
         { progression_list: "IIm, IV, V, V", mood: "Todo" },
         { progression_list: "IIm, V, I, I", mood: "Todo" },
         { progression_list: "IIm, V, I, IV", mood: "Todo" },
-        { progression_list: "IIm7, V9, I7, I7", mood: "Todo" },
         { progression_list: "IIIm, VIm, IV, I", mood: "Todo" },
         { progression_list: "IV, I, IIm, VIm", mood: "Todo" },
         { progression_list: "IV, I, IIIm, IV", mood: "Todo" },
@@ -83390,8 +83393,6 @@ exports.ProgressionCollection = {
         { progression_list: "V, IV, VIm, I", mood: "Todo" },
         { progression_list: "V, VIm, IV, I", mood: "Todo" },
         { progression_list: "VIm, bVI, bVII, I", mood: "Todo" },
-        { progression_list: "VIm, IV, I, V", mood: "Todo" },
-        { progression_list: "VIm, V, IV, V", mood: "Todo" }
     ],
     Minor: [
         { progression_list: "Im, IV, VI, Vm", mood: "Happy" },
@@ -83401,22 +83402,24 @@ exports.ProgressionCollection = {
         { progression_list: "Im, III, VII, VI", mood: "Sad" },
         { progression_list: "VIm, IIIm, V, IV", mood: "Dark" },
         { progression_list: "Im, VII, IV, IV", mood: "Jazzy" },
+        { progression_list: "Im, IIm, Vm, Im", mood: "Sad" },
+        { progression_list: "Im, III, IVm, VI", mood: "Weird" },
+        { progression_list: "Im, III, VII, VI", mood: "Hopeful" },
+        { progression_list: "Im, IVm, III, VI", mood: "Hopeful" },
+        { progression_list: "Im, IVm, VI, Vm", mood: "Dark" },
+        { progression_list: "Im, VI, IVm, Vm", mood: "Sad" },
+        // TODO: new moods?
+        // { progression_list: "Im, VI, III, bII", mood: "Suspensful" },
+        // { progression_list: "VII, IVm, VII, Im", mood: "Suspensful" },
         // TODO: Tooooooooodoooooooooooo! 
-        { progression_list: "Im, IIm, Vm, Im", mood: "Todo" },
-        { progression_list: "Im, III, IVm, VI", mood: "Todo" },
-        { progression_list: "Im, III, VII, VI", mood: "Todo" },
-        { progression_list: "Im, IVm, III, VI", mood: "Todo" },
         { progression_list: "Im, IVm, Vm, IVm", mood: "Todo" },
         { progression_list: "Im, IVm, Vm, Vm", mood: "Todo" },
-        { progression_list: "Im, IVm, VI, Vm", mood: "Todo" },
         { progression_list: "Im, IVm, VII, Im", mood: "Todo" },
         { progression_list: "Im, Vm, IVm, VII", mood: "Todo" },
         { progression_list: "Im, VI, bIm, Vm", mood: "Todo" },
-        { progression_list: "Im, VI, III, bII", mood: "Todo" },
         { progression_list: "Im, VI, III, VII", mood: "Todo" },
         { progression_list: "Im, VI, IVm, IIm", mood: "Todo" },
         { progression_list: "Im, VI, IVm, III", mood: "Todo" },
-        { progression_list: "Im, VI, IVm, Vm", mood: "Todo" },
         { progression_list: "Im, VI, VII, Vm", mood: "Todo" },
         { progression_list: "Im, VI, VII, VII", mood: "Todo" },
         { progression_list: "Im, VII, Im, Vm", mood: "Todo" },
@@ -83443,7 +83446,6 @@ exports.ProgressionCollection = {
         { progression_list: "VI, VII, Vm, III", mood: "Todo" },
         { progression_list: "VI, VIm, Im, VII", mood: "Todo" },
         { progression_list: "VII, IVm, Vm, Im", mood: "Todo" },
-        { progression_list: "VII, IVm, VII, Im", mood: "Todo" },
     ],
 };
 // TODO: add these major progressions.
@@ -83567,7 +83569,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.SetupTempo = void 0;
+exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.GetTempo = exports.SetupTempo = void 0;
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
@@ -83578,13 +83580,24 @@ let chordEvent;
 const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
     imperatricePartials: [0, 2, 3, 4],
-    churchPartials: [1, 1, 1],
+    churchPartials: [3, 5, 7, 9, 11],
 };
 //------ Transport functions
-function SetupTempo(bpm = 200) {
+function SetupTempo(bpm = 120) {
     tone_1.Transport.bpm.value = bpm;
 }
 exports.SetupTempo = SetupTempo;
+function GetTempo() {
+    return tone_1.Transport.bpm.value;
+}
+exports.GetTempo = GetTempo;
+//------ Metronome functions
+// const player = new Player(
+//   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1506195/keyboard-key.mp3"
+// ).toDestination();
+// Transport.scheduleRepeat((time) => {
+//   player.start(time).stop(time + 0.1);
+// }, "4n");
 //------ Synth utils
 function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
     // Dispose the existing synth if it exists.
@@ -83613,8 +83626,6 @@ function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
         },
     }).toDestination();
 }
-CreateSynth();
-SetupTempo();
 function SetSynthSound(synthSound) {
     switch (synthSound) {
         case "cuteSine":
@@ -83626,6 +83637,9 @@ function SetSynthSound(synthSound) {
     }
 }
 exports.SetSynthSound = SetSynthSound;
+//------ Init synth and tempo
+CreateSynth();
+SetupTempo();
 //------ Make sounds with the synth!
 function PlaySynthChords(chordNotes) {
     if (polySynth) {
@@ -83638,8 +83652,8 @@ exports.PlaySynthChords = PlaySynthChords;
 //------ Loop chord progression.
 function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     chordEvent = new tone_1.ToneEvent((time) => {
-        polySynth.triggerAttackRelease(chordArr, "1m", time);
-        console.log(chordArr, "1m", time);
+        polySynth.triggerAttackRelease(chordArr, "1n", time);
+        console.log(chordArr, "1n", time);
     });
     // start the chord at the beginning of the transport timeline
     chordEvent.start(noteStart);
@@ -83650,6 +83664,15 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     chordEvent.loopEnd = measuresToPlay += "m";
     // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
     // chordEvent.loopEnd = measuresToPlay += "n";
+}
+function SelectChordsDisplayEvent(chordIndex, progressionLength, noteStart = "0:0:0") {
+    chordEvent = new tone_1.ToneEvent((time) => {
+        console.log(chordIndex, "1n", time);
+    });
+    chordEvent.start(noteStart);
+    let measuresToPlay = progressionLength.toString();
+    chordEvent.loop = true;
+    chordEvent.loopEnd = measuresToPlay += "m";
 }
 // TODO: Refactor this.
 function PlayLoop(chordArr) {
@@ -83662,7 +83685,9 @@ function PlayLoop(chordArr) {
     };
     const progressionLength = chordArr.length;
     PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
+    SelectChordsDisplayEvent(0, progressionLength, "0:0:0");
     PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
+    SelectChordsDisplayEvent(1, progressionLength, "1:0:0");
     if (progressionLength > 2) {
         PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
     }
@@ -83790,17 +83815,19 @@ const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.
 __webpack_require__(/*! ./Bpm.css */ "./src/components/bpm/Bpm.css");
 const BpmRange = ({ onBpmRange }) => {
     const [bpm, setBpm] = (0, react_1.useState)("120");
-    const handleClick = (event) => {
-        const newBpm = parseInt(bpm);
+    const handleChange = (event) => {
+        setBpm(event.target.value);
+        const newBpm = parseInt(event.target.value);
         onBpmRange(newBpm);
         (0, Synth_1.SetupTempo)(newBpm);
     };
     (0, react_1.useEffect)(() => {
+        setBpm((0, Synth_1.GetTempo)().toString());
         return () => {
         };
-    }, []); // Empty array ensures that effect is only run on mount and unmount
+    }, []);
     return (react_1.default.createElement("div", { className: "bpm-box" },
-        react_1.default.createElement("input", { type: "number", min: "60", max: "200", value: bpm, onChange: (event) => setBpm(event.target.value), onClick: handleClick, className: "bpm-input" })));
+        react_1.default.createElement("input", { type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" })));
 };
 exports["default"] = BpmRange;
 
@@ -84204,10 +84231,10 @@ const KeyPressHook_1 = __webpack_require__(/*! ../hooks/KeyPressHook */ "./src/c
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
-__webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+__webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const ChordDisplayComponent = ({ tonic, chord, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
@@ -84487,6 +84514,18 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
         }, className: "scale-chord-btn" }, chords)));
     (0, react_1.useEffect)(() => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
+        const chordBtns = Array.from(document.getElementsByClassName('scale-chord-btn'));
+        if (!tonic && !mode) {
+            chordBtns[0].classList.add("invisible");
+        }
+        if (tonic && mode) {
+            if (chordBtns.length > 0) {
+                chordBtns.forEach(btn => {
+                    btn.classList.remove("invisible");
+                    btn.classList.add("visible");
+                });
+            }
+        }
         return () => {
             // Anything in here is fired on component unmount.
         };
