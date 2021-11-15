@@ -47,8 +47,23 @@ const ChordsScaleDisplayComponent = ({
     </button>
   ));
 
+
   useEffect(() => {
     unPressElementsStyleWithoutEvent(style);
+
+    const chordBtns = Array.from(document.getElementsByClassName('scale-chord-btn') as HTMLCollectionOf<HTMLElement>);
+
+    if (!tonic && !mode) {
+      chordBtns[0].classList.add("invisible");
+    }
+    if (tonic && mode) {
+      if (chordBtns.length > 0) {
+        chordBtns.forEach(btn => {
+          btn.classList.remove("invisible");
+          btn.classList.add("visible");
+        });
+      }
+    }
     return () => {
       // Anything in here is fired on component unmount.
     };

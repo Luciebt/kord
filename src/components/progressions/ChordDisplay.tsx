@@ -4,10 +4,10 @@ import { useKeyPress } from "../hooks/KeyPressHook";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
-import "./Progressions.css";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { Progression } from "@tonaljs/tonal";
 import { SoundOnContext } from "../../App";
+import "./Progressions.css";
 
 export interface IChordDisplayProps {
   tonic: string;

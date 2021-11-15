@@ -37,6 +37,14 @@ button:hover {
 
 /* Scale and Chord buttons */
 
+.visible {
+  display: inline-block;
+}
+
+.invisible {
+  display: none;
+}
+
 .scale-chord-btn,
 .chord-btn {
   font-size: 1.4em;
