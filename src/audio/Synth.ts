@@ -1,4 +1,4 @@
-import { Synth, PolySynth, Transport, ToneEvent } from "tone";
+import { Synth, PolySynth, Transport, ToneEvent, Player } from "tone";
 import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
@@ -11,7 +11,7 @@ let chordEvent: ToneEvent;
 const synthSounds = {
   cuteSinePartials: [7, 6, 0.2],
   imperatricePartials: [0, 2, 3, 4],
-  churchPartials: [1, 1, 1],
+  churchPartials: [3, 5, 7, 9, 11],
 }
 
 //------ Transport functions
@@ -23,6 +23,17 @@ export function SetupTempo(bpm: number = 120): void {
 export function GetTempo(): number {
   return Transport.bpm.value;
 }
+
+//------ Metronome functions
+
+// const player = new Player(
+//   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1506195/keyboard-key.mp3"
+// ).toDestination();
+
+// Transport.scheduleRepeat((time) => {
+//   player.start(time).stop(time + 0.1);
+// }, "4n");
+
 //------ Synth utils
 
 function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void {
@@ -88,8 +99,8 @@ function PlayChordLoopEvent(
   noteStart: string = "0:0:0"
 ): void {
   chordEvent = new ToneEvent((time) => {
-    polySynth.triggerAttackRelease(chordArr, "1m", time);
-    console.log(chordArr, "1m", time);
+    polySynth.triggerAttackRelease(chordArr, "1n", time);
+    console.log(chordArr, "1n", time);
   });
   // start the chord at the beginning of the transport timeline
   chordEvent.start(noteStart);
@@ -101,6 +112,20 @@ function PlayChordLoopEvent(
 
   // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
   // chordEvent.loopEnd = measuresToPlay += "n";
+}
+
+function SelectChordsDisplayEvent(
+  chordIndex: number,
+  progressionLength: number,
+  noteStart: string = "0:0:0"
+): void {
+  chordEvent = new ToneEvent((time) => {
+    console.log(chordIndex, "1n", time);
+  });
+  chordEvent.start(noteStart);
+  let measuresToPlay: string = progressionLength.toString();
+  chordEvent.loop = true;
+  chordEvent.loopEnd = measuresToPlay += "m";
 }
 
 // TODO: Refactor this.
@@ -117,7 +142,9 @@ export function PlayLoop(chordArr: string[]): void {
   const progressionLength: number = chordArr.length;
 
   PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
+  SelectChordsDisplayEvent(0, progressionLength, "0:0:0");
   PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
+  SelectChordsDisplayEvent(1, progressionLength, "1:0:0");
   if (progressionLength > 2) {
     PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
   }
