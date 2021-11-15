@@ -16,10 +16,13 @@ const synthSounds = {
 
 //------ Transport functions
 
-export function SetupTempo(bpm: number = 200): void {
+export function SetupTempo(bpm: number = 120): void {
   Transport.bpm.value = bpm;
 }
 
+export function GetTempo(): number {
+  return Transport.bpm.value;
+}
 //------ Synth utils
 
 function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void {
@@ -51,9 +54,6 @@ function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void
   }).toDestination();
 }
 
-CreateSynth();
-SetupTempo();
-
 export function SetSynthSound(synthSound: string): void {
   switch (synthSound) {
     case "cuteSine":
@@ -64,6 +64,11 @@ export function SetSynthSound(synthSound: string): void {
       CreateSynth(synthSounds.churchPartials);
   }
 }
+
+//------ Init synth and tempo
+
+CreateSynth();
+SetupTempo();
 
 //------ Make sounds with the synth!
 
