@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SetupTempo } from "../../audio/Synth";
+import { SetupTempo, GetTempo } from "../../audio/Synth";
 import "./Bpm.css";
 
 interface IBpmRange {
@@ -9,21 +9,22 @@ interface IBpmRange {
 const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
     const [bpm, setBpm] = useState("120");
 
-    const handleClick = (event: any) => {
-        const newBpm: number = parseInt(bpm);
+    const handleChange = (event: any) => {
+        setBpm(event.target.value);
+        const newBpm: number = parseInt(event.target.value);
         onBpmRange(newBpm);
         SetupTempo(newBpm);
     };
 
     useEffect(() => {
+        setBpm(GetTempo().toString());
         return () => {
         };
-    }, []); // Empty array ensures that effect is only run on mount and unmount
+    }, []);
 
     return (
         <div className="bpm-box">
-            <input type="number" min="60" max="200" value={bpm} onChange={(event) =>
-                setBpm(event.target.value)} onClick={handleClick} className="bpm-input" />
+            <input type="number" min="60" max="200" value={bpm} onChange={handleChange} className="bpm-input" />
         </div>
     );
 };
