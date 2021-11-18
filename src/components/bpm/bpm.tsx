@@ -23,9 +23,9 @@ const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
     }, []);
 
     return (
-        <div className="bpm-box">
+        <section className="bpm-box">
             <input type="number" min="60" max="200" value={bpm} onChange={handleChange} className="bpm-input" />
-        </div>
+        </section>
     );
 };
 

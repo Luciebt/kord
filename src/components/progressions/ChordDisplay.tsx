@@ -97,7 +97,7 @@ const ChordDisplayComponent = ({
   ));
 
   return (
-    <div className="chords-box">
+    <section className="chords-box">
       <div className="chord-box">
         <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
         <b>{chordsList && chordsList}</b>
@@ -108,7 +108,7 @@ const ChordDisplayComponent = ({
         <PianoDisplay chord={chordSelected} />
       ) : null}
       <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
-    </div>
+    </section>
   );
 };
 

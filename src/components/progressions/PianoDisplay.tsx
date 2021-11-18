@@ -33,7 +33,7 @@ const PianoDisplayComponent = ({
   }, [chord]);
 
   return (
-    <div className="keyboard-box">
+    <section className="keyboard-box">
       <ul id="keyboard">
         <li id="C3" className="white">
           C
@@ -108,7 +108,7 @@ const PianoDisplayComponent = ({
           B
         </li>
       </ul>
-    </div>
+    </section>
   );
 };
 

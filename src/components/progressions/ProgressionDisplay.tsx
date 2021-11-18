@@ -49,17 +49,17 @@ const ProgressionDisplayComponent = ({
   }, [tonic, mode, mood]);
 
   return (
-    <div className="prog-box">
-      <h3>Progressions </h3>
+    <section className="prog-box">
+      <h2>Progressions </h2>
       {/* Progressions buttons: */}
-      <div className="prog-btn-box">
+      <section className="prog-btn-box">
         <b>{chordsList ? progressionsList : ""}</b>
-      </div>
+      </section>
       {/* Chords buttons: */}
       {chordsList && chordsState ? (
         <ChordDisplay tonic={tonic} chord={chordSelected} />
       ) : null}
-    </div>
+    </section>
   );
 };
 

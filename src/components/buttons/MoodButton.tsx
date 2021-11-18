@@ -38,10 +38,10 @@ const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   ));
 
   return (
-    <div className="">
-      <h3>Mood</h3>
+    <section className="">
+      <h2>Mood</h2>
       {moodsList}
-    </div>
+    </section>
   );
 };
 

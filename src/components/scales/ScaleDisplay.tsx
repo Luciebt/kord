@@ -75,11 +75,11 @@ const ChordsScaleDisplayComponent = ({
   }, [tonic, mode]);
 
   return (
-    <div className="scale-box">
-      <h3>{chordsScale ? "Chords on Scale " + tonic + " " + mode : ""} {mode == "Minor" ? " (natural scale)" : ""}</h3>
+    <section className="scale-box">
+      <h2>{chordsScale ? "Chords on Scale " + tonic + " " + mode : ""} {mode == "Minor" ? " (natural scale)" : ""}</h2>
       {chordsScaleList}
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
-    </div>
+    </section>
   );
 };
 

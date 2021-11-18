@@ -30,10 +30,10 @@ const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
   ));
 
   return (
-    <div className="">
-      <h3>Mode</h3>
+    <section className="">
+      <h2>Mode</h2>
       {modesList}
-    </div>
+    </section>
   );
 };
 

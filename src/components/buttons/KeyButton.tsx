@@ -45,10 +45,10 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
   ));
 
   return (
-    <div className="">
-      <h3>Key</h3>
+    <section className="">
+      <h2>Key</h2>
       {notesList}
-    </div>
+    </section>
   );
 };
 

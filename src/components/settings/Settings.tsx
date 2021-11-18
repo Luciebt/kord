@@ -29,7 +29,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   }
 
   return (
-    <div>
+    <section>
       <div id="settings-box">
         <button id="audio-btn" onClick={(e) => handleClick(e)}>
           {audioPref ? "Audio OFF" : "Audio ON"}
@@ -42,16 +42,16 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
           <option value="inDaChurch">In Da Church</option>
         </select>
 
-        <button
+        {/* <button
           id="shortcuts-btn"
           className={toggleShortcutsPanel ? "shortcuts-selected-btn" : ""}
           onClick={() => setToggleShortcutsPanel()}
         >
           Shortcuts
-        </button>
+        </button> */}
       </div>
-      {toggleShortcutsPanel ? <ShortcutsPanel /> : ""}
-    </div>
+      {/* {toggleShortcutsPanel ? <ShortcutsPanel /> : ""} */}
+    </section>
   );
 };
 

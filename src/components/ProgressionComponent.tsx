@@ -39,7 +39,7 @@ const ProgressionComponent = (): JSX.Element => {
   };
 
   return (
-    <div className="centered-box">
+    <section className="centered-box">
       <KeyButton onPressKey={KeyCallback} />
       <ModeButton onPressMode={ModeCallback} />
       <MoodButton onPressMood={MoodCallback} />
@@ -55,7 +55,7 @@ const ProgressionComponent = (): JSX.Element => {
         chordsScale={chordsScale}
       />
       <br />
-    </div>
+    </section>
   );
 };
 
