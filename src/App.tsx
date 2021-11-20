@@ -17,7 +17,12 @@ const App = () => {
 
   return (
     <main className="App">
-      <h1>Kord</h1>
+      <h1>
+        <a href="#" className="app-title">
+          Kord
+        </a>
+      </h1>
+
       <Settings onSoundOn={SoundCallback} />
       <SoundOnContext.Provider value={soundOn}>
         <ProgressionComponent />

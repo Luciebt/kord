@@ -25,7 +25,7 @@ const ChordDisplayComponent = ({
 
   const romanNumerals = Progression.toRomanNumerals(tonic.toString(), chordArr);
 
-  const handleClick = (chord: string, event?: any) => {
+  const handleClick = (chord: string, index: number, event?: any) => {
     if (SoundOn) {
       PlayChord(chord);
     }
@@ -35,7 +35,10 @@ const ChordDisplayComponent = ({
     const style: string = "chord-btn-pressed";
     unPressElementsStyleWithoutEvent(style);
 
-    event.target.classList.add("chord-btn-pressed");
+    let chordBtn = document.getElementById(`btn-${index}`);
+    if (chordBtn) {
+      chordBtn.classList.add("chord-btn-pressed");
+    }
   };
 
   // Use numerical keys to play chords of one progression.
@@ -87,7 +90,7 @@ const ChordDisplayComponent = ({
       key={i}
       id={"btn-" + i.toString()}
       onClick={(e) => {
-        handleClick(c, e);
+        handleClick(c, i, e);
       }}
       className="chord-btn"
     >
@@ -98,11 +101,11 @@ const ChordDisplayComponent = ({
 
   return (
     <section className="chords-box">
-      <div className="chord-box">
+      <section className="chord-box">
         <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
-        <b>{chordsList && chordsList}</b>
+        {chordsList && chordsList}
         <br />
-      </div>
+      </section>
 
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />

@@ -1,21 +1,11 @@
 /* PIANO STYLING */
-:root {
-  --black-10: hsla(0, 0%, 0%, 0.1);
-  --black-20: hsla(0, 0%, 0%, 0.2);
-  --black-30: hsla(0, 0%, 0%, 0.3);
-  --black-50: hsla(0, 0%, 0%, 0.5);
-  --black-60: hsla(0, 0%, 0%, 0.6);
-  --white-20: hsla(0, 0%, 100%, 0.2);
-  --white-50: hsla(0, 0%, 100%, 0.5);
-  --white-80: hsla(0, 0%, 100%, 0.8);
-  --dominant-dark: #716f81;
-  --dominant-orange: #f6ae99;
-  --dominant-light: #f2e1c1;
-  --pressed-color: #b97a95;
-}
 
 #keyboard {
   display: flex;
+}
+
+#keyboard li {
+  border-radius: .25em;
 }
 
 .keyboard-box {
@@ -49,7 +39,7 @@
   margin: 0 0 0 -1rem;
   z-index: 2;
   border: 1px solid black;
-  background-color: var(--dominant-dark);
+  background-color: var(--piano-dark);
   color: var(--white-80);
 }
 

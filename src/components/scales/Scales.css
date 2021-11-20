@@ -1,5 +1,5 @@
 .scale-box {
-  background-color: #bae0ba;
+  background-color: var(--section-box);
   margin: 1em;
   padding: 1.8rem;
 }

@@ -29,6 +29,8 @@
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
+  width: 100%;
+  margin: 0;
 }
 
 #audio-btn:hover,
@@ -44,14 +46,16 @@
 }
 
 .sound-select {
+  font-family: inherit;
+  font-size: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--border-color);
   margin: 0 auto;
   padding: 0.4em;
   width: 180px;
   height: auto;
-  background-color: rgb(218, 216, 216);
   text-align: center;
 }
 

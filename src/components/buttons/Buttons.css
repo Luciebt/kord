@@ -3,19 +3,19 @@
 button {
   font-family: "Space Mono", monospace;
   color: var(--dominant-dark);
-  border-radius: 3% !important;
-  border-color: lightgrey;
-  min-width: 3em !important;
+  border: 1px solid var(--border-color);
+  border-radius: .25em;
+  transition: all .2s ease-in-out;
+  min-width: 3em;
   font-size: 1em;
-  padding: 0.2em;
-  margin: 0.2em;
+  padding: 0.5em;
+  margin: 0.3em;
   cursor: pointer;
-  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
 }
 
 button:hover {
-  border-radius: 3% !important;
-  border: 2px solid var(--dominant-dark);
+  transition: all .2s ease-in-out;
+  border: 1px solid var(--dominant-dark);
 }
 
 .btn-caption {
@@ -28,10 +28,9 @@ button:hover {
 .mode-btn-pressed,
 .mood-btn-pressed,
 .prog-btn-pressed {
-  transition: background-color 0.2s ease;
-  border-radius: 0% !important;
   color: #f4eeff;
-  border: 2px solid var(--dominant-dark);
+  transition: all .2s ease-in-out;
+  border: 1px solid var(--dominant-dark);
   background-color: var(--dominant-dark);
 }
 
@@ -47,21 +46,22 @@ button:hover {
 
 .scale-chord-btn,
 .chord-btn {
-  font-size: 1.4em;
+  font-size: 1.2em;
+  min-width: 4em;
 }
 
 button.chord-btn:hover,
 button.scale-chord-btn:hover {
-  border: 2px solid var(--pressed-color) !important;
+  border: 1px solid var(--pressed-color) !important;
 }
 
 .chord-btn-pressed,
 .scale-chord-btn-pressed {
   transition: background-color 0.2s ease;
-  border-radius: 0% !important;
   color: #f4eeff;
-  border: 2px solid var(--pressed-color);
+  border: 1px solid var(--pressed-color);
   background-color: var(--pressed-color);
+  transition: all .2s ease-in-out;
 }
 
 /* Loop button */
@@ -76,18 +76,18 @@ button.scale-chord-btn:hover {
 .loop-btn {
   font-size: 1.4em;
   color: var(--pressed-color);
-  border: 2px solid var(--pressed-color);
+  border: 1px solid var(--pressed-color);
 }
 .loop-btn:hover {
   background-color: var(--pressed-color);
   color: white;
-  border: 2px solid var(--pressed-color);
+  border: 1px solid var(--pressed-color);
 }
 .loop-btn-pressed {
   font-size: 1.4em;
   background-color: var(--pressed-color);
   color: white;
-  border: 2px solid var(--pressed-color);
+  border: 1px solid var(--pressed-color);
 }
 .loop-btn-disabled {
   opacity: 0.4;
@@ -98,5 +98,5 @@ button.scale-chord-btn:hover {
 #export-midi-btn {
   font-size: 0.9em;
   margin-top: 1em;
-  text-decoration: underline;
+  transition: all .2s ease-in-out;
 }

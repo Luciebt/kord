@@ -20,7 +20,7 @@ const MidiButtonComponent = ({ chordsList }: IMidiButtonProps): JSX.Element => {
         handleClick(e, chordsList);
       }}
     >
-      Export progression to MIDI
+      Export to MIDI
     </button>
   );
 };

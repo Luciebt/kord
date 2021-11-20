@@ -38,6 +38,7 @@ const ProgressionDisplayComponent = ({
       onClick={(e) => {
         handleClick(e, chords);
       }}
+      className="prog-btn"
     >
       {chords}
     </button>
@@ -53,7 +54,9 @@ const ProgressionDisplayComponent = ({
       <h2>Progressions </h2>
       {/* Progressions buttons: */}
       <section className="prog-btn-box">
-        <b>{chordsList ? progressionsList : ""}</b>
+        <div className="prog-grid-results">
+          {chordsList ? progressionsList : ""}
+        </div>
       </section>
       {/* Chords buttons: */}
       {chordsList && chordsState ? (

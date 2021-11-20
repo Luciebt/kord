@@ -40,9 +40,11 @@ const ProgressionComponent = (): JSX.Element => {
 
   return (
     <section className="centered-box">
-      <KeyButton onPressKey={KeyCallback} />
-      <ModeButton onPressMode={ModeCallback} />
-      <MoodButton onPressMood={MoodCallback} />
+      <div className="prog-chooser-box">
+        <KeyButton onPressKey={KeyCallback} />
+        <ModeButton onPressMode={ModeCallback} />
+        <MoodButton onPressMood={MoodCallback} />
+      </div>
       <ProgressionDisplayComponent
         tonic={tonic}
         mode={mode}

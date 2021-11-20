@@ -18,7 +18,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   const handleClick = (event: any) => {
     setAudioPref(!audioPref);
     onSoundOn(audioPref);
-  }
+  };
 
   const [toggleShortcutsPanel, setToggleShortcutsPanel] = useToggle(false);
 
@@ -26,17 +26,21 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
     event.preventDefault();
     SetSynthSound(event.target.value);
     console.log(event.target.value);
-  }
+  };
 
   return (
     <section>
-      <div id="settings-box">
+      <section id="settings-box">
         <button id="audio-btn" onClick={(e) => handleClick(e)}>
           {audioPref ? "Audio OFF" : "Audio ON"}
         </button>
 
-        <select name="synthPartials" onChange={(e) => ChooseSynth(e)} className="sound-select">
-          <option value="DEFAULT">Choose a sound</option>
+        <select
+          name="synthPartials"
+          onChange={(e) => ChooseSynth(e)}
+          className="sound-select"
+          role="Shoose a sound"
+        >
           <option value="cuteSine">Cute Sine</option>
           <option value="imperatrice">Madame l'Imperatrice</option>
           <option value="inDaChurch">In Da Church</option>
@@ -49,7 +53,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         >
           Shortcuts
         </button> */}
-      </div>
+      </section>
       {/* {toggleShortcutsPanel ? <ShortcutsPanel /> : ""} */}
     </section>
   );

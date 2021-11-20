@@ -7,8 +7,19 @@ body {
   max-width: 888px;
 }
 
+section, input, select {
+  border-radius: .25em;
+}
+
+input {
+  border: 1px solid var(--border-color);
+  border-radius: .25em;
+  transition: all .2s ease-in-out;
+}
+
 html {
   box-sizing: border-box;
+  background-color: var(--main-background);
 }
 
 *,
@@ -17,12 +28,47 @@ html {
   box-sizing: inherit;
 }
 
+.app-title, .app-title:hover, .app-title:visited, .app-title:active {
+  color: inherit;
+  text-decoration: none;
+ }
+
 h1 {
-  font-size: 2.8em;
+  font-size: 4.8em;
   text-align: center;
   color: var(--dominant-dark);
-  margin-top: 1em;
-  margin-bottom: 0;
+  margin: 0;
 }
 
-/* palette: https://colorhunt.co/palette/716f81b97a95f6ae99f2e1c1 */
+/* Color variables */
+
+:root {
+  --black-10: hsla(0, 0%, 0%, 0.1);
+  --black-20: hsla(0, 0%, 0%, 0.2);
+  --black-30: hsla(0, 0%, 0%, 0.3);
+  --black-50: hsla(0, 0%, 0%, 0.5);
+  --black-60: hsla(0, 0%, 0%, 0.6);
+  --white-20: hsla(0, 0%, 100%, 0.2);
+  --white-50: hsla(0, 0%, 100%, 0.5);
+  --white-80: hsla(0, 0%, 100%, 0.8);
+  --piano-dark: #716f81;
+  --border-color: #d5d7dd;
+  --section-box: #ffc8dd;
+  --dominant-light:#ffafcc ;
+  --main-background: #fffffc;
+  --dominant-dark: #6d6875;
+  --pressed-color: #4187c9;
+}
+
+/* Progression box display */
+
+.prog-grid-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.prog-btn {
+  width: 11em;
+}

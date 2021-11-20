@@ -55,11 +55,17 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         onClick={(e) => {
           handleClick(e);
         }}
-        className={SoundOn ? loopState ? "loop-btn-pressed" : "loop-btn" : "loop-btn-disabled"}
+        className={
+          SoundOn
+            ? loopState
+              ? "loop-btn-pressed"
+              : "loop-btn"
+            : "loop-btn-disabled"
+        }
       >
         {loopState ? "■" : "▶"}
       </button>
-      <BpmRange onBpmRange={BpmCallback} />
+      {SoundOn ? <BpmRange onBpmRange={BpmCallback} /> : null}
     </div>
   );
 };

@@ -9,7 +9,8 @@
 }
 
 .chord-box {
-  background-color: #bae0ba;
+  background-color: var(--section-box);
   padding: 0.6em;
   margin-top: 0.6em;
+  margin-bottom: 0.6em;
 }
