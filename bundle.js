@@ -5196,7 +5196,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Space+Mono&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  margin: 0 auto;\r\n  max-width: 888px;\r\n}\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n}\r\n\r\n*,\r\n*:before,\r\n*:after {\r\n  box-sizing: inherit;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.8em;\r\n  text-align: center;\r\n  color: var(--dominant-dark);\r\n  margin-top: 1em;\r\n  margin-bottom: 0;\r\n}\r\n\r\n/* palette: https://colorhunt.co/palette/716f81b97a95f6ae99f2e1c1 */\r\n", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAEA;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,sBAAsB;AACxB;;AAEA;;;EAGE,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,eAAe;EACf,gBAAgB;AAClB;;AAEA,mEAAmE","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\r\n\r\nbody {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  margin: 0 auto;\r\n  max-width: 888px;\r\n}\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n}\r\n\r\n*,\r\n*:before,\r\n*:after {\r\n  box-sizing: inherit;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.8em;\r\n  text-align: center;\r\n  color: var(--dominant-dark);\r\n  margin-top: 1em;\r\n  margin-bottom: 0;\r\n}\r\n\r\n/* palette: https://colorhunt.co/palette/716f81b97a95f6ae99f2e1c1 */\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--main-background);\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAEA;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;EACtB,wCAAwC;AAC1C;;AAEA;;;EAGE,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,qBAAqB;CACtB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,SAAS;AACX;;AAEA,oBAAoB;;AAEpB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,qBAAqB;EACrB,uBAAuB;EACvB,sBAAsB;EACtB,yBAAyB;EACzB,0BAA0B;EAC1B,wBAAwB;EACxB,wBAAwB;AAC1B;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,WAAW;AACb","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\n\nbody {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--main-background);\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5223,7 +5223,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\r\n  font-size: 1.4em;\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,aAAa;EACb,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\r\n  font-size: 1.4em;\r\n  outline: none;\r\n  padding: 0.6em;\r\n  margin: 0.2em;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  font-weight: inherit;\r\n  color: inherit;\r\n  resize: none;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\n  font-size: 1.4em;\n  outline: none;\n  max-width: 5em;\n  min-height: 3.6em;\n  padding: 0.6em;\n  margin: 0.2em;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  resize: none;\n}\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,aAAa;EACb,cAAc;EACd,iBAAiB;EACjB,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\n  font-size: 1.4em;\n  outline: none;\n  max-width: 5em;\n  min-height: 3.6em;\n  padding: 0.6em;\n  margin: 0.2em;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  resize: none;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5250,7 +5250,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.visible {\r\n  display: inline-block;\r\n}\r\n\r\n.invisible {\r\n  display: none;\r\n}\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,4BAA4B;EAC5B,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;EACf,iDAAiD;AACnD;;AAEA;EACE,4BAA4B;EAC5B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;AAClB;;AAEA,gDAAgD;;AAEhD;;;;EAIE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;AAClB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,4BAA4B;EAC5B,cAAc;EACd,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B","sourcesContent":["/* General button style */\r\n\r\nbutton {\r\n  font-family: \"Space Mono\", monospace;\r\n  color: var(--dominant-dark);\r\n  border-radius: 3% !important;\r\n  border-color: lightgrey;\r\n  min-width: 3em !important;\r\n  font-size: 1em;\r\n  padding: 0.2em;\r\n  margin: 0.2em;\r\n  cursor: pointer;\r\n  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */\r\n}\r\n\r\nbutton:hover {\r\n  border-radius: 3% !important;\r\n  border: 2px solid var(--dominant-dark);\r\n}\r\n\r\n.btn-caption {\r\n  font-size: 0.6em;\r\n}\r\n\r\n/* Key, Mod, Mood and Progression main buttons */\r\n\r\n.key-btn-pressed,\r\n.mode-btn-pressed,\r\n.mood-btn-pressed,\r\n.prog-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--dominant-dark);\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n/* Scale and Chord buttons */\r\n\r\n.visible {\r\n  display: inline-block;\r\n}\r\n\r\n.invisible {\r\n  display: none;\r\n}\r\n\r\n.scale-chord-btn,\r\n.chord-btn {\r\n  font-size: 1.4em;\r\n}\r\n\r\nbutton.chord-btn:hover,\r\nbutton.scale-chord-btn:hover {\r\n  border: 2px solid var(--pressed-color) !important;\r\n}\r\n\r\n.chord-btn-pressed,\r\n.scale-chord-btn-pressed {\r\n  transition: background-color 0.2s ease;\r\n  border-radius: 0% !important;\r\n  color: #f4eeff;\r\n  border: 2px solid var(--pressed-color);\r\n  background-color: var(--pressed-color);\r\n}\r\n\r\n/* Loop button */\r\n\r\n.loop-box {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.loop-btn {\r\n  font-size: 1.4em;\r\n  color: var(--pressed-color);\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn:hover {\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-pressed {\r\n  font-size: 1.4em;\r\n  background-color: var(--pressed-color);\r\n  color: white;\r\n  border: 2px solid var(--pressed-color);\r\n}\r\n.loop-btn-disabled {\r\n  opacity: 0.4;\r\n}\r\n\r\n/* Export to MIDI button */\r\n\r\n#export-midi-btn {\r\n  font-size: 0.9em;\r\n  margin-top: 1em;\r\n  text-decoration: underline;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--pressed-color);\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn:hover {\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 0.9em;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n}\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,+BAA+B;EAC/B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,2BAA2B;AAC7B;;AAEA,gDAAgD;;AAEhD;;;;EAIE,oBAAoB;EACpB,4BAA4B;EAC5B,+BAA+B;EAC/B,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,cAAc;EACd,sCAAsC;EACtC,sCAAsC;EACtC,+BAA+B;AACjC;;AAEA;EACE,cAAc;AAChB;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,gBAAgB;EAChB,eAAe;EACf,+BAA+B;AACjC","sourcesContent":["/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--pressed-color);\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn:hover {\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 0.9em;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5277,7 +5277,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* PIANO STYLING */\r\n:root {\r\n  --black-10: hsla(0, 0%, 0%, 0.1);\r\n  --black-20: hsla(0, 0%, 0%, 0.2);\r\n  --black-30: hsla(0, 0%, 0%, 0.3);\r\n  --black-50: hsla(0, 0%, 0%, 0.5);\r\n  --black-60: hsla(0, 0%, 0%, 0.6);\r\n  --white-20: hsla(0, 0%, 100%, 0.2);\r\n  --white-50: hsla(0, 0%, 100%, 0.5);\r\n  --white-80: hsla(0, 0%, 100%, 0.8);\r\n  --dominant-dark: #716f81;\r\n  --dominant-orange: #f6ae99;\r\n  --dominant-light: #f2e1c1;\r\n  --pressed-color: #b97a95;\r\n}\r\n\r\n#keyboard {\r\n  display: flex;\r\n}\r\n\r\n.keyboard-box {\r\n  margin-left: -2.2em;\r\n}\r\n\r\n.white,\r\n.black {\r\n  position: relative;\r\n  float: left;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: flex-end;\r\n  padding: 0.5rem 0;\r\n  user-select: none;\r\n}\r\n\r\n.white {\r\n  height: 12.5rem;\r\n  width: 3.5rem;\r\n  z-index: 1;\r\n  border-left: 1px solid hsl(0, 0%, 73%);\r\n  border-bottom: 1px solid hsl(0, 0%, 73%);\r\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\r\n  color: var(--black-30);\r\n}\r\n\r\n.black {\r\n  height: 8rem;\r\n  width: 2rem;\r\n  margin: 0 0 0 -1rem;\r\n  z-index: 2;\r\n  border: 1px solid black;\r\n  background-color: var(--dominant-dark);\r\n  color: var(--white-80);\r\n}\r\n\r\n.white.pressed {\r\n  border-top: 1px solid hsl(0, 0%, 47%);\r\n  border-left: 1px solid hsl(0, 0%, 60%);\r\n  border-bottom: 1px solid hsl(0, 0%, 60%);\r\n  color: var(--white-80);\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.black.pressed {\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n/* ScalePianoDisplay */\r\n.white.s-pressed {\r\n  border-top: 1px solid hsl(0, 0%, 47%);\r\n  border-left: 1px solid hsl(0, 0%, 60%);\r\n  border-bottom: 1px solid hsl(0, 0%, 60%);\r\n  color: var(--white-80);\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.black.s-pressed {\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.offset {\r\n  margin: 0 0 0 -1rem;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/progressions/Piano.css"],"names":[],"mappings":"AAAA,kBAAkB;AAClB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,wBAAwB;EACxB,0BAA0B;EAC1B,yBAAyB;EACzB,wBAAwB;AAC1B;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,mBAAmB;AACrB;;AAEA;;EAEE,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,eAAe;EACf,aAAa;EACb,UAAU;EACV,sCAAsC;EACtC,wCAAwC;EACxC,sEAAsE;EACtE,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,UAAU;EACV,uBAAuB;EACvB,sCAAsC;EACtC,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA,sBAAsB;AACtB;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":["/* PIANO STYLING */\r\n:root {\r\n  --black-10: hsla(0, 0%, 0%, 0.1);\r\n  --black-20: hsla(0, 0%, 0%, 0.2);\r\n  --black-30: hsla(0, 0%, 0%, 0.3);\r\n  --black-50: hsla(0, 0%, 0%, 0.5);\r\n  --black-60: hsla(0, 0%, 0%, 0.6);\r\n  --white-20: hsla(0, 0%, 100%, 0.2);\r\n  --white-50: hsla(0, 0%, 100%, 0.5);\r\n  --white-80: hsla(0, 0%, 100%, 0.8);\r\n  --dominant-dark: #716f81;\r\n  --dominant-orange: #f6ae99;\r\n  --dominant-light: #f2e1c1;\r\n  --pressed-color: #b97a95;\r\n}\r\n\r\n#keyboard {\r\n  display: flex;\r\n}\r\n\r\n.keyboard-box {\r\n  margin-left: -2.2em;\r\n}\r\n\r\n.white,\r\n.black {\r\n  position: relative;\r\n  float: left;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: flex-end;\r\n  padding: 0.5rem 0;\r\n  user-select: none;\r\n}\r\n\r\n.white {\r\n  height: 12.5rem;\r\n  width: 3.5rem;\r\n  z-index: 1;\r\n  border-left: 1px solid hsl(0, 0%, 73%);\r\n  border-bottom: 1px solid hsl(0, 0%, 73%);\r\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\r\n  color: var(--black-30);\r\n}\r\n\r\n.black {\r\n  height: 8rem;\r\n  width: 2rem;\r\n  margin: 0 0 0 -1rem;\r\n  z-index: 2;\r\n  border: 1px solid black;\r\n  background-color: var(--dominant-dark);\r\n  color: var(--white-80);\r\n}\r\n\r\n.white.pressed {\r\n  border-top: 1px solid hsl(0, 0%, 47%);\r\n  border-left: 1px solid hsl(0, 0%, 60%);\r\n  border-bottom: 1px solid hsl(0, 0%, 60%);\r\n  color: var(--white-80);\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.black.pressed {\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n/* ScalePianoDisplay */\r\n.white.s-pressed {\r\n  border-top: 1px solid hsl(0, 0%, 47%);\r\n  border-left: 1px solid hsl(0, 0%, 60%);\r\n  border-bottom: 1px solid hsl(0, 0%, 60%);\r\n  color: var(--white-80);\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.black.s-pressed {\r\n  background: var(--pressed-color);\r\n  outline: none;\r\n}\r\n\r\n.offset {\r\n  margin: 0 0 0 -1rem;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/progressions/Piano.css"],"names":[],"mappings":"AAAA,kBAAkB;;AAElB;EACE,aAAa;AACf;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;;EAEE,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,eAAe;EACf,aAAa;EACb,UAAU;EACV,sCAAsC;EACtC,wCAAwC;EACxC,sEAAsE;EACtE,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,UAAU;EACV,uBAAuB;EACvB,mCAAmC;EACnC,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA,sBAAsB;AACtB;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":["/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5304,7 +5304,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".centered-box {\r\n  text-align: center;\r\n}\r\n\r\n.prog-box {\r\n  background-color: var(--dominant-light);\r\n  margin: 1em;\r\n  padding: 1.8rem;\r\n}\r\n\r\n.chord-box {\r\n  background-color: #bae0ba;\r\n  padding: 0.6em;\r\n  margin-top: 0.6em;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/progressions/Progressions.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,uCAAuC;EACvC,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,yBAAyB;EACzB,cAAc;EACd,iBAAiB;AACnB","sourcesContent":[".centered-box {\r\n  text-align: center;\r\n}\r\n\r\n.prog-box {\r\n  background-color: var(--dominant-light);\r\n  margin: 1em;\r\n  padding: 1.8rem;\r\n}\r\n\r\n.chord-box {\r\n  background-color: #bae0ba;\r\n  padding: 0.6em;\r\n  margin-top: 0.6em;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".centered-box {\n  text-align: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: var(--section-box);\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n", "",{"version":3,"sources":["webpack://./src/components/progressions/Progressions.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,uCAAuC;EACvC,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,oCAAoC;EACpC,cAAc;EACd,iBAAiB;EACjB,oBAAoB;AACtB","sourcesContent":[".centered-box {\n  text-align: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: var(--section-box);\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5331,7 +5331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".scale-box {\r\n  background-color: #bae0ba;\r\n  margin: 1em;\r\n  padding: 1.8rem;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/scales/Scales.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,WAAW;EACX,eAAe;AACjB","sourcesContent":[".scale-box {\r\n  background-color: #bae0ba;\r\n  margin: 1em;\r\n  padding: 1.8rem;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/scales/Scales.css"],"names":[],"mappings":"AAAA;EACE,oCAAoC;EACpC,WAAW;EACX,eAAe;AACjB","sourcesContent":[".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5358,7 +5358,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 188px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n.sound-select {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 180px;\r\n  height: auto;\r\n  background-color: rgb(218, 216, 216);\r\n  text-align: center;\r\n}\r\n\r\n.sound-select option {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.sound-select option:hover {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA,sCAAsC;AACtC;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;;EAEE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;;EAEE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;EAEE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,iDAAiD;AACnD","sourcesContent":["/* Settings UI containers */\r\n\r\n#settings-box {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.3em;\r\n  width: 188px;\r\n  background-color: rgb(234, 234, 234);\r\n  text-align: center;\r\n}\r\n\r\n/* Detailed panel to select settings */\r\n.settings-panel {\r\n  font-size: 0.75em;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 248px;\r\n  height: auto;\r\n  background-color: lightgrey;\r\n  text-align: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#audio-btn,\r\n#shortcuts-btn {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n#audio-btn:hover,\r\n#shortcuts-btn:hover {\r\n  color: white;\r\n  background-color: var(--dominant-dark);\r\n}\r\n\r\n.audio-selected-btn,\r\n.shortcuts-selected-btn {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n\r\n.sound-select {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  padding: 0.4em;\r\n  width: 180px;\r\n  height: auto;\r\n  background-color: rgb(218, 216, 216);\r\n  text-align: center;\r\n}\r\n\r\n.sound-select option {\r\n  border: none;\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  cursor: pointer;\r\n}\r\n\r\n.sound-select option:hover {\r\n  color: white !important;\r\n  background-color: var(--dominant-dark) !important;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\n\n#settings-box {\n  font-size: 0.75em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 188px;\n  background-color: rgb(234, 234, 234);\n  text-align: center;\n}\n\n/* Detailed panel to select settings */\n.settings-panel {\n  font-size: 0.75em;\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 248px;\n  height: auto;\n  background-color: lightgrey;\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: 0;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 180px;\n  height: auto;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,oCAAoC;EACpC,kBAAkB;AACpB;;AAEA,sCAAsC;AACtC;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;;EAEE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;EACf,WAAW;EACX,SAAS;AACX;;AAEA;;EAEE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;EAEE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,oBAAoB;EACpB,cAAc;EACd,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,qCAAqC;EACrC,cAAc;EACd,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,iDAAiD;AACnD","sourcesContent":["/* Settings UI containers */\n\n#settings-box {\n  font-size: 0.75em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 188px;\n  background-color: rgb(234, 234, 234);\n  text-align: center;\n}\n\n/* Detailed panel to select settings */\n.settings-panel {\n  font-size: 0.75em;\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 248px;\n  height: auto;\n  background-color: lightgrey;\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: 0;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 180px;\n  height: auto;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83026,7 +83026,8 @@ const App = () => {
         console.log("Sound is now " + sound);
     };
     return (react_1.default.createElement("main", { className: "App" },
-        react_1.default.createElement("h1", null, "Kord"),
+        react_1.default.createElement("h1", null,
+            react_1.default.createElement("a", { href: "#", className: "app-title" }, "Kord")),
         react_1.default.createElement(Settings_1.default, { onSoundOn: SoundCallback }),
         react_1.default.createElement(exports.SoundOnContext.Provider, { value: soundOn },
             react_1.default.createElement(ProgressionComponent_1.default, null))));
@@ -83074,7 +83075,6 @@ function PlayMidiNotes(chordNotes, instrumentType) {
             break;
     }
 }
-// TODO: pass the enum instrument in PlayChord from the react component.
 function PlayChord(chord) {
     const chordNotes = BuildChordNotes(chord);
     PlayMidiNotes(chordNotes, InstrumentType.Synth);
@@ -83090,7 +83090,7 @@ function BuildMidiChordNotes(chordNotes) {
     });
 }
 // TODO: improve this function
-function ChordsArrayBuilder(chord) {
+function ChordsArrayBuilder(chord, octave) {
     let homeNote = chord[0];
     // Let major be the default mode.
     let chordMode = "M";
@@ -83105,7 +83105,7 @@ function ChordsArrayBuilder(chord) {
             break;
     }
     // Add octave
-    homeNote += "3";
+    homeNote += octave;
     if (chord.includes("m", 1)) {
         chordMode = "m";
     }
@@ -83129,11 +83129,10 @@ function ChordsArrayBuilder(chord) {
     }
     return [chordMode, homeNote];
 }
-function BuildChordNotes(chord) {
-    const [chordMode, homeNote] = ChordsArrayBuilder(chord);
-    // console.log("chord to find_____________" + chord);
+// FIXME: Add octave, otherwise lots of progressions are broken.
+function BuildChordNotes(chord, octave = 3) {
+    const [chordMode, homeNote] = ChordsArrayBuilder(chord, octave);
     let chordArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
-    // console.log("detectedChord after builder and getChord____" + detect(chordArr));
     // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart. Why do they exist btw?
     chordArr.forEach((chord, i) => {
         chordArr[i] = tonal_1.Note.simplify(chord);
@@ -83159,9 +83158,10 @@ exports.DetermineChordsList = void 0;
 const ProgressionStore_1 = __webpack_require__(/*! ./ProgressionStore */ "./src/ProgressionStore.ts");
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const NoteUtils_1 = __webpack_require__(/*! ./NoteUtils */ "./src/NoteUtils.ts");
+const ProgressionUtils_1 = __webpack_require__(/*! ./ProgressionUtils */ "./src/ProgressionUtils.ts");
 //------- Find progressions helpers
 function FindProgListFromMode(progressionCollectionForMode) {
-    let ProgressionsFound = [""];
+    let ProgressionsFound = [];
     for (const v of Object.values(progressionCollectionForMode)) {
         const ProgList = v["progression_list"];
         if (ProgList) {
@@ -83191,7 +83191,6 @@ function FindProgListWithMood(mode, mood) {
             Progressions = ProgressionStore_1.ProgressionCollection.Minor;
             break;
     }
-    // TODO: find a better way to deal with mood filtering.
     if (Progressions) {
         for (const v of Object.values(Progressions)) {
             if (v["mood"] == mood) {
@@ -83204,18 +83203,22 @@ function FindProgListWithMood(mode, mood) {
 function ConvertProgToChords(tonic, progArr) {
     // Filter progression array from empty elements
     progArr = progArr.filter((e) => e);
-    return progArr.map((prog) => {
+    const chordsArr = progArr.map((prog) => {
         // Build an array with progression nums, separated by commas for tonals js.
         const newList = prog.split(", ");
         // Convert the progression to actual chords.
         const newProg = tonal_1.Progression.fromRomanNumerals(tonic, newList);
-        return newProg.toString();
+        return (0, NoteUtils_1.CleanChords)(newProg.toString());
     });
+    // Build the map
+    (0, ProgressionUtils_1.BuildChordsMap)(progArr, chordsArr);
+    return chordsArr.join(" | ");
 }
 //------------ Export function for ProgressionComponent.tsx
 function DetermineChordsList(tonic, mode, mood) {
     if (!tonic || !mode)
         return "";
+    let FullProg = "";
     let ProgList = undefined;
     if (mood == "All" || !mood) {
         ProgList = FindProgListWithoutMood(mode);
@@ -83223,12 +83226,10 @@ function DetermineChordsList(tonic, mode, mood) {
     else if (mood) {
         ProgList = FindProgListWithMood(mode, mood);
     }
-    if (!ProgList) {
+    else {
         return "";
     }
-    const ChordsList = ConvertProgToChords(tonic, ProgList);
-    const ChordsStr = ChordsList.join(" | ");
-    return (0, NoteUtils_1.CleanChords)(ChordsStr);
+    return ConvertProgToChords(tonic, ProgList);
 }
 exports.DetermineChordsList = DetermineChordsList;
 
@@ -83289,28 +83290,6 @@ exports.CleanChords = CleanChords;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ShowChord = void 0;
 const Chords_1 = __webpack_require__(/*! ./Chords */ "./src/Chords.ts");
-// Access to key id using noteNumForKeys["C#"];
-const noteNumForKeys = {
-    C: 0,
-    "C#": 1,
-    D: 2,
-    "D#": 3,
-    E: 4,
-    F: 5,
-    "F#": 6,
-    G: 7,
-    "G#": 8,
-    A: 9,
-    "A#": 10,
-    B: 11,
-};
-// const fromFlatToSharp = {
-//   Db: "C#",
-//   Eb: "D#",
-//   Gb: "F#",
-//   Ab: "G#",
-//   Bb: "A#",
-// };
 function ShowChord(chord) {
     if (!chord)
         return [];
@@ -83471,6 +83450,49 @@ function convertProgForTonal(samples) {
 
 /***/ }),
 
+/***/ "./src/ProgressionUtils.ts":
+/*!*********************************!*\
+  !*** ./src/ProgressionUtils.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PrintMap = exports.GetRomansForChord = exports.BuildChordsMap = void 0;
+let progMap = new Map();
+function BuildChordsMap(progArr, chordsArr) {
+    progMap.clear();
+    for (let i = 0; i < progArr.length; i++) {
+        progMap.set(chordsArr[i], progArr[i]);
+    }
+}
+exports.BuildChordsMap = BuildChordsMap;
+function GetRomansForChord(chordsArr) {
+    //   for (let value of mp.values()) {
+    //     console.log(value);
+    //   }
+    const romansNumeralFound = progMap.get(chordsArr.join(","));
+    if (romansNumeralFound) {
+        return romansNumeralFound.split(",");
+    }
+    else {
+        return [];
+    }
+}
+exports.GetRomansForChord = GetRomansForChord;
+function PrintMap(mp = progMap) {
+    // entry[0] = keys / roman nums
+    // entry[1] = values / chords
+    for (let entry of mp.entries()) {
+        console.log(entry[0], entry[1]); //"Lokesh" 37 "Raj" 35 "John" 40
+    }
+}
+exports.PrintMap = PrintMap;
+
+
+/***/ }),
+
 /***/ "./src/Scale.ts":
 /*!**********************!*\
   !*** ./src/Scale.ts ***!
@@ -83480,7 +83502,7 @@ function convertProgForTonal(samples) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.findChordsScale = void 0;
+exports.findNotesScales = exports.findChordsScale = void 0;
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const NoteUtils_1 = __webpack_require__(/*! ./NoteUtils */ "./src/NoteUtils.ts");
 // TODO: finish Scale feature. Move this somewhere else.
@@ -83493,8 +83515,7 @@ function findChordsScale(tonic, mode) {
             Results.push((0, NoteUtils_1.CleanChords)(majorChords));
             break;
         case "Minor":
-            // TODO: not only natural scales.
-            const minorChords = tonal_1.Key.minorKey(tonic).natural.chords.toString();
+            const minorChords = tonal_1.Key.minorKey(tonic).harmonic.chords.toString();
             Results.push((0, NoteUtils_1.CleanChords)(minorChords));
             break;
         default:
@@ -83504,6 +83525,20 @@ function findChordsScale(tonic, mode) {
     return Results.toString().split(",");
 }
 exports.findChordsScale = findChordsScale;
+function findNotesScales(tonic, mode) {
+    switch (mode) {
+        case "Major":
+            return tonal_1.Key.majorKey(tonic).scale.toString();
+            break;
+        case "Minor":
+            return tonal_1.Key.minorKey(tonic).harmonic.scale.toString();
+            break;
+        default:
+            return "";
+            break;
+    }
+}
+exports.findNotesScales = findNotesScales;
 
 
 /***/ }),
@@ -83630,6 +83665,8 @@ function SetSynthSound(synthSound) {
     switch (synthSound) {
         case "cuteSine":
             CreateSynth(synthSounds.cuteSinePartials);
+        case "grandPiano":
+        // CreatePiano();
         case "imperatrice":
             CreateSynth(synthSounds.imperatricePartials);
         case "inDaChurch":
@@ -83770,9 +83807,10 @@ const ProgressionComponent = () => {
         }
     };
     return (react_1.default.createElement("section", { className: "centered-box" },
-        react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
-        react_1.default.createElement(ModeButton_1.default, { onPressMode: ModeCallback }),
-        react_1.default.createElement(MoodButton_1.default, { onPressMood: MoodCallback }),
+        react_1.default.createElement("div", { className: "prog-chooser-box" },
+            react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
+            react_1.default.createElement(ModeButton_1.default, { onPressMode: ModeCallback }),
+            react_1.default.createElement(MoodButton_1.default, { onPressMood: MoodCallback })),
         react_1.default.createElement(ProgressionDisplay_1.default, { tonic: tonic, mode: mode, mood: mood ? mood : "", chordsList: chordsList ? chordsList : "" }),
         react_1.default.createElement(ScaleDisplay_1.default, { tonic: tonic, mode: mode, chordsScale: chordsScale }),
         react_1.default.createElement("br", null)));
@@ -83957,8 +83995,12 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
     return (react_1.default.createElement("div", { className: "loop-box" },
         react_1.default.createElement("button", { id: "loop", onClick: (e) => {
                 handleClick(e);
-            }, className: SoundOn ? loopState ? "loop-btn-pressed" : "loop-btn" : "loop-btn-disabled" }, loopState ? "■" : "▶"),
-        react_1.default.createElement(bpm_1.default, { onBpmRange: BpmCallback })));
+            }, className: SoundOn
+                ? loopState
+                    ? "loop-btn-pressed"
+                    : "loop-btn"
+                : "loop-btn-disabled" }, loopState ? "■" : "▶"),
+        SoundOn ? react_1.default.createElement(bpm_1.default, { onBpmRange: BpmCallback }) : null));
 };
 exports["default"] = LoopButton;
 
@@ -83988,7 +84030,7 @@ const MidiButtonComponent = ({ chordsList }) => {
     };
     return (react_1.default.createElement("button", { id: "export-midi-btn", onClick: (e) => {
             handleClick(e, chordsList);
-        } }, "Export progression to MIDI"));
+        } }, "Export to MIDI"));
 };
 exports["default"] = MidiButtonComponent;
 
@@ -84070,49 +84112,6 @@ const MoodButton = ({ onPressMood }) => {
         moodsList));
 };
 exports["default"] = MoodButton;
-
-
-/***/ }),
-
-/***/ "./src/components/hooks/KeyPressHook.tsx":
-/*!***********************************************!*\
-  !*** ./src/components/hooks/KeyPressHook.tsx ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.useKeyPress = void 0;
-const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function useKeyPress(targetKey) {
-    // State for keeping track of whether key is pressed
-    const [keyPressed, setKeyPressed] = (0, react_1.useState)(false);
-    // If pressed key is our target key then set to true
-    function downHandler({ key }) {
-        if (key === targetKey) {
-            setKeyPressed(true);
-        }
-    }
-    // If released key is our target key then set to false
-    const upHandler = ({ key }) => {
-        if (key === targetKey) {
-            setKeyPressed(false);
-        }
-    };
-    // Add event listeners
-    (0, react_1.useEffect)(() => {
-        window.addEventListener("keydown", downHandler);
-        window.addEventListener("keyup", upHandler);
-        // Remove event listeners on cleanup
-        return () => {
-            window.removeEventListener("keydown", downHandler);
-            window.removeEventListener("keyup", upHandler);
-        };
-    }, []); // Empty array ensures that effect is only run on mount and unmount
-    return keyPressed;
-}
-exports.useKeyPress = useKeyPress;
 
 
 /***/ }),
@@ -84227,21 +84226,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
-const KeyPressHook_1 = __webpack_require__(/*! ../hooks/KeyPressHook */ "./src/components/hooks/KeyPressHook.tsx");
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const ProgressionUtils_1 = __webpack_require__(/*! ../../ProgressionUtils */ "./src/ProgressionUtils.ts");
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const ChordDisplayComponent = ({ tonic, chord, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     let chordArr = chord.split(",");
-    const romanNumerals = tonal_1.Progression.toRomanNumerals(tonic.toString(), chordArr);
-    const handleClick = (chord, event) => {
+    let romanNumerals = (0, ProgressionUtils_1.GetRomansForChord)(chordArr);
+    const handleClick = (chord, index, event) => {
         if (SoundOn) {
             (0, Chords_1.PlayChord)(chord);
         }
@@ -84249,37 +84247,11 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
         setChordSelected(chord);
         const style = "chord-btn-pressed";
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        event.target.classList.add("chord-btn-pressed");
+        let chordBtn = document.getElementById(`btn-${index}`);
+        if (chordBtn) {
+            chordBtn.classList.add("chord-btn-pressed");
+        }
     };
-    // Use numerical keys to play chords of one progression.
-    const FirstNumKey = (0, KeyPressHook_1.useKeyPress)("1");
-    const SecondNumKey = (0, KeyPressHook_1.useKeyPress)("2");
-    const ThirdNumKey = (0, KeyPressHook_1.useKeyPress)("3");
-    const FourthNumKey = (0, KeyPressHook_1.useKeyPress)("4");
-    const FifthNumKey = (0, KeyPressHook_1.useKeyPress)("5");
-    const SixthNumKey = (0, KeyPressHook_1.useKeyPress)("6");
-    // TODO: not only play chords, but also show the piano display.
-    if (FirstNumKey) {
-        (0, Chords_1.PlayChord)(chordArr[0]);
-    }
-    if (SecondNumKey) {
-        (0, Chords_1.PlayChord)(chordArr[1]);
-    }
-    if (ThirdNumKey && chordArr.length > 2) {
-        (0, Chords_1.PlayChord)(chordArr[2]);
-    }
-    if (FourthNumKey && chordArr.length > 3) {
-        (0, Chords_1.PlayChord)(chordArr[3]);
-    }
-    if (FifthNumKey && chordArr.length > 4) {
-        (0, Chords_1.PlayChord)(chordArr[4]);
-    }
-    if (SixthNumKey && chordArr.length > 5) {
-        (0, Chords_1.PlayChord)(chordArr[5]);
-    }
-    if (SixthNumKey && chordArr.length > 6) {
-        (0, Chords_1.PlayChord)(chordArr[6]);
-    }
     (0, react_1.useEffect)(() => {
         // comp mounts.
         return () => {
@@ -84291,17 +84263,14 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
         };
     }, [chord]);
     const chordsList = chordArr.map((c, i) => (react_1.default.createElement("button", { key: i, id: "btn-" + i.toString(), onClick: (e) => {
-            handleClick(c, e);
+            handleClick(c, i, e);
         }, className: "chord-btn" },
         c,
-        react_1.default.createElement("p", { className: "btn-caption" },
-            "(",
-            romanNumerals[i],
-            ")"))));
+        react_1.default.createElement("p", { className: "btn-caption" }, romanNumerals ? romanNumerals[i] : ""))));
     return (react_1.default.createElement("section", { className: "chords-box" },
-        react_1.default.createElement("div", { className: "chord-box" },
+        react_1.default.createElement("section", { className: "chord-box" },
             react_1.default.createElement("b", null, chordArr ? react_1.default.createElement(LoopButton_1.default, { chordsList: chordArr }) : null),
-            react_1.default.createElement("b", null, chordsList && chordsList),
+            chordsList && chordsList,
             react_1.default.createElement("br", null)),
         chordState && chordSelected ? (react_1.default.createElement(PianoDisplay_1.default, { chord: chordSelected })) : null,
         react_1.default.createElement("b", null, chordArr ? react_1.default.createElement(MidiButton_1.default, { chordsList: chordArr }) : null)));
@@ -84441,7 +84410,7 @@ const ProgressionDisplayComponent = ({ tonic, mode, mood, chordsList, }) => {
     };
     const progressionsList = chordsArr.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
             handleClick(e, chords);
-        } }, chords)));
+        }, className: "prog-btn" }, chords)));
     // Reset chord selected when changing tonality or mode.
     (0, useDidUpdate_1.useDidUpdate)(() => {
         setChordsState(false);
@@ -84449,7 +84418,7 @@ const ProgressionDisplayComponent = ({ tonic, mode, mood, chordsList, }) => {
     return (react_1.default.createElement("section", { className: "prog-box" },
         react_1.default.createElement("h2", null, "Progressions "),
         react_1.default.createElement("section", { className: "prog-btn-box" },
-            react_1.default.createElement("b", null, chordsList ? progressionsList : "")),
+            react_1.default.createElement("div", { className: "prog-grid-results" }, chordsList ? progressionsList : "")),
         chordsList && chordsState ? (react_1.default.createElement(ChordDisplay_1.default, { tonic: tonic, chord: chordSelected })) : null));
 };
 exports["default"] = ProgressionDisplayComponent;
@@ -84495,6 +84464,7 @@ const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePiano
 __webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const Scale_1 = __webpack_require__(/*! ../../Scale */ "./src/Scale.ts");
 const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
@@ -84509,18 +84479,19 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
         event.target.classList.add(style);
     };
+    const notesOnScale = (0, Scale_1.findNotesScales)(tonic, mode);
     const chordsScaleList = chordsScale.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
             handleClick(chords, e);
         }, className: "scale-chord-btn" }, chords)));
     (0, react_1.useEffect)(() => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        const chordBtns = Array.from(document.getElementsByClassName('scale-chord-btn'));
+        const chordBtns = Array.from(document.getElementsByClassName("scale-chord-btn"));
         if (!tonic && !mode) {
             chordBtns[0].classList.add("invisible");
         }
         if (tonic && mode) {
             if (chordBtns.length > 0) {
-                chordBtns.forEach(btn => {
+                chordBtns.forEach((btn) => {
                     btn.classList.remove("invisible");
                     btn.classList.add("visible");
                 });
@@ -84538,7 +84509,10 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
         react_1.default.createElement("h2", null,
             chordsScale ? "Chords on Scale " + tonic + " " + mode : "",
             " ",
-            mode == "Minor" ? " (natural scale)" : ""),
+            mode == "Minor" ? " (harmonic)" : ""),
+        notesOnScale,
+        " ",
+        react_1.default.createElement("br", null),
         chordsScaleList,
         chordState ? react_1.default.createElement(ScalePianoDisplay_1.default, { chord: chordSelected }) : null));
 };
@@ -84675,10 +84649,9 @@ const Settings = ({ onSettings, onSoundOn }) => {
         console.log(event.target.value);
     };
     return (react_1.default.createElement("section", null,
-        react_1.default.createElement("div", { id: "settings-box" },
+        react_1.default.createElement("section", { id: "settings-box" },
             react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF" : "Audio ON"),
-            react_1.default.createElement("select", { name: "synthPartials", onChange: (e) => ChooseSynth(e), className: "sound-select" },
-                react_1.default.createElement("option", { value: "DEFAULT" }, "Choose a sound"),
+            react_1.default.createElement("select", { name: "synthPartials", onChange: (e) => ChooseSynth(e), className: "sound-select", role: "Shoose a sound" },
                 react_1.default.createElement("option", { value: "cuteSine" }, "Cute Sine"),
                 react_1.default.createElement("option", { value: "imperatrice" }, "Madame l'Imperatrice"),
                 react_1.default.createElement("option", { value: "inDaChurch" }, "In Da Church")))));
