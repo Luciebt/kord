@@ -5,6 +5,7 @@ import ScalePianoDisplay from "./ScalePianoDisplay";
 import "./Scales.css";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
+import { findNotesScales } from "../../Scale";
 
 export interface IChordsScaleDisplayComponent {
   tonic: string;
@@ -34,6 +35,7 @@ const ChordsScaleDisplayComponent = ({
     event.target.classList.add(style);
   };
 
+  const notesOnScale: string = findNotesScales(tonic, mode);
 
   const chordsScaleList: JSX.Element[] = chordsScale.map((chords, i) => (
     <button
@@ -47,18 +49,21 @@ const ChordsScaleDisplayComponent = ({
     </button>
   ));
 
-
   useEffect(() => {
     unPressElementsStyleWithoutEvent(style);
 
-    const chordBtns = Array.from(document.getElementsByClassName('scale-chord-btn') as HTMLCollectionOf<HTMLElement>);
+    const chordBtns = Array.from(
+      document.getElementsByClassName(
+        "scale-chord-btn"
+      ) as HTMLCollectionOf<HTMLElement>
+    );
 
     if (!tonic && !mode) {
       chordBtns[0].classList.add("invisible");
     }
     if (tonic && mode) {
       if (chordBtns.length > 0) {
-        chordBtns.forEach(btn => {
+        chordBtns.forEach((btn) => {
           btn.classList.remove("invisible");
           btn.classList.add("visible");
         });
@@ -76,7 +81,11 @@ const ChordsScaleDisplayComponent = ({
 
   return (
     <section className="scale-box">
-      <h2>{chordsScale ? "Chords on Scale " + tonic + " " + mode : ""} {mode == "Minor" ? " (natural scale)" : ""}</h2>
+      <h2>
+        {chordsScale ? "Chords on Scale " + tonic + " " + mode : ""}{" "}
+        {mode == "Minor" ? " (harmonic)" : ""}
+      </h2>
+      {notesOnScale} <br />
       {chordsScaleList}
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
     </section>

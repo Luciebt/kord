@@ -11,8 +11,8 @@ export function findChordsScale(tonic: string, mode: string): string[] {
       Results.push(CleanChords(majorChords));
       break;
     case "Minor":
-      // TODO: not only natural scales.
-      const minorChords: string = Key.minorKey(tonic).natural.chords.toString();
+      const minorChords: string =
+        Key.minorKey(tonic).harmonic.chords.toString();
       Results.push(CleanChords(minorChords));
       break;
     default:
