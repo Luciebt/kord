@@ -22,3 +22,17 @@ export function findChordsScale(tonic: string, mode: string): string[] {
 
   return Results.toString().split(",");
 }
+
+export function findNotesScales(tonic: string, mode: string): string {
+  switch (mode) {
+    case "Major":
+      return Key.majorKey(tonic).scale.toString();
+      break;
+    case "Minor":
+      return Key.minorKey(tonic).harmonic.scale.toString();
+      break;
+    default:
+      return "";
+      break;
+  }
+}

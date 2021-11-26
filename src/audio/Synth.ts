@@ -12,7 +12,7 @@ const synthSounds = {
   cuteSinePartials: [7, 6, 0.2],
   imperatricePartials: [0, 2, 3, 4],
   churchPartials: [3, 5, 7, 9, 11],
-}
+};
 
 //------ Transport functions
 
@@ -36,7 +36,9 @@ export function GetTempo(): number {
 
 //------ Synth utils
 
-function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void {
+function CreateSynth(
+  newPartials: number[] = synthSounds.cuteSinePartials
+): void {
   // Dispose the existing synth if it exists.
   if (polySynth) {
     polySynth.releaseAll();
@@ -61,7 +63,6 @@ function CreateSynth(newPartials: number[] = synthSounds.cuteSinePartials): void
       phase: 0,
       type: "custom",
     },
-
   }).toDestination();
 }
 
@@ -69,6 +70,8 @@ export function SetSynthSound(synthSound: string): void {
   switch (synthSound) {
     case "cuteSine":
       CreateSynth(synthSounds.cuteSinePartials);
+    case "grandPiano":
+    // CreatePiano();
     case "imperatrice":
       CreateSynth(synthSounds.imperatricePartials);
     case "inDaChurch":

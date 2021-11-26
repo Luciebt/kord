@@ -9,7 +9,6 @@ export interface IProgressionDisplayProps {
   mode: string;
   mood?: string;
   chordsList: string;
-  onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
 }
 
 const ProgressionDisplayComponent = ({

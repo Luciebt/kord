@@ -30,7 +30,8 @@ button:hover {
 .mode-btn-pressed,
 .mood-btn-pressed,
 .prog-btn-pressed {
-  color: #f4eeff;
+  /* color: #f4eeff; */
+  color: var(--dominant-light);
   transition: all .2s ease-in-out;
   border: 1px solid var(--dominant-dark);
   background-color: var(--dominant-dark);
@@ -64,6 +65,10 @@ button.scale-chord-btn:hover {
   border: 1px solid var(--pressed-color);
   background-color: var(--pressed-color);
   transition: all .2s ease-in-out;
+}
+
+.chord-btn-pressed p {
+  color: #f4eeff;
 }
 
 /* Loop button */
