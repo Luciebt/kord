@@ -32,7 +32,6 @@ function PlayMidiNotes(chordNotes: string[], instrumentType: InstrumentType): vo
   }
 }
 
-// TODO: pass the enum instrument in PlayChord from the react component.
 export function PlayChord(chord: string) {
   const chordNotes: string[] = BuildChordNotes(chord);
 
@@ -50,7 +49,7 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
 }
 
 // TODO: improve this function
-function ChordsArrayBuilder(chord: string): string[] {
+function ChordsArrayBuilder(chord: string, octave: number): string[] {
   let homeNote: string = chord[0];
   // Let major be the default mode.
   let chordMode: string = "M";
@@ -67,7 +66,7 @@ function ChordsArrayBuilder(chord: string): string[] {
   }
 
   // Add octave
-  homeNote += "3";
+  homeNote += octave;
 
   if (chord.includes("m", 1)) {
     chordMode = "m";
@@ -83,8 +82,7 @@ function ChordsArrayBuilder(chord: string): string[] {
   if (chord.includes("7", 1)) {
     if (chord.includes("sus", 1)) {
       chordMode = "7sus";
-    }
-    else {
+    } else {
       chordMode += "7";
     }
   }
@@ -92,14 +90,12 @@ function ChordsArrayBuilder(chord: string): string[] {
   return [chordMode, homeNote];
 }
 
-export function BuildChordNotes(chord: string): string[] {
-  const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord);
-
-  // console.log("chord to find_____________" + chord);
+// FIXME: Add octave, otherwise lots of progressions are broken.
+export function BuildChordNotes(chord: string, octave: number = 3): string[] {
+  const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord, octave);
 
   let chordArr: string[] = Chord.getChord(chordMode, homeNote).notes;
 
-  // console.log("detectedChord after builder and getChord____" + detect(chordArr));
 
   // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart. Why do they exist btw?
   chordArr.forEach((chord, i) => {

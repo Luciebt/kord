@@ -20,6 +20,8 @@ button:hover {
 
 .btn-caption {
   font-size: 0.6em;
+  font-weight: bold;
+  color: var(--pressed-color);
 }
 
 /* Key, Mod, Mood and Progression main buttons */

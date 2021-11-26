@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { PlayChord } from "../../Chords";
-import { useKeyPress } from "../hooks/KeyPressHook";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { Progression } from "@tonaljs/tonal";
 import { SoundOnContext } from "../../App";
+import { GetRomansForChord } from "../../ProgressionUtils";
 import "./Progressions.css";
 
 export interface IChordDisplayProps {
@@ -23,7 +22,7 @@ const ChordDisplayComponent = ({
   const [chordSelected, setChordSelected] = useState("");
   let chordArr: string[] = chord.split(",");
 
-  const romanNumerals = Progression.toRomanNumerals(tonic.toString(), chordArr);
+  let romanNumerals: string[] = GetRomansForChord(chordArr);
 
   const handleClick = (chord: string, index: number, event?: any) => {
     if (SoundOn) {
@@ -40,37 +39,6 @@ const ChordDisplayComponent = ({
       chordBtn.classList.add("chord-btn-pressed");
     }
   };
-
-  // Use numerical keys to play chords of one progression.
-  const FirstNumKey = useKeyPress("1");
-  const SecondNumKey = useKeyPress("2");
-  const ThirdNumKey = useKeyPress("3");
-  const FourthNumKey = useKeyPress("4");
-  const FifthNumKey = useKeyPress("5");
-  const SixthNumKey = useKeyPress("6");
-
-  // TODO: not only play chords, but also show the piano display.
-  if (FirstNumKey) {
-    PlayChord(chordArr[0]);
-  }
-  if (SecondNumKey) {
-    PlayChord(chordArr[1]);
-  }
-  if (ThirdNumKey && chordArr.length > 2) {
-    PlayChord(chordArr[2]);
-  }
-  if (FourthNumKey && chordArr.length > 3) {
-    PlayChord(chordArr[3]);
-  }
-  if (FifthNumKey && chordArr.length > 4) {
-    PlayChord(chordArr[4]);
-  }
-  if (SixthNumKey && chordArr.length > 5) {
-    PlayChord(chordArr[5]);
-  }
-  if (SixthNumKey && chordArr.length > 6) {
-    PlayChord(chordArr[6]);
-  }
 
   useEffect(() => {
     // comp mounts.
@@ -95,7 +63,7 @@ const ChordDisplayComponent = ({
       className="chord-btn"
     >
       {c}
-      <p className="btn-caption">({romanNumerals[i]})</p>
+      <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
     </button>
   ));
 
