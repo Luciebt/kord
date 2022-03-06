@@ -21,6 +21,22 @@ export type TChords =
   | "Diminished"
   | "Minor7Flat5";
 
+export type TInterval =
+  | "1P"
+  | "2m"
+  | "2M"
+  | "3m"
+  | "3M"
+  | "4P"
+  | "4A"
+  | "5d"
+  | "5P"
+  | "6m"
+  | "6M"
+  | "7m"
+  | "7M"
+  | "8P";
+
 export const majorChordPattern: TInterval[] = ["1P", "3M", "5P"];
 export const major7ChordPattern: TInterval[] = ["1P", "3M", "5P", "7M"];
 export const minorChordPattern: TInterval[] = ["1P", "3m", "5P"];
@@ -43,23 +59,9 @@ export type TKey =
   | "A#"
   | "B";
 
-export type TInterval =
-  | "1P"
-  | "2m"
-  | "2M"
-  | "3m"
-  | "3M"
-  | "4P"
-  | "4A"
-  | "5d"
-  | "5P"
-  | "6m"
-  | "6M"
-  | "7m"
-  | "7M"
-  | "8P";
-
 type TProgression = {
   mood?: TMood;
   progression_list: string;
 };
+
+export type TMinorScaleTypes = "harmonic" | "natural" | "melodic";

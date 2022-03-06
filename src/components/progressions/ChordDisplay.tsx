@@ -75,6 +75,8 @@ const ChordDisplayComponent = ({
         <br />
       </section>
 
+      <div id="scope"></div>
+
       {chordState && chordSelected ? (
         <PianoDisplay chord={chordSelected} />
       ) : null}

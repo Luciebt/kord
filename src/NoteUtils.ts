@@ -1,5 +1,22 @@
 //--------- NOTE UTILS
 
+import { Note } from "@tonaljs/tonal";
+
+export function SimplifyNoteToString(note: string | string[]): string {
+    if (typeof note === "string") {
+        if (!note.includes(",")) {
+            console.log("note is string: ", Note.simplify(note));
+            return Note.simplify(note);
+        }
+        else {
+            return note.split(',').map(note => Note.simplify(note)).join(",");
+        }
+    } else {
+        console.log("note is arr: ", note.map(note => Note.simplify(note)).join(","));
+        return note.map(note => Note.simplify(note)).join(",");
+    }
+}
+
 function ReturnSharpFromFlatNotes(chord: string): string {
     if (chord.includes("b")) {
         chord = chord.replaceAll(/Db/g, "C#");
@@ -29,7 +46,5 @@ export function CleanChords(chordStr: string): string {
         chordStr = chordStr.replaceAll("A##", "B");
     }
 
-    chordStr = ReturnSharpFromFlatNotes(chordStr);
-
-    return chordStr;
+    return ReturnSharpFromFlatNotes(chordStr);
 }

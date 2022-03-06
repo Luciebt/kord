@@ -1,6 +1,7 @@
 import { Synth, PolySynth, Transport, ToneEvent, Player } from "tone";
 import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
+
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
 
 //------ Global variables
@@ -140,6 +141,7 @@ export function PlayLoop(chordArr: string[]): void {
     secondChord: ShowChord(chordArr[1]),
     thirdChord: ShowChord(chordArr[2]),
     fourthChord: ShowChord(chordArr[3]),
+    fifthChord: ShowChord(chordArr[4]),
   };
 
   const progressionLength: number = chordArr.length;
