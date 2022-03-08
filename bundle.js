@@ -83521,6 +83521,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.findNotesScales = exports.findChordsScale = void 0;
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const NoteUtils_1 = __webpack_require__(/*! ./NoteUtils */ "./src/NoteUtils.ts");
+// ------ Find CHORDS on Scale
 function findChordsScale(tonic, mode) {
     let Results = [];
     switch (mode) {
@@ -83538,6 +83539,7 @@ function findChordsScale(tonic, mode) {
     return Results.toString().split(",");
 }
 exports.findChordsScale = findChordsScale;
+// ------ Find NOTES on Scale
 function findNotesOnMajorScale(tonic) {
     return (0, NoteUtils_1.SimplifyNoteToString)(tonal_1.Key.majorKey(tonic).scale.toString());
 }
@@ -83558,11 +83560,11 @@ function findNotesOnMinorScale(tonic, type) {
 function findNotesScales(tonic, mode, type = "natural") {
     switch (mode) {
         case "Major":
-            return findNotesOnMajorScale(tonic);
+            return findNotesOnMajorScale(tonic).split(",");
         case "Minor":
-            return findNotesOnMinorScale(tonic, type);
+            return findNotesOnMinorScale(tonic, type).split(",");
         default:
-            return "";
+            return [];
     }
 }
 exports.findNotesScales = findNotesScales;
@@ -84498,22 +84500,27 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordState, setChordState] = (0, react_1.useState)(false);
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
-    const style = "scale-chord-btn-pressed";
+    const scaleNoteStyle = "scale-chord-btn-pressed";
+    const noteNoteStyle = "note-btn-pressed";
     const handleClick = (chord, event) => {
         if (SoundOn) {
             (0, Chords_1.PlayChord)(chord);
         }
         setChordState(true);
         setChordSelected(chord);
-        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        event.target.classList.add(style);
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(scaleNoteStyle);
+        event.target.classList.add(scaleNoteStyle);
     };
     const notesOnScale = (0, Scale_1.findNotesScales)(tonic, mode);
+    const noteScaleList = notesOnScale.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
+            handleClick(chords, e);
+        }, className: "note-btn" }, chords)));
     const chordsScaleList = chordsScale.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
             handleClick(chords, e);
         }, className: "scale-chord-btn" }, chords)));
     (0, react_1.useEffect)(() => {
-        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(scaleNoteStyle);
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(noteNoteStyle);
         const chordBtns = Array.from(document.getElementsByClassName("scale-chord-btn"));
         if (!tonic && !mode) {
             chordBtns[0].classList.add("invisible");
@@ -84536,12 +84543,14 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
     }, [tonic, mode]);
     return (react_1.default.createElement("section", { className: "scale-box" },
         react_1.default.createElement("h2", null,
+            chordsScale ? "Notes for " + tonic + " " + mode : "",
+            " ",
+            mode == "Minor" ? " (harmonic)" : ""),
+        react_1.default.createElement("div", { className: "notes-scale-box" }, notesOnScale ? noteScaleList : ""),
+        react_1.default.createElement("h2", null,
             chordsScale ? "Chords on Scale " + tonic + " " + mode : "",
             " ",
             mode == "Minor" ? " (harmonic)" : ""),
-        notesOnScale,
-        " ",
-        react_1.default.createElement("br", null),
         chordsScaleList,
         chordState ? react_1.default.createElement(ScalePianoDisplay_1.default, { chord: chordSelected }) : null));
 };
