@@ -84835,7 +84835,7 @@ const Settings = ({ onSettings, onSoundOn }) => {
     };
     return (react_1.default.createElement("section", null,
         react_1.default.createElement("section", { id: "settings-box" },
-            react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF" : "Audio ON"),
+            react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"),
             react_1.default.createElement("select", { name: "synthPartials", onChange: (e) => ChooseSynth(e), className: "sound-select", role: "Shoose a sound" },
                 react_1.default.createElement("option", { value: "cuteSine" }, "Cute Sine"),
                 react_1.default.createElement("option", { value: "imperatrice" }, "Madame l'Imperatrice")))));
