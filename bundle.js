@@ -5197,7 +5197,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Space+Mono&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=DM+Mono&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--section-box);\n}\n\n*,\n*:before,\n*:after {\n  /* box-sizing: inherit; */\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAGA;EACE,iCAAiC;EACjC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;AACtC;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA;EACE,cAAc;EACd,qBAAqB;CACtB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,SAAS;AACX;;AAEA,oBAAoB;;AAEpB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,qBAAqB;EACrB,uBAAuB;EACvB,sBAAsB;EACtB,yBAAyB;EACzB,0BAA0B;EAC1B,wBAAwB;EACxB,wBAAwB;AAC1B;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,WAAW;AACb","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=DM+Mono&display=swap\");\n\nbody {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--section-box);\n}\n\n*,\n*:before,\n*:after {\n  /* box-sizing: inherit; */\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--section-box);\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAGA;EACE,iCAAiC;EACjC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;AACtC;;AAEA;;;EAGE,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,qBAAqB;CACtB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,SAAS;AACX;;AAEA,oBAAoB;;AAEpB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,qBAAqB;EACrB,uBAAuB;EACvB,sBAAsB;EACtB,yBAAyB;EACzB,0BAA0B;EAC1B,wBAAwB;EACxB,wBAAwB;AAC1B;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,WAAW;AACb","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=DM+Mono&display=swap\");\n\nbody {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  background-color: var(--section-box);\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color: #d5d7dd;\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-btn {\n  width: 11em;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83393,21 +83393,21 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProgressionCollection = void 0;
 exports.ProgressionCollection = {
     Major: [
-        { progression_list: "IV, V, VIm, I", mood: "Hopeful" },
-        { progression_list: "I, IV, VIm, V", mood: "Happy" },
-        { progression_list: "I, Vm, Vm, IIm", mood: "Happy" },
-        { progression_list: "I, IV, V", mood: "Happy" },
-        { progression_list: "V, IV, I, V", mood: "Jazzy" },
-        { progression_list: "IIm7, V7, I7", mood: "Jazzy" },
+        { progression_list: "IV, V, VIm, I", mood: "Hopeful 🌈" },
+        { progression_list: "I, IV, VIm, V", mood: "Happy 🌻" },
+        { progression_list: "I, Vm, Vm, IIm", mood: "Happy 🌻" },
+        { progression_list: "I, IV, V", mood: "Happy 🌻" },
+        { progression_list: "V, IV, I, V", mood: "Jazzy 🎷" },
+        { progression_list: "IIm7, V7, I7", mood: "Jazzy 🎷" },
         { progression_list: "I, VIm, IV, V", mood: "Melancholic" },
-        { progression_list: "I, VIm, V, V", mood: "Weird" },
-        { progression_list: "I, bIII, bVII, IV", mood: "Happy" },
-        { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful" },
-        { progression_list: "IIm7, V9, I7, I7", mood: "Sad" },
-        { progression_list: "I, VIm, IIm, V", mood: "Hopeful" },
-        { progression_list: "I, II, IIIm, V6", mood: "Happy" },
-        { progression_list: "I, IV, bVII, IV", mood: "Happy" },
-        { progression_list: "VIm, V, IV, V", mood: "Hopeful" },
+        { progression_list: "I, VIm, V, V", mood: "Weird 👾" },
+        { progression_list: "I, bIII, bVII, IV", mood: "Happy 🌻" },
+        { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful 🌈" },
+        { progression_list: "IIm7, V9, I7, I7", mood: "Sad 🌧️" },
+        { progression_list: "I, VIm, IIm, V", mood: "Hopeful 🌈" },
+        { progression_list: "I, II, IIIm, V6", mood: "Happy 🌻" },
+        { progression_list: "I, IV, bVII, IV", mood: "Happy 🌻" },
+        { progression_list: "VIm, V, IV, V", mood: "Hopeful 🌈" },
         // TODO: new moods?
         // { progression_list: "I, I, IV, IIIm", mood: "Melancholic" },
         // { progression_list: "VIm, IV, I, V", mood: "Love soup" },
@@ -83455,23 +83455,23 @@ exports.ProgressionCollection = {
         { progression_list: "VIm, bVI, bVII, I", mood: "Todo" },
     ],
     Minor: [
-        { progression_list: "Im, IV, VI, Vm", mood: "Happy" },
-        { progression_list: "Im, Vm, IVm, Im", mood: "Sad" },
-        { progression_list: "VIm, IV, I, V", mood: "Sad" },
-        { progression_list: "Im, IVm, V7, Im", mood: "Sad" },
-        { progression_list: "Im, III, VII, VI", mood: "Sad" },
-        { progression_list: "VIm, IIIm, V, IV", mood: "Dark" },
-        { progression_list: "Im, VII, IV, IV", mood: "Jazzy" },
-        { progression_list: "Im, IIm, Vm, Im", mood: "Sad" },
-        { progression_list: "Im, III, IVm, VI", mood: "Weird" },
-        { progression_list: "Im, III, VII, VI", mood: "Hopeful" },
-        { progression_list: "Im, IVm, III, VI", mood: "Hopeful" },
-        { progression_list: "Im, IVm, VI, Vm", mood: "Dark" },
-        { progression_list: "Im, VI, IVm, Vm", mood: "Sad" },
+        { progression_list: "Im, IV, VI, Vm", mood: "Happy 🌻" },
+        { progression_list: "Im, Vm, IVm, Im", mood: "Sad 🌧️" },
+        { progression_list: "VIm, IV, I, V", mood: "Sad 🌧️" },
+        { progression_list: "Im, IVm, V7, Im", mood: "Sad 🌧️" },
+        { progression_list: "Im, III, VII, VI", mood: "Sad 🌧️" },
+        { progression_list: "VIm, IIIm, V, IV", mood: "Dark 👻" },
+        { progression_list: "Im, VII, IV, IV", mood: "Jazzy 🎷" },
+        { progression_list: "Im, IIm, Vm, Im", mood: "Sad 🌧️" },
+        { progression_list: "Im, III, IVm, VI", mood: "Weird 👾" },
+        { progression_list: "Im, III, VII, VI", mood: "Hopeful 🌈" },
+        { progression_list: "Im, IVm, III, VI", mood: "Hopeful 🌈" },
+        { progression_list: "Im, IVm, VI, Vm", mood: "Dark 👻" },
+        { progression_list: "Im, VI, IVm, Vm", mood: "Sad 🌧️" },
         // TODO: new moods?
         // { progression_list: "Im, VI, III, bII", mood: "Suspensful" },
         // { progression_list: "VII, IVm, VII, Im", mood: "Suspensful" },
-        // TODO: Tooooooooodoooooooooooo! 
+        // TODO: Tooooooooodoooooooooooo!
         { progression_list: "Im, IVm, Vm, IVm", mood: "Todo" },
         { progression_list: "Im, IVm, Vm, Vm", mood: "Todo" },
         { progression_list: "Im, IVm, VII, Im", mood: "Todo" },
@@ -83875,7 +83875,8 @@ const ChordBuilderComponent = () => {
             chordKey && chordQuality ? (react_1.default.createElement("div", { className: "prog-box" },
                 react_1.default.createElement("h2", null, chordKey + " " + chordQuality),
                 react_1.default.createElement(PianoDisplay_1.default, { chord: chordSelected }))) : null,
-            react_1.default.createElement("br", null))));
+            react_1.default.createElement("br", null),
+            react_1.default.createElement("div", { className: "prog-box" }))));
 };
 exports["default"] = ChordBuilderComponent;
 
@@ -84281,7 +84282,7 @@ const MoodButton = ({ onPressMood }) => {
         "Happy 🌻",
         "Dark 👻",
         "Weird 👾",
-        "Todo",
+        // "Todo",
     ];
     const handleClick = (event, mood) => {
         onPressMood(mood);
