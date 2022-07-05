@@ -29,7 +29,8 @@ button:hover {
 .key-btn-pressed,
 .mode-btn-pressed,
 .mood-btn-pressed,
-.prog-btn-pressed {
+.prog-btn-pressed,
+.chordbuild-btn-pressed {
   /* color: #f4eeff; */
   color: var(--dominant-light);
   transition: all .2s ease-in-out;

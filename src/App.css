@@ -26,7 +26,7 @@ html {
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  /* box-sizing: inherit; */
 }
 
 .app-title, .app-title:hover, .app-title:visited, .app-title:active {

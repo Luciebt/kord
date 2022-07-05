@@ -1,7 +1,7 @@
 import { hot } from "react-hot-loader";
 import React, { useState } from "react";
-import ProgressionComponent from "./components/ProgressionComponent";
 import Settings from "./components/settings/Settings";
+import TabComponent from "./components/tabs/TabComponent";
 import "./App.css";
 
 export const SoundOnContext = React.createContext(true);
@@ -23,7 +23,7 @@ const App = () => {
 
       <Settings onSoundOn={SoundCallback} />
       <SoundOnContext.Provider value={soundOn}>
-        <ProgressionComponent />
+        <TabComponent />
       </SoundOnContext.Provider>
     </main>
   );

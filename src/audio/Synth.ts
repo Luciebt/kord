@@ -5,7 +5,7 @@ import { ShowChord } from "../PianoChart";
 
 //------ Global variables
 
-let polySynth: PolySynth;
+export let polySynth: PolySynth;
 let chordEvent: ToneEvent;
 
 const synthSounds = {
