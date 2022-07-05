@@ -3,11 +3,11 @@
 #settings-box {
   display: flex;
   justify-content: center;
-  font-size: 0.75em;
+  font-size: .9em;
   margin: 0 auto;
   padding: 0.3em;
-  width: 266px;
-  background-color: rgb(234, 234, 234);
+  width: 322px;
+  /* background-color: rgb(234, 234, 234); */
   text-align: center;
 }
 
@@ -18,7 +18,7 @@
   background-color: transparent;
   cursor: pointer;
   width: 100%;
-  margin: 0;
+  margin: .3em;
 }
 
 #audio-btn:hover,

@@ -53,7 +53,7 @@ h1 {
   --white-50: hsla(0, 0%, 100%, 0.5);
   --white-80: hsla(0, 0%, 100%, 0.8);
   --piano-dark: #716f81;
-  --border-color: #d5d7dd;
+  --border-color:var(--dominant-dark);
   --section-box: #ffc8dd;
   --dominant-light:#ffafcc ;
   --main-background: #fffffc;
