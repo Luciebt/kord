@@ -83679,13 +83679,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.GetTempo = exports.SetupTempo = void 0;
+exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.GetTempo = exports.SetupTempo = exports.polySynth = void 0;
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
-// TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
-//------ Global variables
-let polySynth;
 let chordEvent;
 const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
@@ -83710,12 +83707,12 @@ exports.GetTempo = GetTempo;
 //------ Synth utils
 function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
     // Dispose the existing synth if it exists.
-    if (polySynth) {
-        polySynth.releaseAll();
-        polySynth.dispose();
+    if (exports.polySynth) {
+        exports.polySynth.releaseAll();
+        exports.polySynth.dispose();
     }
     // Create a new synth with new partials, cuteSine being the defaults.
-    polySynth = new tone_1.PolySynth(tone_1.Synth, {
+    exports.polySynth = new tone_1.PolySynth(tone_1.Synth, {
         volume: -9,
         detune: 0,
         portamento: 0,
@@ -83749,9 +83746,9 @@ CreateSynth();
 SetupTempo();
 //------ Make sounds with the synth!
 function PlaySynthChords(chordNotes) {
-    if (polySynth) {
-        polySynth.releaseAll();
-        polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+    if (exports.polySynth) {
+        exports.polySynth.releaseAll();
+        exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
         Tone.start();
     }
 }
@@ -83759,7 +83756,7 @@ exports.PlaySynthChords = PlaySynthChords;
 //------ Loop chord progression.
 function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     chordEvent = new tone_1.ToneEvent((time) => {
-        polySynth.triggerAttackRelease(chordArr, "1n", time);
+        exports.polySynth.triggerAttackRelease(chordArr, "1n", time);
         console.log(chordArr, "1n", time);
     });
     // start the chord at the beginning of the transport timeline
@@ -83783,7 +83780,7 @@ function SelectChordsDisplayEvent(chordIndex, progressionLength, noteStart = "0:
 }
 // TODO: Refactor this.
 function PlayLoop(chordArr) {
-    polySynth.releaseAll();
+    exports.polySynth.releaseAll();
     let Chords = {
         firstChord: (0, PianoChart_1.ShowChord)(chordArr[0]),
         secondChord: (0, PianoChart_1.ShowChord)(chordArr[1]),
@@ -83806,6 +83803,81 @@ function PlayLoop(chordArr) {
     }
 }
 exports.PlayLoop = PlayLoop;
+
+
+/***/ }),
+
+/***/ "./src/components/ChordBuilderComponent.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/ChordBuilderComponent.tsx ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const Chords_1 = __webpack_require__(/*! ../Chords */ "./src/Chords.ts");
+const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton */ "./src/components/buttons/KeyButton.tsx"));
+const ChordButton_1 = __importDefault(__webpack_require__(/*! ./buttons/ChordButton */ "./src/components/buttons/ChordButton.tsx"));
+const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./progressions/PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
+const App_1 = __webpack_require__(/*! ../App */ "./src/App.tsx");
+const Synth_1 = __webpack_require__(/*! ../audio/Synth */ "./src/audio/Synth.ts");
+const ChordBuilderComponent = () => {
+    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
+    const [chordKey, setChordKey] = (0, react_1.useState)("");
+    const [chordQuality, setChordQuality] = (0, react_1.useState)("");
+    const [chordSelected, setChordSelected] = (0, react_1.useState)("");
+    const KeyCallback = (key) => {
+        setChordKey(key);
+    };
+    const ChordQualityCallback = (quality) => {
+        setChordQuality(quality);
+    };
+    (0, react_1.useEffect)(() => {
+        if (chordKey && chordQuality) {
+            const chordToBuild = chordKey + chordQuality;
+            setChordSelected(chordToBuild);
+            if (SoundOn) {
+                Synth_1.polySynth.releaseAll();
+                (0, Chords_1.PlayChord)(chordToBuild);
+            }
+        }
+    }, [chordKey, chordQuality]);
+    return (react_1.default.createElement("div", { className: "chord-builder-tab" },
+        react_1.default.createElement("section", { className: "centered-box" },
+            react_1.default.createElement("div", { className: "prog-chooser-box" },
+                " ",
+                react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
+                react_1.default.createElement(ChordButton_1.default, { onPressKey: ChordQualityCallback })),
+            chordKey && chordQuality ? (react_1.default.createElement("div", { className: "prog-box" },
+                react_1.default.createElement("h2", null, chordKey + " " + chordQuality),
+                react_1.default.createElement(PianoDisplay_1.default, { chord: chordSelected }))) : null,
+            react_1.default.createElement("br", null))));
+};
+exports["default"] = ChordBuilderComponent;
 
 
 /***/ }),
@@ -84781,69 +84853,14 @@ exports["default"] = Settings;
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
-const KeyButton_1 = __importDefault(__webpack_require__(/*! ../buttons/KeyButton */ "./src/components/buttons/KeyButton.tsx"));
-const ChordButton_1 = __importDefault(__webpack_require__(/*! ../buttons/ChordButton */ "./src/components/buttons/ChordButton.tsx"));
-const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ../progressions/PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
-const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const ChordBuilderComponent_1 = __importDefault(__webpack_require__(/*! ../ChordBuilderComponent */ "./src/components/ChordBuilderComponent.tsx"));
 const ChordBuilderTab = () => {
-    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
-    const [chordKey, setChordKey] = (0, react_1.useState)("");
-    const [chordQuality, setChordQuality] = (0, react_1.useState)("");
-    const [chordSelected, setChordSelected] = (0, react_1.useState)("");
-    const KeyCallback = (key) => {
-        setChordKey(key);
-        if (chordQuality) {
-            const chordToBuild = chordKey + chordQuality;
-            if (SoundOn) {
-                (0, Chords_1.PlayChord)(chordToBuild);
-            }
-            setChordSelected(chordToBuild);
-        }
-    };
-    const ChordQualityCallback = (quality) => {
-        setChordQuality(quality);
-        if (chordKey) {
-            const chordToBuild = chordKey + chordQuality;
-            if (SoundOn) {
-                (0, Chords_1.PlayChord)(chordToBuild);
-            }
-            setChordSelected(chordToBuild);
-        }
-    };
-    return (react_1.default.createElement("div", { className: "chord-builder-tab" },
-        react_1.default.createElement("section", { className: "centered-box" },
-            react_1.default.createElement("div", { className: "prog-chooser-box" },
-                " ",
-                react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
-                react_1.default.createElement(ChordButton_1.default, { onPressKey: ChordQualityCallback })),
-            chordKey && chordQuality ? (react_1.default.createElement("div", { className: "prog-box" },
-                react_1.default.createElement(PianoDisplay_1.default, { chord: chordSelected }))) : null,
-            react_1.default.createElement("br", null))));
+    return react_1.default.createElement(ChordBuilderComponent_1.default, null);
 };
 exports["default"] = ChordBuilderTab;
 
@@ -84865,8 +84882,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const ProgressionComponent_1 = __importDefault(__webpack_require__(/*! ../ProgressionComponent */ "./src/components/ProgressionComponent.tsx"));
 const ProgressionBuilderTab = () => {
-    return (react_1.default.createElement("div", { className: "progression-builder-tab" },
-        react_1.default.createElement(ProgressionComponent_1.default, null)));
+    return react_1.default.createElement(ProgressionComponent_1.default, null);
 };
 exports["default"] = ProgressionBuilderTab;
 
