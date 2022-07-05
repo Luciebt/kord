@@ -5305,7 +5305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 2px;\n}\n\n.prog-grid-container > div {\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 3em;\n    font-size: 1em;\n    padding: 0.5em;\n    margin: 0.3em;\n    cursor: pointer;\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;AACzB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,cAAc;IACd,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,QAAQ;AACZ;;AAEA;IACI,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,cAAc;IACd,cAAc;IACd,aAAa;IACb,eAAe;AACnB","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 2px;\n}\n\n.prog-grid-container > div {\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 3em;\n    font-size: 1em;\n    padding: 0.5em;\n    margin: 0.3em;\n    cursor: pointer;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 2px;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;AACzB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,cAAc;IACd,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,QAAQ;AACZ;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,8BAA8B;AAClC;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;GACG,qBAAqB;AACxB;;AAEA,wBAAwB;;AAExB;IACI,aAAa;IACb,uBAAuB;IACvB,QAAQ;AACZ;;AAEA;IACI,eAAe;IACf,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,+BAA+B;IAC/B,sCAAsC;AAC1C","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 2px;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -84738,25 +84738,58 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progressions/ProgressionGridDisplay.css");
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
+const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     //   const SoundOn = React.useContext(SoundOnContext);
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
+    const [selectedPosition, setSelectedPosition] = (0, react_1.useState)(1);
     const onGridSizeChange = (event) => {
         setGridSize(event.target.value);
     };
+    const handlePositionClick = (event) => {
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
+        event.target.classList.add("selected-position");
+        setSelectedPosition(event.target.className);
+        console.log(event.target.className.slice(-1));
+    };
+    const handleClearClick = (event) => {
+        // TODO
+    };
+    // TODO: add a "selected position" to build prog.
     (0, react_1.useEffect)(() => {
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
+        const grid1 = document.getElementById("pos-1");
+        if (grid1)
+            grid1.classList.add("selected-position");
         return () => { };
     }, []);
+    (0, react_1.useEffect)(() => {
+        console.log(chordToAdd);
+        return () => { };
+    }, [chordToAdd]);
     return (react_1.default.createElement("section", { className: "chord-box" },
         react_1.default.createElement("h2", null, "Progression Builder"),
         react_1.default.createElement("div", { className: "prog-settings" },
             react_1.default.createElement("p", null, "Size of the grid"),
             react_1.default.createElement("input", { type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange })),
         react_1.default.createElement("section", { className: "prog-grid-container" },
-            react_1.default.createElement("div", { className: "item-a" }, chordToAdd ? chordToAdd : "yooup"),
-            react_1.default.createElement("div", { className: "item-b" }, "item-b"),
-            react_1.default.createElement("div", { className: "item-c" }, "item-c"),
-            react_1.default.createElement("div", { className: "item-d" }, "item-d")),
+            react_1.default.createElement("div", { id: "pos-1", className: "pos-1", onClick: (e) => {
+                    handlePositionClick(e);
+                } }, chordToAdd ? (react_1.default.createElement("div", null, chordToAdd)) : ("1")),
+            react_1.default.createElement("div", { className: "pos-2", onClick: (e) => {
+                    handlePositionClick(e);
+                } }, "2"),
+            react_1.default.createElement("div", { className: "pos-3", onClick: (e) => {
+                    handlePositionClick(e);
+                } }, "3"),
+            react_1.default.createElement("div", { className: "pos-4", onClick: (e) => {
+                    handlePositionClick(e);
+                } }, "4")),
+        react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
+                handleClearClick(e);
+            } }, "Clear \u274C"),
+        " ",
+        react_1.default.createElement("br", null),
         react_1.default.createElement(MidiButton_1.default, { chordsList: ["Amin", "Gmin"] })));
 };
 exports["default"] = ProgressionGridDisplayComponent;
