@@ -9,13 +9,13 @@ interface IMoodButton {
 const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   const moods: string[] = [
     "All",
-    "Jazzy",
-    "Sad",
-    "Hopeful",
-    "Happy",
-    "Dark",
-    "Weird",
-    "Todo"
+    "Jazzy 🎷",
+    "Sad 🌧️",
+    "Hopeful 🌈",
+    "Happy 🌻",
+    "Dark 👻",
+    "Weird 👾",
+    // "Todo",
   ];
 
   const handleClick = (event: any, mood: string) => {

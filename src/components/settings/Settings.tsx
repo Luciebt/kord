@@ -32,7 +32,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
     <section>
       <section id="settings-box">
         <button id="audio-btn" onClick={(e) => handleClick(e)}>
-          {audioPref ? "Audio OFF" : "Audio ON"}
+          {audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"}
         </button>
 
         <select

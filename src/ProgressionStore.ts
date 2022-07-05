@@ -2,22 +2,22 @@ import { TProgression, TMode } from "./type.d";
 
 export const ProgressionCollection: Record<TMode, TProgression[]> = {
   Major: [
-    { progression_list: "IV, V, VIm, I", mood: "Hopeful" },
-    { progression_list: "I, IV, VIm, V", mood: "Happy" },
-    { progression_list: "I, Vm, Vm, IIm", mood: "Happy" },
-    { progression_list: "I, IV, V", mood: "Happy" },
-    { progression_list: "V, IV, I, V", mood: "Jazzy" },
-    { progression_list: "IIm7, V7, I7", mood: "Jazzy" },
+    { progression_list: "IV, V, VIm, I", mood: "Hopeful 🌈" },
+    { progression_list: "I, IV, VIm, V", mood: "Happy 🌻" },
+    { progression_list: "I, Vm, Vm, IIm", mood: "Happy 🌻" },
+    { progression_list: "I, IV, V", mood: "Happy 🌻" },
+    { progression_list: "V, IV, I, V", mood: "Jazzy 🎷" },
+    { progression_list: "IIm7, V7, I7", mood: "Jazzy 🎷" },
     { progression_list: "I, VIm, IV, V", mood: "Melancholic" },
-    { progression_list: "I, VIm, V, V", mood: "Weird" },
+    { progression_list: "I, VIm, V, V", mood: "Weird 👾" },
 
-    { progression_list: "I, bIII, bVII, IV", mood: "Happy" },
-    { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful" },
-    { progression_list: "IIm7, V9, I7, I7", mood: "Sad" },
-    { progression_list: "I, VIm, IIm, V", mood: "Hopeful" },
-    { progression_list: "I, II, IIIm, V6", mood: "Happy" },
-    { progression_list: "I, IV, bVII, IV", mood: "Happy" },
-    { progression_list: "VIm, V, IV, V", mood: "Hopeful" },
+    { progression_list: "I, bIII, bVII, IV", mood: "Happy 🌻" },
+    { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful 🌈" },
+    { progression_list: "IIm7, V9, I7, I7", mood: "Sad 🌧️" },
+    { progression_list: "I, VIm, IIm, V", mood: "Hopeful 🌈" },
+    { progression_list: "I, II, IIIm, V6", mood: "Happy 🌻" },
+    { progression_list: "I, IV, bVII, IV", mood: "Happy 🌻" },
+    { progression_list: "VIm, V, IV, V", mood: "Hopeful 🌈" },
     // TODO: new moods?
     // { progression_list: "I, I, IV, IIIm", mood: "Melancholic" },
     // { progression_list: "VIm, IV, I, V", mood: "Love soup" },
@@ -65,23 +65,23 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "VIm, bVI, bVII, I", mood: "Todo" },
   ],
   Minor: [
-    { progression_list: "Im, IV, VI, Vm", mood: "Happy" },
-    { progression_list: "Im, Vm, IVm, Im", mood: "Sad" },
-    { progression_list: "VIm, IV, I, V", mood: "Sad" },
-    { progression_list: "Im, IVm, V7, Im", mood: "Sad" },
-    { progression_list: "Im, III, VII, VI", mood: "Sad" },
-    { progression_list: "VIm, IIIm, V, IV", mood: "Dark" },
-    { progression_list: "Im, VII, IV, IV", mood: "Jazzy" },
-    { progression_list: "Im, IIm, Vm, Im", mood: "Sad" },
-    { progression_list: "Im, III, IVm, VI", mood: "Weird" },
-    { progression_list: "Im, III, VII, VI", mood: "Hopeful" },
-    { progression_list: "Im, IVm, III, VI", mood: "Hopeful" },
-    { progression_list: "Im, IVm, VI, Vm", mood: "Dark" },
-    { progression_list: "Im, VI, IVm, Vm", mood: "Sad" },
+    { progression_list: "Im, IV, VI, Vm", mood: "Happy 🌻" },
+    { progression_list: "Im, Vm, IVm, Im", mood: "Sad 🌧️" },
+    { progression_list: "VIm, IV, I, V", mood: "Sad 🌧️" },
+    { progression_list: "Im, IVm, V7, Im", mood: "Sad 🌧️" },
+    { progression_list: "Im, III, VII, VI", mood: "Sad 🌧️" },
+    { progression_list: "VIm, IIIm, V, IV", mood: "Dark 👻" },
+    { progression_list: "Im, VII, IV, IV", mood: "Jazzy 🎷" },
+    { progression_list: "Im, IIm, Vm, Im", mood: "Sad 🌧️" },
+    { progression_list: "Im, III, IVm, VI", mood: "Weird 👾" },
+    { progression_list: "Im, III, VII, VI", mood: "Hopeful 🌈" },
+    { progression_list: "Im, IVm, III, VI", mood: "Hopeful 🌈" },
+    { progression_list: "Im, IVm, VI, Vm", mood: "Dark 👻" },
+    { progression_list: "Im, VI, IVm, Vm", mood: "Sad 🌧️" },
     // TODO: new moods?
     // { progression_list: "Im, VI, III, bII", mood: "Suspensful" },
     // { progression_list: "VII, IVm, VII, Im", mood: "Suspensful" },
-    // TODO: Tooooooooodoooooooooooo! 
+    // TODO: Tooooooooodoooooooooooo!
     { progression_list: "Im, IVm, Vm, IVm", mood: "Todo" },
     { progression_list: "Im, IVm, Vm, Vm", mood: "Todo" },
     { progression_list: "Im, IVm, VII, Im", mood: "Todo" },
@@ -120,7 +120,7 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
 };
 
 // TODO: add these major progressions.
-const samplesProg = []
+const samplesProg = [];
 
 function convertProgForTonal(samples: string[][]): string[] {
   let results: string[] = [];
