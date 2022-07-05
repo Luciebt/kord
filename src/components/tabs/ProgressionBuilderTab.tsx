@@ -1,12 +1,8 @@
 import React from "react";
-import ProgressionBuilderComponent from "../ProgressionBuilderComponent";
+import ChordBuilderComponent from "../ChordBuilderComponent";
 
 const ProgressionBuilderTab = (): JSX.Element => {
-  return (
-    <div>
-      <ProgressionBuilderComponent />
-    </div>
-  );
+  return <ChordBuilderComponent />;
 };
 
 export default ProgressionBuilderTab;

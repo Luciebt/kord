@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ProgressionDictionnaryTab from "../tabs/ProgressionDictionnaryTab";
-import ChordBuilderTab from "../tabs/ChordBuilderTab";
 import ProgressionBuilderTab from "../tabs/ProgressionBuilderTab";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import "./Tab.css";
@@ -27,20 +26,15 @@ const TabComponent = (): JSX.Element => {
     <div className="tabs">
       <ul className="tab-nav">
         <button id="id-1" onClick={(e) => handleTab(e)}>
-          Progressions
+          Progressions List
         </button>
         <button id="id-2" onClick={(e) => handleTab(e)}>
-          Chords
-        </button>
-        <button id="id-3" onClick={(e) => handleTab(e)}>
-          Builder
+          Progressions Builder
         </button>
       </ul>
       <div className="outlet">
         {activeTab === "tab-id-1" ? (
           <ProgressionDictionnaryTab />
-        ) : activeTab === "tab-id-2" ? (
-          <ChordBuilderTab />
         ) : (
           <ProgressionBuilderTab />
         )}

@@ -3,6 +3,7 @@ import { PlayChord } from "../Chords";
 import KeyButton from "./buttons/KeyButton";
 import QualityButton from "./buttons/QualityButton";
 import ChordDisplayComponent from "./progressions/ChordDisplay";
+import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDisplayComponent";
 import PianoDisplay from "./progressions/PianoDisplay";
 import { SoundOnContext } from "../App";
 import { polySynth } from "../audio/Synth";
@@ -51,12 +52,7 @@ const ChordBuilderComponent = (): JSX.Element => {
         <QualityButton onPressKey={ChordQualityCallback} />
       </div>
 
-      {chordKey && chordQuality ? (
-        <div className="prog-box">
-          <h2>{chordKey + " " + chordQuality}</h2>
-          <PianoDisplay chord={chordSelected} />
-        </div>
-      ) : null}
+      <ProgressionGridDisplayComponent chordToAdd={chordSelected} />
 
       <br />
     </section>
