@@ -84275,13 +84275,13 @@ __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css")
 const MoodButton = ({ onPressMood }) => {
     const moods = [
         "All",
-        "Jazzy",
-        "Sad",
-        "Hopeful",
-        "Happy",
-        "Dark",
-        "Weird",
-        "Todo"
+        "Jazzy 🎷",
+        "Sad 🌧️",
+        "Hopeful 🌈",
+        "Happy 🌻",
+        "Dark 👻",
+        "Weird 👾",
+        "Todo",
     ];
     const handleClick = (event, mood) => {
         onPressMood(mood);
