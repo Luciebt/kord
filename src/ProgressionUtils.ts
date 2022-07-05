@@ -8,10 +8,6 @@ export function BuildChordsMap(progArr: string[], chordsArr: string[]): void {
 }
 
 export function GetRomansForChord(chordsArr: string[]): string[] {
-  //   for (let value of mp.values()) {
-  //     console.log(value);
-  //   }
-
   const romansNumeralFound: string = progMap.get(chordsArr.join(","));
   if (romansNumeralFound) {
     return romansNumeralFound.split(",");
@@ -21,8 +17,6 @@ export function GetRomansForChord(chordsArr: string[]): string[] {
 }
 
 export function PrintMap(mp: Map<string, string> = progMap): void {
-  // entry[0] = keys / roman nums
-  // entry[1] = values / chords
   for (let entry of mp.entries()) {
     console.log(entry[0], entry[1]); //"Lokesh" 37 "Raj" 35 "John" 40
   }

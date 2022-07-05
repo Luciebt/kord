@@ -11,7 +11,6 @@ let chordEvent: ToneEvent;
 const synthSounds = {
   cuteSinePartials: [7, 6, 0.2],
   imperatricePartials: [0, 2, 3, 4],
-  churchPartials: [3, 5, 7, 9, 11],
 };
 
 //------ Transport functions
@@ -70,12 +69,8 @@ export function SetSynthSound(synthSound: string): void {
   switch (synthSound) {
     case "cuteSine":
       CreateSynth(synthSounds.cuteSinePartials);
-    case "grandPiano":
-    // CreatePiano();
     case "imperatrice":
       CreateSynth(synthSounds.imperatricePartials);
-    case "inDaChurch":
-      CreateSynth(synthSounds.churchPartials);
   }
 }
 

@@ -6,13 +6,11 @@ import "./App.css";
 
 export const SoundOnContext = React.createContext(true);
 
-// TODO: use React.Context to set the preferences like sound on/off and instrument type?
 const App = () => {
   const [soundOn, setSoundOn] = useState(true);
 
   const SoundCallback = (sound: boolean) => {
     setSoundOn(sound);
-    console.log("Sound is now " + sound);
   };
 
   return (

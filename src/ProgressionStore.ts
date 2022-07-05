@@ -140,5 +140,3 @@ function convertProgForTonal(samples: string[][]): string[] {
   console.log(results);
   return results;
 }
-
-// convertProgForTonal(samplesProg);

@@ -43,7 +43,6 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         >
           <option value="cuteSine">Cute Sine</option>
           <option value="imperatrice">Madame l'Imperatrice</option>
-          <option value="inDaChurch">In Da Church</option>
         </select>
 
         {/* <button

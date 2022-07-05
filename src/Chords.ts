@@ -12,11 +12,11 @@ enum InstrumentType {
 }
 
 // TODO: only setup piano if Piano instrument is chosen from the settings panel.
-let PianoInSettings: boolean = false;
+// let PianoInSettings: boolean = false;
 
-if (PianoInSettings) {
-  SetupPiano();
-}
+// if (PianoInSettings) {
+//   SetupPiano();
+// }
 
 function PlayMidiNotes(chordNotes: string[], instrumentType: InstrumentType): void {
   switch (instrumentType) {
@@ -97,7 +97,7 @@ export function BuildChordNotes(chord: string, octave: number = 3): string[] {
   let chordArr: string[] = Chord.getChord(chordMode, homeNote).notes;
 
 
-  // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart. Why do they exist btw?
+  // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
   chordArr.forEach((chord, i) => {
     chordArr[i] = Note.simplify(chord);
   });
