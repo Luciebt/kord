@@ -1,8 +1,12 @@
 import React from "react";
-import ProgressionComponent from "../ProgressionComponent";
+import ProgressionBuilderComponent from "../ProgressionBuilderComponent";
 
 const ProgressionBuilderTab = (): JSX.Element => {
-  return <ProgressionComponent />;
+  return (
+    <div>
+      <ProgressionBuilderComponent />
+    </div>
+  );
 };
 
 export default ProgressionBuilderTab;

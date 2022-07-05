@@ -85,7 +85,7 @@ const ChordsScaleDisplayComponent = ({
         {chordsScale ? "Chords on Scale " + tonic + " " + mode : ""}{" "}
         {mode == "Minor" ? " (harmonic)" : ""}
       </h2>
-      {notesOnScale} <br />
+      {/* {notesOnScale} <br /> */}
       {chordsScaleList}
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
     </section>

@@ -1,17 +1,17 @@
 .tab-nav {
     display: flex;
+    justify-content: center;
     margin: 1rem auto .2rem;
-    font-size: 0.70em;
+    font-size: 0.75em;
     margin: 0 auto;
     padding: 0.3em;
-    width: 188px;
+    width: 266px;
     background-color: rgb(234, 234, 234);
     text-align: center;
     @media (max-width: 769px) {
       padding: 2rem 0;
     }
 }
-
 
 li .tab {
     text-decoration: underline;

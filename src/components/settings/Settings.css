@@ -1,26 +1,14 @@
 /* Settings UI containers */
 
 #settings-box {
+  display: flex;
+  justify-content: center;
   font-size: 0.75em;
   margin: 0 auto;
   padding: 0.3em;
-  width: 188px;
+  width: 266px;
   background-color: rgb(234, 234, 234);
   text-align: center;
-}
-
-/* Detailed panel to select settings */
-.settings-panel {
-  font-size: 0.75em;
-  margin: 0 auto;
-  padding: 0.4em;
-  width: 248px;
-  height: auto;
-  background-color: lightgrey;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #audio-btn,
@@ -54,8 +42,7 @@
   border: 1px solid var(--border-color);
   margin: 0 auto;
   padding: 0.4em;
-  width: 180px;
-  height: auto;
+  width: 140px;
   text-align: center;
 }
 

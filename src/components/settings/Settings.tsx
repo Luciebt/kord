@@ -34,8 +34,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         <button id="audio-btn" onClick={(e) => handleClick(e)}>
           {audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"}
         </button>
-
-        <select
+        {/* <select
           name="synthPartials"
           onChange={(e) => ChooseSynth(e)}
           className="sound-select"
@@ -43,7 +42,7 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
         >
           <option value="cuteSine">Cute Sine</option>
           <option value="imperatrice">Madame l'Imperatrice</option>
-        </select>
+        </select> */}
 
         {/* <button
           id="shortcuts-btn"
