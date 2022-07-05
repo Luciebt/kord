@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { PlayChord } from "../Chords";
 import KeyButton from "./buttons/KeyButton";
-import ChordButton from "./buttons/ChordButton";
+import QualityButton from "./buttons/QualityButton";
 import ChordDisplayComponent from "./progressions/ChordDisplay";
 import PianoDisplay from "./progressions/PianoDisplay";
 import { SoundOnContext } from "../App";
@@ -48,7 +48,7 @@ const ChordBuilderComponent = (): JSX.Element => {
       <div className="prog-chooser-box">
         {" "}
         <KeyButton onPressKey={KeyCallback} />
-        <ChordButton onPressKey={ChordQualityCallback} />
+        <QualityButton onPressKey={ChordQualityCallback} />
       </div>
 
       {chordKey && chordQuality ? (
