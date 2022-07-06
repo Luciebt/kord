@@ -83925,7 +83925,6 @@ const Chords_1 = __webpack_require__(/*! ../Chords */ "./src/Chords.ts");
 const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton */ "./src/components/buttons/KeyButton.tsx"));
 const QualityButton_1 = __importDefault(__webpack_require__(/*! ./buttons/QualityButton */ "./src/components/buttons/QualityButton.tsx"));
 const ProgressionGridDisplayComponent_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionGridDisplayComponent */ "./src/components/progressions/ProgressionGridDisplayComponent.tsx"));
-const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./progressions/PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const App_1 = __webpack_require__(/*! ../App */ "./src/App.tsx");
 const Synth_1 = __webpack_require__(/*! ../audio/Synth */ "./src/audio/Synth.ts");
 const ChordBuilderComponent = () => {
@@ -83965,9 +83964,6 @@ const ChordBuilderComponent = () => {
             react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
             react_1.default.createElement(QualityButton_1.default, { onPressKey: ChordQualityCallback })),
         react_1.default.createElement(ProgressionGridDisplayComponent_1.default, { chordToAdd: chordSelected }),
-        chordKey && chordQuality ? (react_1.default.createElement("div", { className: "prog-box" },
-            react_1.default.createElement("h2", null, chordKey + " " + chordQuality),
-            react_1.default.createElement(PianoDisplay_1.default, { chord: chordSelected }))) : null,
         react_1.default.createElement("br", null)));
 };
 exports["default"] = ChordBuilderComponent;
@@ -84739,23 +84735,46 @@ const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/re
 __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progressions/ProgressionGridDisplay.css");
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
+const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
-    //   const SoundOn = React.useContext(SoundOnContext);
+    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
     const [selectedPosition, setSelectedPosition] = (0, react_1.useState)(1);
+    const [selectedChord, setSelectedChord] = (0, react_1.useState)("");
+    const [progressionMap, setProgressionMap] = (0, react_1.useState)(new Map());
+    const Play = (chordIndex) => {
+        if (!SoundOn)
+            return;
+        const chordToPlay = progressionMap.get(chordIndex);
+        if (chordToPlay)
+            (0, Chords_1.PlayChord)(chordToPlay);
+    };
     const onGridSizeChange = (event) => {
+        // Convert to number, and increase/decrease grid divs.
         setGridSize(event.target.value);
     };
     const handlePositionClick = (event) => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
-        event.target.classList.add("selected-position");
-        setSelectedPosition(event.target.className);
-        console.log(event.target.className.slice(-1));
+        // Take the parent div if the inner one is selected
+        if (event.target.id[0] == "g") {
+            event.target.parentNode.classList.add("selected-position");
+        }
+        else {
+            event.target.classList.add("selected-position");
+        }
+        const newPos = +event.target.id[4];
+        const newChord = progressionMap.get(newPos);
+        setSelectedPosition(newPos);
+        if (newChord)
+            setSelectedChord(newChord);
+        Play(newPos);
     };
     const handleClearClick = (event) => {
-        // TODO
+        progressionMap.clear();
+        setSelectedChord("");
     };
-    // TODO: add a "selected position" to build prog.
     (0, react_1.useEffect)(() => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
         const grid1 = document.getElementById("pos-1");
@@ -84764,33 +84783,43 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
         return () => { };
     }, []);
     (0, react_1.useEffect)(() => {
-        console.log(chordToAdd);
+        if (chordToAdd) {
+            const selectedGridDiv = document.getElementById("pos-" + selectedPosition);
+            if (selectedGridDiv)
+                selectedGridDiv.innerHTML = `<div id="gri-${selectedPosition}">▶ <br>${chordToAdd}</div>`;
+            progressionMap.set(selectedPosition, chordToAdd);
+            setSelectedChord(chordToAdd);
+        }
         return () => { };
     }, [chordToAdd]);
-    return (react_1.default.createElement("section", { className: "chord-box" },
-        react_1.default.createElement("h2", null, "Progression Builder"),
-        react_1.default.createElement("div", { className: "prog-settings" },
-            react_1.default.createElement("p", null, "Size of the grid"),
-            react_1.default.createElement("input", { type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange })),
-        react_1.default.createElement("section", { className: "prog-grid-container" },
-            react_1.default.createElement("div", { id: "pos-1", className: "pos-1", onClick: (e) => {
-                    handlePositionClick(e);
-                } }, chordToAdd ? (react_1.default.createElement("div", null, chordToAdd)) : ("1")),
-            react_1.default.createElement("div", { className: "pos-2", onClick: (e) => {
-                    handlePositionClick(e);
-                } }, "2"),
-            react_1.default.createElement("div", { className: "pos-3", onClick: (e) => {
-                    handlePositionClick(e);
-                } }, "3"),
-            react_1.default.createElement("div", { className: "pos-4", onClick: (e) => {
-                    handlePositionClick(e);
-                } }, "4")),
-        react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
-                handleClearClick(e);
-            } }, "Clear \u274C"),
-        " ",
-        react_1.default.createElement("br", null),
-        react_1.default.createElement(MidiButton_1.default, { chordsList: ["Amin", "Gmin"] })));
+    return (react_1.default.createElement("div", null,
+        react_1.default.createElement("section", { className: "chord-box" },
+            react_1.default.createElement("h2", null, "Progression Builder"),
+            react_1.default.createElement("div", { className: "prog-settings" },
+                react_1.default.createElement("p", null, "Size of the grid"),
+                react_1.default.createElement("input", { type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange })),
+            react_1.default.createElement("section", { className: "prog-grid-container" },
+                react_1.default.createElement("div", { id: "pos-1", onClick: (e) => {
+                        handlePositionClick(e);
+                    } }, "1"),
+                react_1.default.createElement("div", { id: "pos-2", onClick: (e) => {
+                        handlePositionClick(e);
+                    } }, "2"),
+                react_1.default.createElement("div", { id: "pos-3", onClick: (e) => {
+                        handlePositionClick(e);
+                    } }, "3"),
+                react_1.default.createElement("div", { id: "pos-4", onClick: (e) => {
+                        handlePositionClick(e);
+                    } }, "4")),
+            react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
+                    handleClearClick(e);
+                } }, "Clear \u274C"),
+            " ",
+            react_1.default.createElement("br", null),
+            react_1.default.createElement(MidiButton_1.default, { chordsList: ["Amin", "Gmin"] })),
+        selectedChord ? (react_1.default.createElement("div", { className: "prog-box" },
+            react_1.default.createElement("h2", null, selectedChord),
+            react_1.default.createElement(PianoDisplay_1.default, { chord: selectedChord }))) : null));
 };
 exports["default"] = ProgressionGridDisplayComponent;
 
