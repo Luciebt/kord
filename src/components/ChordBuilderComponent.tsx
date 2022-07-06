@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { PlayChord } from "../Chords";
 import KeyButton from "./buttons/KeyButton";
 import QualityButton from "./buttons/QualityButton";
-import ChordDisplayComponent from "./progressions/ChordDisplay";
 import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDisplayComponent";
-import PianoDisplay from "./progressions/PianoDisplay";
 import { SoundOnContext } from "../App";
 import { polySynth } from "../audio/Synth";
 

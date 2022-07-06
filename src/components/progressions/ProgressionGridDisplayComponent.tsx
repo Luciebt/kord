@@ -64,6 +64,49 @@ const ProgressionGridDisplayComponent = ({
     return () => {};
   }, []);
 
+  // Grid sizing
+  useEffect(() => {
+    // How many divs do we have?
+    // If equal to grid size, all good.
+    // If we have more than grid size, delete as much as necessary.
+    // If we have less, add as necessary.
+
+    const grid = document.getElementById("prog-grid");
+    if (!grid) return;
+
+    const gridDivs = grid.childNodes;
+    const actualGridSize = gridDivs.length;
+    let difference = actualGridSize - gridSize;
+
+    if (difference == 0) return;
+
+    const last = gridDivs[gridDivs.length - 1];
+    const lastId = Number((last as HTMLElement).id.slice(-1));
+    const parentNode = last.parentNode;
+
+    if (difference == 1) {
+      // Remove the last div.
+      if (parentNode) parentNode.removeChild(last);
+      return;
+    }
+
+    if (difference == -1) {
+      // Create new div
+      let newDiv = document.createElement("div");
+      // Set attributes and click listener
+      const newDivId = lastId + 1;
+      newDiv.id = "pos-" + newDivId;
+      newDiv.innerHTML = String(newDivId);
+      newDiv.addEventListener("click", function (event: any) {
+        handlePositionClick(event);
+      });
+      // Add div at the end of the list
+      if (parentNode) parentNode.appendChild(newDiv);
+    }
+
+    return () => {};
+  }, [gridSize]);
+
   useEffect(() => {
     if (chordToAdd) {
       const selectedGridDiv = document.getElementById(
@@ -94,7 +137,7 @@ const ProgressionGridDisplayComponent = ({
             onChange={onGridSizeChange}
           ></input>
         </div>
-        <section className="prog-grid-container">
+        <section id="prog-grid" className="prog-grid-container">
           <div
             id="pos-1"
             onClick={(e) => {
