@@ -52,8 +52,16 @@ const ProgressionGridDisplayComponent = ({
   };
 
   const handleClearClick = (event: any) => {
+    // Clear the cached chords and map
     progressionMap.clear();
     setSelectedChord("");
+    // Remove the inner content of each grid div (clear)
+    const parentSection = document.getElementById("prog-grid");
+    if (!parentSection) return;
+    const childNodes = parentSection.childNodes as any;
+    for (let gridDiv of childNodes as HTMLCollection) {
+      gridDiv.innerHTML = "";
+    }
   };
 
   useEffect(() => {
@@ -96,7 +104,6 @@ const ProgressionGridDisplayComponent = ({
       // Set attributes and click listener
       const newDivId = lastId + 1;
       newDiv.id = "pos-" + newDivId;
-      newDiv.innerHTML = String(newDivId);
       newDiv.addEventListener("click", function (event: any) {
         handlePositionClick(event);
       });
@@ -143,33 +150,25 @@ const ProgressionGridDisplayComponent = ({
             onClick={(e) => {
               handlePositionClick(e);
             }}
-          >
-            1
-          </div>
+          ></div>
           <div
             id="pos-2"
             onClick={(e) => {
               handlePositionClick(e);
             }}
-          >
-            2
-          </div>
+          ></div>
           <div
             id="pos-3"
             onClick={(e) => {
               handlePositionClick(e);
             }}
-          >
-            3
-          </div>
+          ></div>
           <div
             id="pos-4"
             onClick={(e) => {
               handlePositionClick(e);
             }}
-          >
-            4
-          </div>
+          ></div>
         </section>
         <button
           className="mini-btn"
