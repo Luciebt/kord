@@ -83238,10 +83238,9 @@ function PlayMidiNotes(chordNotes, instrumentType) {
             break;
     }
 }
-function PlayChord(chord, isFullChord = false) {
+function PlayChord(chord, isFullChord = true) {
     // polySynth.releaseAll();
     const chordNotes = BuildChordNotes(chord, isFullChord, 3);
-    console.log("PlayChord___chordNotes", chordNotes);
     if (chordNotes.length)
         PlayMidiNotes(chordNotes, InstrumentType.Synth);
 }
