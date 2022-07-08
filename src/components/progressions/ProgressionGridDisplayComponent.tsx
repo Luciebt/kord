@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
+import useKeypress from "react-use-keypress";
 import "./ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import {
-  PlayChord,
-  GetSimplifiedChordFromFullChord,
-  BuildChordNotes,
-} from "../../Chords";
+import { PlayChord } from "../../Chords";
 import { SoundOnContext } from "../../App";
 import PianoDisplay from "./PianoDisplay";
 import { polySynth } from "../../audio/Synth";
@@ -15,6 +12,8 @@ export interface IProgressionGridDisplayProps {
   tonic?: string;
   chordToAdd?: string;
 }
+
+// TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
 
 const ProgressionGridDisplayComponent = ({
   tonic,
@@ -40,19 +39,40 @@ const ProgressionGridDisplayComponent = ({
     setGridSize(event.target.value);
   };
 
-  const handlePositionClick = (event: any) => {
+  const handlePositionClick = (event?: any) => {
     unPressElementsStyleWithoutEvent("selected-position");
-    // Take the parent div if the inner one is selected
+
     if (event.target.id[0] == "g") {
+      // Add class to the parent div if the inner one is selected
       event.target.parentNode.classList.add("selected-position");
-    } else {
+    } else if (event.target.id[0] == "p") {
+      // We're at the parent div already
       event.target.classList.add("selected-position");
     }
 
     const newPos: number = +event.target.id[4];
     const newChord = progressionMap.get(newPos);
-    setSelectedPos(newPos);
 
+    if (newPos) setSelectedPos(newPos);
+    if (newChord) setSelectedChord(newChord);
+    Play(newPos);
+  };
+
+  const handleKeyPress = (id: number) => {
+    // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
+    // We need a valid ID.
+    if (!id || id < 0 || id > 8) return;
+
+    // Handle css to apply the selection color
+    unPressElementsStyleWithoutEvent("selected-position");
+    const gridDiv = document.getElementById("pos-" + id);
+    if (!gridDiv) return;
+    gridDiv.classList.add("selected-position");
+
+    const newPos: number = +id;
+    const newChord = progressionMap.get(newPos);
+
+    if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
     Play(newPos);
   };
@@ -130,6 +150,32 @@ const ProgressionGridDisplayComponent = ({
 
     return () => {};
   }, [chordToAdd]);
+
+  // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
+  useKeypress(["1", "a", "q"], () => {
+    handleKeyPress(1);
+  });
+  useKeypress(["2", "w", "z"], () => {
+    handleKeyPress(2);
+  });
+  useKeypress(["3", "e"], () => {
+    handleKeyPress(3);
+  });
+  useKeypress(["4", "r"], () => {
+    handleKeyPress(4);
+  });
+  useKeypress(["5", "t"], () => {
+    handleKeyPress(5);
+  });
+  useKeypress(["6", "y"], () => {
+    handleKeyPress(6);
+  });
+  useKeypress(["7", "u"], () => {
+    handleKeyPress(7);
+  });
+  useKeypress(["8", "i"], () => {
+    handleKeyPress(8);
+  });
 
   return (
     <div>
