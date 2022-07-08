@@ -126,6 +126,7 @@ const ProgressionGridDisplayComponent = ({
       // Set attributes and click listener
       const newDivId = lastId + 1;
       newDiv.id = "pos-" + newDivId;
+      newDiv.tabIndex = 0;
       newDiv.addEventListener("click", function (event: any) {
         handlePositionClick(event);
       });
@@ -144,8 +145,6 @@ const ProgressionGridDisplayComponent = ({
 
       progressionMap.set(selectedPos, chordToAdd as string);
       setSelectedChord(chordToAdd as string);
-
-      // console.log(Array.from(progressionMap.values()));
     }
 
     return () => {};
@@ -183,24 +182,28 @@ const ProgressionGridDisplayComponent = ({
         <h2>Progression Builder</h2>
         <section id="prog-grid" className="prog-grid-container">
           <div
+            tabIndex={0}
             id="pos-1"
             onClick={(e) => {
               handlePositionClick(e);
             }}
           ></div>
           <div
+            tabIndex={0}
             id="pos-2"
             onClick={(e) => {
               handlePositionClick(e);
             }}
           ></div>
           <div
+            tabIndex={0}
             id="pos-3"
             onClick={(e) => {
               handlePositionClick(e);
             }}
           ></div>
           <div
+            tabIndex={0}
             id="pos-4"
             onClick={(e) => {
               handlePositionClick(e);
