@@ -45,7 +45,7 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
   ));
 
   return (
-    <section className="">
+    <section arial-label="Choose a key for your chord progression">
       <h2>Key</h2>
       {notesList}
     </section>

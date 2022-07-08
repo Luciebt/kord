@@ -140,6 +140,7 @@ const ProgressionGridDisplayComponent = ({
   useEffect(() => {
     if (chordToAdd) {
       const selectedGridDiv = document.getElementById("pos-" + selectedPos);
+
       if (selectedGridDiv)
         selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
 

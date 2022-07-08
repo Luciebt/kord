@@ -38,7 +38,7 @@ const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   ));
 
   return (
-    <section className="">
+    <section arial-label="Choose a mood for your chord progression">
       <h2>Mood</h2>
       {moodsList}
     </section>

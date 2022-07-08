@@ -24,7 +24,7 @@ const TabComponent = (): JSX.Element => {
 
   return (
     <div className="tabs">
-      <ul className="tab-nav">
+      <ul arial-label="tabs" className="tab-nav">
         <button id="id-1" onClick={(e) => handleTab(e)}>
           Progressions List
         </button>

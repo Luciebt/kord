@@ -51,8 +51,10 @@ const ProgressionDisplayComponent = ({
   return (
     <section className="prog-box">
       <h2>Progressions </h2>
-      {/* Progressions buttons: */}
-      <section className="prog-btn-box">
+      <section
+        aria-label="Progressions found for your criteria"
+        className="prog-btn-box"
+      >
         <div className="prog-grid-results">
           {chordsList ? progressionsList : ""}
         </div>

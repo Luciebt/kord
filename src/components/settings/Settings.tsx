@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useKeypress from "react-use-keypress";
 import { useToggle } from "../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
 import { SetSynthSound } from "../../audio/Synth";
@@ -22,6 +23,14 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
 
   const [toggleShortcutsPanel, setToggleShortcutsPanel] = useToggle(false);
 
+  useKeypress(["Escape", "?"], () => {
+    setToggleShortcutsPanel();
+  });
+
+  useKeypress("m", () => {
+    setAudioPref(!audioPref);
+  });
+
   const ChooseSynth = (event: any): void => {
     event.preventDefault();
     SetSynthSound(event.target.value);
@@ -30,8 +39,12 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
 
   return (
     <section>
-      <section id="settings-box">
-        <button id="audio-btn" onClick={(e) => handleClick(e)}>
+      <section aria-label="settings" id="settings-box">
+        <button
+          aria-label="Turn audio on or off"
+          id="audio-btn"
+          onClick={(e) => handleClick(e)}
+        >
           {audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"}
         </button>
         {/* <select
@@ -44,15 +57,16 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
           <option value="imperatrice">Madame l'Imperatrice</option>
         </select> */}
 
-        {/* <button
+        <button
           id="shortcuts-btn"
           className={toggleShortcutsPanel ? "shortcuts-selected-btn" : ""}
           onClick={() => setToggleShortcutsPanel()}
         >
           Shortcuts
-        </button> */}
+        </button>
+        <br />
       </section>
-      {/* {toggleShortcutsPanel ? <ShortcutsPanel /> : ""} */}
+      {toggleShortcutsPanel ? <ShortcutsPanel /> : ""}
     </section>
   );
 };

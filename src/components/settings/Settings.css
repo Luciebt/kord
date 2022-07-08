@@ -57,3 +57,8 @@
   color: white !important;
   background-color: var(--dominant-dark) !important;
 }
+
+#shortcuts-settings-panel {
+  margin: 1em;
+  text-align: center;
+}

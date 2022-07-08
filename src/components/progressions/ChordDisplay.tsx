@@ -25,6 +25,17 @@ const ChordDisplayComponent = ({
 
   let romanNumerals: string[] = GetRomansForChord(chordArr);
 
+  // Move keyboard focus to the chords box when mounted.
+  useEffect(() => {
+    const chordsSection = document.getElementById(
+      "chords-box-id"
+    ) as HTMLElement;
+    if (chordsSection) {
+      chordsSection.focus();
+      chordsSection.scrollIntoView();
+    }
+  }, []);
+
   const handleClick = (chord: string, index: number, event?: any) => {
     if (!chord) return;
 
@@ -100,7 +111,7 @@ const ChordDisplayComponent = ({
   ));
 
   return (
-    <section className="chords-box">
+    <section id="chords-box-id" className="chords-box">
       <section className="chord-box">
         <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
         {chordsList && chordsList}

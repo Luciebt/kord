@@ -80,7 +80,10 @@ const ChordsScaleDisplayComponent = ({
   }, [tonic, mode]);
 
   return (
-    <section className="scale-box">
+    <section
+      aria-label="Suggested chords for the key and mode choosen"
+      className="scale-box"
+    >
       <h2>
         {chordsScale ? "Chords on Scale " + tonic + " " + mode : ""}{" "}
         {mode == "Minor" ? " (harmonic)" : ""}

@@ -51,6 +51,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   return (
     <div className="loop-box">
       <button
+        aria-label="Play the chord progression in a loop"
         id="loop"
         onClick={(e) => {
           handleClick(e);

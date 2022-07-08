@@ -30,7 +30,7 @@ const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
   ));
 
   return (
-    <section className="">
+    <section arial-label="Choose a mode for your chord progression">
       <h2>Mode</h2>
       {modesList}
     </section>

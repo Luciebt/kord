@@ -39,7 +39,7 @@ const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
   ));
 
   return (
-    <section className="">
+    <section aria-label="Choose a quality to the chord">
       <h2>Quality</h2>
       {chordsList}
     </section>
