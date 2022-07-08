@@ -21,7 +21,7 @@
 }
 
 .active-tab {
-    font-weight: 800;
+    font-weight: 500;
     color: antiquewhite;
     background-color: var(--dominant-dark);
 }

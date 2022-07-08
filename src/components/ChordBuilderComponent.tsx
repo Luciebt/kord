@@ -26,7 +26,8 @@ const ChordBuilderComponent = (): JSX.Element => {
     if (chordKey && chordQuality) {
       if (SoundOn) {
         polySynth.releaseAll();
-        PlayChord(chordKey + chordQuality);
+        // TODO: add "true" bool to PlayChord?
+        PlayChord(chordKey + chordQuality, true);
       }
     }
   };
@@ -37,7 +38,9 @@ const ChordBuilderComponent = (): JSX.Element => {
       setChordSelected(chordToBuild);
       if (SoundOn) {
         polySynth.releaseAll();
-        PlayChord(chordToBuild);
+        // TODO: add "true" bool to PlayChord?
+        console.log("CHORD TO BUILD CHORD BUILDER COMP___", chordToBuild);
+        PlayChord(chordToBuild, true);
       }
     }
   }, [chordKey, chordQuality]);

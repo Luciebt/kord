@@ -82,11 +82,13 @@ SetupTempo();
 //------ Make sounds with the synth!
 
 export function PlaySynthChords(chordNotes: string[]): void {
-  if (polySynth) {
-    polySynth.releaseAll();
-    polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-    Tone.start();
-  }
+  if (!chordNotes.length || !polySynth) return;
+
+  Transport.stop();
+  // console.log("array of notes that will be triggered now___", chordNotes);
+  polySynth.releaseAll();
+  polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+  Tone.start();
 }
 
 //------ Loop chord progression.
@@ -126,7 +128,7 @@ function SelectChordsDisplayEvent(
   chordEvent.loopEnd = measuresToPlay += "m";
 }
 
-// TODO: Refactor this.
+// TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 export function PlayLoop(chordArr: string[]): void {
   polySynth.releaseAll();
 

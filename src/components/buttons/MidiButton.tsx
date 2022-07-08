@@ -9,6 +9,7 @@ interface IMidiButtonProps {
 const MidiButtonComponent = ({ chordsList }: IMidiButtonProps): JSX.Element => {
   const handleClick = (event: any, chords: string[]) => {
     // TODO: handleClick. Use midi writer from Midi.ts.
+    console.log("chordsList from midi button component_______", chordsList);
     const dataUri = GenerateMidi(chordsList);
     DownloadMidi(dataUri);
   };

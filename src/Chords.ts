@@ -1,6 +1,6 @@
 import { Note, Chord } from "@tonaljs/tonal";
 import { detect } from "@tonaljs/chord-detect";
-import { PlaySynthChords } from "./audio/Synth";
+import { PlaySynthChords, polySynth } from "./audio/Synth";
 import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 import { CleanChords } from "./NoteUtils";
 
@@ -18,7 +18,10 @@ enum InstrumentType {
 //   SetupPiano();
 // }
 
-function PlayMidiNotes(chordNotes: string[], instrumentType: InstrumentType): void {
+function PlayMidiNotes(
+  chordNotes: string[],
+  instrumentType: InstrumentType
+): void {
   switch (instrumentType) {
     case InstrumentType.Synth:
       PlaySynthChords(chordNotes);
@@ -32,10 +35,12 @@ function PlayMidiNotes(chordNotes: string[], instrumentType: InstrumentType): vo
   }
 }
 
-export function PlayChord(chord: string) {
-  const chordNotes: string[] = BuildChordNotes(chord);
+export function PlayChord(chord: string, isFullChord: boolean = true) {
+  // polySynth.releaseAll();
 
-  PlayMidiNotes(chordNotes, InstrumentType.Synth);
+  const chordNotes: string[] = BuildChordNotes(chord, isFullChord, 3);
+
+  if (chordNotes.length) PlayMidiNotes(chordNotes, InstrumentType.Synth);
 }
 
 // To use only for grand piano sound.
@@ -50,6 +55,10 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
 
 // TODO: improve this function
 function ChordsArrayBuilder(chord: string, octave: number): string[] {
+  console.log("(1) chord in ChordsArrayBuilder >>>>>>>>>", chord);
+
+  // If there's more than 6 chars, it means we have the full quality.
+
   let homeNote: string = chord[0];
   // Let major be the default mode.
   let chordMode: string = "M";
@@ -90,12 +99,60 @@ function ChordsArrayBuilder(chord: string, octave: number): string[] {
   return [chordMode, homeNote];
 }
 
-// FIXME: Add octave, otherwise lots of progressions are broken.
-export function BuildChordNotes(chord: string, octave: number = 3): string[] {
-  const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord, octave);
+export function GetSimplifiedChordFromFullChord(
+  fullChord: string,
+  octave?: number
+): string[] {
+  let cleanChord = CleanChords(fullChord);
+  let homeNote: string = cleanChord[0];
+  let chordMode: string = cleanChord.slice(1);
 
-  let chordArr: string[] = Chord.getChord(chordMode, homeNote).notes;
+  const isSeventh: boolean = cleanChord.slice(-1) == "7";
+  const isNinth: boolean = cleanChord.slice(-1) == "9";
 
+  if (cleanChord[1] == "#") {
+    homeNote += "#";
+    chordMode = cleanChord.slice(2);
+  }
+
+  if (chordMode.includes("Minor")) {
+    chordMode = chordMode.includes("Minor7Flat5") ? "m7b5" : "m";
+  } else if (chordMode.includes("Major")) {
+    chordMode = "";
+  } else if (chordMode.includes("Diminished")) {
+    chordMode = "dim";
+  }
+
+  if (isSeventh && !chordMode.includes("7")) {
+    chordMode += "7";
+  } else if (isNinth && !chordMode.includes("9")) {
+    chordMode += "9";
+  }
+
+  console.log("(chordMode + homeNote) >>>>>>>>>>>>>>>>", chordMode + homeNote);
+
+  return [chordMode, (homeNote += octave)];
+}
+
+export function BuildChordNotes(
+  chord: string,
+  isFullChord: boolean = true,
+  octave: number = 3
+): string[] {
+  let chordArr: string[] = [];
+
+  console.log("isFullChord_____", isFullChord);
+
+  if (!isFullChord) {
+    const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord, octave);
+    chordArr = Chord.getChord(chordMode, homeNote).notes;
+  } else {
+    const [chordMode, homeNote]: string[] = GetSimplifiedChordFromFullChord(
+      chord,
+      octave
+    );
+    chordArr = Chord.getChord(chordMode, homeNote).notes;
+  }
 
   // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
   chordArr.forEach((chord, i) => {
@@ -103,6 +160,7 @@ export function BuildChordNotes(chord: string, octave: number = 3): string[] {
   });
 
   chordArr = CleanChords(chordArr.join(",")).split(",");
+  console.log("BuildChordNotes____chordArr returns___", chordArr);
 
   return chordArr;
 }

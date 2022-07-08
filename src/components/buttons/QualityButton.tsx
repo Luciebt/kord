@@ -13,7 +13,6 @@ const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
     "Minor",
     "Major7",
     "Minor7",
-    "Dominant7",
     "Diminished",
     "Minor7Flat5",
   ];

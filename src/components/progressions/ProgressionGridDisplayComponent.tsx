@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { PlayChord } from "../../Chords";
+import { PlayChord, GetSimplifiedChordFromFullChord } from "../../Chords";
 import { SoundOnContext } from "../../App";
 import PianoDisplay from "./PianoDisplay";
+import { polySynth } from "../../audio/Synth";
 
 export interface IProgressionGridDisplayProps {
   tonic?: string;
@@ -17,7 +18,7 @@ const ProgressionGridDisplayComponent = ({
 }: IProgressionGridDisplayProps): JSX.Element => {
   const SoundOn = React.useContext(SoundOnContext);
   const [gridSize, setGridSize] = useState(4);
-  const [selectedPosition, setSelectedPosition] = useState(1);
+  const [selectedPos, setSelectedPos] = useState(1);
   const [selectedChord, setSelectedChord] = useState("");
   const [progressionMap, setProgressionMap] = useState(
     new Map<number, string>()
@@ -25,8 +26,11 @@ const ProgressionGridDisplayComponent = ({
 
   const Play = (chordIndex: number) => {
     if (!SoundOn) return;
+    polySynth.releaseAll();
     const chordToPlay = progressionMap.get(chordIndex);
-    if (chordToPlay) PlayChord(chordToPlay);
+    console.log("CHORD TO PLAY -----", chordToPlay);
+    // boolean because we pass non simplified chord names...
+    if (chordToPlay) PlayChord(chordToPlay, true);
   };
 
   const onGridSizeChange = (event: any) => {
@@ -45,7 +49,7 @@ const ProgressionGridDisplayComponent = ({
 
     const newPos: number = +event.target.id[4];
     const newChord = progressionMap.get(newPos);
-    setSelectedPosition(newPos);
+    setSelectedPos(newPos);
 
     if (newChord) setSelectedChord(newChord as string);
     Play(newPos);
@@ -65,6 +69,7 @@ const ProgressionGridDisplayComponent = ({
   };
 
   useEffect(() => {
+    // Select by default the first grid div when component is created.
     unPressElementsStyleWithoutEvent("selected-position");
     const grid1 = document.getElementById("pos-1");
     if (grid1) grid1.classList.add("selected-position");
@@ -74,11 +79,6 @@ const ProgressionGridDisplayComponent = ({
 
   // Grid sizing
   useEffect(() => {
-    // How many divs do we have?
-    // If equal to grid size, all good.
-    // If we have more than grid size, delete as much as necessary.
-    // If we have less, add as necessary.
-
     const grid = document.getElementById("prog-grid");
     if (!grid) return;
 
@@ -116,14 +116,14 @@ const ProgressionGridDisplayComponent = ({
 
   useEffect(() => {
     if (chordToAdd) {
-      const selectedGridDiv = document.getElementById(
-        "pos-" + selectedPosition
-      );
+      const selectedGridDiv = document.getElementById("pos-" + selectedPos);
       if (selectedGridDiv)
-        selectedGridDiv.innerHTML = `<div id="gri-${selectedPosition}">▶ <br>${chordToAdd}</div>`;
+        selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
 
-      progressionMap.set(selectedPosition, chordToAdd as string);
+      progressionMap.set(selectedPos, chordToAdd as string);
       setSelectedChord(chordToAdd as string);
+
+      // console.log(Array.from(progressionMap.values()));
     }
 
     return () => {};
@@ -133,17 +133,6 @@ const ProgressionGridDisplayComponent = ({
     <div>
       <section className="chord-box">
         <h2>Progression Builder</h2>
-        <div className="prog-settings">
-          <p>Size of the grid</p>
-          <input
-            type="number"
-            min="2"
-            max="8"
-            className="prog-gridsize-input"
-            value={gridSize}
-            onChange={onGridSizeChange}
-          ></input>
-        </div>
         <section id="prog-grid" className="prog-grid-container">
           <div
             id="pos-1"
@@ -170,16 +159,33 @@ const ProgressionGridDisplayComponent = ({
             }}
           ></div>
         </section>
-        <button
-          className="mini-btn"
-          onClick={(e) => {
-            handleClearClick(e);
-          }}
-        >
-          Clear ❌
-        </button>{" "}
+        <div className="prog-settings">
+          <input
+            type="number"
+            min="2"
+            max="8"
+            className="prog-gridsize-input"
+            value={gridSize}
+            onChange={onGridSizeChange}
+          ></input>
+
+          <button
+            className="mini-btn"
+            onClick={(e) => {
+              handleClearClick(e);
+            }}
+          >
+            Clear ❌
+          </button>
+        </div>
         <br />
-        <MidiButtonComponent chordsList={["Amin", "Gmin"]} />
+        {/* <MidiButtonComponent
+          chordsList={Array.from(progressionMap.values()).map(
+            (chord: string) => {
+              return GetSimplifiedChordFromFullChord(chord);
+            }
+          )}
+        /> */}
       </section>
       {(selectedChord as string) ? (
         <div className="prog-box">
