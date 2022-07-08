@@ -5305,7 +5305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;AACzB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,cAAc;IACd,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,8BAA8B;AAClC;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;GACG,qBAAqB;AACxB;;AAEA,wBAAwB;;AAExB;IACI,wBAAwB;IACxB,uBAAuB;IACvB,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,QAAQ;AACZ;;AAEA;IACI,eAAe;IACf,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,+BAA+B;IAC/B,sCAAsC;AAC1C","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.5em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,cAAc;IACd,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,8BAA8B;AAClC;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;GACG,qBAAqB;AACxB;;AAEA,wBAAwB;;AAExB;IACI,wBAAwB;IACxB,uBAAuB;IACvB,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,QAAQ;AACZ;;AAEA;IACI,eAAe;IACf,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,+BAA+B;IAC/B,sCAAsC;AAC1C","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.5em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5413,7 +5413,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".tab-nav {\n    display: flex;\n    justify-content: center;\n    margin: 1rem auto .2rem;\n    /* font-size: 0.75em; */\n    font-size: .9em;\n    margin: 0 auto;\n    padding: 0.3em;\n    width: 322px;\n    background-color: rgb(234, 234, 234);\n    text-align: center;\n    border-radius: .25em;\n    @media (max-width: 769px) {\n      padding: 2rem 0;\n    }\n}\n\n.tab-nav button {\n    border: none;\n    border-radius: none;\n}\n\n.active-tab {\n    font-weight: 800;\n    color: antiquewhite;\n    background-color: var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/tabs/Tab.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,uBAAuB;IACvB,uBAAuB;IACvB,uBAAuB;IACvB,eAAe;IACf,cAAc;IACd,cAAc;IACd,YAAY;IACZ,oCAAoC;IACpC,kBAAkB;IAClB,oBAAoB;IACpB;MACE,eAAe;IACjB;AACJ;;AAEA;IACI,YAAY;IACZ,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,mBAAmB;IACnB,sCAAsC;AAC1C","sourcesContent":[".tab-nav {\n    display: flex;\n    justify-content: center;\n    margin: 1rem auto .2rem;\n    /* font-size: 0.75em; */\n    font-size: .9em;\n    margin: 0 auto;\n    padding: 0.3em;\n    width: 322px;\n    background-color: rgb(234, 234, 234);\n    text-align: center;\n    border-radius: .25em;\n    @media (max-width: 769px) {\n      padding: 2rem 0;\n    }\n}\n\n.tab-nav button {\n    border: none;\n    border-radius: none;\n}\n\n.active-tab {\n    font-weight: 800;\n    color: antiquewhite;\n    background-color: var(--dominant-dark);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".tab-nav {\n    display: flex;\n    justify-content: center;\n    margin: 1rem auto .2rem;\n    /* font-size: 0.75em; */\n    font-size: .9em;\n    margin: 0 auto;\n    padding: 0.3em;\n    width: 322px;\n    background-color: rgb(234, 234, 234);\n    text-align: center;\n    border-radius: .25em;\n    @media (max-width: 769px) {\n      padding: 2rem 0;\n    }\n}\n\n.tab-nav button {\n    border: none;\n    border-radius: none;\n}\n\n.active-tab {\n    font-weight: 500;\n    color: antiquewhite;\n    background-color: var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/tabs/Tab.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,uBAAuB;IACvB,uBAAuB;IACvB,uBAAuB;IACvB,eAAe;IACf,cAAc;IACd,cAAc;IACd,YAAY;IACZ,oCAAoC;IACpC,kBAAkB;IAClB,oBAAoB;IACpB;MACE,eAAe;IACjB;AACJ;;AAEA;IACI,YAAY;IACZ,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;IAChB,mBAAmB;IACnB,sCAAsC;AAC1C","sourcesContent":[".tab-nav {\n    display: flex;\n    justify-content: center;\n    margin: 1rem auto .2rem;\n    /* font-size: 0.75em; */\n    font-size: .9em;\n    margin: 0 auto;\n    padding: 0.3em;\n    width: 322px;\n    background-color: rgb(234, 234, 234);\n    text-align: center;\n    border-radius: .25em;\n    @media (max-width: 769px) {\n      padding: 2rem 0;\n    }\n}\n\n.tab-nav button {\n    border: none;\n    border-radius: none;\n}\n\n.active-tab {\n    font-weight: 500;\n    color: antiquewhite;\n    background-color: var(--dominant-dark);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83209,7 +83209,7 @@ exports["default"] = (0, react_hot_loader_1.hot)(module)(App);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BuildChordNotes = exports.PlayChord = void 0;
+exports.BuildChordNotes = exports.GetSimplifiedChordFromFullChord = exports.PlayChord = void 0;
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const Synth_1 = __webpack_require__(/*! ./audio/Synth */ "./src/audio/Synth.ts");
 const Piano_1 = __webpack_require__(/*! ./audio/Piano */ "./src/audio/Piano.ts");
@@ -83238,9 +83238,12 @@ function PlayMidiNotes(chordNotes, instrumentType) {
             break;
     }
 }
-function PlayChord(chord) {
-    const chordNotes = BuildChordNotes(chord);
-    PlayMidiNotes(chordNotes, InstrumentType.Synth);
+function PlayChord(chord, isFullChord = false) {
+    // polySynth.releaseAll();
+    const chordNotes = BuildChordNotes(chord, isFullChord, 3);
+    console.log("PlayChord___chordNotes", chordNotes);
+    if (chordNotes.length)
+        PlayMidiNotes(chordNotes, InstrumentType.Synth);
 }
 exports.PlayChord = PlayChord;
 // To use only for grand piano sound.
@@ -83254,6 +83257,8 @@ function BuildMidiChordNotes(chordNotes) {
 }
 // TODO: improve this function
 function ChordsArrayBuilder(chord, octave) {
+    console.log("(1) chord in ChordsArrayBuilder >>>>>>>>>", chord);
+    // If there's more than 6 chars, it means we have the full quality.
     let homeNote = chord[0];
     // Let major be the default mode.
     let chordMode = "M";
@@ -83292,15 +83297,51 @@ function ChordsArrayBuilder(chord, octave) {
     }
     return [chordMode, homeNote];
 }
-// FIXME: Add octave, otherwise lots of progressions are broken.
-function BuildChordNotes(chord, octave = 3) {
-    const [chordMode, homeNote] = ChordsArrayBuilder(chord, octave);
-    let chordArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
+function GetSimplifiedChordFromFullChord(fullChord, octave) {
+    let cleanChord = (0, NoteUtils_1.CleanChords)(fullChord);
+    console.log("cleanChord:::", cleanChord);
+    let homeNote = cleanChord[0];
+    console.log("homeNote:::", homeNote);
+    let chordMode = cleanChord.slice(1);
+    console.log("chordMode:::", chordMode);
+    const isSeventh = cleanChord.slice(-1) == "7";
+    console.log("isSeventh:::", isSeventh);
+    if (cleanChord[1] == "#") {
+        homeNote += "#";
+        chordMode = cleanChord.slice(2);
+    }
+    if (chordMode.includes("Minor")) {
+        chordMode = chordMode.includes("Minor7Flat5") ? "m7b5" : "m";
+    }
+    else if (chordMode.includes("Major")) {
+        chordMode = "";
+    }
+    else if (chordMode.includes("Diminished")) {
+        chordMode = "dim";
+    }
+    if (isSeventh) {
+        chordMode += "7";
+    }
+    return [chordMode, (homeNote += octave)];
+}
+exports.GetSimplifiedChordFromFullChord = GetSimplifiedChordFromFullChord;
+function BuildChordNotes(chord, isFullChord = true, octave = 3) {
+    let chordArr = [];
+    console.log("isFullChord_____", isFullChord);
+    if (!isFullChord) {
+        const [chordMode, homeNote] = ChordsArrayBuilder(chord, octave);
+        chordArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
+    }
+    else {
+        const [chordMode, homeNote] = GetSimplifiedChordFromFullChord(chord, octave);
+        chordArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
+    }
     // Use Simplify helper to avoid F## notations, which we cannot read to display chords visually using the piano chart.
     chordArr.forEach((chord, i) => {
         chordArr[i] = tonal_1.Note.simplify(chord);
     });
     chordArr = (0, NoteUtils_1.CleanChords)(chordArr.join(",")).split(",");
+    console.log("BuildChordNotes____chordArr returns___", chordArr);
     return chordArr;
 }
 exports.BuildChordNotes = BuildChordNotes;
@@ -83828,11 +83869,13 @@ CreateSynth();
 SetupTempo();
 //------ Make sounds with the synth!
 function PlaySynthChords(chordNotes) {
-    if (exports.polySynth) {
-        exports.polySynth.releaseAll();
-        exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-        Tone.start();
-    }
+    if (!chordNotes.length || !exports.polySynth)
+        return;
+    tone_1.Transport.stop();
+    // console.log("array of notes that will be triggered now___", chordNotes);
+    exports.polySynth.releaseAll();
+    exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+    Tone.start();
 }
 exports.PlaySynthChords = PlaySynthChords;
 //------ Loop chord progression.
@@ -83860,7 +83903,7 @@ function SelectChordsDisplayEvent(chordIndex, progressionLength, noteStart = "0:
     chordEvent.loop = true;
     chordEvent.loopEnd = measuresToPlay += "m";
 }
-// TODO: Refactor this.
+// TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 function PlayLoop(chordArr) {
     exports.polySynth.releaseAll();
     let Chords = {
@@ -83944,7 +83987,8 @@ const ChordBuilderComponent = () => {
         if (chordKey && chordQuality) {
             if (SoundOn) {
                 Synth_1.polySynth.releaseAll();
-                (0, Chords_1.PlayChord)(chordKey + chordQuality);
+                // TODO: add "true" bool to PlayChord?
+                (0, Chords_1.PlayChord)(chordKey + chordQuality, true);
             }
         }
     };
@@ -83954,7 +83998,9 @@ const ChordBuilderComponent = () => {
             setChordSelected(chordToBuild);
             if (SoundOn) {
                 Synth_1.polySynth.releaseAll();
-                (0, Chords_1.PlayChord)(chordToBuild);
+                // TODO: add "true" bool to PlayChord?
+                console.log("CHORD TO BUILD CHORD BUILDER COMP___", chordToBuild);
+                (0, Chords_1.PlayChord)(chordToBuild, true);
             }
         }
     }, [chordKey, chordQuality]);
@@ -84256,6 +84302,7 @@ __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css")
 const MidiButtonComponent = ({ chordsList }) => {
     const handleClick = (event, chords) => {
         // TODO: handleClick. Use midi writer from Midi.ts.
+        console.log("chordsList from midi button component_______", chordsList);
         const dataUri = (0, MidiWriter_1.GenerateMidi)(chordsList);
         (0, MidiWriter_1.DownloadMidi)(dataUri);
     };
@@ -84368,7 +84415,6 @@ const ChordButton = ({ onPressKey }) => {
         "Minor",
         "Major7",
         "Minor7",
-        "Dominant7",
         "Diminished",
         "Minor7Flat5",
     ];
@@ -84733,23 +84779,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progressions/ProgressionGridDisplay.css");
-const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
+const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
-    const [selectedPosition, setSelectedPosition] = (0, react_1.useState)(1);
+    const [selectedPos, setSelectedPos] = (0, react_1.useState)(1);
     const [selectedChord, setSelectedChord] = (0, react_1.useState)("");
     const [progressionMap, setProgressionMap] = (0, react_1.useState)(new Map());
     const Play = (chordIndex) => {
         if (!SoundOn)
             return;
+        Synth_1.polySynth.releaseAll();
         const chordToPlay = progressionMap.get(chordIndex);
+        console.log("CHORD TO PLAY -----", chordToPlay);
+        // boolean because we pass non simplified chord names...
         if (chordToPlay)
-            (0, Chords_1.PlayChord)(chordToPlay);
+            (0, Chords_1.PlayChord)(chordToPlay, true);
     };
     const onGridSizeChange = (event) => {
         // Convert to number, and increase/decrease grid divs.
@@ -84766,7 +84815,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
         }
         const newPos = +event.target.id[4];
         const newChord = progressionMap.get(newPos);
-        setSelectedPosition(newPos);
+        setSelectedPos(newPos);
         if (newChord)
             setSelectedChord(newChord);
         Play(newPos);
@@ -84785,6 +84834,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
         }
     };
     (0, react_1.useEffect)(() => {
+        // Select by default the first grid div when component is created.
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
         const grid1 = document.getElementById("pos-1");
         if (grid1)
@@ -84793,10 +84843,6 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     }, []);
     // Grid sizing
     (0, react_1.useEffect)(() => {
-        // How many divs do we have?
-        // If equal to grid size, all good.
-        // If we have more than grid size, delete as much as necessary.
-        // If we have less, add as necessary.
         const grid = document.getElementById("prog-grid");
         if (!grid)
             return;
@@ -84831,20 +84877,18 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     }, [gridSize]);
     (0, react_1.useEffect)(() => {
         if (chordToAdd) {
-            const selectedGridDiv = document.getElementById("pos-" + selectedPosition);
+            const selectedGridDiv = document.getElementById("pos-" + selectedPos);
             if (selectedGridDiv)
-                selectedGridDiv.innerHTML = `<div id="gri-${selectedPosition}">▶ <br>${chordToAdd}</div>`;
-            progressionMap.set(selectedPosition, chordToAdd);
+                selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
+            progressionMap.set(selectedPos, chordToAdd);
             setSelectedChord(chordToAdd);
+            // console.log(Array.from(progressionMap.values()));
         }
         return () => { };
     }, [chordToAdd]);
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("section", { className: "chord-box" },
             react_1.default.createElement("h2", null, "Progression Builder"),
-            react_1.default.createElement("div", { className: "prog-settings" },
-                react_1.default.createElement("p", null, "Size of the grid"),
-                react_1.default.createElement("input", { type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange })),
             react_1.default.createElement("section", { id: "prog-grid", className: "prog-grid-container" },
                 react_1.default.createElement("div", { id: "pos-1", onClick: (e) => {
                         handlePositionClick(e);
@@ -84858,12 +84902,12 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
                 react_1.default.createElement("div", { id: "pos-4", onClick: (e) => {
                         handlePositionClick(e);
                     } })),
-            react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
-                    handleClearClick(e);
-                } }, "Clear \u274C"),
-            " ",
-            react_1.default.createElement("br", null),
-            react_1.default.createElement(MidiButton_1.default, { chordsList: ["Amin", "Gmin"] })),
+            react_1.default.createElement("div", { className: "prog-settings" },
+                react_1.default.createElement("input", { type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange }),
+                react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
+                        handleClearClick(e);
+                    } }, "Clear \u274C")),
+            react_1.default.createElement("br", null)),
         selectedChord ? (react_1.default.createElement("div", { className: "prog-box" },
             react_1.default.createElement("h2", null, selectedChord),
             react_1.default.createElement(PianoDisplay_1.default, { chord: selectedChord }))) : null));
