@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { PlayChord, GetSimplifiedChordFromFullChord } from "../../Chords";
+import {
+  PlayChord,
+  GetSimplifiedChordFromFullChord,
+  BuildChordNotes,
+} from "../../Chords";
 import { SoundOnContext } from "../../App";
 import PianoDisplay from "./PianoDisplay";
 import { polySynth } from "../../audio/Synth";
 
 export interface IProgressionGridDisplayProps {
   tonic?: string;
-  chordToAdd?: string | string[];
+  chordToAdd?: string;
 }
 
 const ProgressionGridDisplayComponent = ({
@@ -28,8 +32,6 @@ const ProgressionGridDisplayComponent = ({
     if (!SoundOn) return;
     polySynth.releaseAll();
     const chordToPlay = progressionMap.get(chordIndex);
-    console.log("CHORD TO PLAY -----", chordToPlay);
-    // boolean because we pass non simplified chord names...
     if (chordToPlay) PlayChord(chordToPlay, true);
   };
 
@@ -51,7 +53,7 @@ const ProgressionGridDisplayComponent = ({
     const newChord = progressionMap.get(newPos);
     setSelectedPos(newPos);
 
-    if (newChord) setSelectedChord(newChord as string);
+    if (newChord) setSelectedChord(newChord);
     Play(newPos);
   };
 
@@ -179,13 +181,7 @@ const ProgressionGridDisplayComponent = ({
           </button>
         </div>
         <br />
-        {/* <MidiButtonComponent
-          chordsList={Array.from(progressionMap.values()).map(
-            (chord: string) => {
-              return GetSimplifiedChordFromFullChord(chord);
-            }
-          )}
-        /> */}
+        <MidiButtonComponent chordsList={Array.from(progressionMap.values())} />
       </section>
       {(selectedChord as string) ? (
         <div className="prog-box">

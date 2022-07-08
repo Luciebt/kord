@@ -55,8 +55,6 @@ function BuildMidiChordNotes(chordNotes: string[]): string[] {
 
 // TODO: improve this function
 function ChordsArrayBuilder(chord: string, octave: number): string[] {
-  console.log("(1) chord in ChordsArrayBuilder >>>>>>>>>", chord);
-
   // If there's more than 6 chars, it means we have the full quality.
 
   let homeNote: string = chord[0];
@@ -129,8 +127,6 @@ export function GetSimplifiedChordFromFullChord(
     chordMode += "9";
   }
 
-  console.log("(chordMode + homeNote) >>>>>>>>>>>>>>>>", chordMode + homeNote);
-
   return [chordMode, (homeNote += octave)];
 }
 
@@ -140,8 +136,6 @@ export function BuildChordNotes(
   octave: number = 3
 ): string[] {
   let chordArr: string[] = [];
-
-  console.log("isFullChord_____", isFullChord);
 
   if (!isFullChord) {
     const [chordMode, homeNote]: string[] = ChordsArrayBuilder(chord, octave);
@@ -160,7 +154,5 @@ export function BuildChordNotes(
   });
 
   chordArr = CleanChords(chordArr.join(",")).split(",");
-  console.log("BuildChordNotes____chordArr returns___", chordArr);
-
   return chordArr;
 }
