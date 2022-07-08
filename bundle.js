@@ -83299,13 +83299,10 @@ function ChordsArrayBuilder(chord, octave) {
 }
 function GetSimplifiedChordFromFullChord(fullChord, octave) {
     let cleanChord = (0, NoteUtils_1.CleanChords)(fullChord);
-    console.log("cleanChord:::", cleanChord);
     let homeNote = cleanChord[0];
-    console.log("homeNote:::", homeNote);
     let chordMode = cleanChord.slice(1);
-    console.log("chordMode:::", chordMode);
     const isSeventh = cleanChord.slice(-1) == "7";
-    console.log("isSeventh:::", isSeventh);
+    const isNinth = cleanChord.slice(-1) == "9";
     if (cleanChord[1] == "#") {
         homeNote += "#";
         chordMode = cleanChord.slice(2);
@@ -83319,9 +83316,13 @@ function GetSimplifiedChordFromFullChord(fullChord, octave) {
     else if (chordMode.includes("Diminished")) {
         chordMode = "dim";
     }
-    if (isSeventh) {
+    if (isSeventh && !chordMode.includes("7")) {
         chordMode += "7";
     }
+    else if (isNinth && !chordMode.includes("9")) {
+        chordMode += "9";
+    }
+    console.log("(chordMode + homeNote) >>>>>>>>>>>>>>>>", chordMode + homeNote);
     return [chordMode, (homeNote += octave)];
 }
 exports.GetSimplifiedChordFromFullChord = GetSimplifiedChordFromFullChord;
