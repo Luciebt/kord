@@ -5101,6 +5101,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GenerateMidi": () => (/* binding */ GenerateMidi)
 /* harmony export */ });
 /* harmony import */ var _PianoChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var MidiWriter = __webpack_require__(/*! midi-writer-js */ "./node_modules/midi-writer-js/build/index.js");
 
 
@@ -5113,63 +5125,52 @@ function DownloadMidi(dataUrl) {
   link.click();
 }
 function GenerateMidi(chordsList) {
-  track = new MidiWriter.Track(); // TODO: Ugly. Refactor this.
+  if (!chordsList) return;
+  track = new MidiWriter.Track();
+  var chordsToExport = {
+    // chordNum: chordContent
+    1: undefined,
+    2: undefined,
+    3: undefined,
+    4: undefined,
+    5: undefined,
+    6: undefined,
+    7: undefined,
+    8: undefined
+  };
 
-  var firstChord = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[0], true);
-  var secondChord = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[1], true);
-  var thirdChord = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[2], true);
-  var fourthChord = null;
-  var fifthChord = null;
+  for (var _i = 0, _Object$entries = Object.entries(Object.entries(chordsToExport)); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        i = _Object$entries$_i[0],
+        _Object$entries$_i$ = _slicedToArray(_Object$entries$_i[1], 2),
+        chordNum = _Object$entries$_i$[0],
+        chordContent = _Object$entries$_i$[1];
 
-  if (chordsList[3]) {
-    fourthChord = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[3], true);
-  }
+    if (chordsList[i]) {
+      chordsToExport[chordNum] = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[i]);
+    } else {
+      // Remove key/value pair if we're passing less than 8 chords in chordsList
+      delete chordsToExport[chordNum];
+    }
+  } // Add the track event for each note of each chord.
+  // One NoteEvent per chord.
 
-  if (chordsList[4]) {
-    fifthChord = (0,_PianoChart__WEBPACK_IMPORTED_MODULE_0__.ShowChord)(chordsList[4], true);
-  }
 
-  if (track && chordsList) {
-    track.addEvent([// One NoteEvent per chord.
-    new MidiWriter.NoteEvent({
-      pitch: firstChord,
-      duration: "1"
-    }), new MidiWriter.NoteEvent({
-      pitch: secondChord,
-      duration: "1"
-    }), new MidiWriter.NoteEvent({
-      pitch: thirdChord,
-      duration: "1"
-    })], function (event, index) {
-      return {
-        velocity: 90
-      };
-    });
-
-    if (fourthChord) {
-      track.addEvent([new MidiWriter.NoteEvent({
-        pitch: fourthChord,
+  if (track) {
+    for (var _i2 = 0, _Object$values = Object.values(chordsToExport); _i2 < _Object$values.length; _i2++) {
+      var chord = _Object$values[_i2];
+      track.addEvent(new MidiWriter.NoteEvent({
+        pitch: chord,
         duration: "1"
-      })], function (event, index) {
+      }), function (event, index) {
         return {
           velocity: 90
         };
       });
     }
 
-    if (fifthChord) {
-      track.addEvent([new MidiWriter.NoteEvent({
-        pitch: fifthChord,
-        duration: "1"
-      })], function (event, index) {
-        return {
-          velocity: 90
-        };
-      });
-    }
-
-    var write = new MidiWriter.Writer(track);
-    return write.dataUri();
+    var writer = new MidiWriter.Writer(track);
+    return writer.dataUri();
   }
 }
 
@@ -5386,7 +5387,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\n\n#settings-box {\n  display: flex;\n  justify-content: center;\n  font-size: .9em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 322px;\n  /* background-color: rgb(234, 234, 234); */\n  text-align: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: .3em;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 140px;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,aAAa;EACb,uBAAuB;EACvB,eAAe;EACf,cAAc;EACd,cAAc;EACd,YAAY;EACZ,0CAA0C;EAC1C,kBAAkB;AACpB;;AAEA;;EAEE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;EACf,WAAW;EACX,YAAY;AACd;;AAEA;;EAEE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;EAEE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,oBAAoB;EACpB,cAAc;EACd,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,qCAAqC;EACrC,cAAc;EACd,cAAc;EACd,YAAY;EACZ,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,iDAAiD;AACnD","sourcesContent":["/* Settings UI containers */\n\n#settings-box {\n  display: flex;\n  justify-content: center;\n  font-size: .9em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 322px;\n  /* background-color: rgb(234, 234, 234); */\n  text-align: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: .3em;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 140px;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Settings UI containers */\n\n#settings-box {\n  display: flex;\n  justify-content: center;\n  font-size: .9em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 322px;\n  /* background-color: rgb(234, 234, 234); */\n  text-align: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: .3em;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 140px;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n#shortcuts-settings-panel {\n  margin: 1em;\n  text-align: center;\n}\n", "",{"version":3,"sources":["webpack://./src/components/settings/Settings.css"],"names":[],"mappings":"AAAA,2BAA2B;;AAE3B;EACE,aAAa;EACb,uBAAuB;EACvB,eAAe;EACf,cAAc;EACd,cAAc;EACd,YAAY;EACZ,0CAA0C;EAC1C,kBAAkB;AACpB;;AAEA;;EAEE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;EACf,WAAW;EACX,YAAY;AACd;;AAEA;;EAEE,YAAY;EACZ,sCAAsC;AACxC;;AAEA;;EAEE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,oBAAoB;EACpB,cAAc;EACd,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,qCAAqC;EACrC,cAAc;EACd,cAAc;EACd,YAAY;EACZ,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,gBAAgB;EAChB,6BAA6B;EAC7B,eAAe;AACjB;;AAEA;EACE,uBAAuB;EACvB,iDAAiD;AACnD;;AAEA;EACE,WAAW;EACX,kBAAkB;AACpB","sourcesContent":["/* Settings UI containers */\n\n#settings-box {\n  display: flex;\n  justify-content: center;\n  font-size: .9em;\n  margin: 0 auto;\n  padding: 0.3em;\n  width: 322px;\n  /* background-color: rgb(234, 234, 234); */\n  text-align: center;\n}\n\n#audio-btn,\n#shortcuts-btn {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n  width: 100%;\n  margin: .3em;\n}\n\n#audio-btn:hover,\n#shortcuts-btn:hover {\n  color: white;\n  background-color: var(--dominant-dark);\n}\n\n.audio-selected-btn,\n.shortcuts-selected-btn {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n.sound-select {\n  font-family: inherit;\n  font-size: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--border-color);\n  margin: 0 auto;\n  padding: 0.4em;\n  width: 140px;\n  text-align: center;\n}\n\n.sound-select option {\n  border: none;\n  box-shadow: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n\n.sound-select option:hover {\n  color: white !important;\n  background-color: var(--dominant-dark) !important;\n}\n\n#shortcuts-settings-panel {\n  margin: 1em;\n  text-align: center;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34360,6 +34361,77 @@ if (false) {} else if (false) {} else if (typeof window === 'undefined') {
 
 /***/ }),
 
+/***/ "./node_modules/react-use-keypress/lib/index.esm.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/react-use-keypress/lib/index.esm.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useKeypress)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
+
+
+
+// Fixing inconsistencies from older browsers
+// https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
+var aliases = new Map([['Win', 'Meta'], ['Scroll', 'ScrollLock'], ['Spacebar', ' '], ['Down', 'ArrowDown'], ['Left', 'ArrowLeft'], ['Right', 'ArrowRight'], ['Up', 'ArrowUp'], ['Del', 'Delete'], ['Crsel', 'CrSel'], ['Exsel', 'ExSel'], ['Apps', 'ContextMenu'], ['Esc', 'Escape'], ['Decimal', '.'], ['Multiply', '*'], ['Add', '+'], ['Subtract', '-'], ['Divide', '/']]);
+
+var shimKeyboardEvent = function shimKeyboardEvent(event) {
+  if (aliases.has(event.key)) {
+    var key = aliases.get(event.key);
+    Object.defineProperty(event, 'key', {
+      configurable: true,
+      enumerable: true,
+      get: function get() {
+        return key;
+      }
+    });
+  }
+};
+
+var useKeypress = function useKeypress(keys, handler) {
+  !(Array.isArray(keys) || typeof keys === 'string') ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(false, 'Expected `keys` to be an array or string') : 0 : void 0;
+
+  if (Array.isArray(keys)) {
+    keys.forEach(function (key, i) {
+      !(typeof key === 'string') ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(false, "Expected `keys[" + i + "]` to be a string") : 0 : void 0;
+    });
+  }
+
+  !(typeof handler === 'function' || handler == null) ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(false, 'Expected `handler` to be a function') : 0 : void 0;
+  var eventListenerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    eventListenerRef.current = function (event) {
+      shimKeyboardEvent(event);
+
+      if (Array.isArray(keys) ? keys.includes(event.key) : keys === event.key) {
+        handler == null ? void 0 : handler(event);
+      }
+    };
+  }, [keys, handler]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var eventListener = function eventListener(event) {
+      eventListenerRef.current(event);
+    };
+
+    window.addEventListener('keydown', eventListener);
+    return function () {
+      window.removeEventListener('keydown', eventListener);
+    };
+  }, []);
+};
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -58408,6 +58480,36 @@ function styleTagTransform(css, styleElement) {
 }
 
 module.exports = styleTagTransform;
+
+/***/ }),
+
+/***/ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ invariant)
+/* harmony export */ });
+var isProduction = "development" === 'production';
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+    if (condition) {
+        return;
+    }
+    if (isProduction) {
+        throw new Error(prefix);
+    }
+    var provided = typeof message === 'function' ? message() : message;
+    var value = provided ? prefix + ": " + provided : prefix;
+    throw new Error(value);
+}
+
+
+
 
 /***/ }),
 
@@ -83256,7 +83358,6 @@ function BuildMidiChordNotes(chordNotes) {
 }
 // TODO: improve this function
 function ChordsArrayBuilder(chord, octave) {
-    console.log("(1) chord in ChordsArrayBuilder >>>>>>>>>", chord);
     // If there's more than 6 chars, it means we have the full quality.
     let homeNote = chord[0];
     // Let major be the default mode.
@@ -83321,13 +83422,11 @@ function GetSimplifiedChordFromFullChord(fullChord, octave) {
     else if (isNinth && !chordMode.includes("9")) {
         chordMode += "9";
     }
-    console.log("(chordMode + homeNote) >>>>>>>>>>>>>>>>", chordMode + homeNote);
     return [chordMode, (homeNote += octave)];
 }
 exports.GetSimplifiedChordFromFullChord = GetSimplifiedChordFromFullChord;
 function BuildChordNotes(chord, isFullChord = true, octave = 3) {
     let chordArr = [];
-    console.log("isFullChord_____", isFullChord);
     if (!isFullChord) {
         const [chordMode, homeNote] = ChordsArrayBuilder(chord, octave);
         chordArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
@@ -83341,7 +83440,6 @@ function BuildChordNotes(chord, isFullChord = true, octave = 3) {
         chordArr[i] = tonal_1.Note.simplify(chord);
     });
     chordArr = (0, NoteUtils_1.CleanChords)(chordArr.join(",")).split(",");
-    console.log("BuildChordNotes____chordArr returns___", chordArr);
     return chordArr;
 }
 exports.BuildChordNotes = BuildChordNotes;
@@ -84138,11 +84236,10 @@ const BpmRange = ({ onBpmRange }) => {
     };
     (0, react_1.useEffect)(() => {
         setBpm((0, Synth_1.GetTempo)().toString());
-        return () => {
-        };
+        return () => { };
     }, []);
     return (react_1.default.createElement("section", { className: "bpm-box" },
-        react_1.default.createElement("input", { type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" })));
+        react_1.default.createElement("input", { "aria-label": "Set a bpm for the loop", type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" })));
 };
 exports["default"] = BpmRange;
 
@@ -84188,7 +84285,7 @@ const KeyButton = ({ onPressKey }) => {
     const notesList = notes.map((note, i) => (react_1.default.createElement("button", { key: i, value: note, onClick: (e) => {
             handleClick(e, note);
         }, className: "key-btn" }, note)));
-    return (react_1.default.createElement("section", { className: "" },
+    return (react_1.default.createElement("section", { "arial-label": "Choose a key for your chord progression" },
         react_1.default.createElement("h2", null, "Key"),
         notesList));
 };
@@ -84270,7 +84367,7 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
         };
     }, [chordsList, bpm]); // Empty array ensures that effect is only run on mount and unmount
     return (react_1.default.createElement("div", { className: "loop-box" },
-        react_1.default.createElement("button", { id: "loop", onClick: (e) => {
+        react_1.default.createElement("button", { "aria-label": "Play the chord progression in a loop", id: "loop", onClick: (e) => {
                 handleClick(e);
             }, className: SoundOn
                 ? loopState
@@ -84301,8 +84398,6 @@ const MidiWriter_1 = __webpack_require__(/*! ../../midi/MidiWriter */ "./src/mid
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const MidiButtonComponent = ({ chordsList }) => {
     const handleClick = (event, chords) => {
-        // TODO: handleClick. Use midi writer from Midi.ts.
-        console.log("chordsList from midi button component_______", chordsList);
         const dataUri = (0, MidiWriter_1.GenerateMidi)(chordsList);
         (0, MidiWriter_1.DownloadMidi)(dataUri);
     };
@@ -84341,7 +84436,7 @@ const ModeButton = ({ onPressMode }) => {
     const modesList = modes.map((mode, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
             handleClick(e, mode);
         } }, mode)));
-    return (react_1.default.createElement("section", { className: "" },
+    return (react_1.default.createElement("section", { "arial-label": "Choose a mode for your chord progression" },
         react_1.default.createElement("h2", null, "Mode"),
         modesList));
 };
@@ -84385,7 +84480,7 @@ const MoodButton = ({ onPressMood }) => {
     const moodsList = moods.map((mood, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
             handleClick(e, mood);
         } }, mood)));
-    return (react_1.default.createElement("section", { className: "" },
+    return (react_1.default.createElement("section", { "arial-label": "Choose a mood for your chord progression" },
         react_1.default.createElement("h2", null, "Mood"),
         moodsList));
 };
@@ -84427,7 +84522,7 @@ const ChordButton = ({ onPressKey }) => {
     const chordsList = chords.map((chord, i) => (react_1.default.createElement("button", { key: i, value: chord, onClick: (e) => {
             handleClick(e, chord);
         }, className: "key-btn" }, chord)));
-    return (react_1.default.createElement("section", { className: "" },
+    return (react_1.default.createElement("section", { "aria-label": "Choose a quality to the chord" },
         react_1.default.createElement("h2", null, "Quality"),
         chordsList));
 };
@@ -84545,6 +84640,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
@@ -84559,35 +84655,78 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     let chordArr = chord.split(",");
     let romanNumerals = (0, ProgressionUtils_1.GetRomansForChord)(chordArr);
-    const handleClick = (chord, index, event) => {
-        if (SoundOn) {
-            (0, Chords_1.PlayChord)(chord);
+    // Move keyboard focus to the chords box when mounted.
+    (0, react_1.useEffect)(() => {
+        const chordsSection = document.getElementById("chords-box-id");
+        if (chordsSection) {
+            chordsSection.focus();
+            chordsSection.scrollIntoView();
         }
+    }, []);
+    const handleClick = (chord, index, event) => {
+        if (!chord)
+            return;
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("chord-btn-pressed");
+        const chordBtn = document.getElementById(`btn-${index}`);
+        if (chordBtn)
+            chordBtn.classList.add("chord-btn-pressed");
+        if (SoundOn)
+            (0, Chords_1.PlayChord)(chord);
         setChordState(true);
         setChordSelected(chord);
-        const style = "chord-btn-pressed";
-        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        let chordBtn = document.getElementById(`btn-${index}`);
-        if (chordBtn) {
+    };
+    const handleKeyPress = (id) => {
+        const chord = chordArr[id];
+        if (!chord)
+            return;
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("chord-btn-pressed");
+        const chordBtn = document.getElementById(`btn-${id}`);
+        if (chordBtn)
             chordBtn.classList.add("chord-btn-pressed");
-        }
+        if (SoundOn)
+            (0, Chords_1.PlayChord)(chord);
+        setChordState(true);
+        setChordSelected(chord);
     };
     (0, react_1.useEffect)(() => {
-        // comp mounts.
         return () => {
             // cleanups.
             setChordState(false);
-            const style = "chord-btn-pressed";
-            (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
+            (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("chord-btn-pressed");
             chordArr = [];
         };
     }, [chord]);
+    // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
+    (0, react_use_keypress_1.default)(["1", "a", "q"], () => {
+        handleKeyPress(0);
+    });
+    (0, react_use_keypress_1.default)(["2", "w", "z"], () => {
+        handleKeyPress(1);
+    });
+    (0, react_use_keypress_1.default)(["3", "e"], () => {
+        handleKeyPress(2);
+    });
+    (0, react_use_keypress_1.default)(["4", "r"], () => {
+        handleKeyPress(3);
+    });
+    (0, react_use_keypress_1.default)(["5", "t"], () => {
+        handleKeyPress(4);
+    });
+    (0, react_use_keypress_1.default)(["6", "y"], () => {
+        handleKeyPress(5);
+    });
+    (0, react_use_keypress_1.default)(["7", "u"], () => {
+        handleKeyPress(6);
+    });
+    (0, react_use_keypress_1.default)(["8", "i"], () => {
+        handleKeyPress(7);
+    });
     const chordsList = chordArr.map((c, i) => (react_1.default.createElement("button", { key: i, id: "btn-" + i.toString(), onClick: (e) => {
             handleClick(c, i, e);
         }, className: "chord-btn" },
         c,
         react_1.default.createElement("p", { className: "btn-caption" }, romanNumerals ? romanNumerals[i] : ""))));
-    return (react_1.default.createElement("section", { className: "chords-box" },
+    return (react_1.default.createElement("section", { id: "chords-box-id", className: "chords-box" },
         react_1.default.createElement("section", { className: "chord-box" },
             react_1.default.createElement("b", null, chordArr ? react_1.default.createElement(LoopButton_1.default, { chordsList: chordArr }) : null),
             chordsList && chordsList,
@@ -84737,7 +84876,7 @@ const ProgressionDisplayComponent = ({ tonic, mode, mood, chordsList, }) => {
     }, [tonic, mode, mood]);
     return (react_1.default.createElement("section", { className: "prog-box" },
         react_1.default.createElement("h2", null, "Progressions "),
-        react_1.default.createElement("section", { className: "prog-btn-box" },
+        react_1.default.createElement("section", { "aria-label": "Progressions found for your criteria", className: "prog-btn-box" },
             react_1.default.createElement("div", { className: "prog-grid-results" }, chordsList ? progressionsList : "")),
         chordsList && chordsState ? (react_1.default.createElement(ChordDisplay_1.default, { tonic: tonic, chord: chordSelected })) : null));
 };
@@ -84778,12 +84917,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progressions/ProgressionGridDisplay.css");
+const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
+// TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
 const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
@@ -84795,8 +84937,6 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             return;
         Synth_1.polySynth.releaseAll();
         const chordToPlay = progressionMap.get(chordIndex);
-        console.log("CHORD TO PLAY -----", chordToPlay);
-        // boolean because we pass non simplified chord names...
         if (chordToPlay)
             (0, Chords_1.PlayChord)(chordToPlay, true);
     };
@@ -84806,16 +84946,37 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     };
     const handlePositionClick = (event) => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
-        // Take the parent div if the inner one is selected
         if (event.target.id[0] == "g") {
+            // Add class to the parent div if the inner one is selected
             event.target.parentNode.classList.add("selected-position");
         }
-        else {
+        else if (event.target.id[0] == "p") {
+            // We're at the parent div already
             event.target.classList.add("selected-position");
         }
         const newPos = +event.target.id[4];
         const newChord = progressionMap.get(newPos);
-        setSelectedPos(newPos);
+        if (newPos)
+            setSelectedPos(newPos);
+        if (newChord)
+            setSelectedChord(newChord);
+        Play(newPos);
+    };
+    const handleKeyPress = (id) => {
+        // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
+        // We need a valid ID.
+        if (!id || id < 0 || id > 8)
+            return;
+        // Handle css to apply the selection color
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
+        const gridDiv = document.getElementById("pos-" + id);
+        if (!gridDiv)
+            return;
+        gridDiv.classList.add("selected-position");
+        const newPos = +id;
+        const newChord = progressionMap.get(newPos);
+        if (newPos)
+            setSelectedPos(newPos);
         if (newChord)
             setSelectedChord(newChord);
         Play(newPos);
@@ -84866,6 +85027,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             // Set attributes and click listener
             const newDivId = lastId + 1;
             newDiv.id = "pos-" + newDivId;
+            newDiv.tabIndex = 0;
             newDiv.addEventListener("click", function (event) {
                 handlePositionClick(event);
             });
@@ -84882,24 +85044,48 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
                 selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
             progressionMap.set(selectedPos, chordToAdd);
             setSelectedChord(chordToAdd);
-            // console.log(Array.from(progressionMap.values()));
         }
         return () => { };
     }, [chordToAdd]);
+    // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
+    (0, react_use_keypress_1.default)(["1", "a", "q"], () => {
+        handleKeyPress(1);
+    });
+    (0, react_use_keypress_1.default)(["2", "w", "z"], () => {
+        handleKeyPress(2);
+    });
+    (0, react_use_keypress_1.default)(["3", "e"], () => {
+        handleKeyPress(3);
+    });
+    (0, react_use_keypress_1.default)(["4", "r"], () => {
+        handleKeyPress(4);
+    });
+    (0, react_use_keypress_1.default)(["5", "t"], () => {
+        handleKeyPress(5);
+    });
+    (0, react_use_keypress_1.default)(["6", "y"], () => {
+        handleKeyPress(6);
+    });
+    (0, react_use_keypress_1.default)(["7", "u"], () => {
+        handleKeyPress(7);
+    });
+    (0, react_use_keypress_1.default)(["8", "i"], () => {
+        handleKeyPress(8);
+    });
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("section", { className: "chord-box" },
             react_1.default.createElement("h2", null, "Progression Builder"),
             react_1.default.createElement("section", { id: "prog-grid", className: "prog-grid-container" },
-                react_1.default.createElement("div", { id: "pos-1", onClick: (e) => {
+                react_1.default.createElement("div", { tabIndex: 0, id: "pos-1", onClick: (e) => {
                         handlePositionClick(e);
                     } }),
-                react_1.default.createElement("div", { id: "pos-2", onClick: (e) => {
+                react_1.default.createElement("div", { tabIndex: 0, id: "pos-2", onClick: (e) => {
                         handlePositionClick(e);
                     } }),
-                react_1.default.createElement("div", { id: "pos-3", onClick: (e) => {
+                react_1.default.createElement("div", { tabIndex: 0, id: "pos-3", onClick: (e) => {
                         handlePositionClick(e);
                     } }),
-                react_1.default.createElement("div", { id: "pos-4", onClick: (e) => {
+                react_1.default.createElement("div", { tabIndex: 0, id: "pos-4", onClick: (e) => {
                         handlePositionClick(e);
                     } })),
             react_1.default.createElement("div", { className: "prog-settings" },
@@ -84907,7 +85093,8 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
                 react_1.default.createElement("button", { className: "mini-btn", onClick: (e) => {
                         handleClearClick(e);
                     } }, "Clear \u274C")),
-            react_1.default.createElement("br", null)),
+            react_1.default.createElement("br", null),
+            react_1.default.createElement(MidiButton_1.default, { chordsList: Array.from(progressionMap.values()) })),
         selectedChord ? (react_1.default.createElement("div", { className: "prog-box" },
             react_1.default.createElement("h2", null, selectedChord),
             react_1.default.createElement(PianoDisplay_1.default, { chord: selectedChord }))) : null));
@@ -84996,7 +85183,7 @@ const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
     (0, useDidUpdate_1.useDidUpdate)(() => {
         setChordState(false);
     }, [tonic, mode]);
-    return (react_1.default.createElement("section", { className: "scale-box" },
+    return (react_1.default.createElement("section", { "aria-label": "Suggested chords for the key and mode choosen", className: "scale-box" },
         react_1.default.createElement("h2", null,
             chordsScale ? "Chords on Scale " + tonic + " " + mode : "",
             " ",
@@ -85117,9 +85304,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
+const ShortcutsSettingsPanel_1 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 __webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
 // TODO: handle click outside.
@@ -85131,16 +85323,91 @@ const Settings = ({ onSettings, onSoundOn }) => {
         onSoundOn(audioPref);
     };
     const [toggleShortcutsPanel, setToggleShortcutsPanel] = (0, useToggle_1.useToggle)(false);
+    (0, react_use_keypress_1.default)(["Escape", "?"], () => {
+        setToggleShortcutsPanel();
+    });
+    (0, react_use_keypress_1.default)("m", () => {
+        setAudioPref(!audioPref);
+    });
     const ChooseSynth = (event) => {
         event.preventDefault();
         (0, Synth_1.SetSynthSound)(event.target.value);
         console.log(event.target.value);
     };
     return (react_1.default.createElement("section", null,
-        react_1.default.createElement("section", { id: "settings-box" },
-            react_1.default.createElement("button", { id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"))));
+        react_1.default.createElement("section", { "aria-label": "settings", id: "settings-box" },
+            react_1.default.createElement("button", { "aria-label": "Turn audio on or off", id: "audio-btn", onClick: (e) => handleClick(e) }, audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"),
+            react_1.default.createElement("button", { id: "shortcuts-btn", className: toggleShortcutsPanel ? "shortcuts-selected-btn" : "", onClick: () => setToggleShortcutsPanel() }, "Shortcuts"),
+            react_1.default.createElement("br", null)),
+        toggleShortcutsPanel ? react_1.default.createElement(ShortcutsSettingsPanel_1.default, null) : ""));
 };
 exports["default"] = Settings;
+
+
+/***/ }),
+
+/***/ "./src/components/settings/ShortcutsSettingsPanel.tsx":
+/*!************************************************************!*\
+  !*** ./src/components/settings/ShortcutsSettingsPanel.tsx ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+__webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
+// TODO: Handle click outside.
+const ShortcutsPanel = ({}) => {
+    // Move keyboard focus to the panel when Shortcut button toggled
+    (0, react_1.useEffect)(() => {
+        const shortcutsSettingsDiv = document.getElementById("shortcuts-settings-panel");
+        if (shortcutsSettingsDiv) {
+            shortcutsSettingsDiv.focus();
+            shortcutsSettingsDiv.scrollIntoView();
+        }
+    }, []);
+    return (react_1.default.createElement("div", { tabIndex: 0, "arial-label": "Keyboard shortcuts for KORD", id: "shortcuts-settings-panel" },
+        react_1.default.createElement("p", null,
+            react_1.default.createElement("ul", null,
+                "Press ",
+                react_1.default.createElement("strong", null, "M"),
+                " to mute/unmute the sound."),
+            react_1.default.createElement("ul", null,
+                "Press ",
+                react_1.default.createElement("strong", null, "1 to 8"),
+                " (or ",
+                react_1.default.createElement("strong", null, "azerty"),
+                " keys) to play each chord of the progression."),
+            react_1.default.createElement("ul", null,
+                "Press ",
+                react_1.default.createElement("strong", null, "Space"),
+                " to toggle the loop."),
+            react_1.default.createElement("ul", null,
+                "Press ",
+                react_1.default.createElement("strong", null, "?"),
+                " to toggle this shortcut panel."))));
+};
+exports["default"] = ShortcutsPanel;
 
 
 /***/ }),
@@ -85242,7 +85509,7 @@ const TabComponent = () => {
         return () => { };
     }, []);
     return (react_1.default.createElement("div", { className: "tabs" },
-        react_1.default.createElement("ul", { className: "tab-nav" },
+        react_1.default.createElement("ul", { "arial-label": "tabs", className: "tab-nav" },
             react_1.default.createElement("button", { id: "id-1", onClick: (e) => handleTab(e) }, "Progressions List"),
             react_1.default.createElement("button", { id: "id-2", onClick: (e) => handleTab(e) }, "Progressions Builder")),
         react_1.default.createElement("div", { className: "outlet" }, activeTab === "tab-id-1" ? (react_1.default.createElement(ProgressionDictionnaryTab_1.default, null)) : (react_1.default.createElement(ProgressionBuilderTab_1.default, null)))));
