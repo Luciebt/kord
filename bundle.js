@@ -5123,7 +5123,8 @@ function DownloadMidi(dataUrl) {
   link.href = dataUrl;
   link.download = filename;
   link.click();
-}
+} // FIXME: doesn't work with normal progressions anymore
+
 function GenerateMidi(chordsList) {
   if (!chordsList) return;
   track = new MidiWriter.Track();
@@ -83966,11 +83967,11 @@ exports.SetSynthSound = SetSynthSound;
 CreateSynth();
 SetupTempo();
 //------ Make sounds with the synth!
+// TODO: improve synth performance
 function PlaySynthChords(chordNotes) {
     if (!chordNotes.length || !exports.polySynth)
         return;
     tone_1.Transport.stop();
-    // console.log("array of notes that will be triggered now___", chordNotes);
     exports.polySynth.releaseAll();
     exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
     Tone.start();
@@ -83989,40 +83990,36 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     // Loop the progression forever and set its length.
     chordEvent.loop = true;
     chordEvent.loopEnd = measuresToPlay += "m";
-    // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
-    // chordEvent.loopEnd = measuresToPlay += "n";
-}
-function SelectChordsDisplayEvent(chordIndex, progressionLength, noteStart = "0:0:0") {
-    chordEvent = new tone_1.ToneEvent((time) => {
-        console.log(chordIndex, "1n", time);
-    });
-    chordEvent.start(noteStart);
-    let measuresToPlay = progressionLength.toString();
-    chordEvent.loop = true;
-    chordEvent.loopEnd = measuresToPlay += "m";
 }
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 function PlayLoop(chordArr) {
     exports.polySynth.releaseAll();
-    let Chords = {
-        firstChord: (0, PianoChart_1.ShowChord)(chordArr[0]),
-        secondChord: (0, PianoChart_1.ShowChord)(chordArr[1]),
-        thirdChord: (0, PianoChart_1.ShowChord)(chordArr[2]),
-        fourthChord: (0, PianoChart_1.ShowChord)(chordArr[3]),
+    let chordsToLoop = {
+        // chordNum: chordContent
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+        7: [],
+        8: [],
     };
     const progressionLength = chordArr.length;
-    PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
-    SelectChordsDisplayEvent(0, progressionLength, "0:0:0");
-    PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
-    SelectChordsDisplayEvent(1, progressionLength, "1:0:0");
-    if (progressionLength > 2) {
-        PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
+    // Build the chord arrays in simplified notation
+    for (let i = 0; i <= progressionLength; i++) {
+        if (chordArr[i]) {
+            chordsToLoop[i] = (0, PianoChart_1.ShowChord)(chordArr[i]);
+        }
+        else {
+            // Remove key/value pair if no need
+            delete chordsToLoop[i];
+        }
     }
-    if (progressionLength > 3) {
-        PlayChordLoopEvent(Chords.fourthChord, progressionLength, "3:0:0");
-    }
-    if (progressionLength > 4) {
-        PlayChordLoopEvent(Chords.fourthChord, progressionLength, "4:0:0");
+    // Schedule the loop events
+    for (let i = 0; i < progressionLength; i++) {
+        const noteStart = i.toString() + ":0:0";
+        PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
     }
 }
 exports.PlayLoop = PlayLoop;
@@ -84067,7 +84064,6 @@ const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton 
 const QualityButton_1 = __importDefault(__webpack_require__(/*! ./buttons/QualityButton */ "./src/components/buttons/QualityButton.tsx"));
 const ProgressionGridDisplayComponent_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionGridDisplayComponent */ "./src/components/progressions/ProgressionGridDisplayComponent.tsx"));
 const App_1 = __webpack_require__(/*! ../App */ "./src/App.tsx");
-const Synth_1 = __webpack_require__(/*! ../audio/Synth */ "./src/audio/Synth.ts");
 const ChordBuilderComponent = () => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordKey, setChordKey] = (0, react_1.useState)("");
@@ -84075,29 +84071,15 @@ const ChordBuilderComponent = () => {
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     const KeyCallback = (key) => {
         setChordKey(key);
-        Play();
     };
     const ChordQualityCallback = (quality) => {
         setChordQuality(quality);
-        Play();
-    };
-    const Play = () => {
-        if (chordKey && chordQuality) {
-            if (SoundOn) {
-                Synth_1.polySynth.releaseAll();
-                // TODO: add "true" bool to PlayChord?
-                (0, Chords_1.PlayChord)(chordKey + chordQuality, true);
-            }
-        }
     };
     (0, react_1.useEffect)(() => {
         if (chordKey && chordQuality) {
             const chordToBuild = chordKey + chordQuality;
             setChordSelected(chordToBuild);
             if (SoundOn) {
-                Synth_1.polySynth.releaseAll();
-                // TODO: add "true" bool to PlayChord?
-                console.log("CHORD TO BUILD CHORD BUILDER COMP___", chordToBuild);
                 (0, Chords_1.PlayChord)(chordToBuild, true);
             }
         }
@@ -84226,6 +84208,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 __webpack_require__(/*! ./Bpm.css */ "./src/components/bpm/Bpm.css");
+// TODO: when changing tempo bpm value, RAMP UP TO new value with transport instead of stopping the loop.
+// USE Tone.getTransport().bpm.rampTo(60, 30);
 const BpmRange = ({ onBpmRange }) => {
     const [bpm, setBpm] = (0, react_1.useState)("120");
     const handleChange = (event) => {
@@ -84239,7 +84223,9 @@ const BpmRange = ({ onBpmRange }) => {
         return () => { };
     }, []);
     return (react_1.default.createElement("section", { className: "bpm-box" },
-        react_1.default.createElement("input", { "aria-label": "Set a bpm for the loop", type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" })));
+        react_1.default.createElement("input", { "aria-label": "Set a bpm for the loop", type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" }),
+        " ",
+        "BPM"));
 };
 exports["default"] = BpmRange;
 
@@ -84338,18 +84324,23 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
     const BpmCallback = (bpm) => {
         setBpm(bpm);
     };
+    // FIXME: returns true despite not having a loop running (separate channel?)
+    const isTransportRunning = () => {
+        return tone_1.Transport.state !== "started";
+    };
+    // FIXME: the selection CSS is broken sometimes here. Restore CSS on the basis of the tone transport instead of the other way around.
     const handleClick = (event) => {
-        if (SoundOn) {
-            if (tone_1.Transport.state !== "started") {
-                setLoopState(!loopState);
-                (0, Synth_1.PlayLoop)(chordsList);
-                tone_1.Transport.start();
-            }
-            else {
-                setLoopState(!loopState);
-                tone_1.Transport.cancel();
-                tone_1.Transport.stop();
-            }
+        if (!SoundOn)
+            return;
+        if (isTransportRunning()) {
+            setLoopState(!loopState);
+            (0, Synth_1.PlayLoop)(chordsList);
+            tone_1.Transport.start();
+        }
+        else {
+            setLoopState(!loopState);
+            // Transport.cancel();
+            tone_1.Transport.stop();
         }
     };
     // Restore the initial state of the loop button and stop transport when clicking on another progression button.
@@ -84505,6 +84496,8 @@ const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const ChordButton = ({ onPressKey }) => {
+    // TODO: is major the default?
+    // TODO: Add more chords...
     const chords = [
         "Major",
         "Minor",
@@ -84688,6 +84681,9 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
         setChordState(true);
         setChordSelected(chord);
     };
+    // useEffect(() => {
+    //   if (SoundOn && chordSelected) PlayChord(chordSelected);
+    // }, [chordSelected]);
     (0, react_1.useEffect)(() => {
         return () => {
             // cleanups.
@@ -84920,10 +84916,11 @@ const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/re
 const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progressions/ProgressionGridDisplay.css");
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
+const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
+const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
-const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 // TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
 const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
@@ -84962,6 +84959,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             setSelectedChord(newChord);
         Play(newPos);
     };
+    // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
     const handleKeyPress = (id) => {
         // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
         // We need a valid ID.
@@ -85042,9 +85040,10 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             const selectedGridDiv = document.getElementById("pos-" + selectedPos);
             if (selectedGridDiv)
                 selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
-            progressionMap.set(selectedPos, chordToAdd);
+            setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
             setSelectedChord(chordToAdd);
         }
+        // console.log(Array.from(progressionMap.values()));
         return () => { };
     }, [chordToAdd]);
     // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
@@ -85075,6 +85074,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("section", { className: "chord-box" },
             react_1.default.createElement("h2", null, "Progression Builder"),
+            progressionMap ? (react_1.default.createElement(LoopButton_1.default, { chordsList: Array.from(progressionMap.values()) })) : null,
             react_1.default.createElement("section", { id: "prog-grid", className: "prog-grid-container" },
                 react_1.default.createElement("div", { tabIndex: 0, id: "pos-1", onClick: (e) => {
                         handlePositionClick(e);
@@ -85332,7 +85332,6 @@ const Settings = ({ onSettings, onSoundOn }) => {
     const ChooseSynth = (event) => {
         event.preventDefault();
         (0, Synth_1.SetSynthSound)(event.target.value);
-        console.log(event.target.value);
     };
     return (react_1.default.createElement("section", null,
         react_1.default.createElement("section", { "aria-label": "settings", id: "settings-box" },
@@ -85382,8 +85381,8 @@ const ShortcutsPanel = ({}) => {
     (0, react_1.useEffect)(() => {
         const shortcutsSettingsDiv = document.getElementById("shortcuts-settings-panel");
         if (shortcutsSettingsDiv) {
-            shortcutsSettingsDiv.focus();
-            shortcutsSettingsDiv.scrollIntoView();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            // shortcutsSettingsDiv.focus();
         }
     }, []);
     return (react_1.default.createElement("div", { tabIndex: 0, "arial-label": "Keyboard shortcuts for KORD", id: "shortcuts-settings-panel" },
