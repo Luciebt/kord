@@ -81,11 +81,11 @@ SetupTempo();
 
 //------ Make sounds with the synth!
 
+// TODO: improve synth performance
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes.length || !polySynth) return;
 
   Transport.stop();
-  // console.log("array of notes that will be triggered now___", chordNotes);
   polySynth.releaseAll();
   polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
   Tone.start();
@@ -109,49 +109,38 @@ function PlayChordLoopEvent(
   // Loop the progression forever and set its length.
   chordEvent.loop = true;
   chordEvent.loopEnd = measuresToPlay += "m";
-
-  // TODO: option to repeat chord every bar: the noteDuration should be shortened for this to work.
-  // chordEvent.loopEnd = measuresToPlay += "n";
-}
-
-function SelectChordsDisplayEvent(
-  chordIndex: number,
-  progressionLength: number,
-  noteStart: string = "0:0:0"
-): void {
-  chordEvent = new ToneEvent((time) => {
-    console.log(chordIndex, "1n", time);
-  });
-  chordEvent.start(noteStart);
-  let measuresToPlay: string = progressionLength.toString();
-  chordEvent.loop = true;
-  chordEvent.loopEnd = measuresToPlay += "m";
 }
 
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 export function PlayLoop(chordArr: string[]): void {
   polySynth.releaseAll();
 
-  let Chords = {
-    firstChord: ShowChord(chordArr[0]),
-    secondChord: ShowChord(chordArr[1]),
-    thirdChord: ShowChord(chordArr[2]),
-    fourthChord: ShowChord(chordArr[3]),
+  let chordsToLoop = {
+    // chordNum: chordContent
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
   };
 
   const progressionLength: number = chordArr.length;
+  // Build the chord arrays in simplified notation
+  for (let i = 0; i <= progressionLength; i++) {
+    if (chordArr[i]) {
+      chordsToLoop[i] = ShowChord(chordArr[i]);
+    } else {
+      // Remove key/value pair if no need
+      delete chordsToLoop[i];
+    }
+  }
 
-  PlayChordLoopEvent(Chords.firstChord, progressionLength, "0:0:0");
-  SelectChordsDisplayEvent(0, progressionLength, "0:0:0");
-  PlayChordLoopEvent(Chords.secondChord, progressionLength, "1:0:0");
-  SelectChordsDisplayEvent(1, progressionLength, "1:0:0");
-  if (progressionLength > 2) {
-    PlayChordLoopEvent(Chords.thirdChord, progressionLength, "2:0:0");
-  }
-  if (progressionLength > 3) {
-    PlayChordLoopEvent(Chords.fourthChord, progressionLength, "3:0:0");
-  }
-  if (progressionLength > 4) {
-    PlayChordLoopEvent(Chords.fourthChord, progressionLength, "4:0:0");
+  // Schedule the loop events
+  for (let i = 0; i < progressionLength; i++) {
+    const noteStart = i.toString() + ":0:0";
+    PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
   }
 }

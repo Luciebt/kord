@@ -61,6 +61,10 @@ const ChordDisplayComponent = ({
     setChordSelected(chord);
   };
 
+  // useEffect(() => {
+  //   if (SoundOn && chordSelected) PlayChord(chordSelected);
+  // }, [chordSelected]);
+
   useEffect(() => {
     return () => {
       // cleanups.

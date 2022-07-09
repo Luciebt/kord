@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import useKeypress from "react-use-keypress";
 import "./ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
+import PianoDisplay from "./PianoDisplay";
+import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { PlayChord } from "../../Chords";
 import { SoundOnContext } from "../../App";
-import PianoDisplay from "./PianoDisplay";
 import { polySynth } from "../../audio/Synth";
 
 export interface IProgressionGridDisplayProps {
@@ -57,6 +58,8 @@ const ProgressionGridDisplayComponent = ({
     if (newChord) setSelectedChord(newChord);
     Play(newPos);
   };
+
+  // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
 
   const handleKeyPress = (id: number) => {
     // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
@@ -144,9 +147,11 @@ const ProgressionGridDisplayComponent = ({
       if (selectedGridDiv)
         selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
 
-      progressionMap.set(selectedPos, chordToAdd as string);
-      setSelectedChord(chordToAdd as string);
+      setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
+      setSelectedChord(chordToAdd);
     }
+
+    // console.log(Array.from(progressionMap.values()));
 
     return () => {};
   }, [chordToAdd]);
@@ -181,6 +186,9 @@ const ProgressionGridDisplayComponent = ({
     <div>
       <section className="chord-box">
         <h2>Progression Builder</h2>
+        {progressionMap ? (
+          <LoopButton chordsList={Array.from(progressionMap.values())} />
+        ) : null}
         <section id="prog-grid" className="prog-grid-container">
           <div
             tabIndex={0}
@@ -236,6 +244,7 @@ const ProgressionGridDisplayComponent = ({
       {(selectedChord as string) ? (
         <div className="prog-box">
           <h2>{selectedChord as string}</h2>
+          {/* TODO: Update piano on LOOP */}
           <PianoDisplay chord={selectedChord as string} />
         </div>
       ) : null}

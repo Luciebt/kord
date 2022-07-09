@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PlayLoop } from "../../audio/Synth";
+import { PlayLoop, polySynth } from "../../audio/Synth";
 import { Transport } from "tone";
 import "./Buttons.css";
 import { SoundOnContext } from "../../App";
@@ -19,17 +19,23 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
     setBpm(bpm);
   };
 
+  // FIXME: returns true despite not having a loop running (separate channel?)
+  const isTransportRunning = () => {
+    return Transport.state !== "started";
+  };
+
+  // FIXME: the selection CSS is broken sometimes here. Restore CSS on the basis of the tone transport instead of the other way around.
   const handleClick = (event: any) => {
-    if (SoundOn) {
-      if (Transport.state !== "started") {
-        setLoopState(!loopState);
-        PlayLoop(chordsList);
-        Transport.start();
-      } else {
-        setLoopState(!loopState);
-        Transport.cancel();
-        Transport.stop();
-      }
+    if (!SoundOn) return;
+
+    if (isTransportRunning()) {
+      setLoopState(!loopState);
+      PlayLoop(chordsList);
+      Transport.start();
+    } else {
+      setLoopState(!loopState);
+      // Transport.cancel();
+      Transport.stop();
     }
   };
 

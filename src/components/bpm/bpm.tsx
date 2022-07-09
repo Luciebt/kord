@@ -6,6 +6,8 @@ interface IBpmRange {
   onBpmRange?: any;
 }
 
+// TODO: when changing tempo bpm value, RAMP UP TO new value with transport instead of stopping the loop.
+// USE Tone.getTransport().bpm.rampTo(60, 30);
 const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
   const [bpm, setBpm] = useState("120");
 
@@ -31,7 +33,8 @@ const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
         value={bpm}
         onChange={handleChange}
         className="bpm-input"
-      />
+      />{" "}
+      BPM
     </section>
   );
 };

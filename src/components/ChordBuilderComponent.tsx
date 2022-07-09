@@ -14,22 +14,10 @@ const ChordBuilderComponent = (): JSX.Element => {
 
   const KeyCallback = (key: string) => {
     setChordKey(key);
-    Play();
   };
 
   const ChordQualityCallback = (quality: string) => {
     setChordQuality(quality);
-    Play();
-  };
-
-  const Play = () => {
-    if (chordKey && chordQuality) {
-      if (SoundOn) {
-        polySynth.releaseAll();
-        // TODO: add "true" bool to PlayChord?
-        PlayChord(chordKey + chordQuality, true);
-      }
-    }
   };
 
   useEffect(() => {
@@ -37,9 +25,6 @@ const ChordBuilderComponent = (): JSX.Element => {
       const chordToBuild = chordKey + chordQuality;
       setChordSelected(chordToBuild);
       if (SoundOn) {
-        polySynth.releaseAll();
-        // TODO: add "true" bool to PlayChord?
-        console.log("CHORD TO BUILD CHORD BUILDER COMP___", chordToBuild);
         PlayChord(chordToBuild, true);
       }
     }

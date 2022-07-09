@@ -34,7 +34,6 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   const ChooseSynth = (event: any): void => {
     event.preventDefault();
     SetSynthSound(event.target.value);
-    console.log(event.target.value);
   };
 
   return (

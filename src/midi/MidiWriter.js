@@ -10,6 +10,7 @@ export function DownloadMidi(dataUrl, filename = "MyProgression.mid") {
   link.click();
 }
 
+// FIXME: doesn't work with normal progressions anymore
 export function GenerateMidi(chordsList) {
   if (!chordsList) return;
 

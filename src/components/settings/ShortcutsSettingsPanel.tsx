@@ -12,8 +12,8 @@ const ShortcutsPanel = ({}: IShortcutsProps): JSX.Element => {
       "shortcuts-settings-panel"
     ) as HTMLElement;
     if (shortcutsSettingsDiv) {
-      shortcutsSettingsDiv.focus();
-      shortcutsSettingsDiv.scrollIntoView();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // shortcutsSettingsDiv.focus();
     }
   }, []);
 

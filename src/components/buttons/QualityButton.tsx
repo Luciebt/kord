@@ -8,6 +8,8 @@ interface IChordButton {
 }
 
 const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
+  // TODO: is major the default?
+  // TODO: Add more chords...
   const chords: TChords[] = [
     "Major",
     "Minor",
