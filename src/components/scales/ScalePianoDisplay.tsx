@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { ShowChord } from "../../PianoChart";
-import '../progressions/Piano.css';
+import "../progressions/Piano.css";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
 export interface IScalePianoDisplayProps {
@@ -30,7 +30,7 @@ const ScalePianoDisplayComponent = ({
   }, [chord]);
 
   return (
-    <div className="keyboard-box">
+    <div id="scale-keyboard" className="keyboard-box">
       <ul id="keyboard">
         <li id="s-C3" className="white">
           C

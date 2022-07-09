@@ -12,8 +12,8 @@ const ShortcutsPanel = ({}: IShortcutsProps): JSX.Element => {
       "shortcuts-settings-panel"
     ) as HTMLElement;
     if (shortcutsSettingsDiv) {
+      shortcutsSettingsDiv.focus();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // shortcutsSettingsDiv.focus();
     }
   }, []);
 
@@ -25,17 +25,17 @@ const ShortcutsPanel = ({}: IShortcutsProps): JSX.Element => {
     >
       <p>
         <ul>
-          Press <strong>M</strong> to mute/unmute the sound.
+          - <mark>M</mark> to mute/unmute the sound.
         </ul>
         <ul>
-          Press <strong>1 to 8</strong> (or <strong>azerty</strong> keys) to
-          play each chord of the progression.
+          - <mark>1</mark> to <mark>8</mark> (or <mark>azerty</mark>) to play
+          chords.
         </ul>
         <ul>
-          Press <strong>Space</strong> to toggle the loop.
+          - <mark>Space</mark> to toggle the loop.
         </ul>
         <ul>
-          Press <strong>?</strong> to toggle this shortcut panel.
+          - <mark>?</mark> / <mark>Esc</mark> to toggle this shortcut panel.
         </ul>
       </p>
     </div>

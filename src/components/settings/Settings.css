@@ -7,9 +7,10 @@
   margin: 0 auto;
   padding: 0.3em;
   width: 322px;
-  /* background-color: rgb(234, 234, 234); */
   text-align: center;
 }
+
+/* Settings Buttons */
 
 #audio-btn,
 #shortcuts-btn {
@@ -32,6 +33,8 @@
   color: white !important;
   background-color: var(--dominant-dark) !important;
 }
+
+/* Sound button */
 
 .sound-select {
   font-family: inherit;
@@ -58,7 +61,19 @@
   background-color: var(--dominant-dark) !important;
 }
 
+/* Shortcut panel */
+
 #shortcuts-settings-panel {
-  margin: 1em;
-  text-align: center;
+  /* margin: 1em; */
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-size: .83em;
+  margin: 0 auto;
+  width: 390px;
+}
+
+mark {
+  background-color: rgb(234, 234, 234);
+  padding: .16em;
 }
