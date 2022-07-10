@@ -24,6 +24,10 @@ export function GetTempo(): number {
   return Transport.bpm.value;
 }
 
+export function SetTempo(newValue: number): void {
+  Transport.bpm.rampTo(newValue, 1);
+}
+
 //------ Metronome functions
 
 // const player = new Player(

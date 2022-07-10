@@ -42,9 +42,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   // Restore the initial state of the loop button and stop transport when clicking on another progression button.
   useEffect(() => {
     return () => {
-      // TODO: maybe use synth.releaseAll instead of Transport.cancel()?
       Transport.cancel();
-      // Transport.stop();
       const btn = document.getElementById("loop");
       if (btn) {
         btn.classList.remove("loop-btn-pressed");
@@ -52,7 +50,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         btn.innerText = "▶";
       }
     };
-  }, [chordsList, bpm]); // Empty array ensures that effect is only run on mount and unmount
+  }, [chordsList]);
 
   return (
     <div className="loop-box">
