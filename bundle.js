@@ -4216,8 +4216,7 @@ function DownloadMidi(dataUrl) {
   link.href = dataUrl;
   link.download = filename;
   link.click();
-} // FIXME: doesn't work with normal progressions anymore
-
+}
 function GenerateMidi(chordsList) {
   if (!chordsList) return;
   track = new MidiWriter.Track();
@@ -82201,26 +82200,28 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProgressionCollection = void 0;
 exports.ProgressionCollection = {
     Major: [
-        { progression_list: "IV, V, VIm, I", mood: "Hopeful 🌈" },
+        { progression_list: "I, I, IV, V", mood: "Happy 🌻" },
+        { progression_list: "IV, I, V, VIm", mood: "Happy 🌻" },
         { progression_list: "I, IV, VIm, V", mood: "Happy 🌻" },
         { progression_list: "I, Vm, Vm, IIm", mood: "Happy 🌻" },
-        { progression_list: "I, IV, V", mood: "Happy 🌻" },
-        { progression_list: "V, IV, I, V", mood: "Jazzy 🎷" },
-        { progression_list: "IIm7, V7, I7", mood: "Jazzy 🎷" },
-        { progression_list: "I, VIm, IV, V", mood: "Melancholic" },
-        { progression_list: "I, VIm, V, V", mood: "Weird 👾" },
         { progression_list: "I, bIII, bVII, IV", mood: "Happy 🌻" },
-        { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful 🌈" },
-        { progression_list: "IIm7, V9, I7, I7", mood: "Sad 🌧️" },
-        { progression_list: "I, VIm, IIm, V", mood: "Hopeful 🌈" },
+        { progression_list: "I, IV, V", mood: "Happy 🌻" },
         { progression_list: "I, II, IIIm, V6", mood: "Happy 🌻" },
         { progression_list: "I, IV, bVII, IV", mood: "Happy 🌻" },
+        { progression_list: "V, IV, I, V", mood: "Jazzy 🎷" },
+        { progression_list: "IIm7, V7, I7", mood: "Jazzy 🎷" },
+        { progression_list: "I, V, IV, IVm", mood: "Jazzy 🎷" },
+        { progression_list: "I, bVI, V, V", mood: "Hopeful 🌈" },
+        { progression_list: "IV, V, VIm, I", mood: "Hopeful 🌈" },
+        { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful 🌈" },
+        { progression_list: "I, VIm, IIm, V", mood: "Hopeful 🌈" },
         { progression_list: "VIm, V, IV, V", mood: "Hopeful 🌈" },
-        // TODO: new moods?
-        // { progression_list: "I, I, IV, IIIm", mood: "Melancholic" },
-        // { progression_list: "VIm, IV, I, V", mood: "Love soup" },
+        { progression_list: "I, VIm, IV, V", mood: "Sad 🌧️" },
+        { progression_list: "IIm7, V9, I7, I7", mood: "Sad 🌧️" },
+        { progression_list: "I, I, IV, IIIm", mood: "Sad 🌧️" },
+        { progression_list: "I, VIm, V, V", mood: "Weird 👾" },
+        { progression_list: "IV, IVm, I, I", mood: "Weird 👾" },
         // TODO: Classify those.
-        { progression_list: "bIII, IIm, bII, I", mood: "Todo" },
         { progression_list: "I, bII, bIII, bII", mood: "Todo" },
         { progression_list: "I, bII, I, IIIm", mood: "Todo" },
         { progression_list: "I, bVII, bVI, bII", mood: "Todo" },
@@ -82234,7 +82235,6 @@ exports.ProgressionCollection = {
         { progression_list: "I, IV, Isus2, IV", mood: "Todo" },
         { progression_list: "I, IV, V, bVII", mood: "Todo" },
         { progression_list: "I, IV, V, V", mood: "Todo" },
-        { progression_list: "I, IV, VIm, V", mood: "Todo" },
         { progression_list: "I, V, bVII, IV", mood: "Todo" },
         { progression_list: "I, V, I, IV", mood: "Todo" },
         { progression_list: "I, V, IV, VIm", mood: "Todo" },
@@ -82249,12 +82249,10 @@ exports.ProgressionCollection = {
         { progression_list: "IIm, bII, I, bVII", mood: "Todo" },
         { progression_list: "IIm, bVII7, I", mood: "Todo" },
         { progression_list: "IIm, IV, V, V", mood: "Todo" },
-        { progression_list: "IIm, V, I, I", mood: "Todo" },
         { progression_list: "IIm, V, I, IV", mood: "Todo" },
         { progression_list: "IIIm, VIm, IV, I", mood: "Todo" },
         { progression_list: "IV, I, IIm, VIm", mood: "Todo" },
         { progression_list: "IV, I, IIIm, IV", mood: "Todo" },
-        { progression_list: "IV, I, V, VIm", mood: "Todo" },
         { progression_list: "IV, IV, I, V", mood: "Todo" },
         { progression_list: "IV, VIm, IIIm, I", mood: "Todo" },
         { progression_list: "V, I, VIm, V", mood: "Todo" },
@@ -82264,18 +82262,23 @@ exports.ProgressionCollection = {
     ],
     Minor: [
         { progression_list: "Im, IV, VI, Vm", mood: "Happy 🌻" },
+        { progression_list: "IIm, V, I, I", mood: "Jazzy 🎷" },
+        { progression_list: "Im, VII, IV, IV", mood: "Jazzy 🎷" },
+        { progression_list: "Im, III, VII, VI", mood: "Hopeful 🌈" },
+        { progression_list: "Im, IVm, III, VI", mood: "Hopeful 🌈" },
+        { progression_list: "VIm, IIIm, V, IV", mood: "Dark 👻" },
+        { progression_list: "Im, IVm, VI, Vm", mood: "Dark 👻" },
+        { progression_list: "Im, bVI, Im, Vm", mood: "Dark 👻" },
+        { progression_list: "Im, IIm, Vm, Im", mood: "Sad 🌧️" },
         { progression_list: "Im, Vm, IVm, Im", mood: "Sad 🌧️" },
         { progression_list: "VIm, IV, I, V", mood: "Sad 🌧️" },
         { progression_list: "Im, IVm, V7, Im", mood: "Sad 🌧️" },
         { progression_list: "Im, III, VII, VI", mood: "Sad 🌧️" },
-        { progression_list: "VIm, IIIm, V, IV", mood: "Dark 👻" },
-        { progression_list: "Im, VII, IV, IV", mood: "Jazzy 🎷" },
-        { progression_list: "Im, IIm, Vm, Im", mood: "Sad 🌧️" },
-        { progression_list: "Im, III, IVm, VI", mood: "Weird 👾" },
-        { progression_list: "Im, III, VII, VI", mood: "Hopeful 🌈" },
-        { progression_list: "Im, IVm, III, VI", mood: "Hopeful 🌈" },
-        { progression_list: "Im, IVm, VI, Vm", mood: "Dark 👻" },
         { progression_list: "Im, VI, IVm, Vm", mood: "Sad 🌧️" },
+        { progression_list: "VIm, IIIm, V, IV", mood: "Sad 🌧️" },
+        { progression_list: "Im, Vm, bVII, IV", mood: "Sad 🌧️" },
+        { progression_list: "bIII, IIm, bII, I", mood: "Weird 👾" },
+        { progression_list: "Im, III, IVm, VI", mood: "Weird 👾" },
         // TODO: new moods?
         // { progression_list: "Im, VI, III, bII", mood: "Suspensful" },
         // { progression_list: "VII, IVm, VII, Im", mood: "Suspensful" },
