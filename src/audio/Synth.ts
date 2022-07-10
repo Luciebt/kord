@@ -6,7 +6,9 @@ import { ShowChord } from "../PianoChart";
 //------ Global variables
 
 export let polySynth: PolySynth;
-let chordEvent: ToneEvent;
+// TODO: use chordEvent.progress to track progress of current loop - progress bar.
+// TODO: Also to highlight the correct DIV when playing the loop (in both tabs)
+export let chordEvent: ToneEvent;
 
 const synthSounds = {
   cuteSinePartials: [7, 6, 0.2],
@@ -84,6 +86,8 @@ SetupTempo();
 // TODO: improve synth performance
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes.length || !polySynth) return;
+
+  console.log("Playing now______", chordNotes);
 
   Transport.stop();
   polySynth.releaseAll();

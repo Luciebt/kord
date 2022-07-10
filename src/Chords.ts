@@ -1,7 +1,7 @@
 import { Note, Chord } from "@tonaljs/tonal";
 import { detect } from "@tonaljs/chord-detect";
 import { PlaySynthChords, polySynth } from "./audio/Synth";
-import { SetupPiano, PlayPianoChords } from "./audio/Piano";
+// import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 import { CleanChords } from "./NoteUtils";
 
 // TODO: test accuracy of chords / their notes using chord-detect: https://github.com/tonaljs/tonal/tree/main/packages/chord-detect
@@ -28,7 +28,7 @@ function PlayMidiNotes(
       break;
     case InstrumentType.Piano:
       const midiChordNotes: string[] = BuildMidiChordNotes(chordNotes);
-      PlayPianoChords(midiChordNotes);
+      // PlayPianoChords(midiChordNotes);
       break;
     default:
       break;
@@ -130,6 +130,7 @@ export function GetSimplifiedChordFromFullChord(
   return [chordMode, (homeNote += octave)];
 }
 
+// TODO: cleanups
 export function BuildChordNotes(
   chord: string,
   isFullChord: boolean = true,
