@@ -3811,913 +3811,6 @@ const ScaleDictionary = _tonaljs_scale_type__WEBPACK_IMPORTED_MODULE_17__["defau
 
 /***/ }),
 
-/***/ "./node_modules/@tonejs/piano/build/index.js":
-/*!***************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/index.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Piano": () => (/* reexport safe */ _piano_Piano__WEBPACK_IMPORTED_MODULE_0__.Piano),
-/* harmony export */   "MidiInput": () => (/* reexport safe */ _midi_MidiInput__WEBPACK_IMPORTED_MODULE_1__.MidiInput)
-/* harmony export */ });
-/* harmony import */ var _piano_Piano__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./piano/Piano */ "./node_modules/@tonejs/piano/build/piano/Piano.js");
-/* harmony import */ var _midi_MidiInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./midi/MidiInput */ "./node_modules/@tonejs/piano/build/midi/MidiInput.js");
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/midi/MidiInput.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/midi/MidiInput.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MidiInput": () => (/* binding */ MidiInput)
-/* harmony export */ });
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var webmidi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! webmidi */ "./node_modules/webmidi/webmidi.min.js");
-/* harmony import */ var webmidi__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(webmidi__WEBPACK_IMPORTED_MODULE_1__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-class MidiInput extends events__WEBPACK_IMPORTED_MODULE_0__.EventEmitter {
-    constructor(deviceId = 'all') {
-        super();
-        this.deviceId = deviceId;
-        /**
-         * Automatically attaches the event listeners when a device is connect
-         * and removes listeners when a device is disconnected
-         */
-        MidiInput.enabled().then(() => {
-            webmidi__WEBPACK_IMPORTED_MODULE_1___default().addListener('connected', (event) => {
-                if (event.port.type === 'input') {
-                    this._addListeners(event.port);
-                }
-            });
-            webmidi__WEBPACK_IMPORTED_MODULE_1___default().addListener('disconnected', (event) => {
-                this._removeListeners(event.port);
-            });
-            // add all of the existing inputs
-            webmidi__WEBPACK_IMPORTED_MODULE_1___default().inputs.forEach(input => this._addListeners(input));
-        });
-    }
-    /**
-     * Attach listeners to the device when it's connected
-     */
-    _addListeners(device) {
-        if (!MidiInput.connectedDevices.has(device.id)) {
-            MidiInput.connectedDevices.set(device.id, device);
-            this.emit('connect', this._inputToDevice(device));
-            device.addListener('noteon', 'all', (event) => {
-                if (this.deviceId === 'all' || this.deviceId === device.id) {
-                    this.emit('keyDown', {
-                        note: `${event.note.name}${event.note.octave}`,
-                        midi: event.note.number,
-                        velocity: event.velocity,
-                        device: this._inputToDevice(device)
-                    });
-                }
-            });
-            device.addListener('noteoff', 'all', (event) => {
-                if (this.deviceId === 'all' || this.deviceId === device.id) {
-                    this.emit('keyUp', {
-                        note: `${event.note.name}${event.note.octave}`,
-                        midi: event.note.number,
-                        velocity: event.velocity,
-                        device: this._inputToDevice(device)
-                    });
-                }
-            });
-            device.addListener('controlchange', 'all', (event) => {
-                if (this.deviceId === 'all' || this.deviceId === device.id) {
-                    if (event.controller.name === 'holdpedal') {
-                        this.emit(event.value ? 'pedalDown' : 'pedalUp', {
-                            device: this._inputToDevice(device)
-                        });
-                    }
-                }
-            });
-        }
-    }
-    _inputToDevice(input) {
-        return {
-            name: input.name,
-            id: input.id,
-            manufacturer: input.manufacturer
-        };
-    }
-    /**
-     * Internal call to remove all event listeners associated with the device
-     */
-    _removeListeners(event) {
-        if (MidiInput.connectedDevices.has(event.id)) {
-            const device = MidiInput.connectedDevices.get(event.id);
-            this.emit('disconnect', this._inputToDevice(device));
-            MidiInput.connectedDevices.delete(event.id);
-            device.removeListener('noteon');
-            device.removeListener('noteoff');
-            device.removeListener('controlchange');
-        }
-    }
-    // EVENT FUNCTIONS
-    emit(event, data) {
-        return super.emit(event, data);
-    }
-    on(event, listener) {
-        super.on(event, listener);
-        return this;
-    }
-    once(event, listener) {
-        super.once(event, listener);
-        return this;
-    }
-    off(event, listener) {
-        super.off(event, listener);
-        return this;
-    }
-    /**
-     * Resolves when the MIDI Input is enabled and ready to use
-     */
-    static enabled() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!MidiInput._isEnabled) {
-                yield new Promise((done, error) => {
-                    webmidi__WEBPACK_IMPORTED_MODULE_1___default().enable((e) => {
-                        if (e) {
-                            error(e);
-                        }
-                        else {
-                            MidiInput._isEnabled = true;
-                            done();
-                        }
-                    });
-                });
-            }
-        });
-    }
-    /**
-     * Get a list of devices that are currently connected
-     */
-    static getDevices() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield MidiInput.enabled();
-            return (webmidi__WEBPACK_IMPORTED_MODULE_1___default().inputs);
-        });
-    }
-}
-// STATIC
-MidiInput.connectedDevices = new Map();
-MidiInput._isEnabled = false;
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Component.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Component.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PianoComponent": () => (/* binding */ PianoComponent)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-/**
- * Base class for the other components
- */
-class PianoComponent extends tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioNode {
-    constructor(options) {
-        super(options);
-        this.name = 'PianoComponent';
-        this.input = undefined;
-        this.output = new tone__WEBPACK_IMPORTED_MODULE_0__.Volume({ context: this.context });
-        /**
-         * If the component is enabled or not
-         */
-        this._enabled = false;
-        /**
-         * The volume output of the component
-         */
-        this.volume = this.output.volume;
-        /**
-         * Boolean indication of if the component is loaded or not
-         */
-        this._loaded = false;
-        this.volume.value = options.volume;
-        this._enabled = options.enabled;
-        this.samples = options.samples;
-    }
-    /**
-     * If the samples are loaded or not
-     */
-    get loaded() {
-        return this._loaded;
-    }
-    /**
-     * Load the samples
-     */
-    load() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this._enabled) {
-                yield this._internalLoad();
-                this._loaded = true;
-            }
-            else {
-                return Promise.resolve();
-            }
-        });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Harmonics.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Harmonics.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Harmonics": () => (/* binding */ Harmonics)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component */ "./node_modules/@tonejs/piano/build/piano/Component.js");
-/* harmony import */ var _Salamander__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Salamander */ "./node_modules/@tonejs/piano/build/piano/Salamander.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./node_modules/@tonejs/piano/build/piano/Util.js");
-
-
-
-
-class Harmonics extends _Component__WEBPACK_IMPORTED_MODULE_1__.PianoComponent {
-    constructor(options) {
-        super(options);
-        this._urls = {};
-        const notes = (0,_Salamander__WEBPACK_IMPORTED_MODULE_2__.getHarmonicsInRange)(options.minNote, options.maxNote);
-        for (const n of notes) {
-            this._urls[n] = (0,_Salamander__WEBPACK_IMPORTED_MODULE_2__.getHarmonicsUrl)(n);
-        }
-    }
-    triggerAttack(note, time, velocity) {
-        if (this._enabled && (0,_Salamander__WEBPACK_IMPORTED_MODULE_2__.inHarmonicsRange)(note)) {
-            this._sampler.triggerAttack((0,tone__WEBPACK_IMPORTED_MODULE_0__.Midi)(note).toNote(), time, velocity * (0,_Util__WEBPACK_IMPORTED_MODULE_3__.randomBetween)(0.5, 1));
-        }
-    }
-    _internalLoad() {
-        return new Promise(onload => {
-            this._sampler = new tone__WEBPACK_IMPORTED_MODULE_0__.Sampler({
-                baseUrl: this.samples,
-                onload,
-                urls: this._urls,
-            }).connect(this.output);
-        });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Keybed.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Keybed.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Keybed": () => (/* binding */ Keybed)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component */ "./node_modules/@tonejs/piano/build/piano/Component.js");
-/* harmony import */ var _Salamander__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Salamander */ "./node_modules/@tonejs/piano/build/piano/Salamander.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./node_modules/@tonejs/piano/build/piano/Util.js");
-
-
-
-
-class Keybed extends _Component__WEBPACK_IMPORTED_MODULE_1__.PianoComponent {
-    constructor(options) {
-        super(options);
-        /**
-         * The urls to load
-         */
-        this._urls = {};
-        for (let i = options.minNote; i <= options.maxNote; i++) {
-            this._urls[i] = (0,_Salamander__WEBPACK_IMPORTED_MODULE_2__.getReleasesUrl)(i);
-        }
-    }
-    _internalLoad() {
-        return new Promise(success => {
-            this._buffers = new tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioBuffers(this._urls, success, this.samples);
-        });
-    }
-    start(note, time, velocity) {
-        if (this._enabled && this._buffers.has(note)) {
-            const source = new tone__WEBPACK_IMPORTED_MODULE_0__.ToneBufferSource({
-                url: this._buffers.get(note),
-                context: this.context,
-            }).connect(this.output);
-            // randomize the velocity slightly
-            source.start(time, 0, undefined, 0.015 * velocity * (0,_Util__WEBPACK_IMPORTED_MODULE_3__.randomBetween)(0.5, 1));
-        }
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Pedal.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Pedal.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Pedal": () => (/* binding */ Pedal)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component */ "./node_modules/@tonejs/piano/build/piano/Component.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Util */ "./node_modules/@tonejs/piano/build/piano/Util.js");
-
-
-
-class Pedal extends _Component__WEBPACK_IMPORTED_MODULE_1__.PianoComponent {
-    constructor(options) {
-        super(options);
-        this._downTime = Infinity;
-        this._currentSound = null;
-        this._downTime = Infinity;
-    }
-    _internalLoad() {
-        return new Promise((success) => {
-            this._buffers = new tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioBuffers({
-                down1: 'pedalD1.mp3',
-                down2: 'pedalD2.mp3',
-                up1: 'pedalU1.mp3',
-                up2: 'pedalU2.mp3',
-            }, success, this.samples);
-        });
-    }
-    /**
-     *  Squash the current playing sound
-     */
-    _squash(time) {
-        if (this._currentSound && this._currentSound.state !== 'stopped') {
-            this._currentSound.stop(time);
-        }
-        this._currentSound = null;
-    }
-    _playSample(time, dir) {
-        if (this._enabled) {
-            this._currentSound = new tone__WEBPACK_IMPORTED_MODULE_0__.ToneBufferSource({
-                url: this._buffers.get(`${dir}${Math.random() > 0.5 ? 1 : 2}`),
-                context: this.context,
-                curve: 'exponential',
-                fadeIn: 0.05,
-                fadeOut: 0.1,
-            }).connect(this.output);
-            this._currentSound.start(time, (0,_Util__WEBPACK_IMPORTED_MODULE_2__.randomBetween)(0, 0.01), undefined, 0.1 * (0,_Util__WEBPACK_IMPORTED_MODULE_2__.randomBetween)(0.5, 1));
-        }
-    }
-    /**
-     * Put the pedal down
-     */
-    down(time) {
-        this._squash(time);
-        this._downTime = time;
-        this._playSample(time, 'down');
-    }
-    /**
-     * Put the pedal up
-     */
-    up(time) {
-        this._squash(time);
-        this._downTime = Infinity;
-        this._playSample(time, 'up');
-    }
-    /**
-     * Indicates if the pedal is down at the given time
-     */
-    isDown(time) {
-        return time > this._downTime;
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Piano.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Piano.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Piano": () => (/* binding */ Piano)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Harmonics__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Harmonics */ "./node_modules/@tonejs/piano/build/piano/Harmonics.js");
-/* harmony import */ var _Keybed__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Keybed */ "./node_modules/@tonejs/piano/build/piano/Keybed.js");
-/* harmony import */ var _Pedal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pedal */ "./node_modules/@tonejs/piano/build/piano/Pedal.js");
-/* harmony import */ var _Strings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Strings */ "./node_modules/@tonejs/piano/build/piano/Strings.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-
-/**
- *  The Piano
- */
-class Piano extends tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioNode {
-    constructor() {
-        super((0,tone__WEBPACK_IMPORTED_MODULE_0__.optionsFromArguments)(Piano.getDefaults(), arguments));
-        this.name = 'Piano';
-        this.input = undefined;
-        this.output = new tone__WEBPACK_IMPORTED_MODULE_0__.Gain({ context: this.context });
-        /**
-         * The currently held notes
-         */
-        this._heldNotes = new Map();
-        /**
-         * If it's loaded or not
-         */
-        this._loaded = false;
-        const options = (0,tone__WEBPACK_IMPORTED_MODULE_0__.optionsFromArguments)(Piano.getDefaults(), arguments);
-        // make sure it ends with a /
-        if (!options.url.endsWith('/')) {
-            options.url += '/';
-        }
-        this.maxPolyphony = options.maxPolyphony;
-        this._heldNotes = new Map();
-        this._sustainedNotes = new Map();
-        this._strings = new _Strings__WEBPACK_IMPORTED_MODULE_4__.PianoStrings(Object.assign({}, options, {
-            enabled: true,
-            samples: options.url,
-            volume: options.volume.strings,
-        })).connect(this.output);
-        this.strings = this._strings.volume;
-        this._pedal = new _Pedal__WEBPACK_IMPORTED_MODULE_3__.Pedal(Object.assign({}, options, {
-            enabled: options.pedal,
-            samples: options.url,
-            volume: options.volume.pedal,
-        })).connect(this.output);
-        this.pedal = this._pedal.volume;
-        this._keybed = new _Keybed__WEBPACK_IMPORTED_MODULE_2__.Keybed(Object.assign({}, options, {
-            enabled: options.release,
-            samples: options.url,
-            volume: options.volume.keybed,
-        })).connect(this.output);
-        this.keybed = this._keybed.volume;
-        this._harmonics = new _Harmonics__WEBPACK_IMPORTED_MODULE_1__.Harmonics(Object.assign({}, options, {
-            enabled: options.release,
-            samples: options.url,
-            volume: options.volume.harmonics,
-        })).connect(this.output);
-        this.harmonics = this._harmonics.volume;
-    }
-    static getDefaults() {
-        return Object.assign(tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioNode.getDefaults(), {
-            maxNote: 108,
-            minNote: 21,
-            pedal: true,
-            release: false,
-            url: 'https://tambien.github.io/Piano/audio/',
-            velocities: 1,
-            maxPolyphony: 32,
-            volume: {
-                harmonics: 0,
-                keybed: 0,
-                pedal: 0,
-                strings: 0,
-            },
-        });
-    }
-    /**
-     *  Load all the samples
-     */
-    load() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield Promise.all([
-                this._strings.load(),
-                this._pedal.load(),
-                this._keybed.load(),
-                this._harmonics.load(),
-            ]);
-            this._loaded = true;
-        });
-    }
-    /**
-     * If all the samples are loaded or not
-     */
-    get loaded() {
-        return this._loaded;
-    }
-    /**
-     *  Put the pedal down at the given time. Causes subsequent
-     *  notes and currently held notes to sustain.
-     */
-    pedalDown({ time = this.immediate() } = {}) {
-        if (this.loaded) {
-            time = this.toSeconds(time);
-            if (!this._pedal.isDown(time)) {
-                this._pedal.down(time);
-            }
-        }
-        return this;
-    }
-    /**
-     *  Put the pedal up. Dampens sustained notes
-     */
-    pedalUp({ time = this.immediate() } = {}) {
-        if (this.loaded) {
-            const seconds = this.toSeconds(time);
-            if (this._pedal.isDown(seconds)) {
-                this._pedal.up(seconds);
-                // dampen each of the notes
-                this._sustainedNotes.forEach((t, note) => {
-                    if (!this._heldNotes.has(note)) {
-                        this._strings.triggerRelease(note, seconds);
-                    }
-                });
-                this._sustainedNotes.clear();
-            }
-        }
-        return this;
-    }
-    /**
-     *  Play a note.
-     *  @param note	  The note to play. If it is a number, it is assumed to be MIDI
-     *  @param velocity  The velocity to play the note
-     *  @param time	  The time of the event
-     */
-    keyDown({ note, midi, time = this.immediate(), velocity = 0.8 }) {
-        if (this.loaded && this.maxPolyphony > this._heldNotes.size + this._sustainedNotes.size) {
-            time = this.toSeconds(time);
-            if ((0,tone__WEBPACK_IMPORTED_MODULE_0__.isString)(note)) {
-                midi = Math.round((0,tone__WEBPACK_IMPORTED_MODULE_0__.Midi)(note).toMidi());
-            }
-            if (!this._heldNotes.has(midi)) {
-                // record the start time and velocity
-                this._heldNotes.set(midi, { time, velocity });
-                this._strings.triggerAttack(midi, time, velocity);
-            }
-        }
-        else {
-            console.warn('samples not loaded');
-        }
-        return this;
-    }
-    /**
-     *  Release a held note.
-     */
-    keyUp({ note, midi, time = this.immediate(), velocity = 0.8 }) {
-        if (this.loaded) {
-            time = this.toSeconds(time);
-            if ((0,tone__WEBPACK_IMPORTED_MODULE_0__.isString)(note)) {
-                midi = Math.round((0,tone__WEBPACK_IMPORTED_MODULE_0__.Midi)(note).toMidi());
-            }
-            if (this._heldNotes.has(midi)) {
-                const prevNote = this._heldNotes.get(midi);
-                this._heldNotes.delete(midi);
-                // compute the release velocity
-                const holdTime = Math.pow(Math.max(time - prevNote.time, 0.1), 0.7);
-                const prevVel = prevNote.velocity;
-                let dampenGain = (3 / holdTime) * prevVel * velocity;
-                dampenGain = Math.max(dampenGain, 0.4);
-                dampenGain = Math.min(dampenGain, 4);
-                if (this._pedal.isDown(time)) {
-                    if (!this._sustainedNotes.has(midi)) {
-                        this._sustainedNotes.set(midi, time);
-                    }
-                }
-                else {
-                    // release the string sound
-                    this._strings.triggerRelease(midi, time);
-                    // trigger the harmonics sound
-                    this._harmonics.triggerAttack(midi, time, dampenGain);
-                }
-                // trigger the keybed release sound
-                this._keybed.start(midi, time, velocity);
-            }
-        }
-        return this;
-    }
-    stopAll() {
-        this.pedalUp();
-        this._heldNotes.forEach((_, midi) => {
-            this.keyUp({ midi });
-        });
-        return this;
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Salamander.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Salamander.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "githubURL": () => (/* binding */ githubURL),
-/* harmony export */   "getReleasesUrl": () => (/* binding */ getReleasesUrl),
-/* harmony export */   "getHarmonicsUrl": () => (/* binding */ getHarmonicsUrl),
-/* harmony export */   "getNotesUrl": () => (/* binding */ getNotesUrl),
-/* harmony export */   "velocitiesMap": () => (/* binding */ velocitiesMap),
-/* harmony export */   "allNotes": () => (/* binding */ allNotes),
-/* harmony export */   "getNotesInRange": () => (/* binding */ getNotesInRange),
-/* harmony export */   "getHarmonicsInRange": () => (/* binding */ getHarmonicsInRange),
-/* harmony export */   "inHarmonicsRange": () => (/* binding */ inHarmonicsRange)
-/* harmony export */ });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./node_modules/@tonejs/piano/build/piano/Util.js");
-
-const githubURL = 'https://tambien.github.io/Piano/Salamander/';
-function getReleasesUrl(midi) {
-    return `rel${midi - 20}.[mp3|ogg]`;
-}
-function getHarmonicsUrl(midi) {
-    return `harmS${(0,_Util__WEBPACK_IMPORTED_MODULE_0__.midiToNote)(midi).replace('#', 's')}.[mp3|ogg]`;
-}
-function getNotesUrl(midi, vel) {
-    return `${(0,_Util__WEBPACK_IMPORTED_MODULE_0__.midiToNote)(midi).replace('#', 's')}v${vel}.[mp3|ogg]`;
-}
-/**
- * Maps velocity depths to Salamander velocities
- */
-const velocitiesMap = {
-    1: [8],
-    2: [6, 12],
-    3: [1, 7, 15],
-    4: [1, 5, 10, 15],
-    5: [1, 4, 8, 12, 16],
-    6: [1, 3, 7, 10, 13, 16],
-    7: [1, 3, 6, 9, 11, 13, 16],
-    8: [1, 3, 5, 7, 9, 11, 13, 16],
-    9: [1, 3, 5, 7, 9, 11, 13, 15, 16],
-    10: [1, 2, 3, 5, 7, 9, 11, 13, 15, 16],
-    11: [1, 2, 3, 5, 7, 9, 11, 13, 14, 15, 16],
-    12: [1, 2, 3, 4, 5, 7, 9, 11, 13, 14, 15, 16],
-    13: [1, 2, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15, 16],
-    14: [1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15, 16],
-    15: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16],
-    16: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-};
-/**
- * All the notes of audio samples
- */
-const allNotes = [
-    21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54,
-    57, 60, 63, 66, 69, 72, 75, 78, 81, 84,
-    87, 90, 93, 96, 99, 102, 105, 108
-];
-function getNotesInRange(min, max) {
-    return allNotes.filter(note => min <= note && note <= max);
-}
-/**
- * All the notes of audio samples
- */
-const harmonics = [21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87];
-function getHarmonicsInRange(min, max) {
-    return harmonics.filter(note => min <= note && note <= max);
-}
-function inHarmonicsRange(note) {
-    return harmonics[0] <= note && note <= harmonics[harmonics.length - 1];
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/String.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/String.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PianoString": () => (/* binding */ PianoString)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Salamander__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Salamander */ "./node_modules/@tonejs/piano/build/piano/Salamander.js");
-
-
-/**
- * A single velocity of strings
- */
-class PianoString extends tone__WEBPACK_IMPORTED_MODULE_0__.ToneAudioNode {
-    constructor(options) {
-        super(options);
-        this.name = 'PianoString';
-        this._urls = {};
-        // create the urls
-        options.notes.forEach(note => this._urls[note] = (0,_Salamander__WEBPACK_IMPORTED_MODULE_1__.getNotesUrl)(note, options.velocity));
-        this.samples = options.samples;
-    }
-    load() {
-        return new Promise(onload => {
-            this._sampler = this.output = new tone__WEBPACK_IMPORTED_MODULE_0__.Sampler({
-                attack: 0,
-                baseUrl: this.samples,
-                curve: 'exponential',
-                onload,
-                release: 0.4,
-                urls: this._urls,
-                volume: 3,
-            });
-        });
-    }
-    triggerAttack(note, time, velocity) {
-        this._sampler.triggerAttack(note, time, velocity);
-    }
-    triggerRelease(note, time) {
-        this._sampler.triggerRelease(note, time);
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Strings.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Strings.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PianoStrings": () => (/* binding */ PianoStrings)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-/* harmony import */ var _Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component */ "./node_modules/@tonejs/piano/build/piano/Component.js");
-/* harmony import */ var _Salamander__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Salamander */ "./node_modules/@tonejs/piano/build/piano/Salamander.js");
-/* harmony import */ var _String__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./String */ "./node_modules/@tonejs/piano/build/piano/String.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-/**
- *  Manages all of the hammered string sounds
- */
-class PianoStrings extends _Component__WEBPACK_IMPORTED_MODULE_1__.PianoComponent {
-    constructor(options) {
-        super(options);
-        const notes = (0,_Salamander__WEBPACK_IMPORTED_MODULE_2__.getNotesInRange)(options.minNote, options.maxNote);
-        const velocities = _Salamander__WEBPACK_IMPORTED_MODULE_2__.velocitiesMap[options.velocities].slice();
-        this._strings = velocities.map(velocity => {
-            const string = new _String__WEBPACK_IMPORTED_MODULE_3__.PianoString(Object.assign(options, {
-                notes, velocity,
-            }));
-            return string;
-        });
-        this._activeNotes = new Map();
-    }
-    /**
-     * Scale a value between a given range
-     */
-    scale(val, inMin, inMax, outMin, outMax) {
-        return ((val - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
-    }
-    triggerAttack(note, time, velocity) {
-        const scaledVel = this.scale(velocity, 0, 1, -0.5, this._strings.length - 0.51);
-        const stringIndex = Math.max(Math.round(scaledVel), 0);
-        let gain = 1 + scaledVel - stringIndex;
-        if (this._strings.length === 1) {
-            gain = velocity;
-        }
-        const sampler = this._strings[stringIndex];
-        if (this._activeNotes.has(note)) {
-            this.triggerRelease(note, time);
-        }
-        this._activeNotes.set(note, sampler);
-        sampler.triggerAttack((0,tone__WEBPACK_IMPORTED_MODULE_0__.Midi)(note).toNote(), time, gain);
-    }
-    triggerRelease(note, time) {
-        // trigger the release of all of the notes at that velociy
-        if (this._activeNotes.has(note)) {
-            this._activeNotes.get(note).triggerRelease((0,tone__WEBPACK_IMPORTED_MODULE_0__.Midi)(note).toNote(), time);
-            this._activeNotes.delete(note);
-        }
-    }
-    _internalLoad() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield Promise.all(this._strings.map((s) => __awaiter(this, void 0, void 0, function* () {
-                yield s.load();
-                s.connect(this.output);
-            })));
-        });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@tonejs/piano/build/piano/Util.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@tonejs/piano/build/piano/Util.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "noteToMidi": () => (/* binding */ noteToMidi),
-/* harmony export */   "midiToNote": () => (/* binding */ midiToNote),
-/* harmony export */   "randomBetween": () => (/* binding */ randomBetween)
-/* harmony export */ });
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
-// import * as Tone from '../node_modules/tone/Tone'
-
-function noteToMidi(note) {
-    return (0,tone__WEBPACK_IMPORTED_MODULE_0__.Frequency)(note).toMidi();
-}
-function midiToNote(midi) {
-    const frequency = (0,tone__WEBPACK_IMPORTED_MODULE_0__.Frequency)(midi, 'midi');
-    const ret = frequency.toNote();
-    return ret;
-}
-function midiToFrequencyRatio(midi) {
-    const mod = midi % 3;
-    if (mod === 1) {
-        return [midi - 1, (0,tone__WEBPACK_IMPORTED_MODULE_0__.intervalToFrequencyRatio)(1)];
-    }
-    else if (mod === 2) {
-        // @ts-ignore
-        return [midi + 1, (0,tone__WEBPACK_IMPORTED_MODULE_0__.intervalToFrequencyRatio)(-1)];
-    }
-    else {
-        return [midi, 1];
-    }
-}
-function createSource(buffer) {
-    return new tone__WEBPACK_IMPORTED_MODULE_0__.ToneBufferSource(buffer);
-}
-function randomBetween(low, high) {
-    return Math.random() * (high - low) + low;
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/automation-events/build/es5/bundle.js":
 /*!************************************************************!*\
   !*** ./node_modules/automation-events/build/es5/bundle.js ***!
@@ -5563,514 +4656,6 @@ module.exports = function (item) {
 
   return [content].join("\n");
 };
-
-/***/ }),
-
-/***/ "./node_modules/events/events.js":
-/*!***************************************!*\
-  !*** ./node_modules/events/events.js ***!
-  \***************************************/
-/***/ ((module) => {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-var R = typeof Reflect === 'object' ? Reflect : null
-var ReflectApply = R && typeof R.apply === 'function'
-  ? R.apply
-  : function ReflectApply(target, receiver, args) {
-    return Function.prototype.apply.call(target, receiver, args);
-  }
-
-var ReflectOwnKeys
-if (R && typeof R.ownKeys === 'function') {
-  ReflectOwnKeys = R.ownKeys
-} else if (Object.getOwnPropertySymbols) {
-  ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target)
-      .concat(Object.getOwnPropertySymbols(target));
-  };
-} else {
-  ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target);
-  };
-}
-
-function ProcessEmitWarning(warning) {
-  if (console && console.warn) console.warn(warning);
-}
-
-var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
-  return value !== value;
-}
-
-function EventEmitter() {
-  EventEmitter.init.call(this);
-}
-module.exports = EventEmitter;
-module.exports.once = once;
-
-// Backwards-compat with node 0.10.x
-EventEmitter.EventEmitter = EventEmitter;
-
-EventEmitter.prototype._events = undefined;
-EventEmitter.prototype._eventsCount = 0;
-EventEmitter.prototype._maxListeners = undefined;
-
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
-var defaultMaxListeners = 10;
-
-function checkListener(listener) {
-  if (typeof listener !== 'function') {
-    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-  }
-}
-
-Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
-  enumerable: true,
-  get: function() {
-    return defaultMaxListeners;
-  },
-  set: function(arg) {
-    if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
-      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
-    }
-    defaultMaxListeners = arg;
-  }
-});
-
-EventEmitter.init = function() {
-
-  if (this._events === undefined ||
-      this._events === Object.getPrototypeOf(this)._events) {
-    this._events = Object.create(null);
-    this._eventsCount = 0;
-  }
-
-  this._maxListeners = this._maxListeners || undefined;
-};
-
-// Obviously not all Emitters should be limited to 10. This function allows
-// that to be increased. Set to zero for unlimited.
-EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
-  if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
-    throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
-  }
-  this._maxListeners = n;
-  return this;
-};
-
-function _getMaxListeners(that) {
-  if (that._maxListeners === undefined)
-    return EventEmitter.defaultMaxListeners;
-  return that._maxListeners;
-}
-
-EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
-  return _getMaxListeners(this);
-};
-
-EventEmitter.prototype.emit = function emit(type) {
-  var args = [];
-  for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
-  var doError = (type === 'error');
-
-  var events = this._events;
-  if (events !== undefined)
-    doError = (doError && events.error === undefined);
-  else if (!doError)
-    return false;
-
-  // If there is no 'error' event listener then throw.
-  if (doError) {
-    var er;
-    if (args.length > 0)
-      er = args[0];
-    if (er instanceof Error) {
-      // Note: The comments on the `throw` lines are intentional, they show
-      // up in Node's output if this results in an unhandled exception.
-      throw er; // Unhandled 'error' event
-    }
-    // At least give some kind of context to the user
-    var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
-    err.context = er;
-    throw err; // Unhandled 'error' event
-  }
-
-  var handler = events[type];
-
-  if (handler === undefined)
-    return false;
-
-  if (typeof handler === 'function') {
-    ReflectApply(handler, this, args);
-  } else {
-    var len = handler.length;
-    var listeners = arrayClone(handler, len);
-    for (var i = 0; i < len; ++i)
-      ReflectApply(listeners[i], this, args);
-  }
-
-  return true;
-};
-
-function _addListener(target, type, listener, prepend) {
-  var m;
-  var events;
-  var existing;
-
-  checkListener(listener);
-
-  events = target._events;
-  if (events === undefined) {
-    events = target._events = Object.create(null);
-    target._eventsCount = 0;
-  } else {
-    // To avoid recursion in the case that type === "newListener"! Before
-    // adding it to the listeners, first emit "newListener".
-    if (events.newListener !== undefined) {
-      target.emit('newListener', type,
-                  listener.listener ? listener.listener : listener);
-
-      // Re-assign `events` because a newListener handler could have caused the
-      // this._events to be assigned to a new object
-      events = target._events;
-    }
-    existing = events[type];
-  }
-
-  if (existing === undefined) {
-    // Optimize the case of one listener. Don't need the extra array object.
-    existing = events[type] = listener;
-    ++target._eventsCount;
-  } else {
-    if (typeof existing === 'function') {
-      // Adding the second element, need to change to array.
-      existing = events[type] =
-        prepend ? [listener, existing] : [existing, listener];
-      // If we've already got an array, just append.
-    } else if (prepend) {
-      existing.unshift(listener);
-    } else {
-      existing.push(listener);
-    }
-
-    // Check for listener leak
-    m = _getMaxListeners(target);
-    if (m > 0 && existing.length > m && !existing.warned) {
-      existing.warned = true;
-      // No error code for this since it is a Warning
-      // eslint-disable-next-line no-restricted-syntax
-      var w = new Error('Possible EventEmitter memory leak detected. ' +
-                          existing.length + ' ' + String(type) + ' listeners ' +
-                          'added. Use emitter.setMaxListeners() to ' +
-                          'increase limit');
-      w.name = 'MaxListenersExceededWarning';
-      w.emitter = target;
-      w.type = type;
-      w.count = existing.length;
-      ProcessEmitWarning(w);
-    }
-  }
-
-  return target;
-}
-
-EventEmitter.prototype.addListener = function addListener(type, listener) {
-  return _addListener(this, type, listener, false);
-};
-
-EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-EventEmitter.prototype.prependListener =
-    function prependListener(type, listener) {
-      return _addListener(this, type, listener, true);
-    };
-
-function onceWrapper() {
-  if (!this.fired) {
-    this.target.removeListener(this.type, this.wrapFn);
-    this.fired = true;
-    if (arguments.length === 0)
-      return this.listener.call(this.target);
-    return this.listener.apply(this.target, arguments);
-  }
-}
-
-function _onceWrap(target, type, listener) {
-  var state = { fired: false, wrapFn: undefined, target: target, type: type, listener: listener };
-  var wrapped = onceWrapper.bind(state);
-  wrapped.listener = listener;
-  state.wrapFn = wrapped;
-  return wrapped;
-}
-
-EventEmitter.prototype.once = function once(type, listener) {
-  checkListener(listener);
-  this.on(type, _onceWrap(this, type, listener));
-  return this;
-};
-
-EventEmitter.prototype.prependOnceListener =
-    function prependOnceListener(type, listener) {
-      checkListener(listener);
-      this.prependListener(type, _onceWrap(this, type, listener));
-      return this;
-    };
-
-// Emits a 'removeListener' event if and only if the listener was removed.
-EventEmitter.prototype.removeListener =
-    function removeListener(type, listener) {
-      var list, events, position, i, originalListener;
-
-      checkListener(listener);
-
-      events = this._events;
-      if (events === undefined)
-        return this;
-
-      list = events[type];
-      if (list === undefined)
-        return this;
-
-      if (list === listener || list.listener === listener) {
-        if (--this._eventsCount === 0)
-          this._events = Object.create(null);
-        else {
-          delete events[type];
-          if (events.removeListener)
-            this.emit('removeListener', type, list.listener || listener);
-        }
-      } else if (typeof list !== 'function') {
-        position = -1;
-
-        for (i = list.length - 1; i >= 0; i--) {
-          if (list[i] === listener || list[i].listener === listener) {
-            originalListener = list[i].listener;
-            position = i;
-            break;
-          }
-        }
-
-        if (position < 0)
-          return this;
-
-        if (position === 0)
-          list.shift();
-        else {
-          spliceOne(list, position);
-        }
-
-        if (list.length === 1)
-          events[type] = list[0];
-
-        if (events.removeListener !== undefined)
-          this.emit('removeListener', type, originalListener || listener);
-      }
-
-      return this;
-    };
-
-EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
-
-EventEmitter.prototype.removeAllListeners =
-    function removeAllListeners(type) {
-      var listeners, events, i;
-
-      events = this._events;
-      if (events === undefined)
-        return this;
-
-      // not listening for removeListener, no need to emit
-      if (events.removeListener === undefined) {
-        if (arguments.length === 0) {
-          this._events = Object.create(null);
-          this._eventsCount = 0;
-        } else if (events[type] !== undefined) {
-          if (--this._eventsCount === 0)
-            this._events = Object.create(null);
-          else
-            delete events[type];
-        }
-        return this;
-      }
-
-      // emit removeListener for all listeners on all events
-      if (arguments.length === 0) {
-        var keys = Object.keys(events);
-        var key;
-        for (i = 0; i < keys.length; ++i) {
-          key = keys[i];
-          if (key === 'removeListener') continue;
-          this.removeAllListeners(key);
-        }
-        this.removeAllListeners('removeListener');
-        this._events = Object.create(null);
-        this._eventsCount = 0;
-        return this;
-      }
-
-      listeners = events[type];
-
-      if (typeof listeners === 'function') {
-        this.removeListener(type, listeners);
-      } else if (listeners !== undefined) {
-        // LIFO order
-        for (i = listeners.length - 1; i >= 0; i--) {
-          this.removeListener(type, listeners[i]);
-        }
-      }
-
-      return this;
-    };
-
-function _listeners(target, type, unwrap) {
-  var events = target._events;
-
-  if (events === undefined)
-    return [];
-
-  var evlistener = events[type];
-  if (evlistener === undefined)
-    return [];
-
-  if (typeof evlistener === 'function')
-    return unwrap ? [evlistener.listener || evlistener] : [evlistener];
-
-  return unwrap ?
-    unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
-}
-
-EventEmitter.prototype.listeners = function listeners(type) {
-  return _listeners(this, type, true);
-};
-
-EventEmitter.prototype.rawListeners = function rawListeners(type) {
-  return _listeners(this, type, false);
-};
-
-EventEmitter.listenerCount = function(emitter, type) {
-  if (typeof emitter.listenerCount === 'function') {
-    return emitter.listenerCount(type);
-  } else {
-    return listenerCount.call(emitter, type);
-  }
-};
-
-EventEmitter.prototype.listenerCount = listenerCount;
-function listenerCount(type) {
-  var events = this._events;
-
-  if (events !== undefined) {
-    var evlistener = events[type];
-
-    if (typeof evlistener === 'function') {
-      return 1;
-    } else if (evlistener !== undefined) {
-      return evlistener.length;
-    }
-  }
-
-  return 0;
-}
-
-EventEmitter.prototype.eventNames = function eventNames() {
-  return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
-};
-
-function arrayClone(arr, n) {
-  var copy = new Array(n);
-  for (var i = 0; i < n; ++i)
-    copy[i] = arr[i];
-  return copy;
-}
-
-function spliceOne(list, index) {
-  for (; index + 1 < list.length; index++)
-    list[index] = list[index + 1];
-  list.pop();
-}
-
-function unwrapListeners(arr) {
-  var ret = new Array(arr.length);
-  for (var i = 0; i < ret.length; ++i) {
-    ret[i] = arr[i].listener || arr[i];
-  }
-  return ret;
-}
-
-function once(emitter, name) {
-  return new Promise(function (resolve, reject) {
-    function errorListener(err) {
-      emitter.removeListener(name, resolver);
-      reject(err);
-    }
-
-    function resolver() {
-      if (typeof emitter.removeListener === 'function') {
-        emitter.removeListener('error', errorListener);
-      }
-      resolve([].slice.call(arguments));
-    };
-
-    eventTargetAgnosticAddListener(emitter, name, resolver, { once: true });
-    if (name !== 'error') {
-      addErrorHandlerIfEventEmitter(emitter, errorListener, { once: true });
-    }
-  });
-}
-
-function addErrorHandlerIfEventEmitter(emitter, handler, flags) {
-  if (typeof emitter.on === 'function') {
-    eventTargetAgnosticAddListener(emitter, 'error', handler, flags);
-  }
-}
-
-function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
-  if (typeof emitter.on === 'function') {
-    if (flags.once) {
-      emitter.once(name, listener);
-    } else {
-      emitter.on(name, listener);
-    }
-  } else if (typeof emitter.addEventListener === 'function') {
-    // EventTarget does not have `error` event semantics like Node
-    // EventEmitters, we do not listen for `error` events here.
-    emitter.addEventListener(name, function wrapListener(arg) {
-      // IE does not have builtin `{ once: true }` support so we
-      // have to do it manually.
-      if (flags.once) {
-        emitter.removeEventListener(name, wrapListener);
-      }
-      listener(arg);
-    });
-  } else {
-    throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
-  }
-}
-
 
 /***/ }),
 
@@ -83315,7 +81900,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BuildChordNotes = exports.GetSimplifiedChordFromFullChord = exports.PlayChord = void 0;
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
 const Synth_1 = __webpack_require__(/*! ./audio/Synth */ "./src/audio/Synth.ts");
-const Piano_1 = __webpack_require__(/*! ./audio/Piano */ "./src/audio/Piano.ts");
+// import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 const NoteUtils_1 = __webpack_require__(/*! ./NoteUtils */ "./src/NoteUtils.ts");
 // TODO: test accuracy of chords / their notes using chord-detect: https://github.com/tonaljs/tonal/tree/main/packages/chord-detect
 var InstrumentType;
@@ -83335,7 +81920,7 @@ function PlayMidiNotes(chordNotes, instrumentType) {
             break;
         case InstrumentType.Piano:
             const midiChordNotes = BuildMidiChordNotes(chordNotes);
-            (0, Piano_1.PlayPianoChords)(midiChordNotes);
+            // PlayPianoChords(midiChordNotes);
             break;
         default:
             break;
@@ -83426,6 +82011,7 @@ function GetSimplifiedChordFromFullChord(fullChord, octave) {
     return [chordMode, (homeNote += octave)];
 }
 exports.GetSimplifiedChordFromFullChord = GetSimplifiedChordFromFullChord;
+// TODO: cleanups
 function BuildChordNotes(chord, isFullChord = true, octave = 3) {
     let chordArr = [];
     if (!isFullChord) {
@@ -83840,39 +82426,6 @@ exports.findNotesScales = findNotesScales;
 
 /***/ }),
 
-/***/ "./src/audio/Piano.ts":
-/*!****************************!*\
-  !*** ./src/audio/Piano.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayPianoChords = exports.SetupPiano = void 0;
-const piano_1 = __webpack_require__(/*! @tonejs/piano */ "./node_modules/@tonejs/piano/build/index.js");
-let piano;
-function SetupPiano() {
-    piano = new piano_1.Piano({
-        velocities: 5,
-        maxPolyphony: 6,
-    }).toDestination();
-    piano.load().then(() => {
-        console.log("loaded!");
-    });
-}
-exports.SetupPiano = SetupPiano;
-function PlayPianoChords(midiChordNotes) {
-    midiChordNotes.forEach((midiNote) => {
-        piano.keyDown({ note: midiNote });
-        piano.keyUp({ note: midiNote, time: "+1.5" });
-    });
-}
-exports.PlayPianoChords = PlayPianoChords;
-
-
-/***/ }),
-
 /***/ "./src/audio/Synth.ts":
 /*!****************************!*\
   !*** ./src/audio/Synth.ts ***!
@@ -83901,11 +82454,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.GetTempo = exports.SetupTempo = exports.polySynth = void 0;
+exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.GetTempo = exports.SetupTempo = exports.chordEvent = exports.polySynth = void 0;
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
-let chordEvent;
 const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
     imperatricePartials: [0, 2, 3, 4],
@@ -83969,8 +82521,9 @@ SetupTempo();
 //------ Make sounds with the synth!
 // TODO: improve synth performance
 function PlaySynthChords(chordNotes) {
-    if (!chordNotes.length || !exports.polySynth)
+    if (!chordNotes || !exports.polySynth)
         return;
+    console.log("Playing now______", chordNotes);
     tone_1.Transport.stop();
     exports.polySynth.releaseAll();
     exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
@@ -83979,17 +82532,17 @@ function PlaySynthChords(chordNotes) {
 exports.PlaySynthChords = PlaySynthChords;
 //------ Loop chord progression.
 function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
-    chordEvent = new tone_1.ToneEvent((time) => {
+    exports.chordEvent = new tone_1.ToneEvent((time) => {
         exports.polySynth.triggerAttackRelease(chordArr, "1n", time);
         console.log(chordArr, "1n", time);
     });
     // start the chord at the beginning of the transport timeline
-    chordEvent.start(noteStart);
+    exports.chordEvent.start(noteStart);
     // loop it every measure, depending on the number of chords to play.
     let measuresToPlay = progressionLength.toString();
     // Loop the progression forever and set its length.
-    chordEvent.loop = true;
-    chordEvent.loopEnd = measuresToPlay += "m";
+    exports.chordEvent.loop = true;
+    exports.chordEvent.loopEnd = measuresToPlay += "m";
 }
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 function PlayLoop(chordArr) {
@@ -84064,24 +82617,60 @@ const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton 
 const QualityButton_1 = __importDefault(__webpack_require__(/*! ./buttons/QualityButton */ "./src/components/buttons/QualityButton.tsx"));
 const ProgressionGridDisplayComponent_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionGridDisplayComponent */ "./src/components/progressions/ProgressionGridDisplayComponent.tsx"));
 const App_1 = __webpack_require__(/*! ../App */ "./src/App.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ./hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 const ChordBuilderComponent = () => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [chordKey, setChordKey] = (0, react_1.useState)("");
     const [chordQuality, setChordQuality] = (0, react_1.useState)("");
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
     const KeyCallback = (key) => {
+        if (key == chordKey)
+            return;
         setChordKey(key);
     };
     const ChordQualityCallback = (quality) => {
+        if (quality == chordQuality)
+            return;
         setChordQuality(quality);
     };
+    const newChordCallback = (newChord) => {
+        if (!newChord)
+            return;
+        let key = newChord[0];
+        let quality = "";
+        let chordArr = newChord.split("#");
+        if (chordArr.length == 2) {
+            key += "#";
+            quality = chordArr[1];
+        }
+        else {
+            quality = chordArr[0].slice(1);
+        }
+        console.log("newChordCallback", newChord);
+        if (!key || !quality)
+            return;
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("chordbuild-btn-pressed");
+        const qualityBtn = document.getElementById(quality);
+        if (!qualityBtn)
+            return;
+        qualityBtn.classList.add("chordbuild-btn-pressed");
+        qualityBtn.click();
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("key-btn-pressed");
+        const keyBtn = document.getElementById(key);
+        if (!keyBtn)
+            return;
+        keyBtn.classList.add("key-btn-pressed");
+        keyBtn.click();
+    };
     (0, react_1.useEffect)(() => {
-        if (chordKey && chordQuality) {
-            const chordToBuild = chordKey + chordQuality;
-            setChordSelected(chordToBuild);
-            if (SoundOn) {
-                (0, Chords_1.PlayChord)(chordToBuild, true);
-            }
+        if (!chordKey || !chordQuality)
+            return;
+        const chordToBuild = chordKey + chordQuality;
+        if (chordSelected == chordToBuild)
+            return;
+        setChordSelected(chordToBuild);
+        if (SoundOn) {
+            (0, Chords_1.PlayChord)(chordToBuild, true);
         }
     }, [chordKey, chordQuality]);
     return (react_1.default.createElement("section", { className: "centered-box" },
@@ -84089,7 +82678,7 @@ const ChordBuilderComponent = () => {
             " ",
             react_1.default.createElement(KeyButton_1.default, { onPressKey: KeyCallback }),
             react_1.default.createElement(QualityButton_1.default, { onPressKey: ChordQualityCallback })),
-        react_1.default.createElement(ProgressionGridDisplayComponent_1.default, { chordToAdd: chordSelected }),
+        react_1.default.createElement(ProgressionGridDisplayComponent_1.default, { chordToAdd: chordSelected, onPressChord: newChordCallback }),
         react_1.default.createElement("br", null)));
 };
 exports["default"] = ChordBuilderComponent;
@@ -84248,7 +82837,7 @@ const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const KeyButton = ({ onPressKey }) => {
-    const notes = [
+    const keys = [
         "C",
         "C#",
         "D",
@@ -84268,12 +82857,12 @@ const KeyButton = ({ onPressKey }) => {
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
         event.target.classList.add(style);
     };
-    const notesList = notes.map((note, i) => (react_1.default.createElement("button", { key: i, value: note, onClick: (e) => {
+    const keysList = keys.map((note, i) => (react_1.default.createElement("button", { id: note, key: i, value: note, onClick: (e) => {
             handleClick(e, note);
         }, className: "key-btn" }, note)));
     return (react_1.default.createElement("section", { "arial-label": "Choose a key for your chord progression" },
         react_1.default.createElement("h2", null, "Key"),
-        notesList));
+        keysList));
 };
 exports["default"] = KeyButton;
 
@@ -84497,8 +83086,8 @@ const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementSty
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const ChordButton = ({ onPressKey }) => {
     // TODO: is major the default?
-    // TODO: Add more chords...
-    const chords = [
+    // TODO: Add more chordsQualities...
+    const chordsQualities = [
         "Major",
         "Minor",
         "Major7",
@@ -84506,18 +83095,18 @@ const ChordButton = ({ onPressKey }) => {
         "Diminished",
         "Minor7Flat5",
     ];
-    const handleClick = (event, chord) => {
-        onPressKey(chord);
+    const handleClick = (event, quality) => {
+        onPressKey(quality);
         const style = "chordbuild-btn-pressed";
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
         event.target.classList.add(style);
     };
-    const chordsList = chords.map((chord, i) => (react_1.default.createElement("button", { key: i, value: chord, onClick: (e) => {
-            handleClick(e, chord);
-        }, className: "key-btn" }, chord)));
+    const chordsQualitiesList = chordsQualities.map((quality, i) => (react_1.default.createElement("button", { id: quality, key: i, value: quality, onClick: (e) => {
+            handleClick(e, quality);
+        }, className: "key-btn" }, quality)));
     return (react_1.default.createElement("section", { "aria-label": "Choose a quality to the chord" },
         react_1.default.createElement("h2", null, "Quality"),
-        chordsList));
+        chordsQualitiesList));
 };
 exports["default"] = ChordButton;
 
@@ -84919,23 +83508,19 @@ const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButt
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
 const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 // TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
-const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
+const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
     const [selectedPos, setSelectedPos] = (0, react_1.useState)(1);
     const [selectedChord, setSelectedChord] = (0, react_1.useState)("");
     const [progressionMap, setProgressionMap] = (0, react_1.useState)(new Map());
     const Play = (chordIndex) => {
-        if (!SoundOn)
-            return;
-        Synth_1.polySynth.releaseAll();
-        const chordToPlay = progressionMap.get(chordIndex);
-        if (chordToPlay)
-            (0, Chords_1.PlayChord)(chordToPlay, true);
+        // if (!SoundOn) return;
+        // polySynth.releaseAll();
+        // const chordToPlay = progressionMap.get(chordIndex);
+        // if (chordToPlay) PlayChord(chordToPlay, true);
     };
     const onGridSizeChange = (event) => {
         // Convert to number, and increase/decrease grid divs.
@@ -84957,13 +83542,14 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             setSelectedPos(newPos);
         if (newChord)
             setSelectedChord(newChord);
-        Play(newPos);
+        if (newChord)
+            onPressChord(newChord);
     };
     // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
     const handleKeyPress = (id) => {
         // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
         // We need a valid ID.
-        if (!id || id < 0 || id > 8)
+        if (!id || id <= 0 || id > 8)
             return;
         // Handle css to apply the selection color
         (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("selected-position");
@@ -84977,7 +83563,8 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, }) => {
             setSelectedPos(newPos);
         if (newChord)
             setSelectedChord(newChord);
-        Play(newPos);
+        if (newChord)
+            onPressChord(newChord);
     };
     const handleClearClick = (event) => {
         // Clear the cached chords and map
@@ -85817,47 +84404,6 @@ function __classPrivateFieldSet(receiver, state, value, kind, f) {
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 }
 
-
-/***/ }),
-
-/***/ "./node_modules/webmidi/webmidi.min.js":
-/*!*********************************************!*\
-  !*** ./node_modules/webmidi/webmidi.min.js ***!
-  \*********************************************/
-/***/ (function(module, exports) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
-
-WebMidi v2.5.3
-
-WebMidi.js helps you tame the Web MIDI API. Send and receive MIDI messages with ease. Control instruments with user-friendly functions (playNote, sendPitchBend, etc.). React to MIDI input with simple event listeners (noteon, pitchbend, controlchange, etc.).
-https://github.com/djipco/webmidi
-
-
-The MIT License (MIT)
-
-Copyright (c) 2015-2019, Jean-Philippe Côté
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-associated documentation files (the "Software"), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify, merge, publish, distribute,
-sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial
-portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
-NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-*/
-
-
-!function(scope){"use strict";function WebMidi(){if(WebMidi.prototype._singleton)throw new Error("WebMidi is a singleton, it cannot be instantiated directly.");(WebMidi.prototype._singleton=this)._inputs=[],this._outputs=[],this._userHandlers={},this._stateChangeQueue=[],this._processingStateChange=!1,this._midiInterfaceEvents=["connected","disconnected"],this._nrpnBuffer=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],this._nrpnEventsEnabled=!0,this._nrpnTypes=["entry","increment","decrement"],this._notes=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"],this._semitones={C:0,D:2,E:4,F:5,G:7,A:9,B:11},Object.defineProperties(this,{MIDI_SYSTEM_MESSAGES:{value:{sysex:240,timecode:241,songposition:242,songselect:243,tuningrequest:246,sysexend:247,clock:248,start:250,continue:251,stop:252,activesensing:254,reset:255,midimessage:0,unknownsystemmessage:-1},writable:!1,enumerable:!0,configurable:!1},MIDI_CHANNEL_MESSAGES:{value:{noteoff:8,noteon:9,keyaftertouch:10,controlchange:11,channelmode:11,nrpn:11,programchange:12,channelaftertouch:13,pitchbend:14},writable:!1,enumerable:!0,configurable:!1},MIDI_REGISTERED_PARAMETER:{value:{pitchbendrange:[0,0],channelfinetuning:[0,1],channelcoarsetuning:[0,2],tuningprogram:[0,3],tuningbank:[0,4],modulationrange:[0,5],azimuthangle:[61,0],elevationangle:[61,1],gain:[61,2],distanceratio:[61,3],maximumdistance:[61,4],maximumdistancegain:[61,5],referencedistanceratio:[61,6],panspreadangle:[61,7],rollangle:[61,8]},writable:!1,enumerable:!0,configurable:!1},MIDI_CONTROL_CHANGE_MESSAGES:{value:{bankselectcoarse:0,modulationwheelcoarse:1,breathcontrollercoarse:2,footcontrollercoarse:4,portamentotimecoarse:5,dataentrycoarse:6,volumecoarse:7,balancecoarse:8,pancoarse:10,expressioncoarse:11,effectcontrol1coarse:12,effectcontrol2coarse:13,generalpurposeslider1:16,generalpurposeslider2:17,generalpurposeslider3:18,generalpurposeslider4:19,bankselectfine:32,modulationwheelfine:33,breathcontrollerfine:34,footcontrollerfine:36,portamentotimefine:37,dataentryfine:38,volumefine:39,balancefine:40,panfine:42,expressionfine:43,effectcontrol1fine:44,effectcontrol2fine:45,holdpedal:64,portamento:65,sustenutopedal:66,softpedal:67,legatopedal:68,hold2pedal:69,soundvariation:70,resonance:71,soundreleasetime:72,soundattacktime:73,brightness:74,soundcontrol6:75,soundcontrol7:76,soundcontrol8:77,soundcontrol9:78,soundcontrol10:79,generalpurposebutton1:80,generalpurposebutton2:81,generalpurposebutton3:82,generalpurposebutton4:83,reverblevel:91,tremololevel:92,choruslevel:93,celestelevel:94,phaserlevel:95,databuttonincrement:96,databuttondecrement:97,nonregisteredparametercoarse:98,nonregisteredparameterfine:99,registeredparametercoarse:100,registeredparameterfine:101},writable:!1,enumerable:!0,configurable:!1},MIDI_NRPN_MESSAGES:{value:{entrymsb:6,entrylsb:38,increment:96,decrement:97,paramlsb:98,parammsb:99,nullactiveparameter:127},writable:!1,enumerable:!0,configurable:!1},MIDI_CHANNEL_MODE_MESSAGES:{value:{allsoundoff:120,resetallcontrollers:121,localcontrol:122,allnotesoff:123,omnimodeoff:124,omnimodeon:125,monomodeon:126,polymodeon:127},writable:!1,enumerable:!0,configurable:!1},octaveOffset:{value:0,writable:!0,enumerable:!0,configurable:!1}}),Object.defineProperties(this,{supported:{enumerable:!0,get:function(){return"requestMIDIAccess"in navigator}},enabled:{enumerable:!0,get:function(){return void 0!==this.interface}.bind(this)},inputs:{enumerable:!0,get:function(){return this._inputs}.bind(this)},outputs:{enumerable:!0,get:function(){return this._outputs}.bind(this)},sysexEnabled:{enumerable:!0,get:function(){return!(!this.interface||!this.interface.sysexEnabled)}.bind(this)},nrpnEventsEnabled:{enumerable:!0,get:function(){return!!this._nrpnEventsEnabled}.bind(this),set:function(enabled){return this._nrpnEventsEnabled=enabled,this._nrpnEventsEnabled}},nrpnTypes:{enumerable:!0,get:function(){return this._nrpnTypes}.bind(this)},time:{enumerable:!0,get:function(){return performance.now()}}})}var wm=new WebMidi;function Input(midiInput){var that=this;this._userHandlers={channel:{},system:{}},this._midiInput=midiInput,Object.defineProperties(this,{connection:{enumerable:!0,get:function(){return that._midiInput.connection}},id:{enumerable:!0,get:function(){return that._midiInput.id}},manufacturer:{enumerable:!0,get:function(){return that._midiInput.manufacturer}},name:{enumerable:!0,get:function(){return that._midiInput.name}},state:{enumerable:!0,get:function(){return that._midiInput.state}},type:{enumerable:!0,get:function(){return that._midiInput.type}}}),this._initializeUserHandlers(),this._midiInput.onmidimessage=this._onMidiMessage.bind(this)}function Output(midiOutput){var that=this;this._midiOutput=midiOutput,Object.defineProperties(this,{connection:{enumerable:!0,get:function(){return that._midiOutput.connection}},id:{enumerable:!0,get:function(){return that._midiOutput.id}},manufacturer:{enumerable:!0,get:function(){return that._midiOutput.manufacturer}},name:{enumerable:!0,get:function(){return that._midiOutput.name}},state:{enumerable:!0,get:function(){return that._midiOutput.state}},type:{enumerable:!0,get:function(){return that._midiOutput.type}}})}WebMidi.prototype.enable=function(callback,sysex){this.enabled||(this.supported?navigator.requestMIDIAccess({sysex:sysex}).then(function(midiAccess){var promiseTimeout,events=[],promises=[];this.interface=midiAccess,this._resetInterfaceUserHandlers(),this.interface.onstatechange=function(e){events.push(e)};for(var inputs=midiAccess.inputs.values(),input=inputs.next();input&&!input.done;input=inputs.next())promises.push(input.value.open());for(var outputs=midiAccess.outputs.values(),output=outputs.next();output&&!output.done;output=outputs.next())promises.push(output.value.open());function onPortsOpen(){clearTimeout(promiseTimeout),this._updateInputsAndOutputs(),this.interface.onstatechange=this._onInterfaceStateChange.bind(this),"function"==typeof callback&&callback.call(this),events.forEach(function(event){this._onInterfaceStateChange(event)}.bind(this))}promiseTimeout=setTimeout(onPortsOpen.bind(this),200),Promise&&Promise.all(promises).catch(function(err){}).then(onPortsOpen.bind(this))}.bind(this),function(err){"function"==typeof callback&&callback.call(this,err)}.bind(this)):"function"==typeof callback&&callback(new Error("The Web MIDI API is not supported by your browser.")))},WebMidi.prototype.disable=function(){if(!this.supported)throw new Error("The Web MIDI API is not supported by your browser.");this.enabled&&(this.removeListener(),this.inputs.forEach(function(input){input.removeListener()})),this.interface&&(this.interface.onstatechange=void 0),this.interface=void 0,this._inputs=[],this._outputs=[],this._nrpnEventsEnabled=!0,this._resetInterfaceUserHandlers()},WebMidi.prototype.addListener=function(type,listener){if(!this.enabled)throw new Error("WebMidi must be enabled before adding event listeners.");if("function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(!(0<=this._midiInterfaceEvents.indexOf(type)))throw new TypeError("The specified event type is not supported.");return this._userHandlers[type].push(listener),this},WebMidi.prototype.hasListener=function(type,listener){if(!this.enabled)throw new Error("WebMidi must be enabled before checking event listeners.");if("function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(!(0<=this._midiInterfaceEvents.indexOf(type)))throw new TypeError("The specified event type is not supported.");for(var o=0;o<this._userHandlers[type].length;o++)if(this._userHandlers[type][o]===listener)return!0;return!1},WebMidi.prototype.removeListener=function(type,listener){if(!this.enabled)throw new Error("WebMidi must be enabled before removing event listeners.");if(void 0!==listener&&"function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(0<=this._midiInterfaceEvents.indexOf(type))if(listener)for(var o=0;o<this._userHandlers[type].length;o++)this._userHandlers[type][o]===listener&&this._userHandlers[type].splice(o,1);else this._userHandlers[type]=[];else{if(void 0!==type)throw new TypeError("The specified event type is not supported.");this._resetInterfaceUserHandlers()}return this},WebMidi.prototype.toMIDIChannels=function(channel){var channels;if("all"===channel||void 0===channel)channels=["all"];else{if("none"===channel)return channels=[];channels=Array.isArray(channel)?channel:[channel]}return-1<channels.indexOf("all")&&(channels=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]),channels.map(function(ch){return parseInt(ch)}).filter(function(ch){return 1<=ch&&ch<=16})},WebMidi.prototype.getInputById=function(id){if(!this.enabled)throw new Error("WebMidi is not enabled.");id=String(id);for(var i=0;i<this.inputs.length;i++)if(this.inputs[i].id===id)return this.inputs[i];return!1},WebMidi.prototype.getOutputById=function(id){if(!this.enabled)throw new Error("WebMidi is not enabled.");id=String(id);for(var i=0;i<this.outputs.length;i++)if(this.outputs[i].id===id)return this.outputs[i];return!1},WebMidi.prototype.getInputByName=function(name){if(!this.enabled)throw new Error("WebMidi is not enabled.");for(var i=0;i<this.inputs.length;i++)if(~this.inputs[i].name.indexOf(name))return this.inputs[i];return!1},WebMidi.prototype.getOctave=function(number){if(null!=number&&0<=number&&number<=127)return Math.floor(Math.floor(number)/12-1)+Math.floor(wm.octaveOffset)},WebMidi.prototype.getOutputByName=function(name){if(!this.enabled)throw new Error("WebMidi is not enabled.");for(var i=0;i<this.outputs.length;i++)if(~this.outputs[i].name.indexOf(name))return this.outputs[i];return!1},WebMidi.prototype.guessNoteNumber=function(input){var output=!1;if(input&&input.toFixed&&0<=input&&input<=127?output=Math.round(input):0<=parseInt(input)&&parseInt(input)<=127?output=parseInt(input):("string"==typeof input||input instanceof String)&&(output=this.noteNameToNumber(input)),!1===output)throw new Error("Invalid input value ("+input+").");return output},WebMidi.prototype.noteNameToNumber=function(name){"string"!=typeof name&&(name="");var matches=name.match(/([CDEFGAB])(#{0,2}|b{0,2})(-?\d+)/i);if(!matches)throw new RangeError("Invalid note name.");var semitones=wm._semitones[matches[1].toUpperCase()],result=12*(parseInt(matches[3])+1-Math.floor(wm.octaveOffset))+semitones;if(-1<matches[2].toLowerCase().indexOf("b")?result-=matches[2].length:-1<matches[2].toLowerCase().indexOf("#")&&(result+=matches[2].length),result<0||127<result)throw new RangeError("Invalid note name or note outside valid range.");return result},WebMidi.prototype._updateInputsAndOutputs=function(){this._updateInputs(),this._updateOutputs()},WebMidi.prototype._updateInputs=function(){for(var i=0;i<this._inputs.length;i++){for(var remove=!0,updated=this.interface.inputs.values(),input=updated.next();input&&!input.done;input=updated.next())if(this._inputs[i]._midiInput===input.value){remove=!1;break}remove&&this._inputs.splice(i,1)}this.interface&&this.interface.inputs.forEach(function(nInput){for(var add=!0,j=0;j<this._inputs.length;j++)this._inputs[j]._midiInput===nInput&&(add=!1);add&&this._inputs.push(new Input(nInput))}.bind(this))},WebMidi.prototype._updateOutputs=function(){for(var i=0;i<this._outputs.length;i++){for(var remove=!0,updated=this.interface.outputs.values(),output=updated.next();output&&!output.done;output=updated.next())if(this._outputs[i]._midiOutput===output.value){remove=!1;break}remove&&this._outputs.splice(i,1)}this.interface&&this.interface.outputs.forEach(function(nOutput){for(var add=!0,j=0;j<this._outputs.length;j++)this._outputs[j]._midiOutput===nOutput&&(add=!1);add&&this._outputs.push(new Output(nOutput))}.bind(this))},WebMidi.prototype._onInterfaceStateChange=function(e){this._updateInputsAndOutputs();var event={timestamp:e.timeStamp,type:e.port.state};this.interface&&"connected"===e.port.state?"output"===e.port.type?event.port=this.getOutputById(e.port.id):"input"===e.port.type&&(event.port=this.getInputById(e.port.id)):event.port={connection:"closed",id:e.port.id,manufacturer:e.port.manufacturer,name:e.port.name,state:e.port.state,type:e.port.type},this._userHandlers[e.port.state].forEach(function(handler){handler(event)})},WebMidi.prototype._resetInterfaceUserHandlers=function(){for(var i=0;i<this._midiInterfaceEvents.length;i++)this._userHandlers[this._midiInterfaceEvents[i]]=[]},Input.prototype.on=Input.prototype.addListener=function(type,channel,listener){var that=this;if(void 0===channel&&(channel="all"),Array.isArray(channel)||(channel=[channel]),channel.forEach(function(item){if("all"!==item&&!(1<=item&&item<=16))throw new RangeError("The 'channel' parameter is invalid.")}),"function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(void 0!==wm.MIDI_SYSTEM_MESSAGES[type])this._userHandlers.system[type]||(this._userHandlers.system[type]=[]),this._userHandlers.system[type].push(listener);else{if(void 0===wm.MIDI_CHANNEL_MESSAGES[type])throw new TypeError("The specified event type is not supported.");if(-1<channel.indexOf("all")){channel=[];for(var j=1;j<=16;j++)channel.push(j)}this._userHandlers.channel[type]||(this._userHandlers.channel[type]=[]),channel.forEach(function(ch){that._userHandlers.channel[type][ch]||(that._userHandlers.channel[type][ch]=[]),that._userHandlers.channel[type][ch].push(listener)})}return this},Input.prototype.hasListener=function(type,channel,listener){var that=this;if("function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(void 0===channel&&(channel="all"),channel.constructor!==Array&&(channel=[channel]),void 0!==wm.MIDI_SYSTEM_MESSAGES[type]){for(var o=0;o<this._userHandlers.system[type].length;o++)if(this._userHandlers.system[type][o]===listener)return!0}else if(void 0!==wm.MIDI_CHANNEL_MESSAGES[type]){if(-1<channel.indexOf("all")){channel=[];for(var j=1;j<=16;j++)channel.push(j)}return!!this._userHandlers.channel[type]&&channel.every(function(chNum){var listeners=that._userHandlers.channel[type][chNum];return listeners&&-1<listeners.indexOf(listener)})}return!1},Input.prototype.removeListener=function(type,channel,listener){var that=this;if(void 0!==listener&&"function"!=typeof listener)throw new TypeError("The 'listener' parameter must be a function.");if(void 0===channel&&(channel="all"),channel.constructor!==Array&&(channel=[channel]),void 0!==wm.MIDI_SYSTEM_MESSAGES[type])if(void 0===listener)this._userHandlers.system[type]=[];else for(var o=0;o<this._userHandlers.system[type].length;o++)this._userHandlers.system[type][o]===listener&&this._userHandlers.system[type].splice(o,1);else if(void 0!==wm.MIDI_CHANNEL_MESSAGES[type]){if(-1<channel.indexOf("all")){channel=[];for(var j=1;j<=16;j++)channel.push(j)}if(!this._userHandlers.channel[type])return this;channel.forEach(function(chNum){var listeners=that._userHandlers.channel[type][chNum];if(listeners)if(void 0===listener)that._userHandlers.channel[type][chNum]=[];else for(var l=0;l<listeners.length;l++)listeners[l]===listener&&listeners.splice(l,1)})}else{if(void 0!==type)throw new TypeError("The specified event type is not supported.");this._initializeUserHandlers()}return this},Input.prototype._initializeUserHandlers=function(){for(var prop1 in wm.MIDI_CHANNEL_MESSAGES)Object.prototype.hasOwnProperty.call(wm.MIDI_CHANNEL_MESSAGES,prop1)&&(this._userHandlers.channel[prop1]={});for(var prop2 in wm.MIDI_SYSTEM_MESSAGES)Object.prototype.hasOwnProperty.call(wm.MIDI_SYSTEM_MESSAGES,prop2)&&(this._userHandlers.system[prop2]=[])},Input.prototype._onMidiMessage=function(e){if(0<this._userHandlers.system.midimessage.length){var event={target:this,data:e.data,timestamp:e.timeStamp,type:"midimessage"};this._userHandlers.system.midimessage.forEach(function(callback){callback(event)})}e.data[0]<240?(this._parseChannelEvent(e),this._parseNrpnEvent(e)):e.data[0]<=255&&this._parseSystemEvent(e)},Input.prototype._parseNrpnEvent=function(e){var data1,data2,command=e.data[0]>>4,channelBufferIndex=15&e.data[0],channel=1+channelBufferIndex;if(1<e.data.length&&(data1=e.data[1],data2=2<e.data.length?e.data[2]:void 0),wm.nrpnEventsEnabled&&command===wm.MIDI_CHANNEL_MESSAGES.controlchange&&(data1>=wm.MIDI_NRPN_MESSAGES.increment&&data1<=wm.MIDI_NRPN_MESSAGES.parammsb||data1===wm.MIDI_NRPN_MESSAGES.entrymsb||data1===wm.MIDI_NRPN_MESSAGES.entrylsb)){var ccEvent={target:this,type:"controlchange",data:e.data,timestamp:e.timeStamp,channel:channel,controller:{number:data1,name:this.getCcNameByNumber(data1)},value:data2};if(ccEvent.controller.number===wm.MIDI_NRPN_MESSAGES.parammsb&&ccEvent.value!=wm.MIDI_NRPN_MESSAGES.nullactiveparameter)wm._nrpnBuffer[channelBufferIndex]=[],wm._nrpnBuffer[channelBufferIndex][0]=ccEvent;else if(1===wm._nrpnBuffer[channelBufferIndex].length&&ccEvent.controller.number===wm.MIDI_NRPN_MESSAGES.paramlsb)wm._nrpnBuffer[channelBufferIndex].push(ccEvent);else if(2!==wm._nrpnBuffer[channelBufferIndex].length||ccEvent.controller.number!==wm.MIDI_NRPN_MESSAGES.increment&&ccEvent.controller.number!==wm.MIDI_NRPN_MESSAGES.decrement&&ccEvent.controller.number!==wm.MIDI_NRPN_MESSAGES.entrymsb)if(3===wm._nrpnBuffer[channelBufferIndex].length&&wm._nrpnBuffer[channelBufferIndex][2].number===wm.MIDI_NRPN_MESSAGES.entrymsb&&ccEvent.controller.number===wm.MIDI_NRPN_MESSAGES.entrylsb)wm._nrpnBuffer[channelBufferIndex].push(ccEvent);else if(3<=wm._nrpnBuffer[channelBufferIndex].length&&wm._nrpnBuffer[channelBufferIndex].length<=4&&ccEvent.controller.number===wm.MIDI_NRPN_MESSAGES.parammsb&&ccEvent.value===wm.MIDI_NRPN_MESSAGES.nullactiveparameter)wm._nrpnBuffer[channelBufferIndex].push(ccEvent);else if(4<=wm._nrpnBuffer[channelBufferIndex].length&&wm._nrpnBuffer[channelBufferIndex].length<=5&&ccEvent.controller.number===wm.MIDI_NRPN_MESSAGES.paramlsb&&ccEvent.value===wm.MIDI_NRPN_MESSAGES.nullactiveparameter){wm._nrpnBuffer[channelBufferIndex].push(ccEvent);var rawData=[];wm._nrpnBuffer[channelBufferIndex].forEach(function(ev){rawData.push(ev.data)});var nrpnNumber=wm._nrpnBuffer[channelBufferIndex][0].value<<7|wm._nrpnBuffer[channelBufferIndex][1].value,nrpnValue=wm._nrpnBuffer[channelBufferIndex][2].value;6===wm._nrpnBuffer[channelBufferIndex].length&&(nrpnValue=wm._nrpnBuffer[channelBufferIndex][2].value<<7|wm._nrpnBuffer[channelBufferIndex][3].value);var nrpnControllerType="";switch(wm._nrpnBuffer[channelBufferIndex][2].controller.number){case wm.MIDI_NRPN_MESSAGES.entrymsb:nrpnControllerType=wm._nrpnTypes[0];break;case wm.MIDI_NRPN_MESSAGES.increment:nrpnControllerType=wm._nrpnTypes[1];break;case wm.MIDI_NRPN_MESSAGES.decrement:nrpnControllerType=wm._nrpnTypes[2];break;default:throw new Error("The NPRN type was unidentifiable.")}var nrpnEvent={timestamp:ccEvent.timestamp,channel:ccEvent.channel,type:"nrpn",data:rawData,controller:{number:nrpnNumber,type:nrpnControllerType,name:"Non-Registered Parameter "+nrpnNumber},value:nrpnValue};wm._nrpnBuffer[channelBufferIndex]=[],this._userHandlers.channel[nrpnEvent.type]&&this._userHandlers.channel[nrpnEvent.type][nrpnEvent.channel]&&this._userHandlers.channel[nrpnEvent.type][nrpnEvent.channel].forEach(function(callback){callback(nrpnEvent)})}else wm._nrpnBuffer[channelBufferIndex]=[];else wm._nrpnBuffer[channelBufferIndex].push(ccEvent)}},Input.prototype._parseChannelEvent=function(e){var data1,data2,command=e.data[0]>>4,channel=1+(15&e.data[0]);1<e.data.length&&(data1=e.data[1],data2=2<e.data.length?e.data[2]:void 0);var event={target:this,data:e.data,timestamp:e.timeStamp,channel:channel};command===wm.MIDI_CHANNEL_MESSAGES.noteoff||command===wm.MIDI_CHANNEL_MESSAGES.noteon&&0===data2?(event.type="noteoff",event.note={number:data1,name:wm._notes[data1%12],octave:wm.getOctave(data1)},event.velocity=data2/127,event.rawVelocity=data2):command===wm.MIDI_CHANNEL_MESSAGES.noteon?(event.type="noteon",event.note={number:data1,name:wm._notes[data1%12],octave:wm.getOctave(data1)},event.velocity=data2/127,event.rawVelocity=data2):command===wm.MIDI_CHANNEL_MESSAGES.keyaftertouch?(event.type="keyaftertouch",event.note={number:data1,name:wm._notes[data1%12],octave:wm.getOctave(data1)},event.value=data2/127):command===wm.MIDI_CHANNEL_MESSAGES.controlchange&&0<=data1&&data1<=119?(event.type="controlchange",event.controller={number:data1,name:this.getCcNameByNumber(data1)},event.value=data2):command===wm.MIDI_CHANNEL_MESSAGES.channelmode&&120<=data1&&data1<=127?(event.type="channelmode",event.controller={number:data1,name:this.getChannelModeByNumber(data1)},event.value=data2):command===wm.MIDI_CHANNEL_MESSAGES.programchange?(event.type="programchange",event.value=data1):command===wm.MIDI_CHANNEL_MESSAGES.channelaftertouch?(event.type="channelaftertouch",event.value=data1/127):command===wm.MIDI_CHANNEL_MESSAGES.pitchbend?(event.type="pitchbend",event.value=((data2<<7)+data1-8192)/8192):event.type="unknownchannelmessage",this._userHandlers.channel[event.type]&&this._userHandlers.channel[event.type][channel]&&this._userHandlers.channel[event.type][channel].forEach(function(callback){callback(event)})},Input.prototype.getCcNameByNumber=function(number){if(!(0<=(number=Math.floor(number))&&number<=119))throw new RangeError("The control change number must be between 0 and 119.");for(var cc in wm.MIDI_CONTROL_CHANGE_MESSAGES)if(Object.prototype.hasOwnProperty.call(wm.MIDI_CONTROL_CHANGE_MESSAGES,cc)&&number===wm.MIDI_CONTROL_CHANGE_MESSAGES[cc])return cc},Input.prototype.getChannelModeByNumber=function(number){if(!(120<=(number=Math.floor(number))&&status<=127))throw new RangeError("The control change number must be between 120 and 127.");for(var cm in wm.MIDI_CHANNEL_MODE_MESSAGES)if(Object.prototype.hasOwnProperty.call(wm.MIDI_CHANNEL_MODE_MESSAGES,cm)&&number===wm.MIDI_CHANNEL_MODE_MESSAGES[cm])return cm},Input.prototype._parseSystemEvent=function(e){var command=e.data[0],event={target:this,data:e.data,timestamp:e.timeStamp};command===wm.MIDI_SYSTEM_MESSAGES.sysex?event.type="sysex":command===wm.MIDI_SYSTEM_MESSAGES.timecode?event.type="timecode":command===wm.MIDI_SYSTEM_MESSAGES.songposition?event.type="songposition":command===wm.MIDI_SYSTEM_MESSAGES.songselect?(event.type="songselect",event.song=e.data[1]):command===wm.MIDI_SYSTEM_MESSAGES.tuningrequest?event.type="tuningrequest":command===wm.MIDI_SYSTEM_MESSAGES.clock?event.type="clock":command===wm.MIDI_SYSTEM_MESSAGES.start?event.type="start":command===wm.MIDI_SYSTEM_MESSAGES.continue?event.type="continue":command===wm.MIDI_SYSTEM_MESSAGES.stop?event.type="stop":command===wm.MIDI_SYSTEM_MESSAGES.activesensing?event.type="activesensing":command===wm.MIDI_SYSTEM_MESSAGES.reset?event.type="reset":event.type="unknownsystemmessage",this._userHandlers.system[event.type]&&this._userHandlers.system[event.type].forEach(function(callback){callback(event)})},Output.prototype.send=function(status,data,timestamp){if(!(128<=status&&status<=255))throw new RangeError("The status byte must be an integer between 128 (0x80) and 255 (0xFF).");void 0===data&&(data=[]),Array.isArray(data)||(data=[data]);var message=[];return data.forEach(function(item){var parsed=Math.floor(item);if(!(0<=parsed&&parsed<=255))throw new RangeError("Data bytes must be integers between 0 (0x00) and 255 (0xFF).");message.push(parsed)}),this._midiOutput.send([status].concat(message),parseFloat(timestamp)||0),this},Output.prototype.sendSysex=function(manufacturer,data,options){if(!wm.sysexEnabled)throw new Error("Sysex message support must first be activated.");return options=options||{},manufacturer=[].concat(manufacturer),data.forEach(function(item){if(item<0||127<item)throw new RangeError("The data bytes of a sysex message must be integers between 0 (0x00) and 127 (0x7F).")}),data=manufacturer.concat(data,wm.MIDI_SYSTEM_MESSAGES.sysexend),this.send(wm.MIDI_SYSTEM_MESSAGES.sysex,data,this._parseTimeParameter(options.time)),this},Output.prototype.sendTimecodeQuarterFrame=function(value,options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.timecode,value,this._parseTimeParameter(options.time)),this},Output.prototype.sendSongPosition=function(value,options){options=options||{};var msb=(value=Math.floor(value)||0)>>7&127,lsb=127&value;return this.send(wm.MIDI_SYSTEM_MESSAGES.songposition,[msb,lsb],this._parseTimeParameter(options.time)),this},Output.prototype.sendSongSelect=function(value,options){if(options=options||{},!(0<=(value=Math.floor(value))&&value<=127))throw new RangeError("The song number must be between 0 and 127.");return this.send(wm.MIDI_SYSTEM_MESSAGES.songselect,[value],this._parseTimeParameter(options.time)),this},Output.prototype.sendTuningRequest=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.tuningrequest,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.sendClock=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.clock,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.sendStart=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.start,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.sendContinue=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.continue,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.sendStop=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.stop,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.sendActiveSensing=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.activesensing,[],this._parseTimeParameter(options.time)),this},Output.prototype.sendReset=function(options){return options=options||{},this.send(wm.MIDI_SYSTEM_MESSAGES.reset,void 0,this._parseTimeParameter(options.time)),this},Output.prototype.stopNote=function(note,channel,options){if("all"===note)return this.sendChannelMode("allnotesoff",0,channel,options);var nVelocity=64;return(options=options||{}).rawVelocity?!isNaN(options.velocity)&&0<=options.velocity&&options.velocity<=127&&(nVelocity=options.velocity):!isNaN(options.velocity)&&0<=options.velocity&&options.velocity<=1&&(nVelocity=127*options.velocity),this._convertNoteToArray(note).forEach(function(item){wm.toMIDIChannels(channel).forEach(function(ch){this.send((wm.MIDI_CHANNEL_MESSAGES.noteoff<<4)+(ch-1),[item,Math.round(nVelocity)],this._parseTimeParameter(options.time))}.bind(this))}.bind(this)),this},Output.prototype.playNote=function(note,channel,options){var time,nVelocity=64;if((options=options||{}).rawVelocity?!isNaN(options.velocity)&&0<=options.velocity&&options.velocity<=127&&(nVelocity=options.velocity):!isNaN(options.velocity)&&0<=options.velocity&&options.velocity<=1&&(nVelocity=127*options.velocity),time=this._parseTimeParameter(options.time),this._convertNoteToArray(note).forEach(function(item){wm.toMIDIChannels(channel).forEach(function(ch){this.send((wm.MIDI_CHANNEL_MESSAGES.noteon<<4)+(ch-1),[item,Math.round(nVelocity)],time)}.bind(this))}.bind(this)),!isNaN(options.duration)){options.duration<=0&&(options.duration=0);var nRelease=64;options.rawVelocity?!isNaN(options.release)&&0<=options.release&&options.release<=127&&(nRelease=options.release):!isNaN(options.release)&&0<=options.release&&options.release<=1&&(nRelease=127*options.release),this._convertNoteToArray(note).forEach(function(item){wm.toMIDIChannels(channel).forEach(function(ch){this.send((wm.MIDI_CHANNEL_MESSAGES.noteoff<<4)+(ch-1),[item,Math.round(nRelease)],(time||wm.time)+options.duration)}.bind(this))}.bind(this))}return this},Output.prototype.sendKeyAftertouch=function(note,channel,pressure,options){var that=this;if(options=options||{},channel<1||16<channel)throw new RangeError("The channel must be between 1 and 16.");(isNaN(pressure)||pressure<0||1<pressure)&&(pressure=.5);var nPressure=Math.round(127*pressure);return this._convertNoteToArray(note).forEach(function(item){wm.toMIDIChannels(channel).forEach(function(ch){that.send((wm.MIDI_CHANNEL_MESSAGES.keyaftertouch<<4)+(ch-1),[item,nPressure],that._parseTimeParameter(options.time))})}),this},Output.prototype.sendControlChange=function(controller,value,channel,options){if(options=options||{},"string"==typeof controller){if(void 0===(controller=wm.MIDI_CONTROL_CHANGE_MESSAGES[controller]))throw new TypeError("Invalid controller name.")}else if(!(0<=(controller=Math.floor(controller))&&controller<=119))throw new RangeError("Controller numbers must be between 0 and 119.");if(!(0<=(value=Math.floor(value)||0)&&value<=127))throw new RangeError("Controller value must be between 0 and 127.");return wm.toMIDIChannels(channel).forEach(function(ch){this.send((wm.MIDI_CHANNEL_MESSAGES.controlchange<<4)+(ch-1),[controller,value],this._parseTimeParameter(options.time))}.bind(this)),this},Output.prototype._selectRegisteredParameter=function(parameter,channel,time){var that=this;if(parameter[0]=Math.floor(parameter[0]),!(0<=parameter[0]&&parameter[0]<=127))throw new RangeError("The control65 value must be between 0 and 127");if(parameter[1]=Math.floor(parameter[1]),!(0<=parameter[1]&&parameter[1]<=127))throw new RangeError("The control64 value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.sendControlChange(101,parameter[0],channel,{time:time}),that.sendControlChange(100,parameter[1],channel,{time:time})}),this},Output.prototype._selectNonRegisteredParameter=function(parameter,channel,time){var that=this;if(parameter[0]=Math.floor(parameter[0]),!(0<=parameter[0]&&parameter[0]<=127))throw new RangeError("The control63 value must be between 0 and 127");if(parameter[1]=Math.floor(parameter[1]),!(0<=parameter[1]&&parameter[1]<=127))throw new RangeError("The control62 value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.sendControlChange(99,parameter[0],channel,{time:time}),that.sendControlChange(98,parameter[1],channel,{time:time})}),this},Output.prototype._setCurrentRegisteredParameter=function(data,channel,time){var that=this;if((data=[].concat(data))[0]=Math.floor(data[0]),!(0<=data[0]&&data[0]<=127))throw new RangeError("The msb value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.sendControlChange(6,data[0],channel,{time:time})}),data[1]=Math.floor(data[1]),0<=data[1]&&data[1]<=127&&wm.toMIDIChannels(channel).forEach(function(){that.sendControlChange(38,data[1],channel,{time:time})}),this},Output.prototype._deselectRegisteredParameter=function(channel,time){var that=this;return wm.toMIDIChannels(channel).forEach(function(){that.sendControlChange(101,127,channel,{time:time}),that.sendControlChange(100,127,channel,{time:time})}),this},Output.prototype.setRegisteredParameter=function(parameter,data,channel,options){var that=this;if(options=options||{},!Array.isArray(parameter)){if(!wm.MIDI_REGISTERED_PARAMETER[parameter])throw new Error("The specified parameter is not available.");parameter=wm.MIDI_REGISTERED_PARAMETER[parameter]}return wm.toMIDIChannels(channel).forEach(function(){that._selectRegisteredParameter(parameter,channel,options.time),that._setCurrentRegisteredParameter(data,channel,options.time),that._deselectRegisteredParameter(channel,options.time)}),this},Output.prototype.setNonRegisteredParameter=function(parameter,data,channel,options){var that=this;if(options=options||{},!(0<=parameter[0]&&parameter[0]<=127&&0<=parameter[1]&&parameter[1]<=127))throw new Error("Position 0 and 1 of the 2-position parameter array must both be between 0 and 127.");return data=[].concat(data),wm.toMIDIChannels(channel).forEach(function(){that._selectNonRegisteredParameter(parameter,channel,options.time),that._setCurrentRegisteredParameter(data,channel,options.time),that._deselectRegisteredParameter(channel,options.time)}),this},Output.prototype.incrementRegisteredParameter=function(parameter,channel,options){var that=this;if(options=options||{},!Array.isArray(parameter)){if(!wm.MIDI_REGISTERED_PARAMETER[parameter])throw new Error("The specified parameter is not available.");parameter=wm.MIDI_REGISTERED_PARAMETER[parameter]}return wm.toMIDIChannels(channel).forEach(function(){that._selectRegisteredParameter(parameter,channel,options.time),that.sendControlChange(96,0,channel,{time:options.time}),that._deselectRegisteredParameter(channel,options.time)}),this},Output.prototype.decrementRegisteredParameter=function(parameter,channel,options){if(options=options||{},!Array.isArray(parameter)){if(!wm.MIDI_REGISTERED_PARAMETER[parameter])throw new TypeError("The specified parameter is not available.");parameter=wm.MIDI_REGISTERED_PARAMETER[parameter]}return wm.toMIDIChannels(channel).forEach(function(){this._selectRegisteredParameter(parameter,channel,options.time),this.sendControlChange(97,0,channel,{time:options.time}),this._deselectRegisteredParameter(channel,options.time)}.bind(this)),this},Output.prototype.setPitchBendRange=function(semitones,cents,channel,options){var that=this;if(options=options||{},!(0<=(semitones=Math.floor(semitones)||0)&&semitones<=127))throw new RangeError("The semitones value must be between 0 and 127");if(!(0<=(cents=Math.floor(cents)||0)&&cents<=127))throw new RangeError("The cents value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.setRegisteredParameter("pitchbendrange",[semitones,cents],channel,{time:options.time})}),this},Output.prototype.setModulationRange=function(semitones,cents,channel,options){var that=this;if(options=options||{},!(0<=(semitones=Math.floor(semitones)||0)&&semitones<=127))throw new RangeError("The semitones value must be between 0 and 127");if(!(0<=(cents=Math.floor(cents)||0)&&cents<=127))throw new RangeError("The cents value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.setRegisteredParameter("modulationrange",[semitones,cents],channel,{time:options.time})}),this},Output.prototype.setMasterTuning=function(value,channel,options){var that=this;if(options=options||{},(value=parseFloat(value)||0)<=-65||64<=value)throw new RangeError("The value must be a decimal number larger than -65 and smaller than 64.");var coarse=Math.floor(value)+64,fine=value-Math.floor(value),msb=(fine=Math.round((fine+1)/2*16383))>>7&127,lsb=127&fine;return wm.toMIDIChannels(channel).forEach(function(){that.setRegisteredParameter("channelcoarsetuning",coarse,channel,{time:options.time}),that.setRegisteredParameter("channelfinetuning",[msb,lsb],channel,{time:options.time})}),this},Output.prototype.setTuningProgram=function(value,channel,options){var that=this;if(options=options||{},!(0<=(value=Math.floor(value))&&value<=127))throw new RangeError("The program value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.setRegisteredParameter("tuningprogram",value,channel,{time:options.time})}),this},Output.prototype.setTuningBank=function(value,channel,options){var that=this;if(options=options||{},!(0<=(value=Math.floor(value)||0)&&value<=127))throw new RangeError("The bank value must be between 0 and 127");return wm.toMIDIChannels(channel).forEach(function(){that.setRegisteredParameter("tuningbank",value,channel,{time:options.time})}),this},Output.prototype.sendChannelMode=function(command,value,channel,options){if(options=options||{},"string"==typeof command){if(!(command=wm.MIDI_CHANNEL_MODE_MESSAGES[command]))throw new TypeError("Invalid channel mode message name.")}else if(!(120<=(command=Math.floor(command))&&command<=127))throw new RangeError("Channel mode numerical identifiers must be between 120 and 127.");if((value=Math.floor(value)||0)<0||127<value)throw new RangeError("Value must be an integer between 0 and 127.");return wm.toMIDIChannels(channel).forEach(function(ch){this.send((wm.MIDI_CHANNEL_MESSAGES.channelmode<<4)+(ch-1),[command,value],this._parseTimeParameter(options.time))}.bind(this)),this},Output.prototype.sendProgramChange=function(program,channel,options){var that=this;if(options=options||{},program=Math.floor(program),isNaN(program)||program<0||127<program)throw new RangeError("Program numbers must be between 0 and 127.");return wm.toMIDIChannels(channel).forEach(function(ch){that.send((wm.MIDI_CHANNEL_MESSAGES.programchange<<4)+(ch-1),[program],that._parseTimeParameter(options.time))}),this},Output.prototype.sendChannelAftertouch=function(pressure,channel,options){var that=this;options=options||{},pressure=parseFloat(pressure),(isNaN(pressure)||pressure<0||1<pressure)&&(pressure=.5);var nPressure=Math.round(127*pressure);return wm.toMIDIChannels(channel).forEach(function(ch){that.send((wm.MIDI_CHANNEL_MESSAGES.channelaftertouch<<4)+(ch-1),[nPressure],that._parseTimeParameter(options.time))}),this},Output.prototype.sendPitchBend=function(bend,channel,options){var that=this;if(options=options||{},isNaN(bend)||bend<-1||1<bend)throw new RangeError("Pitch bend value must be between -1 and 1.");var nLevel=Math.round((bend+1)/2*16383),msb=nLevel>>7&127,lsb=127&nLevel;return wm.toMIDIChannels(channel).forEach(function(ch){that.send((wm.MIDI_CHANNEL_MESSAGES.pitchbend<<4)+(ch-1),[lsb,msb],that._parseTimeParameter(options.time))}),this},Output.prototype._parseTimeParameter=function(time){var value,parsed=parseFloat(time);return"string"==typeof time&&"+"===time.substring(0,1)?parsed&&0<parsed&&(value=wm.time+parsed):parsed>wm.time&&(value=parsed),value},Output.prototype._convertNoteToArray=function(note){var notes=[];return Array.isArray(note)||(note=[note]),note.forEach(function(item){notes.push(wm.guessNoteNumber(item))}),notes}, true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return wm}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):0}(this);
 
 /***/ }),
 
