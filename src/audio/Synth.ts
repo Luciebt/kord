@@ -1,5 +1,4 @@
 import { Synth, PolySynth, Transport, ToneEvent, Player } from "tone";
-import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
 
@@ -92,7 +91,8 @@ export function PlaySynthChords(chordNotes: string[]): void {
   Transport.stop();
   polySynth.releaseAll();
   polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-  Tone.start();
+  // Tone.start();
+  Transport.start();
 }
 
 //------ Loop chord progression.
