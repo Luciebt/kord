@@ -8,7 +8,7 @@ interface IKeyButton {
 }
 
 const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
-  const notes: TKey[] = [
+  const keys: TKey[] = [
     "C",
     "C#",
     "D",
@@ -31,8 +31,9 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
     event.target.classList.add(style);
   };
 
-  const notesList: JSX.Element[] = notes.map((note, i) => (
+  const keysList: JSX.Element[] = keys.map((note, i) => (
     <button
+      id={note}
       key={i}
       value={note}
       onClick={(e) => {
@@ -47,7 +48,7 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
   return (
     <section arial-label="Choose a key for your chord progression">
       <h2>Key</h2>
-      {notesList}
+      {keysList}
     </section>
   );
 };

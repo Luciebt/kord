@@ -12,6 +12,7 @@ import { polySynth } from "../../audio/Synth";
 export interface IProgressionGridDisplayProps {
   tonic?: string;
   chordToAdd?: string;
+  onPressChord: any;
 }
 
 // TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
@@ -19,6 +20,7 @@ export interface IProgressionGridDisplayProps {
 const ProgressionGridDisplayComponent = ({
   tonic,
   chordToAdd,
+  onPressChord,
 }: IProgressionGridDisplayProps): JSX.Element => {
   const SoundOn = React.useContext(SoundOnContext);
   const [gridSize, setGridSize] = useState(4);
@@ -29,10 +31,10 @@ const ProgressionGridDisplayComponent = ({
   );
 
   const Play = (chordIndex: number) => {
-    if (!SoundOn) return;
-    polySynth.releaseAll();
-    const chordToPlay = progressionMap.get(chordIndex);
-    if (chordToPlay) PlayChord(chordToPlay, true);
+    // if (!SoundOn) return;
+    // polySynth.releaseAll();
+    // const chordToPlay = progressionMap.get(chordIndex);
+    // if (chordToPlay) PlayChord(chordToPlay, true);
   };
 
   const onGridSizeChange = (event: any) => {
@@ -56,7 +58,7 @@ const ProgressionGridDisplayComponent = ({
 
     if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
-    Play(newPos);
+    if (newChord) onPressChord(newChord);
   };
 
   // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
@@ -64,7 +66,7 @@ const ProgressionGridDisplayComponent = ({
   const handleKeyPress = (id: number) => {
     // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
     // We need a valid ID.
-    if (!id || id < 0 || id > 8) return;
+    if (!id || id <= 0 || id > 8) return;
 
     // Handle css to apply the selection color
     unPressElementsStyleWithoutEvent("selected-position");
@@ -77,7 +79,7 @@ const ProgressionGridDisplayComponent = ({
 
     if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
-    Play(newPos);
+    if (newChord) onPressChord(newChord);
   };
 
   const handleClearClick = (event: any) => {

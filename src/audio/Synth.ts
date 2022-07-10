@@ -85,7 +85,7 @@ SetupTempo();
 
 // TODO: improve synth performance
 export function PlaySynthChords(chordNotes: string[]): void {
-  if (!chordNotes.length || !polySynth) return;
+  if (!chordNotes || !polySynth) return;
 
   console.log("Playing now______", chordNotes);
 

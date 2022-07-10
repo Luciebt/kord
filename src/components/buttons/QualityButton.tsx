@@ -9,8 +9,8 @@ interface IChordButton {
 
 const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
   // TODO: is major the default?
-  // TODO: Add more chords...
-  const chords: TChords[] = [
+  // TODO: Add more chordsQualities...
+  const chordsQualities: TChords[] = [
     "Major",
     "Minor",
     "Major7",
@@ -19,31 +19,34 @@ const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
     "Minor7Flat5",
   ];
 
-  const handleClick = (event: any, chord: string) => {
-    onPressKey(chord);
+  const handleClick = (event: any, quality: string) => {
+    onPressKey(quality);
 
     const style: string = "chordbuild-btn-pressed";
     unPressElementsStyleWithoutEvent(style);
     event.target.classList.add(style);
   };
 
-  const chordsList: JSX.Element[] = chords.map((chord, i) => (
-    <button
-      key={i}
-      value={chord}
-      onClick={(e) => {
-        handleClick(e, chord);
-      }}
-      className="key-btn"
-    >
-      {chord}
-    </button>
-  ));
+  const chordsQualitiesList: JSX.Element[] = chordsQualities.map(
+    (quality, i) => (
+      <button
+        id={quality}
+        key={i}
+        value={quality}
+        onClick={(e) => {
+          handleClick(e, quality);
+        }}
+        className="key-btn"
+      >
+        {quality}
+      </button>
+    )
+  );
 
   return (
     <section aria-label="Choose a quality to the chord">
       <h2>Quality</h2>
-      {chordsList}
+      {chordsQualitiesList}
     </section>
   );
 };
