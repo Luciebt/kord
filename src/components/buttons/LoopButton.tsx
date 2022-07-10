@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PlayLoop, polySynth } from "../../audio/Synth";
+import { useToggle } from "../hooks/useToggle";
+import { PlayLoop } from "../../audio/Synth";
 import { Transport } from "tone";
 import "./Buttons.css";
 import { SoundOnContext } from "../../App";
@@ -12,38 +13,48 @@ interface ILoopButton {
 
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   const SoundOn = React.useContext(SoundOnContext);
-  const [loopState, setLoopState] = useState(false);
   const [bpm, setBpm] = useState(120);
+  const [toggleLoop, setToggleLoop] = useToggle(false);
 
   const BpmCallback = (bpm: number) => {
     setBpm(bpm);
   };
 
-  // FIXME: returns true despite not having a loop running (separate channel?)
-  const isTransportRunning = () => {
-    return Transport.state !== "started";
-  };
-
-  // FIXME: the selection CSS is broken sometimes here. Restore CSS on the basis of the tone transport instead of the other way around.
-  const handleClick = (event: any) => {
-    if (!SoundOn) return;
-
-    if (isTransportRunning()) {
-      setLoopState(!loopState);
+  // Toggle the loop
+  useEffect(() => {
+    if (toggleLoop) {
+      // Play the chord
       PlayLoop(chordsList);
       Transport.start();
-    } else {
-      setLoopState(!loopState);
-      // Transport.cancel();
-      Transport.stop();
+      // Apply CSS
+      const btn = document.getElementById("loop") as HTMLButtonElement;
+      if (btn) {
+        btn.classList.add("loop-btn-pressed");
+        btn.classList.remove("loop-btn");
+        btn.innerText = "■";
+      }
     }
-  };
+    if (!toggleLoop) {
+      // Stop playing
+      Transport.stop();
+      // Transport.cancel();
 
-  // Restore the initial state of the loop button and stop transport when clicking on another progression button.
+      // Apply CSS
+      const btn = document.getElementById("loop") as HTMLButtonElement;
+      if (btn) {
+        btn.classList.remove("loop-btn-pressed");
+        btn.classList.add("loop-btn");
+        btn.innerText = "▶";
+      }
+    }
+    return () => {};
+  }, [toggleLoop]);
+
+  // Restore the initial state of the loop button and cancel transport events when clicking on another progression button.
   useEffect(() => {
     return () => {
       Transport.cancel();
-      const btn = document.getElementById("loop");
+      const btn = document.getElementById("loop") as HTMLButtonElement;
       if (btn) {
         btn.classList.remove("loop-btn-pressed");
         btn.classList.add("loop-btn");
@@ -52,23 +63,29 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
     };
   }, [chordsList]);
 
+  useEffect(() => {
+    // Set the loop button disabled if the sound is not on...(for now)
+    if (!SoundOn) {
+      const btn = document.getElementById("loop") as HTMLButtonElement;
+      if (!btn) return;
+      btn.disabled = true;
+    } else if (SoundOn) {
+      const btn = document.getElementById("loop") as HTMLButtonElement;
+      if (!btn) return;
+      btn.disabled = false;
+    }
+    return () => {};
+  }, [SoundOn]);
+
   return (
     <div className="loop-box">
       <button
         aria-label="Play the chord progression in a loop"
         id="loop"
-        onClick={(e) => {
-          handleClick(e);
-        }}
-        className={
-          SoundOn
-            ? loopState
-              ? "loop-btn-pressed"
-              : "loop-btn"
-            : "loop-btn-disabled"
-        }
+        onClick={() => setToggleLoop(true)}
+        className={SoundOn ? "loop-btn" : "loop-btn-disabled"}
       >
-        {loopState ? "■" : "▶"}
+        ▶
       </button>
       {SoundOn ? <BpmRange onBpmRange={BpmCallback} /> : null}
     </div>

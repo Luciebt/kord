@@ -99,6 +99,7 @@ button.scale-chord-btn:hover {
 }
 .loop-btn-disabled {
   opacity: 0.4;
+  cursor: none;
 }
 
 /* Export to MIDI button */
