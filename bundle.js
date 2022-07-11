@@ -4318,7 +4318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bpm-input {\n  font-size: 1.4em;\n  outline: none;\n  max-width: 5em;\n  min-height: 3.6em;\n  padding: 0.6em;\n  margin: 0.2em;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  resize: none;\n}\n", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,aAAa;EACb,cAAc;EACd,iBAAiB;EACjB,cAAc;EACd,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,cAAc;EACd,YAAY;AACd","sourcesContent":[".bpm-input {\n  font-size: 1.4em;\n  outline: none;\n  max-width: 5em;\n  min-height: 3.6em;\n  padding: 0.6em;\n  margin: 0.2em;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  resize: none;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bpm-box {\n  display: flex;\n  flex-direction: column;\n  gap: .6em;\n  align-items: center;\n}\n\n#bpm-input {\n  width: 6em;\n}\n\n#range-number-bpm-input {\n  width: 6em;\n  height: 2em;\n}\n\ninput[type=\"range\"] {\n  width: 90px;\n  height: 7px;\n  border-radius: 5px;\n  overflow: hidden;\n  background: transparent;\n}", "",{"version":3,"sources":["webpack://./src/components/bpm/Bpm.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,SAAS;EACT,mBAAmB;AACrB;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,UAAU;EACV,WAAW;AACb;;AAEA;EACE,WAAW;EACX,WAAW;EACX,kBAAkB;EAClB,gBAAgB;EAChB,uBAAuB;AACzB","sourcesContent":[".bpm-box {\n  display: flex;\n  flex-direction: column;\n  gap: .6em;\n  align-items: center;\n}\n\n#bpm-input {\n  width: 6em;\n}\n\n#range-number-bpm-input {\n  width: 6em;\n  height: 2em;\n}\n\ninput[type=\"range\"] {\n  width: 90px;\n  height: 7px;\n  border-radius: 5px;\n  overflow: hidden;\n  background: transparent;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4345,7 +4345,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--pressed-color);\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn:hover {\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,+BAA+B;EAC/B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,2BAA2B;AAC7B;;AAEA,gDAAgD;;AAEhD;;;;;EAKE,oBAAoB;EACpB,4BAA4B;EAC5B,+BAA+B;EAC/B,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,cAAc;EACd,sCAAsC;EACtC,sCAAsC;EACtC,+BAA+B;AACjC;;AAEA;EACE,cAAc;AAChB;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;EACZ,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,cAAc;EACd,iBAAiB;EACjB,eAAe;EACf,+BAA+B;EAC/B,wCAAwC;AAC1C","sourcesContent":["/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--pressed-color);\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn:hover {\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--pressed-color);\n  color: white;\n  border: 1px solid var(--pressed-color);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;AACjB;;AAEA;EACE,+BAA+B;EAC/B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,2BAA2B;AAC7B;;AAEA,gDAAgD;;AAEhD;;;;;EAKE,oBAAoB;EACpB,4BAA4B;EAC5B,+BAA+B;EAC/B,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,cAAc;EACd,sCAAsC;EACtC,sCAAsC;EACtC,+BAA+B;AACjC;;AAEA;EACE,cAAc;AAChB;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;EACZ,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,cAAc;EACd,iBAAiB;EACjB,eAAe;EACf,+BAA+B;EAC/B,wCAAwC;AAC1C","sourcesContent":["/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81898,7 +81898,7 @@ exports["default"] = (0, react_hot_loader_1.hot)(module)(App);
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BuildChordNotes = exports.GetSimplifiedChordFromFullChord = exports.PlayChord = void 0;
 const tonal_1 = __webpack_require__(/*! @tonaljs/tonal */ "./node_modules/@tonaljs/tonal/dist/index.es.js");
-const Synth_1 = __webpack_require__(/*! ./audio/Synth */ "./src/audio/Synth.ts");
+const Play_1 = __webpack_require__(/*! ./audio/Play */ "./src/audio/Play.ts");
 // import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 const NoteUtils_1 = __webpack_require__(/*! ./NoteUtils */ "./src/NoteUtils.ts");
 // TODO: test accuracy of chords / their notes using chord-detect: https://github.com/tonaljs/tonal/tree/main/packages/chord-detect
@@ -81915,7 +81915,7 @@ var InstrumentType;
 function PlayMidiNotes(chordNotes, instrumentType) {
     switch (instrumentType) {
         case InstrumentType.Synth:
-            (0, Synth_1.PlaySynthChords)(chordNotes);
+            (0, Play_1.PlaySynthChords)(chordNotes);
             break;
         case InstrumentType.Piano:
             const midiChordNotes = BuildMidiChordNotes(chordNotes);
@@ -82396,10 +82396,10 @@ exports.findNotesScales = findNotesScales;
 
 /***/ }),
 
-/***/ "./src/audio/Synth.ts":
-/*!****************************!*\
-  !*** ./src/audio/Synth.ts ***!
-  \****************************/
+/***/ "./src/audio/Play.ts":
+/*!***************************!*\
+  !*** ./src/audio/Play.ts ***!
+  \***************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -82409,6 +82409,7 @@ exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.Set
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
 const unPressElementStyle_1 = __webpack_require__(/*! ../components/hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+//------ Global variables
 const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
     imperatricePartials: [0, 2, 3, 4],
@@ -82460,6 +82461,9 @@ function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
             type: "custom",
         },
     }).toDestination();
+    // const reverb = new Freeverb().toDestination();
+    // reverb.wet.value = 0.3;
+    // polySynth.connect(reverb);
 }
 function SetSynthSound(synthSound) {
     switch (synthSound) {
@@ -82513,6 +82517,15 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     exports.chordEvent.loop = true;
     exports.chordEvent.loopEnd = measuresToPlay;
 }
+function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
+    // chordEvent = new ToneEvent((time) => {
+    let seq = new tone_1.Sequence((time, note) => {
+        exports.polySynth.triggerAttackRelease(note, "16n", time);
+    }, chordArr);
+    // }, "1n");
+    seq.start(noteStart);
+    seq.loop = chordArr.length;
+}
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 function PlayLoop(chordArr) {
     exports.polySynth.releaseAll();
@@ -82527,9 +82540,8 @@ function PlayLoop(chordArr) {
         7: [],
         8: [],
     };
-    const progressionLength = chordArr.length;
     // Build the chord arrays in simplified notation
-    for (let i = 0; i <= progressionLength; i++) {
+    for (let i = 0; i <= 8; i++) {
         if (chordArr[i]) {
             chordsToLoop[i] = (0, PianoChart_1.ShowChord)(chordArr[i]);
         }
@@ -82539,9 +82551,12 @@ function PlayLoop(chordArr) {
         }
     }
     // Schedule the loop events
+    const progressionLength = chordArr.length;
     for (let i = 0; i < progressionLength; i++) {
         const noteStart = i.toString() + ":0:0";
-        PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+        // console.log("loop loop", chordsToLoop[i], progressionLength, noteStart);
+        // PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+        PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
     }
 }
 exports.PlayLoop = PlayLoop;
@@ -82752,7 +82767,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
+const Play_1 = __webpack_require__(/*! ../../audio/Play */ "./src/audio/Play.ts");
 __webpack_require__(/*! ./Bpm.css */ "./src/components/bpm/Bpm.css");
 const BpmRange = ({ onBpmRange }) => {
     const [bpm, setBpm] = (0, react_1.useState)("120");
@@ -82760,17 +82775,16 @@ const BpmRange = ({ onBpmRange }) => {
         setBpm(event.target.value);
         const newBpm = parseInt(event.target.value);
         onBpmRange(newBpm);
-        (0, Synth_1.SetupTempo)(newBpm);
-        (0, Synth_1.SetTempo)(newBpm);
+        (0, Play_1.SetupTempo)(newBpm);
+        (0, Play_1.SetTempo)(newBpm);
     };
     (0, react_1.useEffect)(() => {
-        setBpm((0, Synth_1.GetTempo)().toString());
+        setBpm(Math.floor((0, Play_1.GetTempo)()).toString());
         return () => { };
     }, []);
     return (react_1.default.createElement("section", { className: "bpm-box" },
-        react_1.default.createElement("input", { "aria-label": "Set a bpm for the loop", type: "number", min: "60", max: "200", value: bpm, onChange: handleChange, className: "bpm-input" }),
-        " ",
-        "BPM"));
+        react_1.default.createElement("input", { "aria-label": "Set a bpm for the loop", type: "range", min: "60", max: "200", value: bpm, onChange: handleChange, id: "bpm-input" }),
+        react_1.default.createElement("input", { type: "number", "aria-label": "Set a bpm for the loop", id: "range-number-bpm-input", min: "60", max: "200", value: bpm, onChange: handleChange })));
 };
 exports["default"] = BpmRange;
 
@@ -82859,7 +82873,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
+const Play_1 = __webpack_require__(/*! ../../audio/Play */ "./src/audio/Play.ts");
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
@@ -82878,7 +82892,7 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
     (0, react_1.useEffect)(() => {
         if (toggleLoop) {
             // Play the chord
-            (0, Synth_1.PlayLoop)(chordsList);
+            (0, Play_1.PlayLoop)(chordsList);
             tone_1.Transport.start();
             // Apply CSS
             const btn = document.getElementById("loop");
@@ -83245,30 +83259,43 @@ const ChordDisplayComponent = ({ tonic, chord, }) => {
             chordArr = [];
         };
     }, [chord]);
+    const isInputFieldFocused = () => {
+        const activeEl = document.activeElement;
+        if (activeEl)
+            return (activeEl.id === "bpm-input" || activeEl.id === "range-number-bpm-input");
+    };
     // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
     (0, react_use_keypress_1.default)(["1", "a", "q"], () => {
-        handleClickAndKeyPress(1);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(1);
     });
     (0, react_use_keypress_1.default)(["2", "w", "z"], () => {
-        handleClickAndKeyPress(2);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(2);
     });
     (0, react_use_keypress_1.default)(["3", "e"], () => {
-        handleClickAndKeyPress(3);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(3);
     });
     (0, react_use_keypress_1.default)(["4", "r"], () => {
-        handleClickAndKeyPress(4);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(4);
     });
     (0, react_use_keypress_1.default)(["5", "t"], () => {
-        handleClickAndKeyPress(5);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(5);
     });
     (0, react_use_keypress_1.default)(["6", "y"], () => {
-        handleClickAndKeyPress(6);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(6);
     });
     (0, react_use_keypress_1.default)(["7", "u"], () => {
-        handleClickAndKeyPress(7);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(7);
     });
     (0, react_use_keypress_1.default)(["8", "i"], () => {
-        handleClickAndKeyPress(8);
+        if (!isInputFieldFocused())
+            handleClickAndKeyPress(8);
     });
     const chordsList = chordArr.map((c, i) => (react_1.default.createElement("button", { key: i, id: "btn-" + (i + 1).toString(), onClick: (e) => {
             handleClickAndKeyPress(i + 1, c, e);
@@ -83500,7 +83527,6 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             gridDiv.classList.add("selected-position");
         const newPos = Number(posId);
         const newChord = progressionMap.get(newPos);
-        // console.log("newChord__", newChord);
         if (newPos)
             setSelectedPos(newPos);
         if (newChord)
@@ -83575,30 +83601,43 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
         setSelectedChord(chordToAdd);
         return () => { };
     }, [chordToAdd]);
+    const isInputFieldFocused = () => {
+        const activeEl = document.activeElement;
+        if (activeEl)
+            return (activeEl.id === "bpm-input" || activeEl.id === "range-number-bpm-input");
+    };
     // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
     (0, react_use_keypress_1.default)(["1", "a", "q"], () => {
-        handlePositionClickAndKeyPress(1);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(1);
     });
     (0, react_use_keypress_1.default)(["2", "w", "z"], () => {
-        handlePositionClickAndKeyPress(2);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(2);
     });
     (0, react_use_keypress_1.default)(["3", "e"], () => {
-        handlePositionClickAndKeyPress(3);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(3);
     });
     (0, react_use_keypress_1.default)(["4", "r"], () => {
-        handlePositionClickAndKeyPress(4);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(4);
     });
     (0, react_use_keypress_1.default)(["5", "t"], () => {
-        handlePositionClickAndKeyPress(5);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(5);
     });
     (0, react_use_keypress_1.default)(["6", "y"], () => {
-        handlePositionClickAndKeyPress(6);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(6);
     });
     (0, react_use_keypress_1.default)(["7", "u"], () => {
-        handlePositionClickAndKeyPress(7);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(7);
     });
     (0, react_use_keypress_1.default)(["8", "i"], () => {
-        handlePositionClickAndKeyPress(8);
+        if (!isInputFieldFocused())
+            handlePositionClickAndKeyPress(8);
     });
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("section", { className: "chord-box" },
@@ -83841,7 +83880,7 @@ const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/re
 const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
 const ShortcutsSettingsPanel_1 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
-const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
+const Play_1 = __webpack_require__(/*! ../../audio/Play */ "./src/audio/Play.ts");
 __webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
 // TODO: handle click outside.
 const Settings = ({ onSettings, onSoundOn }) => {
@@ -83860,7 +83899,7 @@ const Settings = ({ onSettings, onSoundOn }) => {
     });
     const ChooseSynth = (event) => {
         event.preventDefault();
-        (0, Synth_1.SetSynthSound)(event.target.value);
+        (0, Play_1.SetSynthSound)(event.target.value);
     };
     return (react_1.default.createElement("section", null,
         react_1.default.createElement("section", { "aria-label": "settings", id: "settings-box" },
