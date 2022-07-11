@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+/* Progression box display */
+
+.prog-grid-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .prog-box {
   background-color: var(--dominant-light);
   margin: 1em;

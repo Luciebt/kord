@@ -10,9 +10,6 @@
     background-color: rgb(234, 234, 234);
     text-align: center;
     border-radius: .25em;
-    @media (max-width: 769px) {
-      padding: 2rem 0;
-    }
 }
 
 .tab-nav button {

@@ -61,15 +61,3 @@ h1 {
   --pressed-color: #4187c9;
 }
 
-/* Progression box display */
-
-.prog-grid-results {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.prog-btn {
-  width: 11em;
-}

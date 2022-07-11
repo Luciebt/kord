@@ -26,6 +26,10 @@ button:hover {
 
 /* Key, Mod, Mood and Progression main buttons */
 
+.prog-btn {
+  width: 11em;
+}
+
 .key-btn-pressed,
 .mode-btn-pressed,
 .mood-btn-pressed,
@@ -54,6 +58,17 @@ button:hover {
   min-width: 4em;
 }
 
+@media screen and (max-width: 600px) {
+  .chord-btn {
+    font-size: 1.2em;
+    min-width: 3.1em;
+  }
+  .scale-chord-btn {
+    font-size: 1.2em;
+    min-width: 3.1em;
+  }
+} 
+
 button.chord-btn:hover,
 button.scale-chord-btn:hover {
   border: 1px solid var(--pressed-color) !important;
@@ -76,9 +91,18 @@ button.scale-chord-btn:hover {
 
 #loop {
   height: 2.3em;
+  width: 2.3em;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  #loop {
+    /* font-size: .9em; */
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .loop-box {
