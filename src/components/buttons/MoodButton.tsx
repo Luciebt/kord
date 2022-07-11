@@ -29,6 +29,7 @@ const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
   const moodsList: JSX.Element[] = moods.map((mood, i) => (
     <button
       key={i}
+      className="mood-btn"
       onClick={(e) => {
         handleClick(e, mood);
       }}

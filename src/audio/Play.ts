@@ -93,10 +93,7 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  console.log("PlaySynthChords__chordNotes___", chordNotes);
-
   // Tone.Transport.stop();
-  // Tone.start();
   Tone.start().then(() => {
     polySynth.releaseAll();
     polySynth.triggerAttackRelease(chordNotes, "+0.1", 1);

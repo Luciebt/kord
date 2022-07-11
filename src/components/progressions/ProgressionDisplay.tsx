@@ -49,7 +49,7 @@ const ProgressionDisplayComponent = ({
   }, [tonic, mode, mood]);
 
   return (
-    <section className="prog-box">
+    <section className="box prog-box">
       <h2>Progressions </h2>
       <section
         aria-label="Progressions found for your criteria"

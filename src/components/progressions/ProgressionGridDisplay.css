@@ -50,6 +50,11 @@
 .selected-position {
     background-color: var(--dominant-dark);
     color: antiquewhite !important;
+    box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;
+}
+
+.selected-position > div {
+    color: var(--dominant-light);
 }
 
 .filled-position {

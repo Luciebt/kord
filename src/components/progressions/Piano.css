@@ -43,8 +43,6 @@
   color: var(--white-80);
 }
 
-
-
 .white.pressed {
   border-top: 1px solid hsl(0, 0%, 47%);
   border-left: 1px solid hsl(0, 0%, 60%);

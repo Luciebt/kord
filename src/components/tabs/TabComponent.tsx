@@ -23,8 +23,8 @@ const TabComponent = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="tabs">
-      <ul arial-label="tabs" className="tab-nav">
+    <div className="content">
+      <ul arial-label="tabs" className="box tab-nav">
         <button id="id-1" onClick={(e) => handleTab(e)}>
           Progressions List
         </button>

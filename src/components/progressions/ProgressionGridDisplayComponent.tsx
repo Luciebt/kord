@@ -97,6 +97,7 @@ const ProgressionGridDisplayComponent = ({
       const newDivId = lastId + 1;
       newDiv.id = "pos-" + newDivId;
       newDiv.tabIndex = 0;
+      newDiv.classList.add("box");
       newDiv.addEventListener("click", function (event: any) {
         handlePositionClickAndKeyPress(newDivId, event);
       });
@@ -155,13 +156,14 @@ const ProgressionGridDisplayComponent = ({
 
   return (
     <div>
-      <section className="chord-box">
+      <section className="box chord-box">
         <h2>Progression Builder</h2>
         {progressionMap ? (
           <LoopButton chordsList={Array.from(progressionMap.values())} />
         ) : null}
         <section id="prog-grid" className="prog-grid-container">
           <div
+            className="box"
             tabIndex={0}
             id="pos-1"
             onClick={(e) => {
@@ -169,6 +171,7 @@ const ProgressionGridDisplayComponent = ({
             }}
           ></div>
           <div
+            className="box"
             tabIndex={0}
             id="pos-2"
             onClick={(e) => {
@@ -176,6 +179,7 @@ const ProgressionGridDisplayComponent = ({
             }}
           ></div>
           <div
+            className="box"
             tabIndex={0}
             id="pos-3"
             onClick={(e) => {
@@ -183,6 +187,7 @@ const ProgressionGridDisplayComponent = ({
             }}
           ></div>
           <div
+            className="box"
             tabIndex={0}
             id="pos-4"
             onClick={(e) => {
@@ -213,7 +218,7 @@ const ProgressionGridDisplayComponent = ({
         <MidiButtonComponent chordsList={Array.from(progressionMap.values())} />
       </section>
       {(selectedChord as string) ? (
-        <div className="prog-box">
+        <div className="box piano-box">
           <h2>{selectedChord as string}</h2>
           {/* TODO: Update piano on LOOP */}
           {selectedChord ? <PianoDisplay chord={selectedChord} /> : null}

@@ -3,14 +3,15 @@
 button {
   font-family: "Space Mono", monospace;
   color: var(--dominant-dark);
-  border: 1px solid var(--border-color);
-  border-radius: .25em;
+  border: 1.2px solid var(--border-color);
   transition: all .2s ease-in-out;
   min-width: 3em;
   font-size: 1em;
   padding: 0.5em;
   margin: 0.3em;
   cursor: pointer;
+  box-shadow: 0px 2px 0px 2px #d9d9d9;
+  border-radius: 4px !important;
 }
 
 button:hover {
@@ -119,14 +120,15 @@ button.scale-chord-btn:hover {
 }
 .loop-btn:hover {
   background-color: var(--dominant-dark);
-  color: white;
+  color: var(--dominant-light);
   border: 1px solid var(--dominant-dark);
 }
 .loop-btn-pressed {
   font-size: 1.4em;
   background-color: var(--dominant-dark);
-  color: white;
+  color: var(--dominant-light);
   border: 1px solid var(--dominant-dark);
+  box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;
 }
 .loop-btn-disabled {
   opacity: 0.4;

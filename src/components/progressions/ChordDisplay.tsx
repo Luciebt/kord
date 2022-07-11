@@ -112,7 +112,7 @@ const ChordDisplayComponent = ({
 
   return (
     <section id="chords-box-id" className="chords-box">
-      <section className="chord-box">
+      <section className="box chord-box">
         <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
         {chordsList && chordsList}
         <br />

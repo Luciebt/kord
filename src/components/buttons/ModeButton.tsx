@@ -21,6 +21,7 @@ const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
   const modesList: JSX.Element[] = modes.map((mode, i) => (
     <button
       key={i}
+      className="mode-btn"
       onClick={(e) => {
         handleClick(e, mode);
       }}
