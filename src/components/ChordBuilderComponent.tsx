@@ -6,6 +6,7 @@ import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDispl
 import { SoundOnContext } from "../App";
 import { polySynth } from "../audio/Synth";
 import { unPressElementsStyleWithoutEvent } from "./hooks/unPressElementStyle";
+import { FullChordStringToArray } from "../NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {
   const SoundOn = React.useContext(SoundOnContext);
@@ -25,19 +26,7 @@ const ChordBuilderComponent = (): JSX.Element => {
 
   const newChordCallback = (newChord: string) => {
     if (!newChord) return;
-
-    let key: string = newChord[0];
-    let quality: string = "";
-    let chordArr: string[] = newChord.split("#");
-
-    if (chordArr.length == 2) {
-      key += "#";
-      quality = chordArr[1];
-    } else {
-      quality = chordArr[0].slice(1);
-    }
-    console.log("newChordCallback", newChord);
-    if (!key || !quality) return;
+    const [key, quality] = FullChordStringToArray(newChord);
 
     unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
     const qualityBtn = document.getElementById(quality);
@@ -58,7 +47,7 @@ const ChordBuilderComponent = (): JSX.Element => {
     if (chordSelected == chordToBuild) return;
     setChordSelected(chordToBuild);
     if (SoundOn) {
-      PlayChord(chordToBuild, true);
+      PlayChord(chordToBuild);
     }
   }, [chordKey, chordQuality]);
 

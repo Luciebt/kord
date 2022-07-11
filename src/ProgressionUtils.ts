@@ -15,9 +15,3 @@ export function GetRomansForChord(chordsArr: string[]): string[] {
     return [];
   }
 }
-
-export function PrintMap(mp: Map<string, string> = progMap): void {
-  for (let entry of mp.entries()) {
-    console.log(entry[0], entry[1]); //"Lokesh" 37 "Raj" 35 "John" 40
-  }
-}

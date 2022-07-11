@@ -34,7 +34,7 @@ const ProgressionGridDisplayComponent = ({
     // if (!SoundOn) return;
     // polySynth.releaseAll();
     // const chordToPlay = progressionMap.get(chordIndex);
-    // if (chordToPlay) PlayChord(chordToPlay, true);
+    // if (chordToPlay) PlayChord(chordToPlay);
   };
 
   const onGridSizeChange = (event: any) => {
@@ -65,7 +65,6 @@ const ProgressionGridDisplayComponent = ({
 
   const handleKeyPress = (id: number) => {
     // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
-    // We need a valid ID.
     if (!id || id <= 0 || id > 8) return;
 
     // Handle css to apply the selection color
