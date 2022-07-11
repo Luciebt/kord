@@ -41,7 +41,7 @@ const ChordDisplayComponent = ({
     event?: any
   ) => {
     let chordFound: string | undefined = chord;
-    if (!chordFound) chordFound = chordArr[posId];
+    if (!chordFound) chordFound = chordArr[posId - 1];
 
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
     unPressElementsStyleWithoutEvent("highlight-chord-div");
