@@ -4352,33 +4352,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css ***!
-  \*************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* On screens that are 600px or less make the piano smaller and more visible */\n@media screen and (max-width: 600px) {\n  #keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  #scale-keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  .white {\n    height: 8.3rem;\n    width: 2.4rem;\n  }\n  .black {\n    height: 5rem;\n    width: 1.3rem;\n  }\n  .offset {\n    margin: 0 0 0 -0.6rem;\n  }\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/Piano.css"],"names":[],"mappings":"AAAA,kBAAkB;;AAElB;EACE,aAAa;AACf;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;;EAEE,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,eAAe;EACf,aAAa;EACb,UAAU;EACV,sCAAsC;EACtC,wCAAwC;EACxC,sEAAsE;EACtE,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,UAAU;EACV,uBAAuB;EACvB,mCAAmC;EACnC,sBAAsB;AACxB;;;;AAIA;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,mBAAmB;AACrB;;AAEA,sBAAsB;AACtB;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA,8EAA8E;AAC9E;EACE;IACE,gBAAgB;IAChB,oBAAoB;EACtB;EACA;IACE,gBAAgB;IAChB,oBAAoB;EACtB;EACA;IACE,cAAc;IACd,aAAa;EACf;EACA;IACE,YAAY;IACZ,aAAa;EACf;EACA;IACE,qBAAqB;EACvB;AACF","sourcesContent":["/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* On screens that are 600px or less make the piano smaller and more visible */\n@media screen and (max-width: 600px) {\n  #keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  #scale-keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  .white {\n    height: 8.3rem;\n    width: 2.4rem;\n  }\n  .black {\n    height: 5rem;\n    width: 1.3rem;\n  }\n  .offset {\n    margin: 0 0 0 -0.6rem;\n  }\n}"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/ProgressionGridDisplay.css":
 /*!******************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/components/progressions/ProgressionGridDisplay.css ***!
@@ -4427,33 +4400,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/Progressions.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,uCAAuC;EACvC,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,uCAAuC;EACvC,eAAe;AACjB;;AAEA;EACE,8BAA8B;EAC9B,cAAc;EACd,iBAAiB;EACjB,oBAAoB;AACtB;;AAEA;EACE,iDAAiD;EACjD,iDAAiD;EACjD,8BAA8B;AAChC;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":[".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css":
-/*!********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css ***!
-  \********************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/scales/Scales.css"],"names":[],"mappings":"AAAA;EACE,oCAAoC;EACpC,WAAW;EACX,eAAe;AACjB","sourcesContent":[".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -56426,61 +56372,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./src/components/progressions/Piano.css":
-/*!***********************************************!*\
-  !*** ./src/components/progressions/Piano.css ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Piano.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css");
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var options = {};
-
-options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
-options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
-
-      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
-    
-options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
-options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
-
-
-
-
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
-
-
-/***/ }),
-
 /***/ "./src/components/progressions/ProgressionGridDisplay.css":
 /*!****************************************************************!*\
   !*** ./src/components/progressions/ProgressionGridDisplay.css ***!
@@ -56587,61 +56478,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
-
-
-/***/ }),
-
-/***/ "./src/components/scales/Scales.css":
-/*!******************************************!*\
-  !*** ./src/components/scales/Scales.css ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Scales.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css");
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var options = {};
-
-options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
-options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
-
-      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
-    
-options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
-options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
-
-
-
-
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -82730,7 +82566,6 @@ const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton 
 const ModeButton_1 = __importDefault(__webpack_require__(/*! ./buttons/ModeButton */ "./src/components/buttons/ModeButton.tsx"));
 const MoodButton_1 = __importDefault(__webpack_require__(/*! ./buttons/MoodButton */ "./src/components/buttons/MoodButton.tsx"));
 const ProgressionDisplay_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionDisplay */ "./src/components/progressions/ProgressionDisplay.tsx"));
-const ScaleDisplay_1 = __importDefault(__webpack_require__(/*! ./scales/ScaleDisplay */ "./src/components/scales/ScaleDisplay.tsx"));
 __webpack_require__(/*! ../components/progressions/Progressions.css */ "./src/components/progressions/Progressions.css");
 const ProgressionComponent = () => {
     const [tonic, setTonic] = (0, react_1.useState)("");
@@ -82764,7 +82599,6 @@ const ProgressionComponent = () => {
             react_1.default.createElement(ModeButton_1.default, { onPressMode: ModeCallback }),
             react_1.default.createElement(MoodButton_1.default, { onPressMood: MoodCallback })),
         react_1.default.createElement(ProgressionDisplay_1.default, { tonic: tonic, mode: mode, mood: mood ? mood : "", chordsList: chordsList ? chordsList : "" }),
-        react_1.default.createElement(ScaleDisplay_1.default, { tonic: tonic, mode: mode, chordsScale: chordsScale }),
         react_1.default.createElement("br", null)));
 };
 exports["default"] = ProgressionComponent;
@@ -83695,179 +83529,6 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             selectedChord ? react_1.default.createElement(PianoDisplay_1.default, { chord: selectedChord }) : null)) : null));
 };
 exports["default"] = ProgressionGridDisplayComponent;
-
-
-/***/ }),
-
-/***/ "./src/components/scales/ScaleDisplay.tsx":
-/*!************************************************!*\
-  !*** ./src/components/scales/ScaleDisplay.tsx ***!
-  \************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const useDidUpdate_1 = __webpack_require__(/*! ../hooks/useDidUpdate */ "./src/components/hooks/useDidUpdate.tsx");
-const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
-const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePianoDisplay */ "./src/components/scales/ScalePianoDisplay.tsx"));
-__webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
-const Scale_1 = __webpack_require__(/*! ../../Scale */ "./src/Scale.ts");
-const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
-    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
-    const [chordState, setChordState] = (0, react_1.useState)(false);
-    const [chordSelected, setChordSelected] = (0, react_1.useState)("");
-    const style = "scale-chord-btn-pressed";
-    const handleClick = (chord, event) => {
-        if (SoundOn) {
-            (0, Chords_1.PlayChord)(chord);
-        }
-        setChordState(true);
-        setChordSelected(chord);
-        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        event.target.classList.add(style);
-    };
-    const notesOnScale = (0, Scale_1.findNotesScales)(tonic, mode);
-    const chordsScaleList = chordsScale.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
-            handleClick(chords, e);
-        }, className: "scale-chord-btn" }, chords)));
-    (0, react_1.useEffect)(() => {
-        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
-        const chordBtns = Array.from(document.getElementsByClassName("scale-chord-btn"));
-        if (!tonic && !mode) {
-            chordBtns[0].classList.add("invisible");
-        }
-        if (tonic && mode) {
-            if (chordBtns.length > 0) {
-                chordBtns.forEach((btn) => {
-                    btn.classList.remove("invisible");
-                    btn.classList.add("visible");
-                });
-            }
-        }
-        return () => {
-            // Anything in here is fired on component unmount.
-        };
-    }, []);
-    // Reset chord selected when changing tonality or mode.
-    (0, useDidUpdate_1.useDidUpdate)(() => {
-        setChordState(false);
-    }, [tonic, mode]);
-    return (react_1.default.createElement("section", { "aria-label": "Suggested chords for the key and mode choosen", className: "box scale-box" },
-        react_1.default.createElement("h2", null,
-            chordsScale ? "Chords on Scale " + tonic + " " + mode : "",
-            " ",
-            mode == "Minor" ? " (harmonic)" : ""),
-        chordsScaleList,
-        chordState ? react_1.default.createElement(ScalePianoDisplay_1.default, { chord: chordSelected }) : null));
-};
-exports["default"] = ChordsScaleDisplayComponent;
-
-
-/***/ }),
-
-/***/ "./src/components/scales/ScalePianoDisplay.tsx":
-/*!*****************************************************!*\
-  !*** ./src/components/scales/ScalePianoDisplay.tsx ***!
-  \*****************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const PianoChart_1 = __webpack_require__(/*! ../../PianoChart */ "./src/PianoChart.ts");
-__webpack_require__(/*! ../progressions/Piano.css */ "./src/components/progressions/Piano.css");
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const ScalePianoDisplayComponent = ({ chord, }) => {
-    let chordsArray = (0, PianoChart_1.ShowChord)(chord);
-    (0, react_1.useEffect)(() => {
-        if (chordsArray) {
-            chordsArray.forEach((note) => {
-                let scaleNoteId = "s-" + note;
-                const noteFound = document.getElementById(scaleNoteId);
-                if (noteFound) {
-                    noteFound.classList.add("s-pressed");
-                }
-            });
-        }
-        return () => {
-            (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("s-pressed");
-            chordsArray = [""];
-        };
-    }, [chord]);
-    return (react_1.default.createElement("div", { id: "scale-keyboard", className: "keyboard-box" },
-        react_1.default.createElement("ul", { id: "keyboard" },
-            react_1.default.createElement("li", { id: "s-C3", className: "white" }, "C"),
-            react_1.default.createElement("li", { id: "s-C#3", className: "black" }, "C#"),
-            react_1.default.createElement("li", { id: "s-D3", className: "white offset" }, "D"),
-            react_1.default.createElement("li", { id: "s-D#3", className: "black" }, "D#"),
-            react_1.default.createElement("li", { id: "s-E3", className: "white offset" }, "E"),
-            react_1.default.createElement("li", { id: "s-F3", className: "white" }, "F"),
-            react_1.default.createElement("li", { id: "s-F#3", className: "black" }, "F#"),
-            react_1.default.createElement("li", { id: "s-G3", className: "white offset" }, "G"),
-            react_1.default.createElement("li", { id: "s-G#3", className: "black" }, "G#"),
-            react_1.default.createElement("li", { id: "s-A3", className: "white offset" }, "A"),
-            react_1.default.createElement("li", { id: "s-A#3", className: "black" }, "A#"),
-            react_1.default.createElement("li", { id: "s-B3", className: "white offset" }, "B"),
-            react_1.default.createElement("li", { id: "s-C4", className: "white" }, "C"),
-            react_1.default.createElement("li", { id: "s-C#4", className: "black" }, "C#"),
-            react_1.default.createElement("li", { id: "s-D4", className: "white offset" }, "D"),
-            react_1.default.createElement("li", { id: "s-D#4", className: "black" }, "D#"),
-            react_1.default.createElement("li", { id: "s-E4", className: "white offset" }, "E"),
-            react_1.default.createElement("li", { id: "s-F4", className: "white" }, "F"),
-            react_1.default.createElement("li", { id: "s-F#4", className: "black" }, "F#"),
-            react_1.default.createElement("li", { id: "s-G4", className: "white offset" }, "G"),
-            react_1.default.createElement("li", { id: "s-G#4", className: "black" }, "G#"),
-            react_1.default.createElement("li", { id: "s-A4", className: "white offset" }, "A"),
-            react_1.default.createElement("li", { id: "s-A#4", className: "black" }, "A#"),
-            react_1.default.createElement("li", { id: "s-B4", className: "white offset" }, "B"))));
-};
-exports["default"] = ScalePianoDisplayComponent;
 
 
 /***/ }),
