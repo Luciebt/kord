@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useKeypress from "react-use-keypress";
 import { useToggle } from "../hooks/useToggle";
 import { PlayLoop } from "../../audio/Synth";
 import { Transport } from "tone";
@@ -19,6 +20,10 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   const BpmCallback = (bpm: number) => {
     setBpm(bpm);
   };
+
+  useKeypress([" ", "Spacebar"], () => {
+    setToggleLoop();
+  });
 
   // Toggle the loop
   useEffect(() => {
