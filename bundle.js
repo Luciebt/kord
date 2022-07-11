@@ -82501,9 +82501,7 @@ SetupTempo();
 function PlaySynthChords(chordNotes) {
     if (!chordNotes || !exports.polySynth)
         return;
-    console.log("PlaySynthChords__chordNotes___", chordNotes);
     // Tone.Transport.stop();
-    // Tone.start();
     Tone.start().then(() => {
         exports.polySynth.releaseAll();
         exports.polySynth.triggerAttackRelease(chordNotes, "+0.1", 1);
