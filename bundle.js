@@ -82485,6 +82485,7 @@ function PlaySynthChords(chordNotes) {
     tone_1.Transport.stop();
     exports.polySynth.releaseAll();
     exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+    tone_1.Transport.context.resume();
     tone_1.Transport.start();
 }
 exports.PlaySynthChords = PlaySynthChords;
