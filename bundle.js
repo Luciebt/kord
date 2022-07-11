@@ -82505,7 +82505,7 @@ function PlaySynthChords(chordNotes) {
     // Tone.start();
     Tone.start().then(() => {
         exports.polySynth.releaseAll();
-        exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+        exports.polySynth.triggerAttackRelease(chordNotes, "+0.1", 1);
     });
     Tone.Transport.start();
 }
@@ -82542,7 +82542,7 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
 function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
     // chordEvent = new ToneEvent((time) => {
     let seq = new Tone.Sequence((time, note) => {
-        exports.polySynth.triggerAttackRelease(note, "16n", time);
+        exports.polySynth.triggerAttackRelease(note, "+0.1", time);
     }, chordArr);
     // }, "1n");
     seq.start(noteStart);
