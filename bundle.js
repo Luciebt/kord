@@ -82497,14 +82497,16 @@ exports.SetSynthSound = SetSynthSound;
 CreateSynth();
 SetupTempo();
 //------ Make sounds with the synth!
-// TODO: improve synth performance
 function PlaySynthChords(chordNotes) {
     if (!chordNotes || !exports.polySynth)
         return;
-    Tone.Transport.stop();
-    exports.polySynth.releaseAll();
-    exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-    Tone.start();
+    console.log("PlaySynthChords__chordNotes___", chordNotes);
+    // Tone.Transport.stop();
+    // Tone.start();
+    Tone.start().then(() => {
+        exports.polySynth.releaseAll();
+        exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+    });
     Tone.Transport.start();
 }
 exports.PlaySynthChords = PlaySynthChords;
@@ -82627,15 +82629,18 @@ const ChordBuilderComponent = () => {
     const [chordKey, setChordKey] = (0, react_1.useState)("");
     const [chordQuality, setChordQuality] = (0, react_1.useState)("");
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
-    // const [progressionLength, setProgressionLength] = useState(0);
     const [shouldPlay, setShouldPlay] = (0, react_1.useState)(true);
     const KeyCallback = (key) => {
-        // if (key == chordKey) return;
         setChordKey(key);
+        if (chordKey && chordQuality) {
+            setChordSelected(chordKey + chordQuality);
+        }
     };
     const ChordQualityCallback = (quality) => {
-        // if (quality == chordQuality) return;
         setChordQuality(quality);
+        if (chordKey && chordQuality) {
+            setChordSelected(chordKey + chordQuality);
+        }
     };
     const newChordCallback = (newChord) => {
         if (!newChord)
@@ -82653,6 +82658,7 @@ const ChordBuilderComponent = () => {
             return;
         keyBtn.classList.add("key-btn-pressed");
         keyBtn.click();
+        // Triggers sound from keyboard (and also the previous one??)
         if (SoundOn)
             (0, Chords_1.PlayChord)(key + quality);
         setShouldPlay(false);
@@ -82660,9 +82666,10 @@ const ChordBuilderComponent = () => {
     (0, react_1.useEffect)(() => {
         const chordToBuild = chordKey + chordQuality;
         setChordSelected(chordToBuild);
+        // Triggers sound on click.
         if (SoundOn && shouldPlay)
             (0, Chords_1.PlayChord)(chordToBuild);
-        setShouldPlay(true);
+        setShouldPlay(false);
     }, [chordKey, chordQuality]);
     return (react_1.default.createElement("section", { className: "centered-box" },
         react_1.default.createElement("div", { className: "prog-chooser-box" },
@@ -83525,17 +83532,10 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
     const [selectedPos, setSelectedPos] = (0, react_1.useState)(1);
     const [selectedChord, setSelectedChord] = (0, react_1.useState)("");
     const [progressionMap, setProgressionMap] = (0, react_1.useState)(new Map());
-    const Play = (chordIndex) => {
-        // if (!SoundOn) return;
-        // polySynth.releaseAll();
-        // const chordToPlay = progressionMap.get(chordIndex);
-        // if (chordToPlay) PlayChord(chordToPlay);
-    };
     const onGridSizeChange = (event) => {
         // Convert to number, and increase/decrease grid divs.
         setGridSize(event.target.value);
     };
-    // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
     const handlePositionClickAndKeyPress = (posId, event) => {
         if (!posId || posId <= 0 || posId > 8)
             return;
@@ -83617,7 +83617,6 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             return;
         selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
         setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
-        setSelectedChord(chordToAdd);
         return () => { };
     }, [chordToAdd]);
     const isInputFieldFocused = () => {
