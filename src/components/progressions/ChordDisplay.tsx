@@ -22,7 +22,6 @@ const ChordDisplayComponent = ({
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
   let chordArr: string[] = chord.split(",");
-
   let romanNumerals: string[] = GetRomansForChord(chordArr);
 
   // Move keyboard focus to the chords box when mounted.
@@ -36,34 +35,22 @@ const ChordDisplayComponent = ({
     }
   }, []);
 
-  const handleClick = (chord: string, index: number, event?: any) => {
-    if (!chord) return;
+  const handleClickAndKeyPress = (
+    posId: number,
+    chord?: string,
+    event?: any
+  ) => {
+    let chordFound: string | undefined = chord;
+    if (!chordFound) chordFound = chordArr[posId];
 
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
-    const chordBtn = document.getElementById(`btn-${index}`);
+    const chordBtn = document.getElementById(`btn-${posId}`);
     if (chordBtn) chordBtn.classList.add("chord-btn-pressed");
 
-    if (SoundOn) PlayChord(chord);
+    if (SoundOn) PlayChord(chordFound);
     setChordState(true);
-    setChordSelected(chord);
+    setChordSelected(chordFound);
   };
-
-  const handleKeyPress = (id: number) => {
-    const chord: string = chordArr[id];
-    if (!chord) return;
-
-    unPressElementsStyleWithoutEvent("chord-btn-pressed");
-    const chordBtn = document.getElementById(`btn-${id}`);
-    if (chordBtn) chordBtn.classList.add("chord-btn-pressed");
-
-    if (SoundOn) PlayChord(chord);
-    setChordState(true);
-    setChordSelected(chord);
-  };
-
-  // useEffect(() => {
-  //   if (SoundOn && chordSelected) PlayChord(chordSelected);
-  // }, [chordSelected]);
 
   useEffect(() => {
     return () => {
@@ -76,36 +63,36 @@ const ChordDisplayComponent = ({
 
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
   useKeypress(["1", "a", "q"], () => {
-    handleKeyPress(0);
+    handleClickAndKeyPress(1);
   });
   useKeypress(["2", "w", "z"], () => {
-    handleKeyPress(1);
+    handleClickAndKeyPress(2);
   });
   useKeypress(["3", "e"], () => {
-    handleKeyPress(2);
+    handleClickAndKeyPress(3);
   });
   useKeypress(["4", "r"], () => {
-    handleKeyPress(3);
+    handleClickAndKeyPress(4);
   });
   useKeypress(["5", "t"], () => {
-    handleKeyPress(4);
+    handleClickAndKeyPress(5);
   });
   useKeypress(["6", "y"], () => {
-    handleKeyPress(5);
+    handleClickAndKeyPress(6);
   });
   useKeypress(["7", "u"], () => {
-    handleKeyPress(6);
+    handleClickAndKeyPress(7);
   });
   useKeypress(["8", "i"], () => {
-    handleKeyPress(7);
+    handleClickAndKeyPress(8);
   });
 
   const chordsList: JSX.Element[] = chordArr.map((c, i) => (
     <button
       key={i}
-      id={"btn-" + i.toString()}
+      id={"btn-" + (i + 1).toString()}
       onClick={(e) => {
-        handleClick(c, i, e);
+        handleClickAndKeyPress(i + 1, c, e);
       }}
       className="chord-btn"
     >

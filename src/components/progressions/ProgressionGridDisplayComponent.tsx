@@ -5,17 +5,13 @@ import MidiButtonComponent from "../buttons/MidiButton";
 import PianoDisplay from "./PianoDisplay";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { PlayChord } from "../../Chords";
 import { SoundOnContext } from "../../App";
-import { polySynth } from "../../audio/Synth";
 
 export interface IProgressionGridDisplayProps {
   tonic?: string;
   chordToAdd?: string;
   onPressChord: any;
 }
-
-// TODO: Add roman numeral:       <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
 
 const ProgressionGridDisplayComponent = ({
   tonic,
@@ -42,39 +38,19 @@ const ProgressionGridDisplayComponent = ({
     setGridSize(event.target.value);
   };
 
-  const handlePositionClick = (event?: any) => {
-    unPressElementsStyleWithoutEvent("selected-position");
-
-    if (event.target.id[0] == "g") {
-      // Add class to the parent div if the inner one is selected
-      event.target.parentNode.classList.add("selected-position");
-    } else if (event.target.id[0] == "p") {
-      // We're at the parent div already
-      event.target.classList.add("selected-position");
-    }
-
-    const newPos: number = +event.target.id[4];
-    const newChord = progressionMap.get(newPos);
-
-    if (newPos) setSelectedPos(newPos);
-    if (newChord) setSelectedChord(newChord);
-    if (newChord) onPressChord(newChord);
-  };
-
   // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
-
-  const handleKeyPress = (id: number) => {
-    // Using the keyboard to select the grid div, with the id = gridDiv position ("pos-1 to -8");
-    if (!id || id <= 0 || id > 8) return;
+  const handlePositionClickAndKeyPress = (posId: number, event?: any) => {
+    if (!posId || posId <= 0 || posId > 8) return;
 
     // Handle css to apply the selection color
     unPressElementsStyleWithoutEvent("selected-position");
-    const gridDiv = document.getElementById("pos-" + id);
-    if (!gridDiv) return;
-    gridDiv.classList.add("selected-position");
+    const gridDiv = document.getElementById("pos-" + posId);
+    if (gridDiv) gridDiv.classList.add("selected-position");
 
-    const newPos: number = +id;
+    const newPos: number = Number(posId);
     const newChord = progressionMap.get(newPos);
+
+    console.log("newChord__", newChord);
 
     if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
@@ -132,7 +108,7 @@ const ProgressionGridDisplayComponent = ({
       newDiv.id = "pos-" + newDivId;
       newDiv.tabIndex = 0;
       newDiv.addEventListener("click", function (event: any) {
-        handlePositionClick(event);
+        handlePositionClickAndKeyPress(newDivId, event);
       });
       // Add div at the end of the list
       if (parentNode) parentNode.appendChild(newDiv);
@@ -142,45 +118,43 @@ const ProgressionGridDisplayComponent = ({
   }, [gridSize]);
 
   useEffect(() => {
-    if (chordToAdd) {
-      const selectedGridDiv = document.getElementById("pos-" + selectedPos);
+    if (!chordToAdd) return;
 
-      if (selectedGridDiv)
-        selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
+    const selectedGridDiv = document.getElementById("pos-" + selectedPos);
+    if (!selectedGridDiv) return;
+    selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
+    console.log(selectedGridDiv);
 
-      setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
-      setSelectedChord(chordToAdd);
-    }
-
-    // console.log(Array.from(progressionMap.values()));
+    setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
+    setSelectedChord(chordToAdd);
 
     return () => {};
   }, [chordToAdd]);
 
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
   useKeypress(["1", "a", "q"], () => {
-    handleKeyPress(1);
+    handlePositionClickAndKeyPress(1);
   });
   useKeypress(["2", "w", "z"], () => {
-    handleKeyPress(2);
+    handlePositionClickAndKeyPress(2);
   });
   useKeypress(["3", "e"], () => {
-    handleKeyPress(3);
+    handlePositionClickAndKeyPress(3);
   });
   useKeypress(["4", "r"], () => {
-    handleKeyPress(4);
+    handlePositionClickAndKeyPress(4);
   });
   useKeypress(["5", "t"], () => {
-    handleKeyPress(5);
+    handlePositionClickAndKeyPress(5);
   });
   useKeypress(["6", "y"], () => {
-    handleKeyPress(6);
+    handlePositionClickAndKeyPress(6);
   });
   useKeypress(["7", "u"], () => {
-    handleKeyPress(7);
+    handlePositionClickAndKeyPress(7);
   });
   useKeypress(["8", "i"], () => {
-    handleKeyPress(8);
+    handlePositionClickAndKeyPress(8);
   });
 
   return (
@@ -195,28 +169,28 @@ const ProgressionGridDisplayComponent = ({
             tabIndex={0}
             id="pos-1"
             onClick={(e) => {
-              handlePositionClick(e);
+              handlePositionClickAndKeyPress(1, e);
             }}
           ></div>
           <div
             tabIndex={0}
             id="pos-2"
             onClick={(e) => {
-              handlePositionClick(e);
+              handlePositionClickAndKeyPress(2, e);
             }}
           ></div>
           <div
             tabIndex={0}
             id="pos-3"
             onClick={(e) => {
-              handlePositionClick(e);
+              handlePositionClickAndKeyPress(3, e);
             }}
           ></div>
           <div
             tabIndex={0}
             id="pos-4"
             onClick={(e) => {
-              handlePositionClick(e);
+              handlePositionClickAndKeyPress(4, e);
             }}
           ></div>
         </section>
@@ -246,7 +220,7 @@ const ProgressionGridDisplayComponent = ({
         <div className="prog-box">
           <h2>{selectedChord as string}</h2>
           {/* TODO: Update piano on LOOP */}
-          <PianoDisplay chord={selectedChord as string} />
+          {selectedChord ? <PianoDisplay chord={selectedChord} /> : null}
         </div>
       ) : null}
     </div>
