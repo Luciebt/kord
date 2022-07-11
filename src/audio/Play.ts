@@ -1,4 +1,4 @@
-import { Synth, PolySynth, Transport, ToneEvent, Draw, Sequence } from "tone";
+import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
 import { unPressElementsStyleWithoutEvent } from "../components/hooks/unPressElementStyle";
 
@@ -9,21 +9,21 @@ const synthSounds = {
   imperatricePartials: [0, 2, 3, 4],
 };
 
-export let polySynth: PolySynth;
-export let chordEvent: ToneEvent;
+export let polySynth: Tone.PolySynth;
+export let chordEvent: Tone.ToneEvent;
 
-//------ Transport functions
+//------ Tone.Transport functions
 
 export function SetupTempo(bpm: number = 120): void {
-  Transport.bpm.value = bpm;
+  Tone.Transport.bpm.value = bpm;
 }
 
 export function GetTempo(): number {
-  return Transport.bpm.value;
+  return Tone.Transport.bpm.value;
 }
 
 export function SetTempo(newValue: number): void {
-  Transport.bpm.rampTo(newValue, 1);
+  Tone.Transport.bpm.rampTo(newValue, 1);
 }
 
 //------ Metronome functions
@@ -32,7 +32,7 @@ export function SetTempo(newValue: number): void {
 //   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1506195/keyboard-key.mp3"
 // ).toDestination();
 
-// Transport.scheduleRepeat((time) => {
+// Tone.Transport.scheduleRepeat((time) => {
 //   player.start(time).stop(time + 0.1);
 // }, "4n");
 
@@ -47,7 +47,7 @@ function CreateSynth(
     polySynth.dispose();
   }
   // Create a new synth with new partials, cuteSine being the defaults.
-  polySynth = new PolySynth(Synth, {
+  polySynth = new Tone.PolySynth(Tone.Synth, {
     volume: -9,
     detune: 0,
     portamento: 0,
@@ -92,11 +92,11 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  Transport.stop();
+  Tone.Transport.stop();
   polySynth.releaseAll();
   polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-  Transport.context.resume();
-  Transport.start();
+  Tone.start();
+  Tone.Transport.start();
 }
 
 //------ Loop chord progression.
@@ -118,16 +118,16 @@ function PlayChordLoopEvent(
   progressionLength: number,
   noteStart: string = "0:0:0"
 ): void {
-  chordEvent = new ToneEvent((time) => {
+  chordEvent = new Tone.ToneEvent((time) => {
     polySynth.triggerAttackRelease(chordArr, "1n", time);
 
-    // Draw the grid highlight - need Draw to sync visuals with transport
-    Draw.schedule(() => {
+    // Draw the grid highlight - need Draw to sync visuals with Tone.transport
+    Tone.Draw.schedule(() => {
       const posId: number = parseInt(noteStart.split(":")[0]) + 1;
       AddGridHighlight(posId);
     }, time);
   }, "1n");
-  // start the chord at the beginning of the transport timeline
+  // start the chord at the beginning of the Tone.transport timeline
   chordEvent.start(noteStart);
   // loop it every measure, depending on the number of chords to play.
   const measuresToPlay: string = progressionLength.toString() + "m";
@@ -143,7 +143,7 @@ function PlayChordSequence(
   id: number
 ): void {
   // chordEvent = new ToneEvent((time) => {
-  let seq = new Sequence((time, note) => {
+  let seq = new Tone.Sequence((time, note) => {
     polySynth.triggerAttackRelease(note, "16n", time);
   }, chordArr);
   // }, "1n");
@@ -182,8 +182,7 @@ export function PlayLoop(chordArr: string[]): void {
   const progressionLength: number = chordArr.length;
   for (let i = 0; i < progressionLength; i++) {
     const noteStart = i.toString() + ":0:0";
-    // console.log("loop loop", chordsToLoop[i], progressionLength, noteStart);
-    // PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
-    PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
+    PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+    // PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
   }
 }
