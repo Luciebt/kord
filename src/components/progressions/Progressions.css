@@ -14,3 +14,13 @@
   margin-top: 0.6em;
   margin-bottom: 0.6em;
 }
+
+.highlight-chord-div {
+  background-color: var(--pressed-color) !important;
+  border: 1px solid var(--pressed-color) !important;
+  color: antiquewhite !important;
+}
+
+.highlight-chord-div .btn-caption {
+  color: antiquewhite;
+}

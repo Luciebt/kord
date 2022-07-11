@@ -65,6 +65,7 @@ function ReturnSharpFromFlatNotes(chord: string): string {
 }
 
 export function CleanChords(chordStr: string): string {
+  if (!chordStr) return "";
   if (chordStr.includes("E#")) {
     chordStr = chordStr.replaceAll("E#", "F");
   }

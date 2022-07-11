@@ -1,12 +1,11 @@
-import { Synth, PolySynth, Transport, ToneEvent, Player } from "tone";
+import { Synth, PolySynth, Transport, ToneEvent, Draw } from "tone";
 import { ShowChord } from "../PianoChart";
+import { unPressElementsStyleWithoutEvent } from "../components/hooks/unPressElementStyle";
 // TODO: see https://github.com/Tonejs/Tone.js/wiki/Using-Tone.js-with-React-React-Typescript-or-Vue
 
 //------ Global variables
 
 export let polySynth: PolySynth;
-// TODO: use chordEvent.progress to track progress of current loop - progress bar.
-// TODO: Also to highlight the correct DIV when playing the loop (in both tabs)
 export let chordEvent: ToneEvent;
 
 const synthSounds = {
@@ -90,16 +89,25 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  console.log("Playing now______", chordNotes);
-
   Transport.stop();
   polySynth.releaseAll();
   polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-  // Tone.start();
   Transport.start();
 }
 
 //------ Loop chord progression.
+
+function AddGridHighlight(posId: number): any {
+  unPressElementsStyleWithoutEvent("highlight-chord-div");
+  unPressElementsStyleWithoutEvent("chord-btn-pressed");
+  unPressElementsStyleWithoutEvent("selected-position");
+
+  let currentChord = document.getElementById(`btn-${posId}`);
+  if (currentChord) return currentChord.classList.add("highlight-chord-div");
+
+  currentChord = document.getElementById(`pos-${posId}`);
+  if (currentChord) return currentChord.classList.add("selected-position");
+}
 
 function PlayChordLoopEvent(
   chordArr: string[],
@@ -108,15 +116,20 @@ function PlayChordLoopEvent(
 ): void {
   chordEvent = new ToneEvent((time) => {
     polySynth.triggerAttackRelease(chordArr, "1n", time);
-    console.log(chordArr, "1n", time);
-  });
+
+    // Draw the grid highlight - need Draw to sync visuals with transport
+    Draw.schedule(() => {
+      const posId: number = parseInt(noteStart.split(":")[0]) + 1;
+      AddGridHighlight(posId);
+    }, time);
+  }, "1n");
   // start the chord at the beginning of the transport timeline
   chordEvent.start(noteStart);
   // loop it every measure, depending on the number of chords to play.
-  let measuresToPlay: string = progressionLength.toString();
+  const measuresToPlay: string = progressionLength.toString() + "m";
   // Loop the progression forever and set its length.
   chordEvent.loop = true;
-  chordEvent.loopEnd = measuresToPlay += "m";
+  chordEvent.loopEnd = measuresToPlay;
 }
 
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)

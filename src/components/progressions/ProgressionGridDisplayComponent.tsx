@@ -123,7 +123,6 @@ const ProgressionGridDisplayComponent = ({
     const selectedGridDiv = document.getElementById("pos-" + selectedPos);
     if (!selectedGridDiv) return;
     selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
-    console.log(selectedGridDiv);
 
     setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
     setSelectedChord(chordToAdd);

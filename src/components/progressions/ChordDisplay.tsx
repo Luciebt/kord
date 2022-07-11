@@ -44,6 +44,7 @@ const ChordDisplayComponent = ({
     if (!chordFound) chordFound = chordArr[posId];
 
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
+    unPressElementsStyleWithoutEvent("highlight-chord-div");
     const chordBtn = document.getElementById(`btn-${posId}`);
     if (chordBtn) chordBtn.classList.add("chord-btn-pressed");
 
