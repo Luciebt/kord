@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from "react";
 // import { SoundOnContext } from "../../App";
-// import { polySynth } from "../../audio/Synth";
+// import { polySynth } from "../../audio/Play";
 // import { PlayChord } from "../../Chords";
 // import ProgressionGridDisplayComponent from "./ProgressionGridDisplayComponent";
 

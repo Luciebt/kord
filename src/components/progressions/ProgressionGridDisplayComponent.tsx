@@ -50,8 +50,6 @@ const ProgressionGridDisplayComponent = ({
     const newPos: number = Number(posId);
     const newChord = progressionMap.get(newPos);
 
-    // console.log("newChord__", newChord);
-
     if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
     if (newChord) onPressChord(newChord);

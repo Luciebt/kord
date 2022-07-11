@@ -4,7 +4,7 @@ import KeyButton from "./buttons/KeyButton";
 import QualityButton from "./buttons/QualityButton";
 import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDisplayComponent";
 import { SoundOnContext } from "../App";
-import { polySynth } from "../audio/Synth";
+import { polySynth } from "../audio/Play";
 import { unPressElementsStyleWithoutEvent } from "./hooks/unPressElementStyle";
 import { FullChordStringToArray } from "../NoteUtils";
 
@@ -13,14 +13,16 @@ const ChordBuilderComponent = (): JSX.Element => {
   const [chordKey, setChordKey] = useState("");
   const [chordQuality, setChordQuality] = useState("");
   const [chordSelected, setChordSelected] = useState("");
+  // const [progressionLength, setProgressionLength] = useState(0);
+  const [shouldPlay, setShouldPlay] = useState(true);
 
   const KeyCallback = (key: string) => {
-    if (key == chordKey) return;
+    // if (key == chordKey) return;
     setChordKey(key);
   };
 
   const ChordQualityCallback = (quality: string) => {
-    if (quality == chordQuality) return;
+    // if (quality == chordQuality) return;
     setChordQuality(quality);
   };
 
@@ -39,16 +41,16 @@ const ChordBuilderComponent = (): JSX.Element => {
     if (!keyBtn) return;
     keyBtn.classList.add("key-btn-pressed");
     keyBtn.click();
+
+    if (SoundOn) PlayChord(key + quality);
+    setShouldPlay(false);
   };
 
   useEffect(() => {
-    if (!chordKey || !chordQuality) return;
     const chordToBuild = chordKey + chordQuality;
-    if (chordSelected == chordToBuild) return;
     setChordSelected(chordToBuild);
-    if (SoundOn) {
-      PlayChord(chordToBuild);
-    }
+    if (SoundOn && shouldPlay) PlayChord(chordToBuild);
+    setShouldPlay(true);
   }, [chordKey, chordQuality]);
 
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SetupTempo, GetTempo, SetTempo } from "../../audio/Synth";
+import { SetupTempo, GetTempo, SetTempo } from "../../audio/Play";
 import "./Bpm.css";
 
 interface IBpmRange {

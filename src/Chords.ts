@@ -1,6 +1,6 @@
 import { Note, Chord } from "@tonaljs/tonal";
 import { detect } from "@tonaljs/chord-detect";
-import { PlaySynthChords, polySynth } from "./audio/Synth";
+import { PlaySynthChords, polySynth } from "./audio/Play";
 // import { SetupPiano, PlayPianoChords } from "./audio/Piano";
 import { CleanChords, SimplifiedChordNotationConverter } from "./NoteUtils";
 

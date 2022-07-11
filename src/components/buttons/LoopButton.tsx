@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useKeypress from "react-use-keypress";
 import { useToggle } from "../hooks/useToggle";
-import { PlayLoop } from "../../audio/Synth";
+import { PlayLoop } from "../../audio/Play";
 import { Transport } from "tone";
 import "./Buttons.css";
 import { SoundOnContext } from "../../App";
