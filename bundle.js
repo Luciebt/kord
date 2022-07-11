@@ -82480,6 +82480,8 @@ function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
             type: "custom",
         },
     }).toDestination();
+    // See https://github.com/Tonejs/Tone.js/wiki/Performance#contextlatencyhint
+    // Tone.setContext(new Tone.Context({ latencyHint: "balanced" }));
     // const reverb = new Freeverb().toDestination();
     // reverb.wet.value = 0.3;
     // polySynth.connect(reverb);
@@ -82530,7 +82532,7 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
             const posId = parseInt(noteStart.split(":")[0]) + 1;
             AddGridHighlight(posId);
         }, time);
-    }, "1n");
+    }, "+0.1");
     // start the chord at the beginning of the Tone.transport timeline
     exports.chordEvent.start(noteStart);
     // loop it every measure, depending on the number of chords to play.
@@ -82540,11 +82542,11 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     exports.chordEvent.loopEnd = measuresToPlay;
 }
 function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
-    // chordEvent = new ToneEvent((time) => {
+    // let chordSeqEvent = new Tone.ToneEvent((time) => {
     let seq = new Tone.Sequence((time, note) => {
-        exports.polySynth.triggerAttackRelease(note, "+0.1", time);
-    }, chordArr);
-    // }, "1n");
+        exports.polySynth.triggerAttackRelease(note, "16n", time);
+    }, chordArr, "+0.1");
+    // }, "+0.1");
     seq.start(noteStart);
     seq.loop = chordArr.length;
 }
