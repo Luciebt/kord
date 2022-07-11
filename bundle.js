@@ -82593,14 +82593,14 @@ const ChordBuilderComponent = () => {
     const [chordKey, setChordKey] = (0, react_1.useState)("");
     const [chordQuality, setChordQuality] = (0, react_1.useState)("");
     const [chordSelected, setChordSelected] = (0, react_1.useState)("");
+    // const [progressionLength, setProgressionLength] = useState(0);
+    const [shouldPlay, setShouldPlay] = (0, react_1.useState)(true);
     const KeyCallback = (key) => {
-        if (key == chordKey)
-            return;
+        // if (key == chordKey) return;
         setChordKey(key);
     };
     const ChordQualityCallback = (quality) => {
-        if (quality == chordQuality)
-            return;
+        // if (quality == chordQuality) return;
         setChordQuality(quality);
     };
     const newChordCallback = (newChord) => {
@@ -82619,17 +82619,16 @@ const ChordBuilderComponent = () => {
             return;
         keyBtn.classList.add("key-btn-pressed");
         keyBtn.click();
+        if (SoundOn)
+            (0, Chords_1.PlayChord)(key + quality);
+        setShouldPlay(false);
     };
     (0, react_1.useEffect)(() => {
-        if (!chordKey || !chordQuality)
-            return;
         const chordToBuild = chordKey + chordQuality;
-        if (chordSelected == chordToBuild)
-            return;
         setChordSelected(chordToBuild);
-        if (SoundOn) {
+        if (SoundOn && shouldPlay)
             (0, Chords_1.PlayChord)(chordToBuild);
-        }
+        setShouldPlay(true);
     }, [chordKey, chordQuality]);
     return (react_1.default.createElement("section", { className: "centered-box" },
         react_1.default.createElement("div", { className: "prog-chooser-box" },
@@ -82858,6 +82857,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
 const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
 const Synth_1 = __webpack_require__(/*! ../../audio/Synth */ "./src/audio/Synth.ts");
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
@@ -82871,6 +82871,9 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
     const BpmCallback = (bpm) => {
         setBpm(bpm);
     };
+    (0, react_use_keypress_1.default)([" ", "Spacebar"], () => {
+        setToggleLoop();
+    });
     // Toggle the loop
     (0, react_1.useEffect)(() => {
         if (toggleLoop) {
@@ -82888,7 +82891,7 @@ const LoopButton = ({ onPressLoop, chordsList }) => {
         if (!toggleLoop) {
             // Stop playing
             tone_1.Transport.stop();
-            // Transport.cancel();
+            tone_1.Transport.cancel();
             // Apply CSS
             const btn = document.getElementById("loop");
             if (btn) {
@@ -83497,7 +83500,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             gridDiv.classList.add("selected-position");
         const newPos = Number(posId);
         const newChord = progressionMap.get(newPos);
-        console.log("newChord__", newChord);
+        // console.log("newChord__", newChord);
         if (newPos)
             setSelectedPos(newPos);
         if (newChord)
