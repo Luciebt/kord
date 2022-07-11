@@ -65,14 +65,13 @@ function CreateSynth(
       phase: 0,
       type: "custom",
     },
-  }).toDestination();
+  });
 
   // See https://github.com/Tonejs/Tone.js/wiki/Performance#contextlatencyhint
   // Tone.setContext(new Tone.Context({ latencyHint: "balanced" }));
 
-  // const reverb = new Freeverb().toDestination();
-  // reverb.wet.value = 0.3;
-  // polySynth.connect(reverb);
+  const gain = new Tone.Gain(0.6).toDestination();
+  polySynth.connect(gain);
 }
 
 export function SetSynthSound(synthSound: string): void {
