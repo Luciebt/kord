@@ -42,7 +42,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
     if (!toggleLoop) {
       // Stop playing
       Transport.stop();
-      // Transport.cancel();
+      Transport.cancel();
 
       // Apply CSS
       const btn = document.getElementById("loop") as HTMLButtonElement;
