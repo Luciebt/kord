@@ -62,30 +62,38 @@ const ChordDisplayComponent = ({
     };
   }, [chord]);
 
+  const isInputFieldFocused = () => {
+    const activeEl = document.activeElement as HTMLElement;
+    if (activeEl)
+      return (
+        activeEl.id === "bpm-input" || activeEl.id === "range-number-bpm-input"
+      );
+  };
+
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
   useKeypress(["1", "a", "q"], () => {
-    handleClickAndKeyPress(1);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(1);
   });
   useKeypress(["2", "w", "z"], () => {
-    handleClickAndKeyPress(2);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(2);
   });
   useKeypress(["3", "e"], () => {
-    handleClickAndKeyPress(3);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(3);
   });
   useKeypress(["4", "r"], () => {
-    handleClickAndKeyPress(4);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(4);
   });
   useKeypress(["5", "t"], () => {
-    handleClickAndKeyPress(5);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(5);
   });
   useKeypress(["6", "y"], () => {
-    handleClickAndKeyPress(6);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(6);
   });
   useKeypress(["7", "u"], () => {
-    handleClickAndKeyPress(7);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(7);
   });
   useKeypress(["8", "i"], () => {
-    handleClickAndKeyPress(8);
+    if (!isInputFieldFocused()) handleClickAndKeyPress(8);
   });
 
   const chordsList: JSX.Element[] = chordArr.map((c, i) => (

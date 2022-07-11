@@ -18,7 +18,7 @@ const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
   };
 
   useEffect(() => {
-    setBpm(GetTempo().toString());
+    setBpm(Math.floor(GetTempo()).toString());
     return () => {};
   }, []);
 
@@ -26,14 +26,22 @@ const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
     <section className="bpm-box">
       <input
         aria-label="Set a bpm for the loop"
-        type="number"
+        type="range"
         min="60"
         max="200"
         value={bpm}
         onChange={handleChange}
-        className="bpm-input"
-      />{" "}
-      BPM
+        id="bpm-input"
+      />
+      <input
+        type="number"
+        aria-label="Set a bpm for the loop"
+        id="range-number-bpm-input"
+        min="60"
+        max="200"
+        value={bpm}
+        onChange={handleChange}
+      ></input>
     </section>
   );
 };

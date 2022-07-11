@@ -1,13 +1,23 @@
-.bpm-input {
-  font-size: 1.4em;
-  outline: none;
-  max-width: 5em;
-  min-height: 3.6em;
-  padding: 0.6em;
-  margin: 0.2em;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  resize: none;
+.bpm-box {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  align-items: center;
+}
+
+#bpm-input {
+  width: 6em;
+}
+
+#range-number-bpm-input {
+  width: 6em;
+  height: 2em;
+}
+
+input[type="range"] {
+  width: 90px;
+  height: 7px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: transparent;
 }

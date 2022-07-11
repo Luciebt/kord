@@ -50,7 +50,7 @@ const ProgressionGridDisplayComponent = ({
     const newPos: number = Number(posId);
     const newChord = progressionMap.get(newPos);
 
-    console.log("newChord__", newChord);
+    // console.log("newChord__", newChord);
 
     if (newPos) setSelectedPos(newPos);
     if (newChord) setSelectedChord(newChord);
@@ -130,30 +130,38 @@ const ProgressionGridDisplayComponent = ({
     return () => {};
   }, [chordToAdd]);
 
+  const isInputFieldFocused = () => {
+    const activeEl = document.activeElement as HTMLElement;
+    if (activeEl)
+      return (
+        activeEl.id === "bpm-input" || activeEl.id === "range-number-bpm-input"
+      );
+  };
+
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
   useKeypress(["1", "a", "q"], () => {
-    handlePositionClickAndKeyPress(1);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(1);
   });
   useKeypress(["2", "w", "z"], () => {
-    handlePositionClickAndKeyPress(2);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(2);
   });
   useKeypress(["3", "e"], () => {
-    handlePositionClickAndKeyPress(3);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(3);
   });
   useKeypress(["4", "r"], () => {
-    handlePositionClickAndKeyPress(4);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(4);
   });
   useKeypress(["5", "t"], () => {
-    handlePositionClickAndKeyPress(5);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(5);
   });
   useKeypress(["6", "y"], () => {
-    handlePositionClickAndKeyPress(6);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(6);
   });
   useKeypress(["7", "u"], () => {
-    handlePositionClickAndKeyPress(7);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(7);
   });
   useKeypress(["8", "i"], () => {
-    handlePositionClickAndKeyPress(8);
+    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(8);
   });
 
   return (

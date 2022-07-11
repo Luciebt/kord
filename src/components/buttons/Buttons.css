@@ -74,6 +74,13 @@ button.scale-chord-btn:hover {
 
 /* Loop button */
 
+#loop {
+  height: 2.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loop-box {
   display: flex;
   flex-direction: row;
@@ -83,19 +90,19 @@ button.scale-chord-btn:hover {
 
 .loop-btn {
   font-size: 1.4em;
-  color: var(--pressed-color);
-  border: 1px solid var(--pressed-color);
+  color: var(--dominant-dark);
+  border: 1px solid var(--dominant-dark);
 }
 .loop-btn:hover {
-  background-color: var(--pressed-color);
+  background-color: var(--dominant-dark);
   color: white;
-  border: 1px solid var(--pressed-color);
+  border: 1px solid var(--dominant-dark);
 }
 .loop-btn-pressed {
   font-size: 1.4em;
-  background-color: var(--pressed-color);
+  background-color: var(--dominant-dark);
   color: white;
-  border: 1px solid var(--pressed-color);
+  border: 1px solid var(--dominant-dark);
 }
 .loop-btn-disabled {
   opacity: 0.4;
