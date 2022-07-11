@@ -95,6 +95,7 @@ export function PlaySynthChords(chordNotes: string[]): void {
   Transport.stop();
   polySynth.releaseAll();
   polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+  Transport.context.resume();
   Transport.start();
 }
 
