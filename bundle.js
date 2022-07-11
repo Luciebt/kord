@@ -82400,13 +82400,32 @@ exports.findNotesScales = findNotesScales;
 /*!***************************!*\
   !*** ./src/audio/Play.ts ***!
   \***************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.SetTempo = exports.GetTempo = exports.SetupTempo = exports.chordEvent = exports.polySynth = void 0;
-const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
+const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
 const unPressElementStyle_1 = __webpack_require__(/*! ../components/hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
 //------ Global variables
@@ -82414,24 +82433,24 @@ const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
     imperatricePartials: [0, 2, 3, 4],
 };
-//------ Transport functions
+//------ Tone.Transport functions
 function SetupTempo(bpm = 120) {
-    tone_1.Transport.bpm.value = bpm;
+    Tone.Transport.bpm.value = bpm;
 }
 exports.SetupTempo = SetupTempo;
 function GetTempo() {
-    return tone_1.Transport.bpm.value;
+    return Tone.Transport.bpm.value;
 }
 exports.GetTempo = GetTempo;
 function SetTempo(newValue) {
-    tone_1.Transport.bpm.rampTo(newValue, 1);
+    Tone.Transport.bpm.rampTo(newValue, 1);
 }
 exports.SetTempo = SetTempo;
 //------ Metronome functions
 // const player = new Player(
 //   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1506195/keyboard-key.mp3"
 // ).toDestination();
-// Transport.scheduleRepeat((time) => {
+// Tone.Transport.scheduleRepeat((time) => {
 //   player.start(time).stop(time + 0.1);
 // }, "4n");
 //------ Synth utils
@@ -82442,7 +82461,7 @@ function CreateSynth(newPartials = synthSounds.cuteSinePartials) {
         exports.polySynth.dispose();
     }
     // Create a new synth with new partials, cuteSine being the defaults.
-    exports.polySynth = new tone_1.PolySynth(tone_1.Synth, {
+    exports.polySynth = new Tone.PolySynth(Tone.Synth, {
         volume: -9,
         detune: 0,
         portamento: 0,
@@ -82482,11 +82501,11 @@ SetupTempo();
 function PlaySynthChords(chordNotes) {
     if (!chordNotes || !exports.polySynth)
         return;
-    tone_1.Transport.stop();
+    Tone.Transport.stop();
     exports.polySynth.releaseAll();
     exports.polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-    tone_1.Transport.context.resume();
-    tone_1.Transport.start();
+    Tone.start();
+    Tone.Transport.start();
 }
 exports.PlaySynthChords = PlaySynthChords;
 //------ Loop chord progression.
@@ -82502,15 +82521,15 @@ function AddGridHighlight(posId) {
         return currentChord.classList.add("selected-position");
 }
 function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
-    exports.chordEvent = new tone_1.ToneEvent((time) => {
+    exports.chordEvent = new Tone.ToneEvent((time) => {
         exports.polySynth.triggerAttackRelease(chordArr, "1n", time);
-        // Draw the grid highlight - need Draw to sync visuals with transport
-        tone_1.Draw.schedule(() => {
+        // Draw the grid highlight - need Draw to sync visuals with Tone.transport
+        Tone.Draw.schedule(() => {
             const posId = parseInt(noteStart.split(":")[0]) + 1;
             AddGridHighlight(posId);
         }, time);
     }, "1n");
-    // start the chord at the beginning of the transport timeline
+    // start the chord at the beginning of the Tone.transport timeline
     exports.chordEvent.start(noteStart);
     // loop it every measure, depending on the number of chords to play.
     const measuresToPlay = progressionLength.toString() + "m";
@@ -82520,7 +82539,7 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
 }
 function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
     // chordEvent = new ToneEvent((time) => {
-    let seq = new tone_1.Sequence((time, note) => {
+    let seq = new Tone.Sequence((time, note) => {
         exports.polySynth.triggerAttackRelease(note, "16n", time);
     }, chordArr);
     // }, "1n");
@@ -82555,9 +82574,8 @@ function PlayLoop(chordArr) {
     const progressionLength = chordArr.length;
     for (let i = 0; i < progressionLength; i++) {
         const noteStart = i.toString() + ":0:0";
-        // console.log("loop loop", chordsToLoop[i], progressionLength, noteStart);
-        // PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
-        PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
+        PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+        // PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
     }
 }
 exports.PlayLoop = PlayLoop;
