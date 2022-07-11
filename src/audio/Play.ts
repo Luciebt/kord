@@ -88,14 +88,17 @@ SetupTempo();
 
 //------ Make sounds with the synth!
 
-// TODO: improve synth performance
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  Tone.Transport.stop();
-  polySynth.releaseAll();
-  polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
-  Tone.start();
+  console.log("PlaySynthChords__chordNotes___", chordNotes);
+
+  // Tone.Transport.stop();
+  // Tone.start();
+  Tone.start().then(() => {
+    polySynth.releaseAll();
+    polySynth.triggerAttackRelease(chordNotes, "+0.05", 1);
+  });
   Tone.Transport.start();
 }
 

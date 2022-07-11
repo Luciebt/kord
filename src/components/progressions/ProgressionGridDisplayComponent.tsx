@@ -26,19 +26,11 @@ const ProgressionGridDisplayComponent = ({
     new Map<number, string>()
   );
 
-  const Play = (chordIndex: number) => {
-    // if (!SoundOn) return;
-    // polySynth.releaseAll();
-    // const chordToPlay = progressionMap.get(chordIndex);
-    // if (chordToPlay) PlayChord(chordToPlay);
-  };
-
   const onGridSizeChange = (event: any) => {
     // Convert to number, and increase/decrease grid divs.
     setGridSize(event.target.value);
   };
 
-  // TODO: clicking/key on the grid when loop is playing: advance transport to clicked chord with `Transport.position` -> The Transport's position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
   const handlePositionClickAndKeyPress = (posId: number, event?: any) => {
     if (!posId || posId <= 0 || posId > 8) return;
 
@@ -123,7 +115,6 @@ const ProgressionGridDisplayComponent = ({
     selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
 
     setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
-    setSelectedChord(chordToAdd);
 
     return () => {};
   }, [chordToAdd]);

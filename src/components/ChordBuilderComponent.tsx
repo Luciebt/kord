@@ -13,17 +13,20 @@ const ChordBuilderComponent = (): JSX.Element => {
   const [chordKey, setChordKey] = useState("");
   const [chordQuality, setChordQuality] = useState("");
   const [chordSelected, setChordSelected] = useState("");
-  // const [progressionLength, setProgressionLength] = useState(0);
   const [shouldPlay, setShouldPlay] = useState(true);
 
   const KeyCallback = (key: string) => {
-    // if (key == chordKey) return;
     setChordKey(key);
+    if (chordKey && chordQuality) {
+      setChordSelected(chordKey + chordQuality);
+    }
   };
 
   const ChordQualityCallback = (quality: string) => {
-    // if (quality == chordQuality) return;
     setChordQuality(quality);
+    if (chordKey && chordQuality) {
+      setChordSelected(chordKey + chordQuality);
+    }
   };
 
   const newChordCallback = (newChord: string) => {
@@ -42,6 +45,7 @@ const ChordBuilderComponent = (): JSX.Element => {
     keyBtn.classList.add("key-btn-pressed");
     keyBtn.click();
 
+    // Triggers sound from keyboard (and also the previous one??)
     if (SoundOn) PlayChord(key + quality);
     setShouldPlay(false);
   };
@@ -49,8 +53,9 @@ const ChordBuilderComponent = (): JSX.Element => {
   useEffect(() => {
     const chordToBuild = chordKey + chordQuality;
     setChordSelected(chordToBuild);
+    // Triggers sound on click.
     if (SoundOn && shouldPlay) PlayChord(chordToBuild);
-    setShouldPlay(true);
+    setShouldPlay(false);
   }, [chordKey, chordQuality]);
 
   return (
