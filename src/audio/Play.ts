@@ -192,7 +192,7 @@ export function PlayLoop(chordArr: string[]): void {
   const progressionLength: number = chordArr.length;
   for (let i = 0; i < progressionLength; i++) {
     const noteStart = i.toString() + ":0:0";
-    // PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
-    PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
+    PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+    // PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
   }
 }
