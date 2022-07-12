@@ -122,7 +122,6 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
   ],
 };
 
-// TODO: add these major progressions.
 const samplesProg = [];
 
 function convertProgForTonal(samples: string[][]): string[] {
@@ -140,6 +139,5 @@ function convertProgForTonal(samples: string[][]): string[] {
     results.push(progression);
   });
 
-  console.log(results);
   return results;
 }

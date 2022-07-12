@@ -16,11 +16,12 @@ input {
   border: 1px solid var(--border-color);
   border-radius: .25em;
   transition: all .2s ease-in-out;
+  background-color: var(--white-50);
 }
 
 html {
   box-sizing: border-box;
-  /* background-color: var(--section-box); */
+  background-color: #fff8e89a;
 }
 
 *,
@@ -60,9 +61,9 @@ h1 {
   --piano-dark: #716f81;
   --border-color:var(--dominant-dark);
   --section-box: #ffc8dd;
-  --dominant-light:#ffafcc ;
+  --dominant-light:#ffafcc;
   --main-background: #fffffc;
   --dominant-dark: #6d6875;
-  --pressed-color: #4187c9;
+  --pressed-color: #8b96dd;
 }
 

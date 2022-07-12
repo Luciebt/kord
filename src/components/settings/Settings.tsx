@@ -10,8 +10,6 @@ interface ISettings {
   onSoundOn: (sound: boolean) => void;
 }
 
-// TODO: handle click outside.
-
 const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   // Whether the audio is on or off
   const [audioPref, setAudioPref] = useState(false);

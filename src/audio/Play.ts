@@ -107,6 +107,7 @@ function AddGridHighlight(posId: number): any {
   unPressElementsStyleWithoutEvent("highlight-chord-div");
   unPressElementsStyleWithoutEvent("chord-btn-pressed");
   unPressElementsStyleWithoutEvent("selected-position");
+  unPressElementsStyleWithoutEvent("selected-position-without-chord");
 
   let currentChord = document.getElementById(`btn-${posId}`);
   if (currentChord) return currentChord.classList.add("highlight-chord-div");
@@ -158,7 +159,6 @@ function PlayChordSequence(
   seq.loop = chordArr.length;
 }
 
-// TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 export function PlayLoop(chordArr: string[]): void {
   polySynth.releaseAll();
 

@@ -83,9 +83,10 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   }, [SoundOn]);
 
   return (
-    <div className="loop-box">
+    <span className="loop-box">
       <button
         aria-label="Play the chord progression in a loop"
+        title="Play the chord progression in a loop"
         id="loop"
         onClick={() => setToggleLoop(true)}
         className={SoundOn ? "loop-btn" : "loop-btn-disabled"}
@@ -93,7 +94,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         ▶
       </button>
       {SoundOn ? <BpmRange onBpmRange={BpmCallback} /> : null}
-    </div>
+    </span>
   );
 };
 

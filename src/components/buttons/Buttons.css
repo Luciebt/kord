@@ -116,7 +116,7 @@ button.scale-chord-btn:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.2em;
+  /* margin-bottom: 1.2em; */
 }
 
 .loop-btn {
@@ -146,7 +146,6 @@ button.scale-chord-btn:hover {
 #export-midi-btn {
   font-size: 1em;
   font-weight: bold;
-  margin-top: 1em;
   transition: all .2s ease-in-out;
   border: 1.4px solid var(--dominant-dark);
 }

@@ -6,6 +6,7 @@ import PianoDisplay from "./PianoDisplay";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
+import GenerateProgBuilderComponent from "./GenerateProgBuilderComponent";
 
 export interface IProgressionGridDisplayProps {
   tonic?: string;
@@ -34,16 +35,23 @@ const ProgressionGridDisplayComponent = ({
   const handlePositionClickAndKeyPress = (posId: number, event?: any) => {
     if (!posId || posId <= 0 || posId > 8) return;
 
-    // Handle css to apply the selection color
-    unPressElementsStyleWithoutEvent("selected-position");
-    const gridDiv = document.getElementById("pos-" + posId);
-    if (gridDiv) gridDiv.classList.add("selected-position");
-
     const newPos: number = Number(posId);
     const newChord = progressionMap.get(newPos);
 
+    // Handle css to apply the selection color
+    unPressElementsStyleWithoutEvent("selected-position");
+    unPressElementsStyleWithoutEvent("selected-position-without-chord");
+    const gridDiv = document.getElementById("pos-" + posId);
+
+    if (newChord) {
+      if (gridDiv) gridDiv.classList.add("selected-position");
+    } else {
+      if (gridDiv) gridDiv.classList.add("selected-position-without-chord");
+    }
+
+    console.log(newChord);
+
     if (newPos) setSelectedPos(newPos);
-    // if (newChord) setSelectedChord(newChord);
     if (newChord) onPressChord(newChord);
   };
 
@@ -64,7 +72,7 @@ const ProgressionGridDisplayComponent = ({
     // Select by default the first grid div when component is created.
     unPressElementsStyleWithoutEvent("selected-position");
     const grid1 = document.getElementById("pos-1");
-    if (grid1) grid1.classList.add("selected-position");
+    if (grid1) grid1.classList.add("selected-position-without-chord");
 
     return () => {};
   }, []);
@@ -159,9 +167,11 @@ const ProgressionGridDisplayComponent = ({
     <div>
       <section className="box chord-box">
         <h2>Progression Builder</h2>
-        {progressionMap ? (
-          <LoopButton chordsList={Array.from(progressionMap.values())} />
-        ) : null}
+        <div className="top-chord-box">
+          {progressionMap ? (
+            <LoopButton chordsList={Array.from(progressionMap.values())} />
+          ) : null}{" "}
+        </div>
         <section id="prog-grid" className="prog-grid-container">
           <div
             className="box"
@@ -197,7 +207,9 @@ const ProgressionGridDisplayComponent = ({
           ></div>
         </section>
         <div className="prog-settings">
+          <GenerateProgBuilderComponent /> <br />
           <input
+            title="Set the grid size"
             type="number"
             min="2"
             max="8"
@@ -205,14 +217,14 @@ const ProgressionGridDisplayComponent = ({
             value={gridSize}
             onChange={onGridSizeChange}
           ></input>
-
           <button
+            title="Clear progression"
             className="mini-btn"
             onClick={(e) => {
               handleClearClick(e);
             }}
           >
-            Clear ❌
+            ❌
           </button>
         </div>
         <br />
@@ -220,7 +232,6 @@ const ProgressionGridDisplayComponent = ({
       </section>
       {selectedChord ? (
         <div className="box piano-box">
-          <h2>{selectedChord}</h2>
           {/* TODO: Update piano on LOOP */}
           {selectedChord ? <PianoDisplay chord={selectedChord} /> : null}
         </div>
