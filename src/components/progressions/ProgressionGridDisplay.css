@@ -4,13 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin-top: 1.5em;
+    margin-top: 1.2em;
 }
 
 .prog-gridsize-input {
     font-size: 1.2em;
     outline: none;
-    max-width: 5em;
+    max-width: 3.6em;
     height: 2em;
     padding: 0.6em;
     margin: 0.4em;
