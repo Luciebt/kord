@@ -67,5 +67,7 @@ export function BuildChordNotes(chord: string, octave: number = 3): string[] {
   );
   let chordNotesArr = Chord.getChord(chordMode, homeNote).notes;
 
-  return chordNotesArr.map((chord) => Note.simplify(chord));
+  return chordNotesArr.map(
+    (chord) => Note.simplify(chord) && CleanChords(chord)
+  );
 }

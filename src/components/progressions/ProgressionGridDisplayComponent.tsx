@@ -43,7 +43,7 @@ const ProgressionGridDisplayComponent = ({
     const newChord = progressionMap.get(newPos);
 
     if (newPos) setSelectedPos(newPos);
-    if (newChord) setSelectedChord(newChord);
+    // if (newChord) setSelectedChord(newChord);
     if (newChord) onPressChord(newChord);
   };
 
@@ -116,6 +116,7 @@ const ProgressionGridDisplayComponent = ({
     selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
 
     setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
+    setSelectedChord(chordToAdd);
 
     return () => {};
   }, [chordToAdd]);
@@ -217,9 +218,9 @@ const ProgressionGridDisplayComponent = ({
         <br />
         <MidiButtonComponent chordsList={Array.from(progressionMap.values())} />
       </section>
-      {(selectedChord as string) ? (
+      {selectedChord ? (
         <div className="box piano-box">
-          <h2>{selectedChord as string}</h2>
+          <h2>{selectedChord}</h2>
           {/* TODO: Update piano on LOOP */}
           {selectedChord ? <PianoDisplay chord={selectedChord} /> : null}
         </div>
