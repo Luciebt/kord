@@ -4291,7 +4291,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Space+Mono&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=DM+Mono&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  /* background-color: var(--section-box); */\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n}\n\n.box {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color:var(--dominant-dark);\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAGA;EACE,iCAAiC;EACjC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;EACtB,0CAA0C;AAC5C;;AAEA;;;EAGE,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,qBAAqB;CACtB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;AAC7B;;AAEA;EACE,mCAAmC;EACnC,6BAA6B;AAC/B;;AAEA,oBAAoB;;AAEpB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,qBAAqB;EACrB,mCAAmC;EACnC,sBAAsB;EACtB,yBAAyB;EACzB,0BAA0B;EAC1B,wBAAwB;EACxB,wBAAwB;AAC1B","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=DM+Mono&display=swap\");\n\nbody {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  /* background-color: var(--section-box); */\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n}\n\n.box {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color:var(--dominant-dark);\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  /* background-color: var(--section-box); */\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n}\n\n.box {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color:var(--dominant-dark);\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAGA;EACE,iCAAiC;EACjC,2BAA2B;EAC3B,cAAc;EACd,gBAAgB;AAClB;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,qCAAqC;EACrC,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,sBAAsB;EACtB,0CAA0C;AAC5C;;AAEA;;;EAGE,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,qBAAqB;CACtB;;AAED;EACE,gBAAgB;EAChB,kBAAkB;EAClB,2BAA2B;EAC3B,cAAc;AAChB;;AAEA;EACE,mCAAmC;EACnC,6BAA6B;AAC/B;;AAEA,oBAAoB;;AAEpB;EACE,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,gCAAgC;EAChC,kCAAkC;EAClC,kCAAkC;EAClC,kCAAkC;EAClC,qBAAqB;EACrB,mCAAmC;EACnC,sBAAsB;EACtB,yBAAyB;EACzB,0BAA0B;EAC1B,wBAAwB;EACxB,wBAAwB;AAC1B","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=DM+Mono&display=swap\");\n\nbody {\n  font-family: \"DM Mono\", monospace;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n  max-width: 888px;\n}\n\nsection, input, select {\n  border-radius: .25em;\n}\n\ninput {\n  border: 1px solid var(--border-color);\n  border-radius: .25em;\n  transition: all .2s ease-in-out;\n}\n\nhtml {\n  box-sizing: border-box;\n  /* background-color: var(--section-box); */\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n.app-title, .app-title:hover, .app-title:visited, .app-title:active {\n  color: inherit;\n  text-decoration: none;\n }\n\nh1 {\n  font-size: 4.8em;\n  text-align: center;\n  color: var(--dominant-dark);\n  margin: 0 auto;\n}\n\n.box {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n/* Color variables */\n\n:root {\n  --black-10: hsla(0, 0%, 0%, 0.1);\n  --black-20: hsla(0, 0%, 0%, 0.2);\n  --black-30: hsla(0, 0%, 0%, 0.3);\n  --black-50: hsla(0, 0%, 0%, 0.5);\n  --black-60: hsla(0, 0%, 0%, 0.6);\n  --white-20: hsla(0, 0%, 100%, 0.2);\n  --white-50: hsla(0, 0%, 100%, 0.5);\n  --white-80: hsla(0, 0%, 100%, 0.8);\n  --piano-dark: #716f81;\n  --border-color:var(--dominant-dark);\n  --section-box: #ffc8dd;\n  --dominant-light:#ffafcc ;\n  --main-background: #fffffc;\n  --dominant-dark: #6d6875;\n  --pressed-color: #4187c9;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4345,7 +4345,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.prog-btn {\n  width: 11em;\n}\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\n@media screen and (max-width: 600px) {\n  .chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n  .scale-chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n} \n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  width: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n@media screen and (max-width: 600px) {\n  #loop {\n    /* font-size: .9em; */\n    width: 2em;\n    height: 2em;\n  }\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,qCAAqC;EACrC,+BAA+B;EAC/B,cAAc;EACd,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;EACf,mCAAmC;EACnC,6BAA6B;AAC/B;;AAEA;EACE,+BAA+B;EAC/B,sCAAsC;AACxC;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,2BAA2B;AAC7B;;AAEA,gDAAgD;;AAEhD;EACE,WAAW;AACb;;AAEA;;;;;EAKE,oBAAoB;EACpB,4BAA4B;EAC5B,+BAA+B;EAC/B,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE;IACE,gBAAgB;IAChB,gBAAgB;EAClB;EACA;IACE,gBAAgB;IAChB,gBAAgB;EAClB;AACF;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,cAAc;EACd,sCAAsC;EACtC,sCAAsC;EACtC,+BAA+B;AACjC;;AAEA;EACE,cAAc;AAChB;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE;IACE,qBAAqB;IACrB,UAAU;IACV,WAAW;EACb;AACF;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,YAAY;EACZ,sCAAsC;AACxC;AACA;EACE,YAAY;EACZ,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,cAAc;EACd,iBAAiB;EACjB,eAAe;EACf,+BAA+B;EAC/B,wCAAwC;AAC1C","sourcesContent":["/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1px solid var(--border-color);\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.prog-btn {\n  width: 11em;\n}\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\n@media screen and (max-width: 600px) {\n  .chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n  .scale-chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n} \n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  width: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n@media screen and (max-width: 600px) {\n  #loop {\n    /* font-size: .9em; */\n    width: 2em;\n    height: 2em;\n  }\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: white;\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1.2px solid var(--border-color);\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\ninput[type=\"number\"] {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.prog-btn {\n  width: 11em;\n}\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\n@media screen and (max-width: 600px) {\n  .chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n  .scale-chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n} \n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  width: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n@media screen and (max-width: 600px) {\n  #loop {\n    /* font-size: .9em; */\n    width: 2em;\n    height: 2em;\n  }\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 1.2em;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: var(--dominant-light);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: var(--dominant-light);\n  border: 1px solid var(--dominant-dark);\n  box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n", "",{"version":3,"sources":["webpack://./src/components/buttons/Buttons.css"],"names":[],"mappings":"AAAA,yBAAyB;;AAEzB;EACE,oCAAoC;EACpC,2BAA2B;EAC3B,uCAAuC;EACvC,+BAA+B;EAC/B,cAAc;EACd,cAAc;EACd,cAAc;EACd,aAAa;EACb,eAAe;EACf,mCAAmC;EACnC,6BAA6B;AAC/B;;AAEA;EACE,+BAA+B;EAC/B,sCAAsC;AACxC;;AAEA;EACE,mCAAmC;EACnC,6BAA6B;AAC/B;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,2BAA2B;AAC7B;;AAEA,gDAAgD;;AAEhD;EACE,WAAW;AACb;;AAEA;;;;;EAKE,oBAAoB;EACpB,4BAA4B;EAC5B,+BAA+B;EAC/B,sCAAsC;EACtC,sCAAsC;AACxC;;AAEA,4BAA4B;;AAE5B;EACE,qBAAqB;AACvB;;AAEA;EACE,aAAa;AACf;;AAEA;;EAEE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE;IACE,gBAAgB;IAChB,gBAAgB;EAClB;EACA;IACE,gBAAgB;IAChB,gBAAgB;EAClB;AACF;;AAEA;;EAEE,iDAAiD;AACnD;;AAEA;;EAEE,sCAAsC;EACtC,cAAc;EACd,sCAAsC;EACtC,sCAAsC;EACtC,+BAA+B;AACjC;;AAEA;EACE,cAAc;AAChB;;AAEA,gBAAgB;;AAEhB;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE;IACE,qBAAqB;IACrB,UAAU;IACV,WAAW;EACb;AACF;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;EACnB,oBAAoB;AACtB;;AAEA;EACE,gBAAgB;EAChB,2BAA2B;EAC3B,sCAAsC;AACxC;AACA;EACE,sCAAsC;EACtC,4BAA4B;EAC5B,sCAAsC;AACxC;AACA;EACE,gBAAgB;EAChB,sCAAsC;EACtC,4BAA4B;EAC5B,sCAAsC;EACtC,4DAA4D;AAC9D;AACA;EACE,YAAY;EACZ,YAAY;AACd;;AAEA,0BAA0B;;AAE1B;EACE,cAAc;EACd,iBAAiB;EACjB,eAAe;EACf,+BAA+B;EAC/B,wCAAwC;AAC1C","sourcesContent":["/* General button style */\n\nbutton {\n  font-family: \"Space Mono\", monospace;\n  color: var(--dominant-dark);\n  border: 1.2px solid var(--border-color);\n  transition: all .2s ease-in-out;\n  min-width: 3em;\n  font-size: 1em;\n  padding: 0.5em;\n  margin: 0.3em;\n  cursor: pointer;\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\nbutton:hover {\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n}\n\ninput[type=\"number\"] {\n  box-shadow: 0px 2px 0px 2px #d9d9d9;\n  border-radius: 4px !important;\n}\n\n.btn-caption {\n  font-size: 0.6em;\n  font-weight: bold;\n  color: var(--pressed-color);\n}\n\n/* Key, Mod, Mood and Progression main buttons */\n\n.prog-btn {\n  width: 11em;\n}\n\n.key-btn-pressed,\n.mode-btn-pressed,\n.mood-btn-pressed,\n.prog-btn-pressed,\n.chordbuild-btn-pressed {\n  /* color: #f4eeff; */\n  color: var(--dominant-light);\n  transition: all .2s ease-in-out;\n  border: 1px solid var(--dominant-dark);\n  background-color: var(--dominant-dark);\n}\n\n/* Scale and Chord buttons */\n\n.visible {\n  display: inline-block;\n}\n\n.invisible {\n  display: none;\n}\n\n.scale-chord-btn,\n.chord-btn {\n  font-size: 1.2em;\n  min-width: 4em;\n}\n\n@media screen and (max-width: 600px) {\n  .chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n  .scale-chord-btn {\n    font-size: 1.2em;\n    min-width: 3.1em;\n  }\n} \n\nbutton.chord-btn:hover,\nbutton.scale-chord-btn:hover {\n  border: 1px solid var(--pressed-color) !important;\n}\n\n.chord-btn-pressed,\n.scale-chord-btn-pressed {\n  transition: background-color 0.2s ease;\n  color: #f4eeff;\n  border: 1px solid var(--pressed-color);\n  background-color: var(--pressed-color);\n  transition: all .2s ease-in-out;\n}\n\n.chord-btn-pressed p {\n  color: #f4eeff;\n}\n\n/* Loop button */\n\n#loop {\n  height: 2.3em;\n  width: 2.3em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n@media screen and (max-width: 600px) {\n  #loop {\n    /* font-size: .9em; */\n    width: 2em;\n    height: 2em;\n  }\n}\n\n.loop-box {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 1.2em;\n}\n\n.loop-btn {\n  font-size: 1.4em;\n  color: var(--dominant-dark);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn:hover {\n  background-color: var(--dominant-dark);\n  color: var(--dominant-light);\n  border: 1px solid var(--dominant-dark);\n}\n.loop-btn-pressed {\n  font-size: 1.4em;\n  background-color: var(--dominant-dark);\n  color: var(--dominant-light);\n  border: 1px solid var(--dominant-dark);\n  box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;\n}\n.loop-btn-disabled {\n  opacity: 0.4;\n  cursor: none;\n}\n\n/* Export to MIDI button */\n\n#export-midi-btn {\n  font-size: 1em;\n  font-weight: bold;\n  margin-top: 1em;\n  transition: all .2s ease-in-out;\n  border: 1.4px solid var(--dominant-dark);\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css ***!
+  \*************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* On screens that are 600px or less make the piano smaller and more visible */\n@media screen and (max-width: 600px) {\n  #keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  #scale-keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  .white {\n    height: 8.3rem;\n    width: 2.4rem;\n  }\n  .black {\n    height: 5rem;\n    width: 1.3rem;\n  }\n  .offset {\n    margin: 0 0 0 -0.6rem;\n  }\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/Piano.css"],"names":[],"mappings":"AAAA,kBAAkB;;AAElB;EACE,aAAa;AACf;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;;EAEE,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,eAAe;EACf,aAAa;EACb,UAAU;EACV,sCAAsC;EACtC,wCAAwC;EACxC,sEAAsE;EACtE,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,UAAU;EACV,uBAAuB;EACvB,mCAAmC;EACnC,sBAAsB;AACxB;;AAEA;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,mBAAmB;AACrB;;AAEA,sBAAsB;AACtB;EACE,qCAAqC;EACrC,sCAAsC;EACtC,wCAAwC;EACxC,sBAAsB;EACtB,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,gCAAgC;EAChC,aAAa;AACf;;AAEA,8EAA8E;AAC9E;EACE;IACE,gBAAgB;IAChB,oBAAoB;EACtB;EACA;IACE,gBAAgB;IAChB,oBAAoB;EACtB;EACA;IACE,cAAc;IACd,aAAa;EACf;EACA;IACE,YAAY;IACZ,aAAa;EACf;EACA;IACE,qBAAqB;EACvB;AACF","sourcesContent":["/* PIANO STYLING */\n\n#keyboard {\n  display: flex;\n}\n\n#keyboard li {\n  border-radius: .25em;\n}\n\n.keyboard-box {\n  margin-left: -2.2em;\n}\n\n.white,\n.black {\n  position: relative;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  padding: 0.5rem 0;\n  user-select: none;\n}\n\n.white {\n  height: 12.5rem;\n  width: 3.5rem;\n  z-index: 1;\n  border-left: 1px solid hsl(0, 0%, 73%);\n  border-bottom: 1px solid hsl(0, 0%, 73%);\n  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);\n  color: var(--black-30);\n}\n\n.black {\n  height: 8rem;\n  width: 2rem;\n  margin: 0 0 0 -1rem;\n  z-index: 2;\n  border: 1px solid black;\n  background-color: var(--piano-dark);\n  color: var(--white-80);\n}\n\n.white.pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.offset {\n  margin: 0 0 0 -1rem;\n}\n\n/* ScalePianoDisplay */\n.white.s-pressed {\n  border-top: 1px solid hsl(0, 0%, 47%);\n  border-left: 1px solid hsl(0, 0%, 60%);\n  border-bottom: 1px solid hsl(0, 0%, 60%);\n  color: var(--white-80);\n  background: var(--pressed-color);\n  outline: none;\n}\n\n.black.s-pressed {\n  background: var(--pressed-color);\n  outline: none;\n}\n\n/* On screens that are 600px or less make the piano smaller and more visible */\n@media screen and (max-width: 600px) {\n  #keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  #scale-keyboard li {\n    font-size: .76em;\n    padding-right: .2rem;\n  }\n  .white {\n    height: 8.3rem;\n    width: 2.4rem;\n  }\n  .black {\n    height: 5rem;\n    width: 1.3rem;\n  }\n  .offset {\n    margin: 0 0 0 -0.6rem;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4372,7 +4399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.5em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,cAAc;IACd,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,8BAA8B;AAClC;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;GACG,qBAAqB;AACxB;;AAEA,wBAAwB;;AAExB;IACI,wBAAwB;IACxB,uBAAuB;IACvB,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,QAAQ;AACZ;;AAEA;IACI,eAAe;IACf,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,+BAA+B;IAC/B,sCAAsC;AAC1C","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.5em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 5em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.2em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 3.6em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n    box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;\n}\n\n.selected-position > div {\n    color: var(--dominant-light);\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/ProgressionGridDisplay.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,gBAAgB;IAChB,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,cAAc;IACd,YAAY;AAChB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,oCAAoC;IACpC,2BAA2B;IAC3B,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,eAAe;AACnB;;AAEA;IACI,sCAAsC;IACtC,8BAA8B;IAC9B,4DAA4D;AAChE;;AAEA;IACI,4BAA4B;AAChC;;AAEA;IACI,sCAAsC;AAC1C;;AAEA;GACG,qBAAqB;AACxB;;AAEA,wBAAwB;;AAExB;IACI,wBAAwB;IACxB,uBAAuB;IACvB,2BAA2B;AAC/B;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,QAAQ;AACZ;;AAEA;IACI,eAAe;IACf,qCAAqC;IACrC,oBAAoB;IACpB,+BAA+B;IAC/B,cAAc;IACd,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,+BAA+B;IAC/B,sCAAsC;AAC1C","sourcesContent":["/* Progression build settings */\n\n.prog-settings {\n    display: flex;\n    justify-content: center;\n    align-items: baseline;\n    margin-top: 1.2em;\n}\n\n.prog-gridsize-input {\n    font-size: 1.2em;\n    outline: none;\n    max-width: 3.6em;\n    height: 2em;\n    padding: 0.6em;\n    margin: 0.4em;\n    font-size: inherit;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    resize: none;\n}\n\n/* Progression grid */\n\n.prog-grid-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.prog-grid-container > div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: \"Space Mono\", monospace;\n    color: var(--dominant-dark);\n    border: 1px solid var(--border-color);\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    min-width: 6em;\n    min-height: 6em;\n    font-size: 1.2em;\n    padding: 0.4em;\n    margin: 0.3em;\n    cursor: pointer;\n}\n\n.selected-position {\n    background-color: var(--dominant-dark);\n    color: antiquewhite !important;\n    box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;\n}\n\n.selected-position > div {\n    color: var(--dominant-light);\n}\n\n.filled-position {\n    background-color: var(--dominant-dark);\n}\n\n.prog-grid-container > button {\n   padding: 0 !important;\n}\n\n/* Grid items (chords) */\n\n.invisible {\n    display: none !important;\n    border: none !important;\n    background: none !important;\n}\n\n.caption {\n    display: flex;\n    justify-content: center;\n    gap: 5px;\n}\n\n.mini-btn {\n    font-size: .8em;\n    border: 1px var(--border-color) solid;\n    border-radius: .25em;\n    transition: all .2s ease-in-out;\n    padding: 0.4em;\n    margin-top: 1em;\n    cursor: pointer;\n}\n\n.mini-btn:hover {\n    transition: all .2s ease-in-out;\n    border: 1px solid var(--dominant-dark);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4399,7 +4426,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/Progressions.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,uCAAuC;EACvC,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,uCAAuC;EACvC,eAAe;AACjB;;AAEA;EACE,8BAA8B;EAC9B,cAAc;EACd,iBAAiB;EACjB,oBAAoB;AACtB;;AAEA;EACE,iDAAiD;EACjD,iDAAiD;EACjD,8BAA8B;AAChC;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":[".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--dominant-light);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/Progressions.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA,4BAA4B;;AAE5B;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,uBAAuB;AACzB;;AAEA;EACE,oCAAoC;EACpC,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,uCAAuC;EACvC,eAAe;AACjB;;AAEA;EACE,8BAA8B;EAC9B,cAAc;EACd,iBAAiB;EACjB,oBAAoB;AACtB;;AAEA;EACE,iDAAiD;EACjD,iDAAiD;EACjD,8BAA8B;AAChC;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":[".centered-box {\n  text-align: center;\n}\n\n/* Progression box display */\n\n.prog-grid-results {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.prog-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n\n.piano-box {\n  background-color: var(--dominant-light);\n  padding: 1.8rem;\n}\n\n.chord-box {\n  background-color: antiquewhite;\n  padding: 0.6em;\n  margin-top: 0.6em;\n  margin-bottom: 0.6em;\n}\n\n.highlight-chord-div {\n  background-color: var(--pressed-color) !important;\n  border: 1px solid var(--pressed-color) !important;\n  color: antiquewhite !important;\n}\n\n.highlight-chord-div .btn-caption {\n  color: antiquewhite;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css":
+/*!********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css ***!
+  \********************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/scales/Scales.css"],"names":[],"mappings":"AAAA;EACE,oCAAoC;EACpC,WAAW;EACX,eAAe;AACjB","sourcesContent":[".scale-box {\n  background-color: var(--section-box);\n  margin: 1em;\n  padding: 1.8rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -56372,6 +56426,61 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/components/progressions/Piano.css":
+/*!***********************************************!*\
+  !*** ./src/components/progressions/Piano.css ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Piano.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/Piano.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Piano_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./src/components/progressions/ProgressionGridDisplay.css":
 /*!****************************************************************!*\
   !*** ./src/components/progressions/ProgressionGridDisplay.css ***!
@@ -56478,6 +56587,61 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Progressions_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/components/scales/Scales.css":
+/*!******************************************!*\
+  !*** ./src/components/scales/Scales.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Scales.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/scales/Scales.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Scales_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -81786,7 +81950,7 @@ exports.GetSimplifiedChordFromFullChord = GetSimplifiedChordFromFullChord;
 function BuildChordNotes(chord, octave = 3) {
     const [chordMode, homeNote] = GetSimplifiedChordFromFullChord(chord, octave);
     let chordNotesArr = tonal_1.Chord.getChord(chordMode, homeNote).notes;
-    return chordNotesArr.map((chord) => tonal_1.Note.simplify(chord));
+    return chordNotesArr.map((chord) => tonal_1.Note.simplify(chord) && (0, NoteUtils_1.CleanChords)(chord));
 }
 exports.BuildChordNotes = BuildChordNotes;
 
@@ -82375,22 +82539,13 @@ function PlayChordLoopEvent(chordArr, progressionLength, noteStart = "0:0:0") {
     exports.chordEvent.loopEnd = measuresToPlay;
 }
 function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
-    console.log(chordArr);
-    // const onRepeat = (time: number) => {
-    //   console.log("onRepeat");
-    //   let seq = new Tone.Sequence(
-    //     (time, note) => {
-    //       console.log("playing a note");
-    //       polySynth.triggerAttackRelease(note, "8n", time);
-    //     },
-    //     chordArr,
-    //     "+0.1"
-    //   );
-    //   seq.start(noteStart);
-    //   seq.loop = chordArr.length;
-    // };
-    // onRepeat(id);
-    // Tone.Transport.scheduleRepeat(onRepeat, progressionLength);
+    // let chordSeqEvent = new Tone.ToneEvent((time) => {
+    let seq = new Tone.Sequence((time, note) => {
+        exports.polySynth.triggerAttackRelease(note, "16n", time);
+    }, chordArr, "+0.1");
+    // }, "+0.1");
+    seq.start(noteStart);
+    seq.loop = chordArr.length;
 }
 // TODO: Refactor this. Add more chords (since prog builder grid goes up to 8 chords)
 function PlayLoop(chordArr) {
@@ -82566,6 +82721,7 @@ const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton 
 const ModeButton_1 = __importDefault(__webpack_require__(/*! ./buttons/ModeButton */ "./src/components/buttons/ModeButton.tsx"));
 const MoodButton_1 = __importDefault(__webpack_require__(/*! ./buttons/MoodButton */ "./src/components/buttons/MoodButton.tsx"));
 const ProgressionDisplay_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionDisplay */ "./src/components/progressions/ProgressionDisplay.tsx"));
+const ScaleDisplay_1 = __importDefault(__webpack_require__(/*! ./scales/ScaleDisplay */ "./src/components/scales/ScaleDisplay.tsx"));
 __webpack_require__(/*! ../components/progressions/Progressions.css */ "./src/components/progressions/Progressions.css");
 const ProgressionComponent = () => {
     const [tonic, setTonic] = (0, react_1.useState)("");
@@ -82599,6 +82755,7 @@ const ProgressionComponent = () => {
             react_1.default.createElement(ModeButton_1.default, { onPressMode: ModeCallback }),
             react_1.default.createElement(MoodButton_1.default, { onPressMood: MoodCallback })),
         react_1.default.createElement(ProgressionDisplay_1.default, { tonic: tonic, mode: mode, mood: mood ? mood : "", chordsList: chordsList ? chordsList : "" }),
+        react_1.default.createElement(ScaleDisplay_1.default, { tonic: tonic, mode: mode, chordsScale: chordsScale }),
         react_1.default.createElement("br", null)));
 };
 exports["default"] = ProgressionComponent;
@@ -83390,8 +83547,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
         const newChord = progressionMap.get(newPos);
         if (newPos)
             setSelectedPos(newPos);
-        if (newChord)
-            setSelectedChord(newChord);
+        // if (newChord) setSelectedChord(newChord);
         if (newChord)
             onPressChord(newChord);
     };
@@ -83460,6 +83616,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             return;
         selectedGridDiv.innerHTML = `<div id="gri-${selectedPos}">▶ <br>${chordToAdd}</div>`;
         setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
+        setSelectedChord(chordToAdd);
         return () => { };
     }, [chordToAdd]);
     const isInputFieldFocused = () => {
@@ -83529,6 +83686,179 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
             selectedChord ? react_1.default.createElement(PianoDisplay_1.default, { chord: selectedChord }) : null)) : null));
 };
 exports["default"] = ProgressionGridDisplayComponent;
+
+
+/***/ }),
+
+/***/ "./src/components/scales/ScaleDisplay.tsx":
+/*!************************************************!*\
+  !*** ./src/components/scales/ScaleDisplay.tsx ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const useDidUpdate_1 = __webpack_require__(/*! ../hooks/useDidUpdate */ "./src/components/hooks/useDidUpdate.tsx");
+const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
+const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePianoDisplay */ "./src/components/scales/ScalePianoDisplay.tsx"));
+__webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
+const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
+const Scale_1 = __webpack_require__(/*! ../../Scale */ "./src/Scale.ts");
+const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
+    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
+    const [chordState, setChordState] = (0, react_1.useState)(false);
+    const [chordSelected, setChordSelected] = (0, react_1.useState)("");
+    const style = "scale-chord-btn-pressed";
+    const handleClick = (chord, event) => {
+        if (SoundOn) {
+            (0, Chords_1.PlayChord)(chord);
+        }
+        setChordState(true);
+        setChordSelected(chord);
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
+        event.target.classList.add(style);
+    };
+    const notesOnScale = (0, Scale_1.findNotesScales)(tonic, mode);
+    const chordsScaleList = chordsScale.map((chords, i) => (react_1.default.createElement("button", { key: i, onClick: (e) => {
+            handleClick(chords, e);
+        }, className: "scale-chord-btn" }, chords)));
+    (0, react_1.useEffect)(() => {
+        (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)(style);
+        const chordBtns = Array.from(document.getElementsByClassName("scale-chord-btn"));
+        if (!tonic && !mode) {
+            chordBtns[0].classList.add("invisible");
+        }
+        if (tonic && mode) {
+            if (chordBtns.length > 0) {
+                chordBtns.forEach((btn) => {
+                    btn.classList.remove("invisible");
+                    btn.classList.add("visible");
+                });
+            }
+        }
+        return () => {
+            // Anything in here is fired on component unmount.
+        };
+    }, []);
+    // Reset chord selected when changing tonality or mode.
+    (0, useDidUpdate_1.useDidUpdate)(() => {
+        setChordState(false);
+    }, [tonic, mode]);
+    return (react_1.default.createElement("section", { "aria-label": "Suggested chords for the key and mode choosen", className: "box scale-box" },
+        react_1.default.createElement("h2", null,
+            chordsScale ? "Chords on Scale " + tonic + " " + mode : "",
+            " ",
+            mode == "Minor" ? " (harmonic)" : ""),
+        chordsScaleList,
+        chordState ? react_1.default.createElement(ScalePianoDisplay_1.default, { chord: chordSelected }) : null));
+};
+exports["default"] = ChordsScaleDisplayComponent;
+
+
+/***/ }),
+
+/***/ "./src/components/scales/ScalePianoDisplay.tsx":
+/*!*****************************************************!*\
+  !*** ./src/components/scales/ScalePianoDisplay.tsx ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const PianoChart_1 = __webpack_require__(/*! ../../PianoChart */ "./src/PianoChart.ts");
+__webpack_require__(/*! ../progressions/Piano.css */ "./src/components/progressions/Piano.css");
+const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const ScalePianoDisplayComponent = ({ chord, }) => {
+    let chordsArray = (0, PianoChart_1.ShowChord)(chord);
+    (0, react_1.useEffect)(() => {
+        if (chordsArray) {
+            chordsArray.forEach((note) => {
+                let scaleNoteId = "s-" + note;
+                const noteFound = document.getElementById(scaleNoteId);
+                if (noteFound) {
+                    noteFound.classList.add("s-pressed");
+                }
+            });
+        }
+        return () => {
+            (0, unPressElementStyle_1.unPressElementsStyleWithoutEvent)("s-pressed");
+            chordsArray = [""];
+        };
+    }, [chord]);
+    return (react_1.default.createElement("div", { id: "scale-keyboard", className: "keyboard-box" },
+        react_1.default.createElement("ul", { id: "keyboard" },
+            react_1.default.createElement("li", { id: "s-C3", className: "white" }, "C"),
+            react_1.default.createElement("li", { id: "s-C#3", className: "black" }, "C#"),
+            react_1.default.createElement("li", { id: "s-D3", className: "white offset" }, "D"),
+            react_1.default.createElement("li", { id: "s-D#3", className: "black" }, "D#"),
+            react_1.default.createElement("li", { id: "s-E3", className: "white offset" }, "E"),
+            react_1.default.createElement("li", { id: "s-F3", className: "white" }, "F"),
+            react_1.default.createElement("li", { id: "s-F#3", className: "black" }, "F#"),
+            react_1.default.createElement("li", { id: "s-G3", className: "white offset" }, "G"),
+            react_1.default.createElement("li", { id: "s-G#3", className: "black" }, "G#"),
+            react_1.default.createElement("li", { id: "s-A3", className: "white offset" }, "A"),
+            react_1.default.createElement("li", { id: "s-A#3", className: "black" }, "A#"),
+            react_1.default.createElement("li", { id: "s-B3", className: "white offset" }, "B"),
+            react_1.default.createElement("li", { id: "s-C4", className: "white" }, "C"),
+            react_1.default.createElement("li", { id: "s-C#4", className: "black" }, "C#"),
+            react_1.default.createElement("li", { id: "s-D4", className: "white offset" }, "D"),
+            react_1.default.createElement("li", { id: "s-D#4", className: "black" }, "D#"),
+            react_1.default.createElement("li", { id: "s-E4", className: "white offset" }, "E"),
+            react_1.default.createElement("li", { id: "s-F4", className: "white" }, "F"),
+            react_1.default.createElement("li", { id: "s-F#4", className: "black" }, "F#"),
+            react_1.default.createElement("li", { id: "s-G4", className: "white offset" }, "G"),
+            react_1.default.createElement("li", { id: "s-G#4", className: "black" }, "G#"),
+            react_1.default.createElement("li", { id: "s-A4", className: "white offset" }, "A"),
+            react_1.default.createElement("li", { id: "s-A#4", className: "black" }, "A#"),
+            react_1.default.createElement("li", { id: "s-B4", className: "white offset" }, "B"))));
+};
+exports["default"] = ScalePianoDisplayComponent;
 
 
 /***/ }),
