@@ -1,6 +1,6 @@
 import * as Tone from "tone";
 import { ShowChord } from "../PianoChart";
-import { unPressElementsStyleWithoutEvent } from "../components/hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
 //------ Global variables
 
@@ -155,8 +155,10 @@ function PlayChordSequence(
   );
   // }, "+0.1");
 
+  console.log(id);
+
   seq.start(noteStart);
-  seq.loop = chordArr.length;
+  seq.loop = chordArr.length * 2;
 }
 
 export function PlayLoop(chordArr: string[]): void {
@@ -184,11 +186,13 @@ export function PlayLoop(chordArr: string[]): void {
     }
   }
 
+  console.log(chordsToLoop);
+
   // Schedule the loop events
   const progressionLength: number = chordArr.length;
   for (let i = 0; i < progressionLength; i++) {
     const noteStart = i.toString() + ":0:0";
-    PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
-    // PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
+    // PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
+    PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
   }
 }

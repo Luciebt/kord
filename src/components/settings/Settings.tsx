@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useKeypress from "react-use-keypress";
-import { useToggle } from "../hooks/useToggle";
+import { useToggle } from "../../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
 import { SetSynthSound } from "../../audio/Play";
 import "./Settings.css";

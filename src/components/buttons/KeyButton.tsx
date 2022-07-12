@@ -1,6 +1,6 @@
 import React from "react";
 import { TKey } from "../../type";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IKeyButton {

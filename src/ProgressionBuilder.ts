@@ -1,5 +1,4 @@
 import { Note, Interval } from "@tonaljs/tonal";
-import { Piano } from "@tonejs/piano";
 
 type TProbability = number | string;
 

@@ -4,22 +4,18 @@ import "./ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
 import PianoDisplay from "./PianoDisplay";
 import LoopButton from "../buttons/LoopButton";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { SoundOnContext } from "../../App";
-import GenerateProgBuilderComponent from "./GenerateProgBuilderComponent";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
+import GenerateProgBuilderComponent from "../generator/GenerateProgBuilderComponent";
 
 export interface IProgressionGridDisplayProps {
-  tonic?: string;
   chordToAdd?: string;
   onPressChord: any;
 }
 
 const ProgressionGridDisplayComponent = ({
-  tonic,
   chordToAdd,
   onPressChord,
 }: IProgressionGridDisplayProps): JSX.Element => {
-  const SoundOn = React.useContext(SoundOnContext);
   const [gridSize, setGridSize] = useState(4);
   const [selectedPos, setSelectedPos] = useState(1);
   const [selectedChord, setSelectedChord] = useState("");
@@ -68,13 +64,17 @@ const ProgressionGridDisplayComponent = ({
     }
   };
 
+  const progGenCallback = (newProg: string[]) => {
+    console.log("progGenCallback", newProg);
+  }
+
   useEffect(() => {
     // Select by default the first grid div when component is created.
     unPressElementsStyleWithoutEvent("selected-position");
     const grid1 = document.getElementById("pos-1");
     if (grid1) grid1.classList.add("selected-position-without-chord");
 
-    return () => {};
+    return () => { };
   }, []);
 
   // Grid sizing
@@ -113,7 +113,7 @@ const ProgressionGridDisplayComponent = ({
       if (parentNode) parentNode.appendChild(newDiv);
     }
 
-    return () => {};
+    return () => { };
   }, [gridSize]);
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const ProgressionGridDisplayComponent = ({
     setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
     setSelectedChord(chordToAdd);
 
-    return () => {};
+    return () => { };
   }, [chordToAdd]);
 
   const isInputFieldFocused = () => {
@@ -207,7 +207,10 @@ const ProgressionGridDisplayComponent = ({
           ></div>
         </section>
         <div className="prog-settings">
-          <GenerateProgBuilderComponent /> <br />
+          <GenerateProgBuilderComponent
+            selectedChord={selectedChord}
+            progLength={4}
+            onGenerateProg={progGenCallback} /> <br />
           <input
             title="Set the grid size"
             type="number"

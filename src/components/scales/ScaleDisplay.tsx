@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDidUpdate } from "../hooks/useDidUpdate";
+import { useDidUpdate } from "../../hooks/useDidUpdate";
 import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
 import "./Scales.css";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
 import { findNotesScales } from "../../Scale";
 

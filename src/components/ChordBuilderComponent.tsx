@@ -4,8 +4,7 @@ import KeyButton from "./buttons/KeyButton";
 import QualityButton from "./buttons/QualityButton";
 import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDisplayComponent";
 import { SoundOnContext } from "../App";
-import { polySynth } from "../audio/Play";
-import { unPressElementsStyleWithoutEvent } from "./hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { FullChordStringToArray } from "../NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {

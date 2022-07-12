@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { ShowChord } from "../../PianoChart";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Progressions.css";
 
 export interface IPianoDisplayProps {

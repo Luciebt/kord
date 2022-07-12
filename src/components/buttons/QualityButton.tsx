@@ -1,6 +1,6 @@
 import React from "react";
 import { TChords } from "../../type";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IChordButton {

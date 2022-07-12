@@ -1,5 +1,5 @@
 import React from "react";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IMoodButton {

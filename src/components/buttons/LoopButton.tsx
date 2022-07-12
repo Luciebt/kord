@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useKeypress from "react-use-keypress";
-import { useToggle } from "../hooks/useToggle";
+import { useToggle } from "../../hooks/useToggle";
 import { PlayLoop } from "../../audio/Play";
 import { Transport } from "tone";
 import "./Buttons.css";
@@ -52,7 +52,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         btn.innerText = "▶";
       }
     }
-    return () => {};
+    return () => { };
   }, [toggleLoop]);
 
   // Restore the initial state of the loop button and cancel transport events when clicking on another progression button.
@@ -79,7 +79,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
       if (!btn) return;
       btn.disabled = false;
     }
-    return () => {};
+    return () => { };
   }, [SoundOn]);
 
   return (

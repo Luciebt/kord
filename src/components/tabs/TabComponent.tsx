@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProgressionDictionnaryTab from "../tabs/ProgressionDictionnaryTab";
 import ProgressionBuilderTab from "../tabs/ProgressionBuilderTab";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Tab.css";
 
 const TabComponent = (): JSX.Element => {
@@ -19,7 +19,7 @@ const TabComponent = (): JSX.Element => {
   useEffect(() => {
     const tab1 = document.getElementById("id-1");
     if (tab1) tab1.classList.add("active-tab");
-    return () => {};
+    return () => { };
   }, []);
 
   return (

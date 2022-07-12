@@ -91,7 +91,6 @@ export function DetermineChordsList(
 ): string {
   if (!tonic || !mode) return "";
 
-  let FullProg: string = "";
   let ProgList: string[] | string | undefined = undefined;
 
   if (mood == "All" || !mood) {

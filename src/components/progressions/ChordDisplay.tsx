@@ -4,7 +4,7 @@ import { PlayChord } from "../../Chords";
 import PianoDisplay from "./PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
 import { GetRomansForChord } from "../../ProgressionUtils";
 import "./Progressions.css";

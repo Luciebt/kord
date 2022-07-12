@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { useDidUpdate } from "../hooks/useDidUpdate";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
+import { useDidUpdate } from "../../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
 import "./Progressions.css";
 
