@@ -4352,10 +4352,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, "/* General button style */\n\nbutton {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/GenerateProgBuilder.css":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/progressions/GenerateProgBuilder.css ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/generator/GenerateProgBuilder.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/generator/GenerateProgBuilder.css ***!
+  \************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4372,7 +4372,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".generate-btn {\n    height: 3em;\n    width: 3em;\n    background-color: var(--section-box);\n}\n\n.generate-btn:hover {\n    background-color: var(--dominant-light);\n}", "",{"version":3,"sources":["webpack://./src/components/progressions/GenerateProgBuilder.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,UAAU;IACV,oCAAoC;AACxC;;AAEA;IACI,uCAAuC;AAC3C","sourcesContent":[".generate-btn {\n    height: 3em;\n    width: 3em;\n    background-color: var(--section-box);\n}\n\n.generate-btn:hover {\n    background-color: var(--dominant-light);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".generate-btn {\n    height: 3em;\n    width: 3em;\n    background-color: var(--section-box);\n}\n\n.generate-btn:hover {\n    background-color: var(--dominant-light);\n}", "",{"version":3,"sources":["webpack://./src/components/generator/GenerateProgBuilder.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,UAAU;IACV,oCAAoC;AACxC;;AAEA;IACI,uCAAuC;AAC3C","sourcesContent":[".generate-btn {\n    height: 3em;\n    width: 3em;\n    background-color: var(--section-box);\n}\n\n.generate-btn:hover {\n    background-color: var(--dominant-light);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -56453,10 +56453,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./src/components/progressions/GenerateProgBuilder.css":
-/*!*************************************************************!*\
-  !*** ./src/components/progressions/GenerateProgBuilder.css ***!
-  \*************************************************************/
+/***/ "./src/components/generator/GenerateProgBuilder.css":
+/*!**********************************************************!*\
+  !*** ./src/components/generator/GenerateProgBuilder.css ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -56476,7 +56476,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_GenerateProgBuilder_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./GenerateProgBuilder.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/progressions/GenerateProgBuilder.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_GenerateProgBuilder_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./GenerateProgBuilder.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/generator/GenerateProgBuilder.css");
 
       
       
@@ -82112,7 +82112,6 @@ function ConvertProgToChords(tonic, progArr) {
 function DetermineChordsList(tonic, mode, mood) {
     if (!tonic || !mode)
         return "";
-    let FullProg = "";
     let ProgList = undefined;
     if (mood == "All" || !mood) {
         ProgList = FindProgListWithoutMood(mode);
@@ -82507,7 +82506,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PlayLoop = exports.PlaySynthChords = exports.SetSynthSound = exports.SetTempo = exports.GetTempo = exports.SetupTempo = exports.chordEvent = exports.polySynth = void 0;
 const Tone = __importStar(__webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../PianoChart */ "./src/PianoChart.ts");
-const unPressElementStyle_1 = __webpack_require__(/*! ../components/hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 //------ Global variables
 const synthSounds = {
     cuteSinePartials: [7, 6, 0.2],
@@ -82625,8 +82624,9 @@ function PlayChordSequence(chordArr, progressionLength, noteStart, id) {
         exports.polySynth.triggerAttackRelease(note, "16n", time);
     }, chordArr, "+0.1");
     // }, "+0.1");
+    console.log(id);
     seq.start(noteStart);
-    seq.loop = chordArr.length;
+    seq.loop = chordArr.length * 2;
 }
 function PlayLoop(chordArr) {
     exports.polySynth.releaseAll();
@@ -82651,6 +82651,7 @@ function PlayLoop(chordArr) {
             delete chordsToLoop[i];
         }
     }
+    console.log(chordsToLoop);
     // Schedule the loop events
     const progressionLength = chordArr.length;
     for (let i = 0; i < progressionLength; i++) {
@@ -82701,7 +82702,7 @@ const KeyButton_1 = __importDefault(__webpack_require__(/*! ./buttons/KeyButton 
 const QualityButton_1 = __importDefault(__webpack_require__(/*! ./buttons/QualityButton */ "./src/components/buttons/QualityButton.tsx"));
 const ProgressionGridDisplayComponent_1 = __importDefault(__webpack_require__(/*! ./progressions/ProgressionGridDisplayComponent */ "./src/components/progressions/ProgressionGridDisplayComponent.tsx"));
 const App_1 = __webpack_require__(/*! ../App */ "./src/App.tsx");
-const unPressElementStyle_1 = __webpack_require__(/*! ./hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 const NoteUtils_1 = __webpack_require__(/*! ../NoteUtils */ "./src/NoteUtils.ts");
 const ChordBuilderComponent = () => {
     const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
@@ -82909,7 +82910,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const KeyButton = ({ onPressKey }) => {
     const keys = [
@@ -82977,7 +82978,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
-const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
+const useToggle_1 = __webpack_require__(/*! ../../hooks/useToggle */ "./src/hooks/useToggle.tsx");
 const Play_1 = __webpack_require__(/*! ../../audio/Play */ "./src/audio/Play.ts");
 const tone_1 = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
@@ -83100,7 +83101,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const ModeButton = ({ onPressMode }) => {
     const modes = ["Major", "Minor"];
@@ -83135,7 +83136,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const MoodButton = ({ onPressMood }) => {
     const moods = [
@@ -83179,7 +83180,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Buttons.css */ "./src/components/buttons/Buttons.css");
 const ChordButton = ({ onPressKey }) => {
     // TODO: Add more chordsQualities...
@@ -83209,79 +83210,64 @@ exports["default"] = ChordButton;
 
 /***/ }),
 
-/***/ "./src/components/hooks/unPressElementStyle.tsx":
-/*!******************************************************!*\
-  !*** ./src/components/hooks/unPressElementStyle.tsx ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ "./src/components/generator/GenerateProgBuilderComponent.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/components/generator/GenerateProgBuilderComponent.tsx ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.unPressElementsStyleWithoutEvent = void 0;
-const unPressElementsStyleWithoutEvent = (style) => {
-    const toUnpress = document.getElementsByClassName(style);
-    if (toUnpress) {
-        Array.from(toUnpress).forEach((element) => {
-            element.classList.remove(style);
-        });
-    }
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.unPressElementsStyleWithoutEvent = unPressElementsStyleWithoutEvent;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+__webpack_require__(/*! ./GenerateProgBuilder.css */ "./src/components/generator/GenerateProgBuilder.css");
+const ProgGenerator_1 = __webpack_require__(/*! ./ProgGenerator */ "./src/components/generator/ProgGenerator.ts");
+const GenerateProgBuilderComponent = ({ selectedChord, key, mode, progLength, onGenerateProg }) => {
+    const handleClick = (event) => {
+        if (!selectedChord || !progLength)
+            return;
+        (0, ProgGenerator_1.GenerateProg)(selectedChord, progLength);
+        const newProg = ["A#", "Dm"];
+        onGenerateProg(newProg);
+    };
+    return (react_1.default.createElement("button", { "arial-label": "Generate a progression", title: "Generate a progression", className: "box generate-btn", onClick: (e) => {
+            handleClick(e);
+        } }, "\uD83C\uDFB2"));
+};
+exports["default"] = GenerateProgBuilderComponent;
 
 
 /***/ }),
 
-/***/ "./src/components/hooks/useDidUpdate.tsx":
-/*!***********************************************!*\
-  !*** ./src/components/hooks/useDidUpdate.tsx ***!
-  \***********************************************/
+/***/ "./src/components/generator/ProgGenerator.ts":
+/*!***************************************************!*\
+  !*** ./src/components/generator/ProgGenerator.ts ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-// From React Mantime Hooks
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.useDidUpdate = void 0;
-const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function useDidUpdate(fn, dependencies) {
-    const mounted = (0, react_1.useRef)(false);
-    (0, react_1.useEffect)(() => {
-        if (mounted.current) {
-            fn();
-        }
-        else {
-            mounted.current = true;
-        }
-    }, dependencies);
+exports.GenerateProg = void 0;
+const IProgression_1 = __webpack_require__(/*! ../../IProgression */ "./src/IProgression.ts");
+const NoteUtils_1 = __webpack_require__(/*! ../../NoteUtils */ "./src/NoteUtils.ts");
+function GenerateProg(selectedChord, progLength) {
+    const isSeventhChord = selectedChord.includes("7");
+    let [tonic, mode] = (0, NoteUtils_1.FullChordStringToArray)(selectedChord);
+    if (isSeventhChord)
+        mode = mode.slice(0, -1);
+    const newProgList = (0, IProgression_1.DetermineChordsList)(tonic, mode);
+    const newProgArr = newProgList.split("|").filter((prog) => {
+        return prog.split(",").length == progLength;
+    });
+    // console.log("Generate prog, key__mode__length", selectedChord, length);
+    // console.log("Generate prog, newProgList", newProgList);
+    console.log("Generate prog, newProgArr", newProgArr);
 }
-exports.useDidUpdate = useDidUpdate;
-
-
-/***/ }),
-
-/***/ "./src/components/hooks/useToggle.tsx":
-/*!********************************************!*\
-  !*** ./src/components/hooks/useToggle.tsx ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.useToggle = void 0;
-// Source: https://usehooks.com/useToggle/
-const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-// Parameter is the boolean, with default "false" value
-const useToggle = (initialState = false) => {
-    // Initialize the state
-    const [state, setState] = (0, react_1.useState)(initialState);
-    // Define and memorize toggler function in case we pass down the comopnent,
-    // This function change the boolean value to it's opposite value
-    const toggle = (0, react_1.useCallback)(() => setState((state) => !state), []);
-    return [state, toggle];
-};
-exports.useToggle = useToggle;
+exports.GenerateProg = GenerateProg;
 
 
 /***/ }),
@@ -83323,7 +83309,7 @@ const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const ProgressionUtils_1 = __webpack_require__(/*! ../../ProgressionUtils */ "./src/ProgressionUtils.ts");
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
@@ -83419,29 +83405,6 @@ exports["default"] = ChordDisplayComponent;
 
 /***/ }),
 
-/***/ "./src/components/progressions/GenerateProgBuilderComponent.tsx":
-/*!**********************************************************************!*\
-  !*** ./src/components/progressions/GenerateProgBuilderComponent.tsx ***!
-  \**********************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-__webpack_require__(/*! ./GenerateProgBuilder.css */ "./src/components/progressions/GenerateProgBuilder.css");
-const GenerateProgBuilderComponent = ({ tonic, nextChords, }) => {
-    //   const SoundOn = React.useContext(SoundOnContext);
-    return (react_1.default.createElement("button", { "arial-label": "Generate a progression", title: "Generate a progression", className: "box generate-btn" }, "\uD83C\uDFB2"));
-};
-exports["default"] = GenerateProgBuilderComponent;
-
-
-/***/ }),
-
 /***/ "./src/components/progressions/PianoDisplay.tsx":
 /*!******************************************************!*\
   !*** ./src/components/progressions/PianoDisplay.tsx ***!
@@ -83472,7 +83435,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../../PianoChart */ "./src/PianoChart.ts");
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const PianoDisplayComponent = ({ key, chord, }) => {
     let chordsArray = (0, PianoChart_1.ShowChord)(chord);
@@ -83555,8 +83518,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const useDidUpdate_1 = __webpack_require__(/*! ../hooks/useDidUpdate */ "./src/components/hooks/useDidUpdate.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
+const useDidUpdate_1 = __webpack_require__(/*! ../../hooks/useDidUpdate */ "./src/hooks/useDidUpdate.tsx");
 const ChordDisplay_1 = __importDefault(__webpack_require__(/*! ./ChordDisplay */ "./src/components/progressions/ChordDisplay.tsx"));
 __webpack_require__(/*! ./Progressions.css */ "./src/components/progressions/Progressions.css");
 const ProgressionDisplayComponent = ({ tonic, mode, mood, chordsList, }) => {
@@ -83625,11 +83588,9 @@ __webpack_require__(/*! ./ProgressionGridDisplay.css */ "./src/components/progre
 const MidiButton_1 = __importDefault(__webpack_require__(/*! ../buttons/MidiButton */ "./src/components/buttons/MidiButton.tsx"));
 const PianoDisplay_1 = __importDefault(__webpack_require__(/*! ./PianoDisplay */ "./src/components/progressions/PianoDisplay.tsx"));
 const LoopButton_1 = __importDefault(__webpack_require__(/*! ../buttons/LoopButton */ "./src/components/buttons/LoopButton.tsx"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
-const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
-const GenerateProgBuilderComponent_1 = __importDefault(__webpack_require__(/*! ./GenerateProgBuilderComponent */ "./src/components/progressions/GenerateProgBuilderComponent.tsx"));
-const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) => {
-    const SoundOn = react_1.default.useContext(App_1.SoundOnContext);
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
+const GenerateProgBuilderComponent_1 = __importDefault(__webpack_require__(/*! ../generator/GenerateProgBuilderComponent */ "./src/components/generator/GenerateProgBuilderComponent.tsx"));
+const ProgressionGridDisplayComponent = ({ chordToAdd, onPressChord, }) => {
     const [gridSize, setGridSize] = (0, react_1.useState)(4);
     const [selectedPos, setSelectedPos] = (0, react_1.useState)(1);
     const [selectedChord, setSelectedChord] = (0, react_1.useState)("");
@@ -83673,6 +83634,9 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
         for (let gridDiv of childNodes) {
             gridDiv.innerHTML = "";
         }
+    };
+    const progGenCallback = (newProg) => {
+        console.log("progGenCallback", newProg);
     };
     (0, react_1.useEffect)(() => {
         // Select by default the first grid div when component is created.
@@ -83787,7 +83751,7 @@ const ProgressionGridDisplayComponent = ({ tonic, chordToAdd, onPressChord, }) =
                         handlePositionClickAndKeyPress(4, e);
                     } })),
             react_1.default.createElement("div", { className: "prog-settings" },
-                react_1.default.createElement(GenerateProgBuilderComponent_1.default, null),
+                react_1.default.createElement(GenerateProgBuilderComponent_1.default, { selectedChord: selectedChord, progLength: 4, onGenerateProg: progGenCallback }),
                 " ",
                 react_1.default.createElement("br", null),
                 react_1.default.createElement("input", { title: "Set the grid size", type: "number", min: "2", max: "8", className: "prog-gridsize-input", value: gridSize, onChange: onGridSizeChange }),
@@ -83835,11 +83799,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const useDidUpdate_1 = __webpack_require__(/*! ../hooks/useDidUpdate */ "./src/components/hooks/useDidUpdate.tsx");
+const useDidUpdate_1 = __webpack_require__(/*! ../../hooks/useDidUpdate */ "./src/hooks/useDidUpdate.tsx");
 const Chords_1 = __webpack_require__(/*! ../../Chords */ "./src/Chords.ts");
 const ScalePianoDisplay_1 = __importDefault(__webpack_require__(/*! ./ScalePianoDisplay */ "./src/components/scales/ScalePianoDisplay.tsx"));
 __webpack_require__(/*! ./Scales.css */ "./src/components/scales/Scales.css");
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 const App_1 = __webpack_require__(/*! ../../App */ "./src/App.tsx");
 const Scale_1 = __webpack_require__(/*! ../../Scale */ "./src/Scale.ts");
 const ChordsScaleDisplayComponent = ({ tonic, mode, chordsScale, }) => {
@@ -83926,7 +83890,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const PianoChart_1 = __webpack_require__(/*! ../../PianoChart */ "./src/PianoChart.ts");
 __webpack_require__(/*! ../progressions/Piano.css */ "./src/components/progressions/Piano.css");
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 const ScalePianoDisplayComponent = ({ chord, }) => {
     let chordsArray = (0, PianoChart_1.ShowChord)(chord);
     (0, react_1.useEffect)(() => {
@@ -84009,7 +83973,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const react_use_keypress_1 = __importDefault(__webpack_require__(/*! react-use-keypress */ "./node_modules/react-use-keypress/lib/index.esm.js"));
-const useToggle_1 = __webpack_require__(/*! ../hooks/useToggle */ "./src/components/hooks/useToggle.tsx");
+const useToggle_1 = __webpack_require__(/*! ../../hooks/useToggle */ "./src/hooks/useToggle.tsx");
 const ShortcutsSettingsPanel_1 = __importDefault(__webpack_require__(/*! ./ShortcutsSettingsPanel */ "./src/components/settings/ShortcutsSettingsPanel.tsx"));
 const Play_1 = __webpack_require__(/*! ../../audio/Play */ "./src/audio/Play.ts");
 __webpack_require__(/*! ./Settings.css */ "./src/components/settings/Settings.css");
@@ -84191,7 +84155,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const ProgressionDictionnaryTab_1 = __importDefault(__webpack_require__(/*! ../tabs/ProgressionDictionnaryTab */ "./src/components/tabs/ProgressionDictionnaryTab.tsx"));
 const ProgressionBuilderTab_1 = __importDefault(__webpack_require__(/*! ../tabs/ProgressionBuilderTab */ "./src/components/tabs/ProgressionBuilderTab.tsx"));
-const unPressElementStyle_1 = __webpack_require__(/*! ../hooks/unPressElementStyle */ "./src/components/hooks/unPressElementStyle.tsx");
+const unPressElementStyle_1 = __webpack_require__(/*! ../../hooks/unPressElementStyle */ "./src/hooks/unPressElementStyle.tsx");
 __webpack_require__(/*! ./Tab.css */ "./src/components/tabs/Tab.css");
 const TabComponent = () => {
     const [activeTab, setActiveTab] = (0, react_1.useState)("tab-id-1");
@@ -84216,6 +84180,83 @@ const TabComponent = () => {
         react_1.default.createElement("div", { className: "outlet" }, activeTab === "tab-id-1" ? (react_1.default.createElement(ProgressionDictionnaryTab_1.default, null)) : (react_1.default.createElement(ProgressionBuilderTab_1.default, null)))));
 };
 exports["default"] = TabComponent;
+
+
+/***/ }),
+
+/***/ "./src/hooks/unPressElementStyle.tsx":
+/*!*******************************************!*\
+  !*** ./src/hooks/unPressElementStyle.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.unPressElementsStyleWithoutEvent = void 0;
+const unPressElementsStyleWithoutEvent = (style) => {
+    const toUnpress = document.getElementsByClassName(style);
+    if (toUnpress) {
+        Array.from(toUnpress).forEach((element) => {
+            element.classList.remove(style);
+        });
+    }
+};
+exports.unPressElementsStyleWithoutEvent = unPressElementsStyleWithoutEvent;
+
+
+/***/ }),
+
+/***/ "./src/hooks/useDidUpdate.tsx":
+/*!************************************!*\
+  !*** ./src/hooks/useDidUpdate.tsx ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+// From React Mantime Hooks
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useDidUpdate = void 0;
+const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function useDidUpdate(fn, dependencies) {
+    const mounted = (0, react_1.useRef)(false);
+    (0, react_1.useEffect)(() => {
+        if (mounted.current) {
+            fn();
+        }
+        else {
+            mounted.current = true;
+        }
+    }, dependencies);
+}
+exports.useDidUpdate = useDidUpdate;
+
+
+/***/ }),
+
+/***/ "./src/hooks/useToggle.tsx":
+/*!*********************************!*\
+  !*** ./src/hooks/useToggle.tsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useToggle = void 0;
+// Source: https://usehooks.com/useToggle/
+const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+// Parameter is the boolean, with default "false" value
+const useToggle = (initialState = false) => {
+    // Initialize the state
+    const [state, setState] = (0, react_1.useState)(initialState);
+    // Define and memorize toggler function in case we pass down the comopnent,
+    // This function change the boolean value to it's opposite value
+    const toggle = (0, react_1.useCallback)(() => setState((state) => !state), []);
+    return [state, toggle];
+};
+exports.useToggle = useToggle;
 
 
 /***/ }),
