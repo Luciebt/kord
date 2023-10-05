@@ -11,11 +11,6 @@
     border-radius: .25em;
 }
 
-.tab-nav button {
-    border: none;
-    border-radius: none;
-}
-
 .active-tab {
     font-weight: 500;
     color: antiquewhite;

@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin-top: 1em;
     gap: .16em;
 }
 
@@ -96,7 +95,6 @@
 
 .mini-btn:hover {
     transition: all .2s ease-in-out;
-    border: 1px solid var(--dominant-dark);
 }
 
 .top-chord-box {

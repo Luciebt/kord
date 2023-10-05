@@ -1,9 +1,10 @@
 /* General button style */
 
 button {
-  font-family: "Space Mono", monospace;
+  font-family: "DM Mono", monospace;
   color: var(--dominant-dark);
-  border: 1.2px solid var(--border-color);
+  /* border: 1.2px solid var(--border-color); */
+  border: none;
   transition: all .2s ease-in-out;
   min-width: 3em;
   font-size: 1em;
@@ -15,8 +16,9 @@ button {
 }
 
 button:hover {
+  color: #fffffc;
   transition: all .2s ease-in-out;
-  border: 1px solid var(--dominant-dark);
+  background-color: var(--dominant-dark);
 }
 
 input[type="number"] {
@@ -44,8 +46,8 @@ input[type="number"] {
   /* color: #f4eeff; */
   color: var(--dominant-light);
   transition: all .2s ease-in-out;
-  border: 1px solid var(--dominant-dark);
   background-color: var(--dominant-dark);
+  box-shadow: 0px 2px 0px 2px var(--dominant-light);
 }
 
 /* Scale and Chord buttons */
@@ -75,16 +77,10 @@ input[type="number"] {
   }
 } 
 
-button.chord-btn:hover,
-button.scale-chord-btn:hover {
-  border: 1px solid var(--pressed-color) !important;
-}
-
 .chord-btn-pressed,
 .scale-chord-btn-pressed {
   transition: background-color 0.2s ease;
   color: #f4eeff;
-  border: 1px solid var(--pressed-color);
   background-color: var(--pressed-color);
   transition: all .2s ease-in-out;
 }
@@ -122,18 +118,15 @@ button.scale-chord-btn:hover {
 .loop-btn {
   font-size: 1.4em;
   color: var(--dominant-dark);
-  border: 1px solid var(--dominant-dark);
 }
 .loop-btn:hover {
   background-color: var(--dominant-dark);
   color: var(--dominant-light);
-  border: 1px solid var(--dominant-dark);
 }
 .loop-btn-pressed {
   font-size: 1.4em;
   background-color: var(--dominant-dark);
   color: var(--dominant-light);
-  border: 1px solid var(--dominant-dark);
   box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;
 }
 .loop-btn-disabled {
@@ -147,5 +140,4 @@ button.scale-chord-btn:hover {
   font-size: 1em;
   font-weight: bold;
   transition: all .2s ease-in-out;
-  border: 1.4px solid var(--dominant-dark);
 }
