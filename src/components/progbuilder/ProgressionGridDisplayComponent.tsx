@@ -23,16 +23,10 @@ const ProgressionGridDisplayComponent = ({
     new Map<number, string>()
   );
 
-  const onGridSizeChange = (event: any) => {
-    // Convert to number, and increase/decrease grid divs.
-    setGridSize(event.target.value);
-  };
-
-  const handlePositionClickAndKeyPress = (posId: number, event?: any) => {
+  const handlePositionClickAndKeyPress = (posId: number) => {
     if (!posId || posId <= 0 || posId > 8) return;
 
-    const newPos: number = Number(posId);
-    const newChord = progressionMap.get(newPos);
+    const newChord = progressionMap.get(posId);
 
     // Handle css to apply the selection color
     unPressElementsStyleWithoutEvent("selected-position");
@@ -45,7 +39,7 @@ const ProgressionGridDisplayComponent = ({
       gridDiv?.classList.add("selected-position-without-chord");
     }
 
-    if (newPos) setSelectedPos(newPos);
+    setSelectedPos(posId);
     if (newChord) onPressChord(newChord);
   };
 
@@ -71,48 +65,40 @@ const ProgressionGridDisplayComponent = ({
     unPressElementsStyleWithoutEvent("selected-position");
     const grid1 = document.getElementById("pos-1");
     grid1?.classList.add("selected-position-without-chord");
-
-    return () => { };
   }, []);
 
   // Grid sizing
+  const onGridSizeChange = (event: any) => {
+    setGridSize(Number(event.target.value));
+  };
+  
   useEffect(() => {
     const grid = document.getElementById("prog-grid");
     if (!grid) return;
 
-    const gridDivs = grid.childNodes;
+    const gridDivs = grid.children;
     const actualGridSize = gridDivs.length;
-    let difference = actualGridSize - gridSize;
+    const last = gridDivs[actualGridSize - 1] as HTMLElement;
 
-    if (difference == 0) return;
+    if (actualGridSize === gridSize) return;
 
-    const last = gridDivs[gridDivs.length - 1];
-    const lastId = Number((last as HTMLElement).id.slice(-1));
-    const parentNode = last.parentNode;
-
-    if (difference == 1) {
-      // Remove the last div.
-      if (parentNode) parentNode.removeChild(last);
-      return;
-    }
-
-    if (difference == -1) {
+    if (actualGridSize < gridSize) {
       // Create new div
-      let newDiv = document.createElement("div");
-      // Set attributes and click listener
-      const newDivId = lastId + 1;
-      newDiv.id = "pos-" + newDivId;
+      const newDivId = actualGridSize + 1;
+      const newDiv = document.createElement("div");
+      newDiv.id = `pos-${newDivId}`;
       newDiv.tabIndex = 0;
       newDiv.classList.add("box");
-      newDiv.addEventListener("click", function (event: any) {
-        handlePositionClickAndKeyPress(newDivId, event);
+      newDiv.addEventListener("click", (event) => {
+        handlePositionClickAndKeyPress(newDivId);
       });
-      // Add div at the end of the list
-      if (parentNode) parentNode.appendChild(newDiv);
+      grid.appendChild(newDiv);
+    } else {
+      // Remove the last div.
+      last && last.remove();
     }
-
-    return () => { };
   }, [gridSize]);
+
 
   useEffect(() => {
     if (!chordToAdd) return;
@@ -129,36 +115,16 @@ const ProgressionGridDisplayComponent = ({
 
   const isInputFieldFocused = () => {
     const activeEl = document.activeElement as HTMLElement;
-    if (activeEl)
-      return (
-        activeEl.id === "bpm-input" || activeEl.id === "range-number-bpm-input"
-      );
+    return activeEl?.id === "bpm-input" || activeEl?.id === "range-number-bpm-input";
   };
 
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
-  useKeypress(["1", "a", "q"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(1);
-  });
-  useKeypress(["2", "w", "z"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(2);
-  });
-  useKeypress(["3", "e"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(3);
-  });
-  useKeypress(["4", "r"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(4);
-  });
-  useKeypress(["5", "t"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(5);
-  });
-  useKeypress(["6", "y"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(6);
-  });
-  useKeypress(["7", "u"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(7);
-  });
-  useKeypress(["8", "i"], () => {
-    if (!isInputFieldFocused()) handlePositionClickAndKeyPress(8);
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  const keys2 = ["a", "w", "e", "r", "t", "y", "u", "i"];
+  keys.forEach((key, index) => {
+    useKeypress([key, keys2[index]], () => {
+      if (!isInputFieldFocused()) handlePositionClickAndKeyPress(index + 1);
+    });
   });
 
   return (
@@ -168,42 +134,8 @@ const ProgressionGridDisplayComponent = ({
         <div className="top-chord-box">
           {progressionMap ? (
             <LoopButton chordsList={Array.from(progressionMap.values())} />
-          ) : null}{" "}
+          ) : null}
         </div>
-        <section id="prog-grid" className="prog-grid-container">
-          <div
-            className="box"
-            tabIndex={0}
-            id="pos-1"
-            onClick={(e) => {
-              handlePositionClickAndKeyPress(1, e);
-            }}
-          ></div>
-          <div
-            className="box"
-            tabIndex={0}
-            id="pos-2"
-            onClick={(e) => {
-              handlePositionClickAndKeyPress(2, e);
-            }}
-          ></div>
-          <div
-            className="box"
-            tabIndex={0}
-            id="pos-3"
-            onClick={(e) => {
-              handlePositionClickAndKeyPress(3, e);
-            }}
-          ></div>
-          <div
-            className="box"
-            tabIndex={0}
-            id="pos-4"
-            onClick={(e) => {
-              handlePositionClickAndKeyPress(4, e);
-            }}
-          ></div>
-        </section>
         <div className="prog-settings">
           <GenerateProgBuilderComponent
             selectedChord={selectedChord}
@@ -213,7 +145,7 @@ const ProgressionGridDisplayComponent = ({
             title="Set the grid size"
             type="number"
             min="2"
-            max="8"
+            max="12"
             className="prog-gridsize-input"
             value={gridSize}
             onChange={onGridSizeChange}
@@ -227,6 +159,21 @@ const ProgressionGridDisplayComponent = ({
           </button>
         </div>
         <br />
+        <section id="prog-grid" className="prog-grid-container">
+          {Array.from({ length: gridSize }).map((_, index) => (
+            <div
+              key={`pos-${index + 1}`}
+              className="box"
+              tabIndex={0}
+              id={`pos-${index + 1}`}
+              onClick={() => {
+                handlePositionClickAndKeyPress(index + 1);
+              }}
+            ></div>
+          ))}
+        </section>
+
+
         <MidiButtonComponent chordsList={Array.from(progressionMap.values())} />
       </section>
       {selectedChord ? (
