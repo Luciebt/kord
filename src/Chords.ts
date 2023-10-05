@@ -2,7 +2,7 @@ import { Note, Chord } from "@tonaljs/tonal";
 import { detect } from "@tonaljs/chord-detect";
 import { PlaySynthChords, polySynth } from "./audio/Play";
 // import { SetupPiano, PlayPianoChords } from "./audio/Piano";
-import { CleanChords, SimplifiedChordNotationConverter } from "./NoteUtils";
+import { CleanChords, SimplifiedChordNotationConverter } from "./utils/NoteUtils";
 
 // TODO: test accuracy of chords / their notes using chord-detect: https://github.com/tonaljs/tonal/tree/main/packages/chord-detect
 

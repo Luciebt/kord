@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { DetermineChordsList } from "../IProgression";
-import { findChordsScale } from "../Scale";
-import KeyButton from "./buttons/KeyButton";
-import ModeButton from "./buttons/ModeButton";
-import MoodButton from "./buttons/MoodButton";
-import ProgressionDisplayComponent from "./progressions/ProgressionDisplay";
-import ChordsScaleDisplayComponent from "./scales/ScaleDisplay";
-import "../components/progressions/Progressions.css";
+import { DetermineChordsList } from "../../IProgression";
+import { findChordsScale } from "../../Scale";
+import KeyButton from "../buttons/KeyButton";
+import ModeButton from "../buttons/ModeButton";
+import MoodButton from "../buttons/MoodButton";
+import ProgressionDisplayComponent from "./ProgressionDisplay";
+import ChordsScaleDisplayComponent from "../scales/ScaleDisplay";
+import "./Progressions.css";
 
 const ProgressionComponent = (): JSX.Element => {
   const [tonic, setTonic] = useState("");

@@ -1,5 +1,5 @@
 import { DetermineChordsList } from "../../IProgression";
-import { FullChordStringToArray } from "../../NoteUtils";
+import { FullChordStringToArray } from "../../utils/NoteUtils";
 
 export function GenerateProg(selectedChord: string, progLength: number) {
 

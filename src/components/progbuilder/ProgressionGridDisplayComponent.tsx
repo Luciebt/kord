@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useKeypress from "react-use-keypress";
-import "./ProgressionGridDisplay.css";
+import "..//progressions/ProgressionGridDisplay.css";
 import MidiButtonComponent from "../buttons/MidiButton";
-import PianoDisplay from "./PianoDisplay";
+import PianoDisplay from "../piano/PianoDisplay";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import GenerateProgBuilderComponent from "../generator/GenerateProgBuilderComponent";

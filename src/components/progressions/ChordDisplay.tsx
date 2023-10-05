@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
-import PianoDisplay from "./PianoDisplay";
+import PianoDisplay from "../piano/PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
-import { GetRomansForChord } from "../../ProgressionUtils";
+import { GetRomansForChord } from "../../utils/ProgressionUtils";
 import "./Progressions.css";
 
 export interface IChordDisplayProps {

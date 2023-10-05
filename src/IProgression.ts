@@ -1,8 +1,8 @@
 import { ProgressionCollection } from "./ProgressionStore";
 import { TProgression } from "./type.d";
 import { Progression } from "@tonaljs/tonal";
-import { CleanChords } from "./NoteUtils";
-import { BuildChordsMap } from "./ProgressionUtils";
+import { CleanChords } from "./utils/NoteUtils";
+import { BuildChordsMap } from "./utils/ProgressionUtils";
 
 export default interface IProgression {
   tonic: string;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { PlayChord } from "../Chords";
-import KeyButton from "./buttons/KeyButton";
-import QualityButton from "./buttons/QualityButton";
-import ProgressionGridDisplayComponent from "./progressions/ProgressionGridDisplayComponent";
-import { SoundOnContext } from "../App";
-import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
-import { FullChordStringToArray } from "../NoteUtils";
+import { PlayChord } from "../../Chords";
+import KeyButton from "../buttons/KeyButton";
+import QualityButton from "../buttons/QualityButton";
+import ProgressionGridDisplayComponent from "../progbuilder/ProgressionGridDisplayComponent";
+import { SoundOnContext } from "../../App";
+import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
+import { FullChordStringToArray } from "../../utils/NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {
   const SoundOn = useContext(SoundOnContext);
