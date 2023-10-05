@@ -26,10 +26,14 @@ const ProgressionDisplayComponent = ({
     setChordsState(true);
     setChordSelected(chords);
 
-    const style: string = "prog-btn-pressed";
-    unPressElementsStyleWithoutEvent(style);
+    unPressElementsStyleWithoutEvent("prog-btn-pressed");
     event.target.classList.add("prog-btn-pressed");
   };
+
+  // Reset chord selected when changing tonality or mode.
+  useDidUpdate(() => {
+    setChordsState(false);
+  }, [tonic, mode, mood]);
 
   const progressionsList: JSX.Element[] = chordsArr.map((chords, i) => (
     <button
@@ -42,11 +46,6 @@ const ProgressionDisplayComponent = ({
       {chords}
     </button>
   ));
-
-  // Reset chord selected when changing tonality or mode.
-  useDidUpdate(() => {
-    setChordsState(false);
-  }, [tonic, mode, mood]);
 
   return (
     <section className="box prog-box">

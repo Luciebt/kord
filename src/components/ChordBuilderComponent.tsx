@@ -14,18 +14,20 @@ const ChordBuilderComponent = (): JSX.Element => {
   const [chordSelected, setChordSelected] = useState("");
   const [shouldPlay, setShouldPlay] = useState(true);
 
-  const KeyCallback = (key: string) => {
-    setChordKey(key);
+  const updateChordSelected = () => {
     if (chordKey && chordQuality) {
       setChordSelected(chordKey + chordQuality);
     }
   };
 
+  const KeyCallback = (key: string) => {
+    setChordKey(key);
+    updateChordSelected();
+  };
+
   const ChordQualityCallback = (quality: string) => {
     setChordQuality(quality);
-    if (chordKey && chordQuality) {
-      setChordSelected(chordKey + chordQuality);
-    }
+    updateChordSelected();
   };
 
   const newChordCallback = (newChord: string) => {
@@ -34,17 +36,14 @@ const ChordBuilderComponent = (): JSX.Element => {
 
     unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
     const qualityBtn = document.getElementById(quality);
-    if (!qualityBtn) return;
-    qualityBtn.classList.add("chordbuild-btn-pressed");
-    qualityBtn.click();
+    qualityBtn?.classList.add("chordbuild-btn-pressed");
+    qualityBtn?.click();
 
     unPressElementsStyleWithoutEvent("key-btn-pressed");
     const keyBtn = document.getElementById(key);
-    if (!keyBtn) return;
-    keyBtn.classList.add("key-btn-pressed");
-    keyBtn.click();
+    keyBtn?.classList.add("key-btn-pressed");
+    keyBtn?.click();
 
-    // Triggers sound from keyboard (and also the previous one??)
     if (SoundOn) PlayChord(key + quality);
     setShouldPlay(false);
   };
@@ -52,15 +51,13 @@ const ChordBuilderComponent = (): JSX.Element => {
   useEffect(() => {
     const chordToBuild = chordKey + chordQuality;
     setChordSelected(chordToBuild);
-    // Triggers sound on click.
     if (SoundOn && shouldPlay) PlayChord(chordToBuild);
     setShouldPlay(false);
-  }, [chordKey, chordQuality]);
+  }, [chordKey, chordQuality, SoundOn, shouldPlay]);
 
   return (
     <section className="centered-box">
       <div className="prog-chooser-box">
-        {" "}
         <KeyButton onPressKey={KeyCallback} />
         <QualityButton onPressKey={ChordQualityCallback} />
       </div>
@@ -69,8 +66,6 @@ const ChordBuilderComponent = (): JSX.Element => {
         chordToAdd={chordSelected}
         onPressChord={newChordCallback}
       />
-
-      <br />
     </section>
   );
 };

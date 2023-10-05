@@ -4,12 +4,10 @@ import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyl
 import "./Progressions.css";
 
 export interface IPianoDisplayProps {
-  key?: number;
   chord: string;
 }
 
 const PianoDisplayComponent = ({
-  key,
   chord,
 }: IPianoDisplayProps): JSX.Element => {
   let chordsArray: string[] = ShowChord(chord);
@@ -18,16 +16,12 @@ const PianoDisplayComponent = ({
     if (chordsArray) {
       chordsArray.forEach((note) => {
         const noteFound = document.getElementById(note);
-        if (noteFound) {
-          noteFound.classList.add("pressed");
-        }
+        noteFound?.classList.add("pressed");
       });
     }
 
     return () => {
-      const style: string = "pressed";
-      unPressElementsStyleWithoutEvent(style);
-
+      unPressElementsStyleWithoutEvent("pressed");
       chordsArray = [""];
     };
   }, [chord]);
@@ -35,78 +29,11 @@ const PianoDisplayComponent = ({
   return (
     <section className="keyboard-box">
       <ul id="keyboard">
-        <li id="C3" className="white">
-          C
-        </li>
-        <li id="C#3" className="black">
-          C#
-        </li>
-        <li id="D3" className="white offset">
-          D
-        </li>
-        <li id="D#3" className="black">
-          D#
-        </li>
-        <li id="E3" className="white offset">
-          E
-        </li>
-        <li id="F3" className="white">
-          F
-        </li>
-        <li id="F#3" className="black">
-          F#
-        </li>
-        <li id="G3" className="white offset">
-          G
-        </li>
-        <li id="G#3" className="black">
-          G#
-        </li>
-        <li id="A3" className="white offset">
-          A
-        </li>
-        <li id="A#3" className="black">
-          A#
-        </li>
-        <li id="B3" className="white offset">
-          B
-        </li>
-        <li id="C4" className="white">
-          C
-        </li>
-        <li id="C#4" className="black">
-          C#
-        </li>
-        <li id="D4" className="white offset">
-          D
-        </li>
-        <li id="D#4" className="black">
-          D#
-        </li>
-        <li id="E4" className="white offset">
-          E
-        </li>
-        <li id="F4" className="white">
-          F
-        </li>
-        <li id="F#4" className="black">
-          F#
-        </li>
-        <li id="G4" className="white offset">
-          G
-        </li>
-        <li id="G#4" className="black">
-          G#
-        </li>
-        <li id="A4" className="white offset">
-          A
-        </li>
-        <li id="A#4" className="black">
-          A#
-        </li>
-        <li id="B4" className="white offset">
-          B
-        </li>
+        {["C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3", "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4"].map((note, index) => (
+          <li id={note} className={note.includes("#") ? "black" : "white" + (index % 12 === 2 || index % 12 === 4 || index % 12 === 7 || index % 12 === 9 || index % 12 === 11 ? " offset" : "")}>
+            {note.replace("3", "").replace("4", "")}
+          </li>
+        ))}
       </ul>
     </section>
   );

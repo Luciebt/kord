@@ -122,22 +122,19 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
   ],
 };
 
-const samplesProg = [];
+function convertProgForTonal(samples) {
+  const tonalMap = {
+    i: "Im",
+    ii: "IIm",
+    iii: "IIIm",
+    iv: "IVm",
+    v: "Vm",
+    vi: "VIm",
+    vii: "VIIm",
+  };
 
-function convertProgForTonal(samples: string[][]): string[] {
-  let results: string[] = [];
-
-  samples.forEach((sample) => {
-    let progression = sample.toString();
-    progression = progression.replace(/i/g, "Im");
-    progression = progression.replace(/ii/g, "IIm");
-    progression = progression.replace(/iii/g, "IIIm");
-    progression = progression.replace(/iv/g, "IVm");
-    progression = progression.replace(/v/g, "Vm");
-    progression = progression.replace(/vi/g, "VIm");
-    progression = progression.replace(/vii/g, "VIIm");
-    results.push(progression);
+  return samples.map((sample) => {
+    return sample.toString().replace(/\b(i|ii|iii|iv|v|vi|vii)\b/g, (match) => tonalMap[match]);
   });
-
-  return results;
 }
+

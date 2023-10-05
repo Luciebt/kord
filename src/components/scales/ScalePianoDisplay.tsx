@@ -17,9 +17,7 @@ const ScalePianoDisplayComponent = ({
       chordsArray.forEach((note) => {
         let scaleNoteId = "s-" + note;
         const noteFound = document.getElementById(scaleNoteId);
-        if (noteFound) {
-          noteFound.classList.add("s-pressed");
-        }
+        noteFound?.classList.add("s-pressed");
       });
     }
 

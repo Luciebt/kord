@@ -110,10 +110,10 @@ function AddGridHighlight(posId: number): any {
   unPressElementsStyleWithoutEvent("selected-position-without-chord");
 
   let currentChord = document.getElementById(`btn-${posId}`);
-  if (currentChord) return currentChord.classList.add("highlight-chord-div");
+  currentChord?.classList.add("highlight-chord-div");
 
   currentChord = document.getElementById(`pos-${posId}`);
-  if (currentChord) return currentChord.classList.add("selected-position");
+  currentChord?.classList.add("selected-position");
 }
 
 function PlayChordLoopEvent(

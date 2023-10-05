@@ -40,28 +40,25 @@ const ProgressionGridDisplayComponent = ({
     const gridDiv = document.getElementById("pos-" + posId);
 
     if (newChord) {
-      if (gridDiv) gridDiv.classList.add("selected-position");
+      gridDiv?.classList.add("selected-position");
     } else {
-      if (gridDiv) gridDiv.classList.add("selected-position-without-chord");
+      gridDiv?.classList.add("selected-position-without-chord");
     }
-
-    console.log(newChord);
 
     if (newPos) setSelectedPos(newPos);
     if (newChord) onPressChord(newChord);
   };
 
-  const handleClearClick = (event: any) => {
-    // Clear the cached chords and map
+  const handleClearClick = () => {
     progressionMap.clear();
     setSelectedChord("");
-    // Remove the inner content of each grid div (clear)
     const parentSection = document.getElementById("prog-grid");
     if (!parentSection) return;
-    const childNodes = parentSection.childNodes as any;
-    for (let gridDiv of childNodes as HTMLCollection) {
+    Array.from(parentSection.children).forEach((gridDiv) => {
       gridDiv.innerHTML = "";
-    }
+    });
+
+    // TODO: focus the first grid div
   };
 
   const progGenCallback = (newProg: string[]) => {
@@ -72,7 +69,7 @@ const ProgressionGridDisplayComponent = ({
     // Select by default the first grid div when component is created.
     unPressElementsStyleWithoutEvent("selected-position");
     const grid1 = document.getElementById("pos-1");
-    if (grid1) grid1.classList.add("selected-position-without-chord");
+    grid1?.classList.add("selected-position-without-chord");
 
     return () => { };
   }, []);
@@ -223,9 +220,7 @@ const ProgressionGridDisplayComponent = ({
           <button
             title="Clear progression"
             className="mini-btn"
-            onClick={(e) => {
-              handleClearClick(e);
-            }}
+            onClick={handleClearClick}
           >
             ❌
           </button>
