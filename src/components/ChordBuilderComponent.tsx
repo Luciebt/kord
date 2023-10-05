@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PlayChord } from "../Chords";
 import KeyButton from "./buttons/KeyButton";
 import QualityButton from "./buttons/QualityButton";
@@ -8,7 +8,7 @@ import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 import { FullChordStringToArray } from "../NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {
-  const SoundOn = React.useContext(SoundOnContext);
+  const SoundOn = useContext(SoundOnContext);
   const [chordKey, setChordKey] = useState("");
   const [chordQuality, setChordQuality] = useState("");
   const [chordSelected, setChordSelected] = useState("");

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "./ScalePianoDisplay";
@@ -18,7 +18,7 @@ const ChordsScaleDisplayComponent = ({
   mode,
   chordsScale,
 }: IChordsScaleDisplayComponent): JSX.Element => {
-  const SoundOn = React.useContext(SoundOnContext);
+  const SoundOn = useContext(SoundOnContext);
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 

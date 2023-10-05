@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
 import PianoDisplay from "./PianoDisplay";
@@ -18,7 +18,7 @@ const ChordDisplayComponent = ({
   tonic,
   chord,
 }: IChordDisplayProps): JSX.Element => {
-  const SoundOn = React.useContext(SoundOnContext);
+  const SoundOn = useContext(SoundOnContext);
   const [chordState, setChordState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
   let chordArr: string[] = chord.split(",");
