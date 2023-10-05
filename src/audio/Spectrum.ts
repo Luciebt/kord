@@ -32,7 +32,7 @@ const DrawSpectrum = (analyser, ctx) => {
 
   ctx.stroke();
 
-  console.log("CTX", ctx);
+  // console.log("CTX", ctx);
 };
 
 function CreateSpectrum(): void {

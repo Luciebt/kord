@@ -32,14 +32,12 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
       // Play the chord
       PlayLoop(chordsList);
       Transport.start();
-      // Apply CSS
+
       btn.classList.replace("loop-btn", "loop-btn-pressed");
       btn.innerText = "■";
     } else {
       // Stop playing
       Transport.stop();
-      Transport.cancel();
-      // Apply CSS
       btn.classList.replace("loop-btn-pressed", "loop-btn");
       btn.innerText = "▶";
     }

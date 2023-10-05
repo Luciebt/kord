@@ -93,12 +93,10 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  // Tone.Transport.stop();
   Tone.start().then(() => {
     polySynth.releaseAll();
     polySynth.triggerAttackRelease(chordNotes, "+0.1", 1);
   });
-  Tone.Transport.start();
 }
 
 //------ Loop chord progression.
@@ -121,6 +119,8 @@ function PlayChordLoopEvent(
   progressionLength: number,
   noteStart: string = "0:0:0"
 ): void {
+  Tone.start();
+  
   chordEvent = new Tone.ToneEvent((time) => {
     polySynth.triggerAttackRelease(chordArr, "1n", time);
 
@@ -130,7 +130,7 @@ function PlayChordLoopEvent(
       AddGridHighlight(posId);
       // TODO: update the piano display.
     }, time);
-  }, "+0.1");
+  }, "");
   // start the chord at the beginning of the Tone.transport timeline
   chordEvent.start(noteStart);
   // loop it every measure, depending on the number of chords to play.
@@ -156,18 +156,13 @@ function PlayChordSequence(
   );
   // }, "+0.1");
 
-  console.log(id);
-
   seq.start(noteStart);
   seq.loop = chordArr.length * 2;
 }
 
 export function PlayLoop(chordArr: string[]): void {
-  polySynth.releaseAll();
-
-  let chordsToLoop: { [key: number]: string[] } = {};
-
   // Build the chord arrays in simplified notation
+  let chordsToLoop: { [key: number]: string[] } = {};
   for (let i = 0; i < chordArr.length; i++) {
     if (chordArr[i]) {
       chordsToLoop[i + 1] = ShowChord(chordArr[i]);

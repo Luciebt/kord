@@ -14,7 +14,6 @@ const PianoDisplayComponent = ({
 
   useEffect(() => {
     if (chordsArray) {
-      console.log("chordsArray " + chordsArray)
       chordsArray.forEach((note) => {
         const noteFound = document.getElementById(note);
         noteFound?.classList.add("pressed");

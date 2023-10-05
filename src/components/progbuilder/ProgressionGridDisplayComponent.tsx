@@ -62,7 +62,8 @@ const ProgressionGridDisplayComponent = ({
   };
 
   const progGenCallback = (newProg: string[]) => {
-    console.log("progGenCallback", newProg);
+    // TODO: random progression generation
+    // console.log("progGenCallback", newProg);
   }
 
   useEffect(() => {
