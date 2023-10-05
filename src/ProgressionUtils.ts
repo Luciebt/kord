@@ -9,9 +9,5 @@ export function BuildChordsMap(progArr: string[], chordsArr: string[]): void {
 
 export function GetRomansForChord(chordsArr: string[]): string[] {
   const romansNumeralFound: string = progMap.get(chordsArr.join(","));
-  if (romansNumeralFound) {
-    return romansNumeralFound.split(",");
-  } else {
-    return [];
-  }
+  return romansNumeralFound ? romansNumeralFound.split(",") : [];
 }
