@@ -11,8 +11,4 @@ export function GenerateProg(selectedChord: string, progLength: number) {
     const newProgArr = newProgList.split("|").filter((prog: string) => {
         return prog.split(",").length == progLength;
     });
-
-    // console.log("Generate prog, key__mode__length", selectedChord, length);
-    // console.log("Generate prog, newProgList", newProgList);
-    console.log("Generate prog, newProgArr", newProgArr);
 }

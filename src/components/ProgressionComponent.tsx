@@ -15,27 +15,26 @@ const ProgressionComponent = (): JSX.Element => {
   const [chordsList, setChordsList] = useState("");
   const [chordsScale, setchordsScale] = useState([""]);
 
-  const ModeCallback = (mode: string) => {
-    setMode(mode);
+  const updateChords = (tonic: string, mode: string, mood: string) => {
     if (tonic && mode) {
       setChordsList(DetermineChordsList(tonic, mode, mood));
       setchordsScale(findChordsScale(tonic, mode));
     }
   };
 
+  const ModeCallback = (mode: string) => {
+    setMode(mode);
+    updateChords(tonic, mode, mood);
+  };
+
   const KeyCallback = (tonic: string) => {
     setTonic(tonic);
-    if (mode && tonic) {
-      setChordsList(DetermineChordsList(tonic, mode, mood));
-      setchordsScale(findChordsScale(tonic, mode));
-    }
+    updateChords(tonic, mode, mood);
   };
 
   const MoodCallback = (mood: string) => {
     setMood(mood);
-    if (tonic && mode && mood) {
-      setChordsList(DetermineChordsList(tonic, mode, mood));
-    }
+    updateChords(tonic, mode, mood);
   };
 
   return (
