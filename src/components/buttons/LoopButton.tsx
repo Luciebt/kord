@@ -4,7 +4,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { PlayLoop } from "../../audio/Play";
 import { Transport } from "tone";
 import "./Buttons.css";
-import { SoundOnContext } from "../../App";
+import { BpmValueContext, SoundOnContext } from "../../App";
 import BpmRange from "../bpm/bpm";
 
 interface ILoopButton {
@@ -14,11 +14,12 @@ interface ILoopButton {
 
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
   const SoundOn = useContext(SoundOnContext);
-  const [bpm, setBpm] = useState(120);
+  const { bpm, updateBpm } = useContext(BpmValueContext);
+
   const [toggleLoop, setToggleLoop] = useToggle(false);
 
-  const BpmCallback = (bpm: number) => {
-    setBpm(bpm);
+  const BpmCallback = (newBpm: number) => {
+    updateBpm(newBpm);
   };
 
   useKeypress([" ", "Spacebar"], setToggleLoop);
