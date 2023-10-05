@@ -128,6 +128,7 @@ function PlayChordLoopEvent(
     Tone.Draw.schedule(() => {
       const posId: number = parseInt(noteStart.split(":")[0]) + 1;
       AddGridHighlight(posId);
+      // TODO: update the piano display.
     }, time);
   }, "+0.1");
   // start the chord at the beginning of the Tone.transport timeline
@@ -164,35 +165,19 @@ function PlayChordSequence(
 export function PlayLoop(chordArr: string[]): void {
   polySynth.releaseAll();
 
-  let chordsToLoop = {
-    // chordNum: chordContent
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-    7: [],
-    8: [],
-  };
+  let chordsToLoop: { [key: number]: string[] } = {};
 
   // Build the chord arrays in simplified notation
-  for (let i = 0; i <= 8; i++) {
+  for (let i = 0; i < chordArr.length; i++) {
     if (chordArr[i]) {
-      chordsToLoop[i] = ShowChord(chordArr[i]);
-    } else {
-      // Remove key/value pair if no need
-      delete chordsToLoop[i];
+      chordsToLoop[i + 1] = ShowChord(chordArr[i]);
     }
   }
 
-  console.log(chordsToLoop);
-
   // Schedule the loop events
   const progressionLength: number = chordArr.length;
-  for (let i = 0; i < progressionLength; i++) {
-    const noteStart = i.toString() + ":0:0";
+  for (let i = 1; i <= progressionLength; i++) {
+    const noteStart = (i - 1).toString() + ":0:0";
     PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
-    // PlayChordSequence(chordsToLoop[i], progressionLength, noteStart, i);
   }
 }
