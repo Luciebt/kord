@@ -4,10 +4,10 @@ import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyl
 import "./Buttons.css";
 
 interface IKeyButton {
-  onPressKey?: any;
+  onPressKey?: (note: string) => void;
 }
 
-const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
+const KeyButton = ({ onPressKey = () => {} }: IKeyButton): JSX.Element => {
   const keys: TKey[] = [
     "C",
     "C#",
@@ -25,30 +25,24 @@ const KeyButton = ({ onPressKey }: IKeyButton): JSX.Element => {
 
   const handleClick = (event: any, note: string) => {
     onPressKey(note);
-
-    const style: string = "key-btn-pressed";
-    unPressElementsStyleWithoutEvent(style);
-    event.target.classList.add(style);
+    unPressElementsStyleWithoutEvent("key-btn-pressed");
+    event.target.classList.add("key-btn-pressed");
   };
-
-  const keysList: JSX.Element[] = keys.map((note, i) => (
-    <button
-      id={note}
-      key={i}
-      value={note}
-      onClick={(e) => {
-        handleClick(e, note);
-      }}
-      className="key-btn"
-    >
-      {note}
-    </button>
-  ));
 
   return (
     <section arial-label="Choose a key for your chord progression">
       <h2>Key</h2>
-      {keysList}
+      {keys.map((note, i) => (
+        <button
+          id={note}
+          key={i}
+          value={note}
+          onClick={(e) => handleClick(e, note)}
+          className="key-btn"
+        >
+          {note}
+        </button>
+      ))}
     </section>
   );
 };

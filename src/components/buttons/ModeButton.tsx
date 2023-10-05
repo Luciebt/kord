@@ -12,10 +12,8 @@ const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
 
   const handleClick = (event: any, mode: string) => {
     onPressMode(mode);
-
-    const style: string = "mode-btn-pressed";
-    unPressElementsStyleWithoutEvent(style);
-    event.target.classList.add(style);
+    unPressElementsStyleWithoutEvent("mode-btn-pressed");
+    event.target.classList.add("mode-btn-pressed");
   };
 
   const modesList: JSX.Element[] = modes.map((mode, i) => (

@@ -7,7 +7,7 @@ interface IMidiButtonProps {
 }
 
 const MidiButtonComponent = ({ chordsList }: IMidiButtonProps): JSX.Element => {
-  const handleClick = (event: any, chords: string[]) => {
+  const handleClick = () => {
     const dataUri = GenerateMidi(chordsList);
     DownloadMidi(dataUri);
   };
@@ -15,9 +15,7 @@ const MidiButtonComponent = ({ chordsList }: IMidiButtonProps): JSX.Element => {
   return (
     <button
       id="export-midi-btn"
-      onClick={(e) => {
-        handleClick(e, chordsList);
-      }}
+      onClick={handleClick}
     >
       💾 Export to MIDI
     </button>

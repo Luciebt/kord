@@ -20,10 +20,8 @@ const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
 
   const handleClick = (event: any, quality: string) => {
     onPressKey(quality);
-
-    const style: string = "chordbuild-btn-pressed";
-    unPressElementsStyleWithoutEvent(style);
-    event.target.classList.add(style);
+    unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
+    event.target.classList.add("chordbuild-btn-pressed");
   };
 
   const chordsQualitiesList: JSX.Element[] = chordsQualities.map(
