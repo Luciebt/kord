@@ -20,9 +20,7 @@ const GenerateProgBuilderComponent = ({
 
   const handleClick = (event: any) => {
     if (!selectedChord || !progLength) return;
-    GenerateProg(selectedChord, progLength);
-    const newProg = ["A#", "Dm"];
-    onGenerateProg(newProg);
+    onGenerateProg(GenerateProg(selectedChord, progLength));
   }
 
   return (

@@ -19,7 +19,6 @@ function FindProgListFromMode(
   progressionCollectionForMode: TProgression[]
 ): string[] {
   let ProgressionsFound: string[] = [];
-
   for (const v of Object.values(progressionCollectionForMode)) {
     const ProgList: string = v["progression_list"];
     if (ProgList) {
@@ -33,8 +32,10 @@ function FindProgListFromMode(
 function FindProgListWithoutMood(mode: string): string[] {
   switch (mode) {
     case "Major":
+    case "M":
       return FindProgListFromMode(ProgressionCollection.Major);
     case "Minor":
+    case "m":
       return FindProgListFromMode(ProgressionCollection.Minor);
     default:
       throw new Error("Unknown Mode");

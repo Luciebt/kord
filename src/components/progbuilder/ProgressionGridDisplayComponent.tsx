@@ -55,9 +55,15 @@ const ProgressionGridDisplayComponent = ({
     // TODO: focus the first grid div
   };
 
+  // TODO: random progression generation
   const progGenCallback = (newProg: string[]) => {
-    // TODO: random progression generation
-    // console.log("progGenCallback", newProg);
+    console.log("progGenCallback", newProg);
+
+    const newProgressionMap = new Map(newProg.map((str, index) => [index + 1, str]));
+    console.log(newProgressionMap);
+    progressionMap.clear();
+    setProgressionMap(newProgressionMap);
+    setSelectedChord(newProg[0]);
   }
 
   useEffect(() => {
@@ -71,7 +77,7 @@ const ProgressionGridDisplayComponent = ({
   const onGridSizeChange = (event: any) => {
     setGridSize(Number(event.target.value));
   };
-  
+
   useEffect(() => {
     const grid = document.getElementById("prog-grid");
     if (!grid) return;
@@ -89,7 +95,7 @@ const ProgressionGridDisplayComponent = ({
       newDiv.id = `pos-${newDivId}`;
       newDiv.tabIndex = 0;
       newDiv.classList.add("box");
-      newDiv.addEventListener("click", (event) => {
+      newDiv.addEventListener("click", () => {
         handlePositionClickAndKeyPress(newDivId);
       });
       grid.appendChild(newDiv);
@@ -139,7 +145,7 @@ const ProgressionGridDisplayComponent = ({
         <div className="prog-settings">
           <GenerateProgBuilderComponent
             selectedChord={selectedChord}
-            progLength={4}
+            progLength={gridSize}
             onGenerateProg={progGenCallback} /> <br />
           <input
             title="Set the grid size"

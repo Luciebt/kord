@@ -7,7 +7,7 @@ import "./App.css";
 export const SoundOnContext = createContext(true);
 export const BpmValueContext = createContext({
   bpm: 120,
-  updateBpm: (newBpm) => {} 
+  updateBpm: (newBpm) => { }
 });
 
 
@@ -33,7 +33,7 @@ const App = () => {
 
       <Settings onSoundOn={SoundCallback} />
       <SoundOnContext.Provider value={soundOn}>
-        <BpmValueContext.Provider value={{bpm, updateBpm}}>
+        <BpmValueContext.Provider value={{ bpm, updateBpm }}>
           <TabComponent />
         </BpmValueContext.Provider>
       </SoundOnContext.Provider>

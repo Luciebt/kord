@@ -1,7 +1,7 @@
 import { Key } from "@tonaljs/tonal";
 import { CleanChords } from "./utils/NoteUtils";
 
-// TODO: finish Scale feature. Move this somewhere else.
+// TODO: finish Scale feature.
 // NOTE: Why not using key scales?
 export function findChordsScale(tonic: string, mode: string): string[] {
   let Results: string[] = [];
@@ -17,7 +17,6 @@ export function findChordsScale(tonic: string, mode: string): string[] {
       break;
     default:
       return [];
-      break;
   }
 
   return Results.toString().split(",");
@@ -27,12 +26,9 @@ export function findNotesScales(tonic: string, mode: string): string {
   switch (mode) {
     case "Major":
       return Key.majorKey(tonic).scale.toString();
-      break;
     case "Minor":
       return Key.minorKey(tonic).harmonic.scale.toString();
-      break;
     default:
       return "";
-      break;
   }
 }
