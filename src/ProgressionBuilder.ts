@@ -1,7 +1,6 @@
 import { Note, Interval } from "@tonaljs/tonal";
 
 type TProbability = number | string;
-
 export type TChord = string;
 
 export type TChordBuilder = {
@@ -15,94 +14,77 @@ export type TChordBuilder = {
 // TODO: Extract data from: http://isophonics.net/content/big-chord-data-extraction-and-mining
 
 const BluesProgs: TChordBuilder[] = [
-  {
-    index: 1,
-    quality: "maj",
-  },
-  {
-    index: 2,
-    quality: "maj",
-    interval: 5,
-  },
-  {
-    index: 3,
-    quality: "maj",
-    interval: 7,
-  },
-  {
-    index: 4,
-    quality: "maj",
-    interval: 5,
-  },
+  { index: 1, quality: "maj" },
+  { index: 2, quality: "maj", interval: 5 },
+  { index: 3, quality: "maj", interval: 7 },
+  { index: 4, quality: "maj", interval: 5 },
 ];
 
 const FolkProgs: TChordBuilder[] = [
-  {
-    index: 1,
-    quality: "maj",
-  },
-  {
-    index: 2,
-    quality: "maj",
-    interval: 7,
-  },
-  {
-    index: 3,
-    quality: "maj",
-    interval: 5,
-  },
-  {
-    index: 4,
-    quality: "maj",
-    interval: 7,
-  },
+  { index: 1, quality: "maj" },
+  { index: 2, quality: "maj", interval: 7 },
+  { index: 3, quality: "maj", interval: 5 },
+  { index: 4, quality: "maj", interval: 7 },
 ];
 
-// This is a key/value structure, TProbability is the key.
+// Define a key/value structure for chord collections
 const Collection: Record<TProbability, TChordBuilder[][]> = {
   100: [BluesProgs, FolkProgs],
 };
 
-// const NextChordResults: Record<TChord, TChordBuilder[]> = {};
+// TODO: introduce probability score. For now, we keep it at 100.
 
-// TODO: introduce probability score. For now, we keep 100.
-// returned value should look like: NextChordResults[proba] = chord;
 export const FindNextChords = (
-  referencekey: string,
-  quality: string
-): string[] | string => {
-  const isMajor: boolean = quality == "Major";
-  const isMinor: boolean = quality == "Minor";
+  referenceKey: string,
+  quality: string,
+): string | null => {
+  const isMajor = quality === "Major";
+  const isMinor = quality === "Minor";
 
-  // TODO: filter collection to keep only the reference chord which has the same quality (for now, only maj/min)
+  if (!isMajor && !isMinor) {
+    console.warn(`Invalid chord quality: ${quality}`);
+    return null;
+  }
 
-  const qualifiedCollections = [Collection[100]][0];
+  // Filter collection to find progressions matching reference chord
+  const qualifiedCollections = Collection[100];
 
-  // Take a random progression with probability 100
-  const randomNum = Math.floor(Math.random() * qualifiedCollections.length);
-  const highProbaProg = qualifiedCollections[randomNum];
+  if (!qualifiedCollections || qualifiedCollections.length === 0) {
+    console.warn("No chord progressions found.");
+    return null;
+  }
 
-  // find the next chord index 1
-  const nextPossibleNote = highProbaProg[1];
-  const semitones = nextPossibleNote["interval"] as number;
-  const newNoteQuality = nextPossibleNote["quality"] as string;
+  // Select a random progression
+  const randomIndex = Math.floor(Math.random() * qualifiedCollections.length);
+  const selectedProgression = qualifiedCollections[randomIndex];
 
-  // transpose the note
-  const interval = Interval.fromSemitones(semitones);
-  const newNote = Note.transpose("C", interval);
+  if (!selectedProgression || selectedProgression.length < 2) {
+    console.warn("Invalid chord progression.");
+    return null;
+  }
 
-  // return the new chord
-  return newNote + newNoteQuality;
+  // Find the next chord in the progression
+  const nextChord = selectedProgression[1];
+  if (!nextChord.interval) {
+    console.warn("Next chord has no defined interval.");
+    return null;
+  }
+
+  const interval = Interval.fromSemitones(nextChord.interval);
+  const newNote = Note.transpose(referenceKey, interval);
+
+  return newNote + nextChord.quality;
 };
 
-const SuggestNextChords = (
-  referencekey: string,
+/**
+ * Suggests a next chord by transposing from the given reference key.
+ */
+export const SuggestNextChords = (
+  referenceKey: string,
   semitones: number,
-  quality: string
-): string[] | string => {
-  const interval: string = Interval.fromSemitones(7);
-  const newNote = Note.transpose("C", interval);
-  const newChord = newNote + quality;
-
-  return newChord;
+  quality: string,
+): string => {
+  const interval = Interval.fromSemitones(semitones);
+  const newNote = Note.transpose(referenceKey, interval);
+  return newNote + quality;
 };

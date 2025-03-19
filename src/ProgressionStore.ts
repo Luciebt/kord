@@ -1,140 +1,84 @@
 import { TProgression, TMode } from "./type.d";
+import { TMood } from "./type.d";
+
+const MoodLabels: Record<string, TMood> = {
+  happy: "Happy 🌻",
+  jazzy: "Jazzy 🎷",
+  hopeful: "Hopeful 🌈",
+  dark: "Dark 👻",
+  sad: "Sad 🌧️",
+  weird: "Weird 👾",
+  suspenseful: "Suspenseful 🎭",
+};
 
 export const ProgressionCollection: Record<TMode, TProgression[]> = {
   Major: [
-    { progression_list: "I, I, IV, V", mood: "Happy 🌻" },
-    { progression_list: "IV, I, V, VIm", mood: "Happy 🌻" },
-    { progression_list: "I, IV, VIm, V", mood: "Happy 🌻" },
-    { progression_list: "I, Vm, Vm, IIm", mood: "Happy 🌻" },
-    { progression_list: "I, bIII, bVII, IV", mood: "Happy 🌻" },
-    { progression_list: "I, IV, V", mood: "Happy 🌻" },
-    { progression_list: "I, II, IIIm, V6", mood: "Happy 🌻" },
-    { progression_list: "I, IV, bVII, IV", mood: "Happy 🌻" },
-    { progression_list: "V, IV, I, V", mood: "Jazzy 🎷" },
-    { progression_list: "IIm7, V7, I7", mood: "Jazzy 🎷" },
-    { progression_list: "I, V, IV, IVm", mood: "Jazzy 🎷" },
-    { progression_list: "I, bVI, V, V", mood: "Hopeful 🌈" },
-    { progression_list: "IV, V, VIm, I", mood: "Hopeful 🌈" },
-    { progression_list: "I, bIII, bVI, bVII", mood: "Hopeful 🌈" },
-    { progression_list: "I, VIm, IIm, V", mood: "Hopeful 🌈" },
-    { progression_list: "VIm, V, IV, V", mood: "Hopeful 🌈" },
-    { progression_list: "I, VIm, IV, V", mood: "Sad 🌧️" },
-    { progression_list: "IIm7, V9, I7, I7", mood: "Sad 🌧️" },
-    { progression_list: "I, I, IV, IIIm", mood: "Sad 🌧️" },
-    { progression_list: "I, VIm, V, V", mood: "Weird 👾" },
-    { progression_list: "IV, IVm, I, I", mood: "Weird 👾" },
-    // TODO: Classify those.
-    { progression_list: "I, bII, bIII, bII", mood: "Todo" },
-    { progression_list: "I, bII, I, IIIm", mood: "Todo" },
-    { progression_list: "I, bVII, bVI, bII", mood: "Todo" },
-    { progression_list: "I, bVII, IV, I", mood: "Todo" },
-    { progression_list: "I, bVI, I, bII", mood: "Todo" },
-    { progression_list: "I, IIIm, IV, VIm", mood: "Todo" },
-    { progression_list: "I, IIIm, VIm, Isus4", mood: "Todo" },
-    { progression_list: "I, IIIm, VIm, IV", mood: "Todo" },
-    { progression_list: "I, IV, bIII, bVI", mood: "Todo" },
-    { progression_list: "I, IV, IIm, V", mood: "Todo" },
-    { progression_list: "I, IV, Isus2, IV", mood: "Todo" },
-    { progression_list: "I, IV, V, bVII", mood: "Todo" },
-    { progression_list: "I, IV, V, V", mood: "Todo" },
-    { progression_list: "I, V, bVII, IV", mood: "Todo" },
-    { progression_list: "I, V, I, IV", mood: "Todo" },
-    { progression_list: "I, V, IV, VIm", mood: "Todo" },
-    { progression_list: "I, V, VIm, IIm", mood: "Todo" },
-    { progression_list: "I, V, VIm, IIIm, IV", mood: "Todo" },
-    { progression_list: "I, V, VIm, IV", mood: "Todo" },
-    { progression_list: "I, V, VIm, V", mood: "Todo" },
-    { progression_list: "I, VIm, I, IV", mood: "Todo" },
-    { progression_list: "I, VIm, IIm, IV", mood: "Todo" },
-    { progression_list: "I, VIm, IV, IIIm", mood: "Todo" },
-    { progression_list: "I, VIm, IV, V", mood: "Todo" },
-    { progression_list: "IIm, bII, I, bVII", mood: "Todo" },
-    { progression_list: "IIm, bVII7, I", mood: "Todo" },
-    { progression_list: "IIm, IV, V, V", mood: "Todo" },
-    { progression_list: "IIm, V, I, IV", mood: "Todo" },
-    { progression_list: "IIIm, VIm, IV, I", mood: "Todo" },
-    { progression_list: "IV, I, IIm, VIm", mood: "Todo" },
-    { progression_list: "IV, I, IIIm, IV", mood: "Todo" },
-    { progression_list: "IV, IV, I, V", mood: "Todo" },
-    { progression_list: "IV, VIm, IIIm, I", mood: "Todo" },
-    { progression_list: "V, I, VIm, V", mood: "Todo" },
-    { progression_list: "V, IV, VIm, I", mood: "Todo" },
-    { progression_list: "V, VIm, IV, I", mood: "Todo" },
-    { progression_list: "VIm, bVI, bVII, I", mood: "Todo" },
+    { progression_list: "I, I, IV, V", mood: MoodLabels.happy },
+    { progression_list: "IV, I, V, VIm", mood: MoodLabels.happy },
+    { progression_list: "I, IV, VIm, V", mood: MoodLabels.happy },
+    { progression_list: "I, Vm, Vm, IIm", mood: MoodLabels.happy },
+    { progression_list: "I, bIII, bVII, IV", mood: MoodLabels.happy },
+    { progression_list: "I, IV, V", mood: MoodLabels.happy },
+    { progression_list: "I, II, IIIm, V6", mood: MoodLabels.happy },
+    { progression_list: "I, IV, bVII, IV", mood: MoodLabels.happy },
+    { progression_list: "V, IV, I, V", mood: MoodLabels.jazzy },
+    { progression_list: "IIm7, V7, I7", mood: MoodLabels.jazzy },
+    { progression_list: "I, V, IV, IVm", mood: MoodLabels.jazzy },
+    { progression_list: "I, bVI, V, V", mood: MoodLabels.hopeful },
+    { progression_list: "IV, V, VIm, I", mood: MoodLabels.hopeful },
+    { progression_list: "I, bIII, bVI, bVII", mood: MoodLabels.hopeful },
+    { progression_list: "I, VIm, IIm, V", mood: MoodLabels.hopeful },
+    { progression_list: "VIm, V, IV, V", mood: MoodLabels.hopeful },
+    { progression_list: "I, VIm, IV, V", mood: MoodLabels.sad },
+    { progression_list: "IIm7, V9, I7, I7", mood: MoodLabels.sad },
+    { progression_list: "I, I, IV, IIIm", mood: MoodLabels.sad },
+    { progression_list: "I, VIm, V, V", mood: MoodLabels.weird },
+    { progression_list: "IV, IVm, I, I", mood: MoodLabels.weird },
+    { progression_list: "I, bII, bIII, bII", mood: MoodLabels.weird }, // Chromatic movement creates an unsettling, avant-garde feel.
+    { progression_list: "I, bII, I, IIIm", mood: MoodLabels.suspenseful }, // Darker movement; bII adds tension.
+    { progression_list: "I, bVII, bVI, bII", mood: MoodLabels.dark }, // Very modal, descending motion often found in minor progressions.
+    { progression_list: "I, bVII, IV, I", mood: MoodLabels.hopeful }, // Classic rock progression; strong resolution to I.
+    { progression_list: "I, bVI, I, bII", mood: MoodLabels.weird }, // Unusual chromatic shifts, similar to classical or jazz tension.
+    { progression_list: "I, IIIm, IV, VIm", mood: MoodLabels.hopeful }, // Uplifting progression with a bittersweet resolution.
+    { progression_list: "I, IV, V, bVII", mood: MoodLabels.jazzy }, // IV-V-I is standard, but bVII adds a modal, sophisticated sound.
+    { progression_list: "I, IV, V, V", mood: MoodLabels.happy }, // Purely diatonic, major-key classic pop/folk progression.
+    { progression_list: "I, V, bVII, IV", mood: MoodLabels.rock }, // Very common in classic rock; Mixolydian influence.
+    { progression_list: "I, V, I, IV", mood: MoodLabels.happy }, // Simple, bright resolution; common in pop.
   ],
   Minor: [
-    { progression_list: "Im, IV, VI, Vm", mood: "Happy 🌻" },
-    { progression_list: "IIm, V, I, I", mood: "Jazzy 🎷" },
-    { progression_list: "Im, VII, IV, IV", mood: "Jazzy 🎷" },
-    { progression_list: "Im, III, VII, VI", mood: "Hopeful 🌈" },
-    { progression_list: "Im, IVm, III, VI", mood: "Hopeful 🌈" },
-    { progression_list: "VIm, IIIm, V, IV", mood: "Dark 👻" },
-    { progression_list: "Im, IVm, VI, Vm", mood: "Dark 👻" },
-    { progression_list: "Im, bVI, Im, Vm", mood: "Dark 👻" },
-    { progression_list: "Im, IIm, Vm, Im", mood: "Sad 🌧️" },
-    { progression_list: "Im, Vm, IVm, Im", mood: "Sad 🌧️" },
-    { progression_list: "VIm, IV, I, V", mood: "Sad 🌧️" },
-    { progression_list: "Im, IVm, V7, Im", mood: "Sad 🌧️" },
-    { progression_list: "Im, III, VII, VI", mood: "Sad 🌧️" },
-    { progression_list: "Im, VI, IVm, Vm", mood: "Sad 🌧️" },
-    { progression_list: "VIm, IIIm, V, IV", mood: "Sad 🌧️" },
-    { progression_list: "Im, Vm, bVII, IV", mood: "Sad 🌧️" },
-    { progression_list: "bIII, IIm, bII, I", mood: "Weird 👾" },
-    { progression_list: "Im, III, IVm, VI", mood: "Weird 👾" },
-    // TODO: new moods?
-    // { progression_list: "Im, VI, III, bII", mood: "Suspensful" },
-    // { progression_list: "VII, IVm, VII, Im", mood: "Suspensful" },
-    // TODO: Tooooooooodoooooooooooo!
-    { progression_list: "Im, IVm, Vm, IVm", mood: "Todo" },
-    { progression_list: "Im, IVm, Vm, Vm", mood: "Todo" },
-    { progression_list: "Im, IVm, VII, Im", mood: "Todo" },
-    { progression_list: "Im, Vm, IVm, VII", mood: "Todo" },
-    { progression_list: "Im, VI, bIm, Vm", mood: "Todo" },
-    { progression_list: "Im, VI, III, VII", mood: "Todo" },
-    { progression_list: "Im, VI, IVm, IIm", mood: "Todo" },
-    { progression_list: "Im, VI, IVm, III", mood: "Todo" },
-    { progression_list: "Im, VI, VII, Vm", mood: "Todo" },
-    { progression_list: "Im, VI, VII, VII", mood: "Todo" },
-    { progression_list: "Im, VII, Im, Vm", mood: "Todo" },
-    { progression_list: "Im, VII, VI, III", mood: "Todo" },
-    { progression_list: "Im, VII, VI, VII", mood: "Todo" },
-    { progression_list: "IIm, Vm, Im, Im", mood: "Todo" },
-    { progression_list: "IIm, Vm, Im, IVm", mood: "Todo" },
-    { progression_list: "IIm, VI, Im, IVm", mood: "Todo" },
-    { progression_list: "IIm7, Vm9, Im7", mood: "Todo" },
-    { progression_list: "IVm, Im, Vm, VI", mood: "Todo" },
-    { progression_list: "IVm, III, VII, Im", mood: "Todo" },
-    { progression_list: "IVm, Vm, VI, VII", mood: "Todo" },
-    { progression_list: "IVm, VI, VII, Im", mood: "Todo" },
-    { progression_list: "Vm, Im, IVm, VII", mood: "Todo" },
-    { progression_list: "Vm, IVm, Im, Im", mood: "Todo" },
-    { progression_list: "Vm, VI, III, Im", mood: "Todo" },
-    { progression_list: "Vm, VI, Vm, Im", mood: "Todo" },
-    { progression_list: "VI, bVI, Im, VII", mood: "Todo" },
-    { progression_list: "VI, Im, Vm, III", mood: "Todo" },
-    { progression_list: "VI, Im, Vm, Vm", mood: "Todo" },
-    { progression_list: "VI, IVm, Im, Vm", mood: "Todo" },
-    { progression_list: "VI, VI, Im, VII", mood: "Todo" },
-    { progression_list: "VI, VII, Im, III", mood: "Todo" },
-    { progression_list: "VI, VII, Vm, III", mood: "Todo" },
-    { progression_list: "VI, VIm, Im, VII", mood: "Todo" },
-    { progression_list: "VII, IVm, Vm, Im", mood: "Todo" },
+    { progression_list: "Im, IV, VI, Vm", mood: MoodLabels.happy },
+    { progression_list: "IIm, V, I, I", mood: MoodLabels.jazzy },
+    { progression_list: "Im, VII, IV, IV", mood: MoodLabels.jazzy },
+    { progression_list: "Im, III, VII, VI", mood: MoodLabels.hopeful },
+    { progression_list: "Im, IVm, III, VI", mood: MoodLabels.hopeful },
+    { progression_list: "VIm, IIIm, V, IV", mood: MoodLabels.dark },
+    { progression_list: "Im, IVm, VI, Vm", mood: MoodLabels.dark },
+    { progression_list: "Im, bVI, Im, Vm", mood: MoodLabels.dark },
+    { progression_list: "Im, IIm, Vm, Im", mood: MoodLabels.sad },
+    { progression_list: "Im, Vm, IVm, Im", mood: MoodLabels.sad },
+    { progression_list: "VIm, IV, I, V", mood: MoodLabels.sad },
+    { progression_list: "Im, IVm, V7, Im", mood: MoodLabels.sad },
+    { progression_list: "Im, Vm, bVII, IV", mood: MoodLabels.sad },
+    { progression_list: "bIII, IIm, bII, I", mood: MoodLabels.weird },
+    { progression_list: "Im, III, IVm, VI", mood: MoodLabels.weird },
+    { progression_list: "Im, IVm, Vm, IVm", mood: MoodLabels.dark }, // Descending motion with IVm feels melancholic.
+    { progression_list: "Im, IVm, Vm, Vm", mood: MoodLabels.dark }, // Similar to above, reinforcing a somber feel.
+    { progression_list: "Im, IVm, VII, Im", mood: MoodLabels.suspenseful }, // VII creates tension, feels cinematic.
+    { progression_list: "Im, Vm, IVm, VII", mood: MoodLabels.suspenseful }, // Vm-IVm-VII cycle has a haunting character.
+    { progression_list: "Im, VI, bIm, Vm", mood: MoodLabels.weird }, // bIm is unusual, possibly experimental.
+    { progression_list: "Im, VI, III, VII", mood: MoodLabels.hopeful }, // III and VII brighten the minor tonality.
+    { progression_list: "Im, VI, IVm, IIm", mood: MoodLabels.dark }, // IVm-IIm makes it feel unresolved and moody.
+    { progression_list: "Im, VI, IVm, III", mood: MoodLabels.hopeful }, // III brings an uplifting element.
+    { progression_list: "Im, VII, Im, Vm", mood: MoodLabels.suspenseful }, // Repetitive motion with VII builds tension.
+    { progression_list: "Im, VII, VI, III", mood: MoodLabels.hopeful }, // III at the end makes it feel optimistic.
+    { progression_list: "IIm, Vm, Im, Im", mood: MoodLabels.dark }, // Minor ii-V-I creates a deep, dramatic feel.
+    { progression_list: "IIm, Vm, Im, IVm", mood: MoodLabels.sad }, // ii-V-I is common in jazz, IVm adds melancholy.
+    { progression_list: "IIm7, Vm9, Im7", mood: MoodLabels.jazzy }, // Classic jazz minor ii-V-I progression.
+    { progression_list: "IVm, Im, Vm, VI", mood: MoodLabels.hopeful }, // VI at the end gives a sense of resolution.
+    { progression_list: "Vm, Im, IVm, VII", mood: MoodLabels.suspenseful }, // VII creates an unresolved, eerie feeling.
+    { progression_list: "VI, Im, Vm, Vm", mood: MoodLabels.dark }, // VI-Im-Vm motion feels mysterious.
+    { progression_list: "VI, IVm, Im, Vm", mood: MoodLabels.sad }, // IVm-Im gives a melancholic movement.
+    { progression_list: "VI, VI, Im, VII", mood: MoodLabels.suspenseful }, // VII at the end leaves it unresolved.
+    { progression_list: "VI, VII, Im, III", mood: MoodLabels.hopeful }, // III makes the minor tonality feel brighter.
   ],
 };
-
-function convertProgForTonal(samples) {
-  const tonalMap = {
-    i: "Im",
-    ii: "IIm",
-    iii: "IIIm",
-    iv: "IVm",
-    v: "Vm",
-    vi: "VIm",
-    vii: "VIIm",
-  };
-
-  return samples.map((sample) => {
-    return sample.toString().replace(/\b(i|ii|iii|iv|v|vi|vii)\b/g, (match) => tonalMap[match]);
-  });
-}
-
