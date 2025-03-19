@@ -5,7 +5,6 @@ import ScalePianoDisplay from "../piano/ScalePianoDisplay";
 import "./Scales.css";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { SoundOnContext } from "../../App";
-import { findNotesScales } from "../../Scale";
 
 export interface IChordsScaleDisplayComponent {
   tonic: string;
@@ -35,8 +34,6 @@ const ChordsScaleDisplayComponent = ({
     event.target.classList.add(style);
   };
 
-  const notesOnScale: string = findNotesScales(tonic, mode);
-
   const chordsScaleList: JSX.Element[] = chordsScale.map((chords, i) => (
     <button
       key={i}
@@ -54,8 +51,8 @@ const ChordsScaleDisplayComponent = ({
 
     const chordBtns = Array.from(
       document.getElementsByClassName(
-        "scale-chord-btn"
-      ) as HTMLCollectionOf<HTMLElement>
+        "scale-chord-btn",
+      ) as HTMLCollectionOf<HTMLElement>,
     );
 
     if (!tonic && !mode) {
