@@ -1,49 +1,46 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TChords } from "../../type";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IChordButton {
-  onPressKey?: any;
+  onPressKey?: (quality: TChords) => void;
 }
 
-const ChordButton = ({ onPressKey }: IChordButton): JSX.Element => {
-  // TODO: Add more chordsQualities...
-  const chordsQualities: TChords[] = [
-    "Major",
-    "Minor",
-    "Major7",
-    "Minor7",
-    "Diminished",
-    "Minor7Flat5",
-  ];
+const chordsQualities: TChords[] = [
+  "Major",
+  "Minor",
+  "Major7",
+  "Minor7",
+  "Diminished",
+  "Minor7Flat5",
+];
 
-  const handleClick = (event: any, quality: string) => {
-    onPressKey(quality);
-    unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
-    event.target.classList.add("chordbuild-btn-pressed");
-  };
-
-  const chordsQualitiesList: JSX.Element[] = chordsQualities.map(
-    (quality, i) => (
-      <button
-        id={quality}
-        key={i}
-        value={quality}
-        onClick={(e) => {
-          handleClick(e, quality);
-        }}
-        className="key-btn"
-      >
-        {quality}
-      </button>
-    )
+const ChordButton: React.FC<IChordButton> = ({ onPressKey = () => {} }) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, quality: TChords) => {
+      onPressKey(quality);
+      unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
+      event.currentTarget.classList.add("chordbuild-btn-pressed");
+    },
+    [onPressKey],
   );
 
   return (
-    <section aria-label="Choose a quality to the chord">
+    <section aria-label="Choose a chord quality">
       <h2>Quality</h2>
-      {chordsQualitiesList}
+      {chordsQualities.map((quality) => (
+        <button
+          key={quality}
+          id={quality}
+          value={quality}
+          aria-label={`Select ${quality} chord`}
+          onClick={(e) => handleClick(e, quality)}
+          className="key-btn"
+        >
+          {quality}
+        </button>
+      ))}
     </section>
   );
 };
