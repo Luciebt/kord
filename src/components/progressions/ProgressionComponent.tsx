@@ -61,3 +61,4 @@ const ProgressionComponent = (): JSX.Element => {
 };
 
 export default ProgressionComponent;
+

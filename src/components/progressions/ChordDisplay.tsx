@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
 import PianoDisplay from "../piano/PianoDisplay";
@@ -19,15 +19,15 @@ const ChordDisplayComponent = ({
   chord,
 }: IChordDisplayProps): JSX.Element => {
   const SoundOn = useContext(SoundOnContext);
-  const [chordState, setChordState] = useState(false);
-  const [chordSelected, setChordSelected] = useState("");
+  const [chordState, setChordState] = useState<boolean>(false);
+  const [chordSelected, setChordSelected] = useState<string | null>(chord);
   let chordArr: string[] = chord.split(",");
   let romanNumerals: string[] = GetRomansForChord(chordArr);
 
   // Move keyboard focus to the chords box when mounted.
   useEffect(() => {
     const chordsSection = document.getElementById(
-      "chords-box-id"
+      "chords-box-id",
     ) as HTMLElement;
     if (chordsSection) {
       chordsSection.focus();
@@ -38,7 +38,7 @@ const ChordDisplayComponent = ({
   const handleClickAndKeyPress = (
     posId: number,
     chord?: string,
-    event?: any
+    event?: any,
   ) => {
     let chordFound: string | undefined = chord;
     if (!chordFound) chordFound = chordArr[posId - 1];
@@ -64,18 +64,19 @@ const ChordDisplayComponent = ({
 
   const isInputFieldFocused = () => {
     const activeEl = document.activeElement as HTMLElement;
-    return activeEl?.id === "bpm-input" || activeEl?.id === "range-number-bpm-input";
+    return (
+      activeEl?.id === "bpm-input" || activeEl?.id === "range-number-bpm-input"
+    );
   };
 
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
-  const keys = ["1", "2", "3", "4", "5", "6", "7", "8"];
-  const keys2 = ["a", "w", "e", "r", "t", "y", "u", "i"];
+  const keys = useMemo(() => ["1", "2", "3", "4", "5", "6", "7", "8"], []);
+  const keys2 = useMemo(() => ["a", "w", "e", "r", "t", "y", "u", "i"], []);
   keys.forEach((key, index) => {
     useKeypress([key, keys2[index]], () => {
       if (!isInputFieldFocused()) handleClickAndKeyPress(index + 1);
     });
   });
-
 
   const chordsList: JSX.Element[] = chordArr.map((c, i) => (
     <button

@@ -16,7 +16,7 @@ export default interface IProgression {
 //------- Find progressions helpers
 
 function FindProgListFromMode(
-  progressionCollectionForMode: TProgression[]
+  progressionCollectionForMode: TProgression[],
 ): string[] {
   let ProgressionsFound: string[] = [];
   for (const v of Object.values(progressionCollectionForMode)) {
@@ -88,7 +88,7 @@ function ConvertProgToChords(tonic: string, progArr: string[]): string {
 export function DetermineChordsList(
   tonic: string,
   mode: string,
-  mood?: string
+  mood?: string,
 ): string {
   if (!tonic || !mode) return "";
 

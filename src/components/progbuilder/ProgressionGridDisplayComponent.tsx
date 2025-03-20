@@ -20,7 +20,7 @@ const ProgressionGridDisplayComponent = ({
   const [selectedPos, setSelectedPos] = useState(1);
   const [selectedChord, setSelectedChord] = useState("");
   const [progressionMap, setProgressionMap] = useState(
-    new Map<number, string>()
+    new Map<number, string>(),
   );
 
   const handlePositionClickAndKeyPress = (posId: number) => {
@@ -59,12 +59,14 @@ const ProgressionGridDisplayComponent = ({
   const progGenCallback = (newProg: string[]) => {
     console.log("progGenCallback", newProg);
 
-    const newProgressionMap = new Map(newProg.map((str, index) => [index + 1, str]));
+    const newProgressionMap = new Map(
+      newProg.map((str, index) => [index + 1, str]),
+    );
     console.log(newProgressionMap);
     progressionMap.clear();
     setProgressionMap(newProgressionMap);
     setSelectedChord(newProg[0]);
-  }
+  };
 
   useEffect(() => {
     // Select by default the first grid div when component is created.
@@ -105,7 +107,6 @@ const ProgressionGridDisplayComponent = ({
     }
   }, [gridSize]);
 
-
   useEffect(() => {
     if (!chordToAdd) return;
 
@@ -116,12 +117,14 @@ const ProgressionGridDisplayComponent = ({
     setProgressionMap(progressionMap.set(selectedPos, chordToAdd));
     setSelectedChord(chordToAdd);
 
-    return () => { };
+    return () => {};
   }, [chordToAdd]);
 
   const isInputFieldFocused = () => {
     const activeEl = document.activeElement as HTMLElement;
-    return activeEl?.id === "bpm-input" || activeEl?.id === "range-number-bpm-input";
+    return (
+      activeEl?.id === "bpm-input" || activeEl?.id === "range-number-bpm-input"
+    );
   };
 
   // KEYBOARD SUPPORT [1-8 and q/a w/z ertyui] for grid chords
@@ -146,7 +149,9 @@ const ProgressionGridDisplayComponent = ({
           <GenerateProgBuilderComponent
             selectedChord={selectedChord}
             progLength={gridSize}
-            onGenerateProg={progGenCallback} /> <br />
+            onGenerateProg={progGenCallback}
+          />{" "}
+          <br />
           <input
             title="Set the grid size"
             type="number"
@@ -178,7 +183,6 @@ const ProgressionGridDisplayComponent = ({
             ></div>
           ))}
         </section>
-
 
         <MidiButtonComponent chordsList={Array.from(progressionMap.values())} />
       </section>
