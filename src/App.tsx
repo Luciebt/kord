@@ -4,20 +4,13 @@ import Settings from "./components/settings/Settings";
 import TabComponent from "./components/tabs/TabComponent";
 import "./App.css";
 
-export const SoundOnContext = createContext(true);
 export const BpmValueContext = createContext({
   bpm: 120,
-  updateBpm: (newBpm) => { }
+  updateBpm: (newBpm) => {},
 });
 
-
 const App = () => {
-  const [soundOn, setSoundOn] = useState(true);
   const [bpm, setBpm] = useState(120);
-
-  const SoundCallback = (sound: boolean) => {
-    setSoundOn(sound);
-  };
 
   const updateBpm = (bpm: number) => {
     setBpm(bpm);
@@ -31,12 +24,10 @@ const App = () => {
         </a>
       </h1>
 
-      <Settings onSoundOn={SoundCallback} />
-      <SoundOnContext.Provider value={soundOn}>
-        <BpmValueContext.Provider value={{ bpm, updateBpm }}>
-          <TabComponent />
-        </BpmValueContext.Provider>
-      </SoundOnContext.Provider>
+      <Settings />
+      <BpmValueContext.Provider value={{ bpm, updateBpm }}>
+        <TabComponent />
+      </BpmValueContext.Provider>
     </main>
   );
 };

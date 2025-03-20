@@ -3,12 +3,10 @@ import { PlayChord } from "../../Chords";
 import KeyButton from "../buttons/KeyButton";
 import QualityButton from "../buttons/QualityButton";
 import ProgressionGridDisplayComponent from "../progbuilder/ProgressionGridDisplayComponent";
-import { SoundOnContext } from "../../App";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { FullChordStringToArray } from "../../utils/NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {
-  const SoundOn = useContext(SoundOnContext);
   const [chordKey, setChordKey] = useState("");
   const [chordQuality, setChordQuality] = useState("");
   const [chordSelected, setChordSelected] = useState("");
@@ -44,16 +42,16 @@ const ChordBuilderComponent = (): JSX.Element => {
     keyBtn?.classList.add("key-btn-pressed");
     keyBtn?.click();
 
-    if (SoundOn) PlayChord(key + quality);
+    PlayChord(key + quality);
     setShouldPlay(false);
   };
 
   useEffect(() => {
     const chordToBuild = chordKey + chordQuality;
     setChordSelected(chordToBuild);
-    if (SoundOn && shouldPlay) PlayChord(chordToBuild);
+    if (shouldPlay) PlayChord(chordToBuild);
     setShouldPlay(false);
-  }, [chordKey, chordQuality, SoundOn, shouldPlay]);
+  }, [chordKey, chordQuality, shouldPlay]);
 
   return (
     <section className="centered-box">
@@ -71,4 +69,3 @@ const ChordBuilderComponent = (): JSX.Element => {
 };
 
 export default ChordBuilderComponent;
-

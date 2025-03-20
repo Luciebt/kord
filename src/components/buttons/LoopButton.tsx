@@ -4,7 +4,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { PlayLoop } from "../../audio/Play";
 import { Transport } from "tone";
 import "./Buttons.css";
-import { BpmValueContext, SoundOnContext } from "../../App";
+import { BpmValueContext } from "../../App";
 import BpmRange from "../bpm/bpm";
 
 interface ILoopButton {
@@ -13,7 +13,6 @@ interface ILoopButton {
 }
 
 const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
-  const SoundOn = useContext(SoundOnContext);
   const { bpm, updateBpm } = useContext(BpmValueContext);
 
   const [toggleLoop, setToggleLoop] = useToggle(false);
@@ -60,8 +59,7 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
     // Set the loop button disabled if the sound is not on...(for now)
     const btn = document.getElementById("loop") as HTMLButtonElement;
     if (!btn) return;
-    btn.disabled = !SoundOn;
-  }, [SoundOn]);
+  }, []);
 
   return (
     <span className="loop-box">
@@ -70,13 +68,14 @@ const LoopButton = ({ onPressLoop, chordsList }: ILoopButton): JSX.Element => {
         title="Play the chord progression in a loop"
         id="loop"
         onClick={() => setToggleLoop(true)}
-        className={SoundOn ? "loop-btn" : "loop-btn-disabled"}
+        className={"loop-btn"}
       >
         ▶
       </button>
-      {SoundOn ? <BpmRange onBpmRange={BpmCallback} /> : null}
+      <BpmRange onBpmRange={BpmCallback} />
     </span>
   );
 };
 
 export default LoopButton;
+

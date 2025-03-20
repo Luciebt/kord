@@ -4,7 +4,7 @@ button {
   font-family: "DM Mono", monospace;
   color: var(--dominant-dark);
   border: none;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   min-width: 3em;
   font-size: 1em;
   padding: 0.5em;
@@ -16,7 +16,7 @@ button {
 
 button:hover {
   color: #fffffc;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-color: var(--dominant-dark);
 }
 
@@ -44,7 +44,7 @@ input[type="number"] {
 .chordbuild-btn-pressed {
   /* color: #f4eeff; */
   color: var(--dominant-light);
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-color: var(--dominant-dark);
   box-shadow: 0px 2px 0px 2px var(--dominant-light);
 }
@@ -74,14 +74,14 @@ input[type="number"] {
     font-size: 1.2em;
     min-width: 3.1em;
   }
-} 
+}
 
 .chord-btn-pressed,
 .scale-chord-btn-pressed {
   transition: background-color 0.2s ease;
   color: #f4eeff;
   background-color: var(--pressed-color);
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .chord-btn-pressed p {
@@ -128,15 +128,11 @@ input[type="number"] {
   color: var(--dominant-light);
   box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;
 }
-.loop-btn-disabled {
-  opacity: 0.4;
-  cursor: none;
-}
 
 /* Export to MIDI button */
 
 #export-midi-btn {
   font-size: 1em;
   font-weight: bold;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }

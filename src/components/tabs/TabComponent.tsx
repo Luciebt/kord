@@ -35,9 +35,7 @@ const TabComponent = (): JSX.Element => {
           Progressions Builder
         </button>
       </ul>
-      <div className="outlet">
-        {renderTabContent()}
-      </div>
+      <div className="outlet">{renderTabContent()}</div>
     </div>
   );
 };
