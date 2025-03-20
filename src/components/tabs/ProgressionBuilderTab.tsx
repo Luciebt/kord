@@ -2,7 +2,13 @@ import React from "react";
 import ChordBuilderComponent from "../progressions/ChordBuilderComponent";
 
 const ProgressionBuilderTab = (): JSX.Element => {
-  return <ChordBuilderComponent />;
+  const showComingSoon = true;
+
+  return showComingSoon ? (
+    <h2 style={{ textAlign: "center", marginTop: "20px" }}>COMING SOON</h2>
+  ) : (
+    <ChordBuilderComponent />
+  );
 };
 
 export default ProgressionBuilderTab;
