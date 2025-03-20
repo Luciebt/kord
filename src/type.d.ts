@@ -2,13 +2,11 @@ export type TMode = "Major" | "Minor";
 
 export type TMood =
   | "Happy 🌻"
-  | "Jazzy 🎷"
   | "Hopeful 🌈"
   | "Dark 👻"
   | "Sad 🌧️"
   | "Weird 👾"
-  | "Suspenseful 🎭"
-  | "Todo";
+  | "Suspenseful 🎭";
 
 export type TChords =
   | "Major"

@@ -8,7 +8,6 @@ interface IMoodButton {
 }
 
 const moods: TMood[] = [
-  "Jazzy 🎷",
   "Sad 🌧️",
   "Hopeful 🌈",
   "Happy 🌻",
