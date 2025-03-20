@@ -1,56 +1,44 @@
 const MidiWriter = require("midi-writer-js");
-import { ShowChord } from "../PianoChart";
+const { ShowChord } = require("../PianoChart");
 
-let track = undefined;
-
-export function DownloadMidi(dataUrl, filename = "MyProgression.mid") {
+/**
+ * Triggers a download of the generated MIDI file.
+ * @param {string} dataUrl - The MIDI file encoded as a data URI.
+ * @param {string} [filename="MyProgression.mid"] - The filename for the downloaded MIDI file.
+ */
+function DownloadMidi(dataUrl, filename = "MyProgression.mid") {
   const link = document.createElement("a");
   link.href = dataUrl;
   link.download = filename;
+  document.body.appendChild(link); // Improves compatibility
   link.click();
+  document.body.removeChild(link);
 }
 
-export function GenerateMidi(chordsList) {
-  if (!chordsList) return;
+/**
+ * Generates a MIDI file from a list of chords.
+ * @param {string[]} chordsList - An array of chord names.
+ * @returns {string | undefined} - A MIDI data URI if successful, otherwise undefined.
+ */
+function GenerateMidi(chordsList) {
+  if (!Array.isArray(chordsList) || chordsList.length === 0) return;
 
-  track = new MidiWriter.Track();
+  const track = new MidiWriter.Track();
 
-  let chordsToExport = {
-    // chordNum: chordContent
-    1: undefined,
-    2: undefined,
-    3: undefined,
-    4: undefined,
-    5: undefined,
-    6: undefined,
-    7: undefined,
-    8: undefined,
-  };
+  // Convert chord names to their corresponding MIDI notes
+  const chordsToExport = chordsList.map(ShowChord).filter(Boolean);
 
-  for (let [i, [chordNum, chordContent]] of Object.entries(
-    Object.entries(chordsToExport)
-  )) {
-    if (chordsList[i]) {
-      chordsToExport[chordNum] = ShowChord(chordsList[i]);
-    } else {
-      // Remove key/value pair if we're passing less than 8 chords in chordsList
-      delete chordsToExport[chordNum];
-    }
-  }
+  if (chordsToExport.length === 0) return;
 
-  // Add the track event for each note of each chord.
-  // One NoteEvent per chord.
-  if (track) {
-    for (const chord of Object.values(chordsToExport)) {
-      track.addEvent(
-        new MidiWriter.NoteEvent({ pitch: chord, duration: "1" }),
-        function (event, index) {
-          return { velocity: 90 };
-        }
-      );
-    }
+  // Add each chord as a MIDI note event
+  chordsToExport.forEach((chord) => {
+    track.addEvent(
+      new MidiWriter.NoteEvent({ pitch: chord, duration: "1", velocity: 90 }),
+    );
+  });
 
-    const writer = new MidiWriter.Writer(track);
-    return writer.dataUri();
-  }
+  const writer = new MidiWriter.Writer(track);
+  return writer.dataUri();
 }
+
+module.exports = { DownloadMidi, GenerateMidi };
