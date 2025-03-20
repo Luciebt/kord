@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { TMood } from "../../type";
+import { TMood } from "../../types";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
