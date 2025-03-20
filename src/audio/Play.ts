@@ -1,4 +1,12 @@
-import * as Tone from "tone";
+import {
+  Draw,
+  Synth,
+  PolySynth,
+  Transport,
+  ToneEvent,
+  Sequence,
+  context,
+} from "tone";
 import { ShowChord } from "../PianoChart";
 import { unPressElementsStyleWithoutEvent } from "../hooks/unPressElementStyle";
 
@@ -9,22 +17,22 @@ const synthSounds = {
   imperatricePartials: [0, 2, 3, 4],
 };
 
-export let polySynth: Tone.PolySynth | null = null;
-export let chordEvent: Tone.ToneEvent | null = null;
+export let polySynth: PolySynth | null = null;
+export let chordEvent: ToneEvent | null = null;
 let activeSynthType: string = "cuteSine"; // Track current synth type
 
 //------ Tone.Transport functions
 
 export function SetupTempo(bpm: number = 120): void {
-  Tone.Transport.bpm.value = bpm;
+  Transport.bpm.value = bpm;
 }
 
 export function GetTempo(): number {
-  return Tone.Transport.bpm.value;
+  return Transport.bpm.value;
 }
 
 export function SetTempo(newValue: number): void {
-  Tone.Transport.bpm.rampTo(newValue, 1);
+  Transport.bpm.rampTo(newValue, 1);
 }
 
 //------ Metronome functions
@@ -48,7 +56,7 @@ function CreateSynth(
     polySynth.dispose();
   }
 
-  polySynth = new Tone.PolySynth(Tone.Synth, {
+  polySynth = new PolySynth(Synth, {
     volume: -9,
     detune: 0,
     portamento: 0,
@@ -95,7 +103,7 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  Tone.context.resume().then(() => {
+  context.resume().then(() => {
     polySynth!.triggerAttackRelease(chordNotes, "0.2");
   });
 }
@@ -122,13 +130,13 @@ function PlayChordLoopEvent(
 ): void {
   if (!polySynth) return;
 
-  Tone.context.resume();
+  context.resume();
 
-  chordEvent = new Tone.ToneEvent((time) => {
+  chordEvent = new ToneEvent((time) => {
     polySynth!.triggerAttackRelease(chordArr, "1n", time);
 
     // Sync visuals with Tone.transport
-    Tone.Draw.schedule(() => {
+    Draw.schedule(() => {
       const posId: number = parseInt(noteStart.split(":")[0]) + 1;
       AddGridHighlight(posId);
     }, time);
@@ -142,8 +150,8 @@ function PlayChordLoopEvent(
 //------ Stop playback safely
 
 export function StopPlayback(): void {
-  Tone.Transport.stop();
-  Tone.Transport.cancel();
+  Transport.stop();
+  Transport.cancel();
   if (chordEvent) {
     chordEvent.cancel();
     chordEvent.dispose();
@@ -153,14 +161,14 @@ export function StopPlayback(): void {
 
 //------ Play Chord Sequence (Using Tone.Sequence)
 
-let activeSequence: Tone.Sequence | null = null;
+let activeSequence: Sequence | null = null;
 
 function PlayChordSequence(chordArr: string[], noteStart: string): void {
   if (!polySynth) return;
 
   StopPlayback();
 
-  activeSequence = new Tone.Sequence(
+  activeSequence = new Sequence(
     (time, note) => {
       polySynth!.triggerAttackRelease(note, "16n", time);
     },
