@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
@@ -20,48 +20,47 @@ const ProgressionDisplayComponent = ({
   const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
 
-  const chordsArr: string[] = chordsList.split(" | ");
+  const chordsArr: string[] = chordsList ? chordsList.split(" | ") : [];
 
-  const handleClick = (event: any, chords: string) => {
-    setChordsState(true);
-    setChordSelected(chords);
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, chords: string) => {
+      setChordsState(true);
+      setChordSelected(chords);
 
-    unPressElementsStyleWithoutEvent("prog-btn-pressed");
-    event.target.classList.add("prog-btn-pressed");
-  };
+      unPressElementsStyleWithoutEvent("prog-btn-pressed");
+      event.currentTarget.classList.add("prog-btn-pressed");
+    },
+    [],
+  );
 
-  // Reset chord selected when changing tonality or mode.
+  // Reset chord selection when tonality or mode changes
   useDidUpdate(() => {
     setChordsState(false);
   }, [tonic, mode, mood]);
 
-  const progressionsList: JSX.Element[] = chordsArr.map((chords, i) => (
-    <button
-      key={i}
-      onClick={(e) => {
-        handleClick(e, chords);
-      }}
-      className="prog-btn"
-    >
-      {chords}
-    </button>
-  ));
-
   return (
     <section className="box prog-box">
-      <h2>Progressions </h2>
+      <h2>Progressions</h2>
       <section
         aria-label="Progressions found for your criteria"
         className="prog-btn-box"
       >
         <div className="prog-grid-results">
-          {chordsList ? progressionsList : ""}
+          {chordsArr.map((chords, i) => (
+            <button
+              key={i}
+              onClick={(e) => handleClick(e, chords)}
+              className="prog-btn"
+            >
+              {chords}
+            </button>
+          ))}
         </div>
       </section>
-      {/* Chords buttons: */}
-      {chordsList && chordsState ? (
+      {/* Chords buttons display */}
+      {chordsState && chordSelected && (
         <ChordDisplay tonic={tonic} chord={chordSelected} />
-      ) : null}
+      )}
     </section>
   );
 };
