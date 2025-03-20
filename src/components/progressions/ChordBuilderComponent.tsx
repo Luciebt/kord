@@ -57,7 +57,7 @@ const ChordBuilderComponent = (): JSX.Element => {
 
   return (
     <section className="centered-box">
-      <div className="prog-chooser-box">
+      <div>
         <KeyButton onPressKey={KeyCallback} />
         <QualityButton onPressKey={ChordQualityCallback} />
       </div>
@@ -71,3 +71,4 @@ const ChordBuilderComponent = (): JSX.Element => {
 };
 
 export default ChordBuilderComponent;
+
