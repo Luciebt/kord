@@ -1,4 +1,5 @@
-import { Note, Chord } from "@tonaljs/tonal";
+import { get as getNote, simplify as simplifyNote } from "@tonaljs/note";
+import { getChord } from "@tonaljs/chord";
 import { PlaySynthChords } from "./audio/Play";
 import {
   CleanChords,
@@ -45,9 +46,9 @@ export function BuildChordNotes(chord: string, octave: number = 3): string[] {
     chord,
     octave,
   );
-  let chordNotesArr = Chord.getChord(chordMode, homeNote).notes;
+  let chordNotesArr = getChord(chordMode, homeNote).notes;
 
   return chordNotesArr.map(
-    (chord) => Note.simplify(chord) && CleanChords(chord),
+    (chord) => simplifyNote(chord) && CleanChords(chord),
   );
 }
