@@ -1,47 +1,46 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { TMood } from "../../type";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IMoodButton {
-  onPressMood?: any;
+  onPressMood?: (mood: TMood) => void;
 }
 
-const MoodButton = ({ onPressMood }: IMoodButton): JSX.Element => {
-  const moods: string[] = [
-    "All",
-    "Jazzy 🎷",
-    "Sad 🌧️",
-    "Hopeful 🌈",
-    "Happy 🌻",
-    "Dark 👻",
-    "Weird 👾",
-    // "Todo",
-  ];
+const moods: TMood[] = [
+  "Jazzy 🎷",
+  "Sad 🌧️",
+  "Hopeful 🌈",
+  "Happy 🌻",
+  "Dark 👻",
+  "Weird 👾",
+  "Suspenseful 🎭",
+];
 
-  const handleClick = (event: any, mood: string) => {
-    onPressMood(mood);
+const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => {} }) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, mood: TMood) => {
+      onPressMood(mood);
 
-    const style: string = "mood-btn-pressed";
-    unPressElementsStyleWithoutEvent(style);
-    event.target.classList.add(style);
-  };
-
-  const moodsList: JSX.Element[] = moods.map((mood, i) => (
-    <button
-      key={i}
-      className="mood-btn"
-      onClick={(e) => {
-        handleClick(e, mood);
-      }}
-    >
-      {mood}
-    </button>
-  ));
+      const style = "mood-btn-pressed";
+      unPressElementsStyleWithoutEvent(style);
+      event.currentTarget.classList.add(style);
+    },
+    [onPressMood],
+  );
 
   return (
-    <section arial-label="Choose a mood for your chord progression">
+    <section aria-label="Choose a mood for your chord progression">
       <h2>Mood</h2>
-      {moodsList}
+      {moods.map((mood) => (
+        <button
+          key={mood}
+          className="mood-btn"
+          onClick={(e) => handleClick(e, mood)}
+        >
+          {mood}
+        </button>
+      ))}
     </section>
   );
 };

@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TMode } from "../../type";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
 
 interface IModeButton {
-  onPressMode?: any;
+  onPressMode?: (mode: TMode) => void;
 }
 
-const ModeButton = ({ onPressMode }: IModeButton): JSX.Element => {
-  const modes: TMode[] = ["Major", "Minor"];
+const modes: TMode[] = ["Major", "Minor"];
 
-  const handleClick = (event: any, mode: string) => {
-    onPressMode(mode);
-    unPressElementsStyleWithoutEvent("mode-btn-pressed");
-    event.target.classList.add("mode-btn-pressed");
-  };
-
-  const modesList: JSX.Element[] = modes.map((mode, i) => (
-    <button
-      key={i}
-      className="mode-btn"
-      onClick={(e) => {
-        handleClick(e, mode);
-      }}
-    >
-      {mode}
-    </button>
-  ));
+const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => {} }) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, mode: TMode) => {
+      onPressMode(mode);
+      unPressElementsStyleWithoutEvent("mode-btn-pressed");
+      event.currentTarget.classList.add("mode-btn-pressed");
+    },
+    [onPressMode],
+  );
 
   return (
-    <section arial-label="Choose a mode for your chord progression">
+    <section aria-label="Choose a mode for your chord progression">
       <h2>Mode</h2>
-      {modesList}
+      {modes.map((mode) => (
+        <button
+          key={mode}
+          className="mode-btn"
+          onClick={(e) => handleClick(e, mode)}
+        >
+          {mode}
+        </button>
+      ))}
     </section>
   );
 };

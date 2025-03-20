@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TKey } from "../../type";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "./Buttons.css";
@@ -7,35 +7,38 @@ interface IKeyButton {
   onPressKey?: (note: string) => void;
 }
 
-const KeyButton = ({ onPressKey = () => {} }: IKeyButton): JSX.Element => {
-  const keys: TKey[] = [
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-    "A",
-    "A#",
-    "B",
-  ];
+const keys: TKey[] = [
+  "C",
+  "C#",
+  "D",
+  "D#",
+  "E",
+  "F",
+  "F#",
+  "G",
+  "G#",
+  "A",
+  "A#",
+  "B",
+];
 
-  const handleClick = (event: any, note: string) => {
-    onPressKey(note);
-    unPressElementsStyleWithoutEvent("key-btn-pressed");
-    event.target.classList.add("key-btn-pressed");
-  };
+const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, note: string) => {
+      onPressKey(note);
+      unPressElementsStyleWithoutEvent("key-btn-pressed");
+      event.currentTarget.classList.add("key-btn-pressed");
+    },
+    [onPressKey],
+  );
 
   return (
-    <section arial-label="Choose a key for your chord progression">
+    <section aria-label="Choose a key for your chord progression">
       <h2>Key</h2>
-      {keys.map((note, i) => (
+      {keys.map((note) => (
         <button
           id={note}
-          key={i}
+          key={note}
           value={note}
           onClick={(e) => handleClick(e, note)}
           className="key-btn"
@@ -48,3 +51,4 @@ const KeyButton = ({ onPressKey = () => {} }: IKeyButton): JSX.Element => {
 };
 
 export default KeyButton;
+
