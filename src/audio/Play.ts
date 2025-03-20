@@ -9,8 +9,9 @@ const synthSounds = {
   imperatricePartials: [0, 2, 3, 4],
 };
 
-export let polySynth: Tone.PolySynth;
-export let chordEvent: Tone.ToneEvent;
+export let polySynth: Tone.PolySynth | null = null;
+export let chordEvent: Tone.ToneEvent | null = null;
+let activeSynthType: string = "cuteSine"; // Track current synth type
 
 //------ Tone.Transport functions
 
@@ -39,14 +40,14 @@ export function SetTempo(newValue: number): void {
 //------ Synth utils
 
 function CreateSynth(
-  newPartials: number[] = synthSounds.cuteSinePartials
+  newPartials: number[] = synthSounds.cuteSinePartials,
 ): void {
-  // Dispose the existing synth if it exists.
+  // Dispose the existing synth before creating a new one.
   if (polySynth) {
     polySynth.releaseAll();
     polySynth.dispose();
   }
-  // Create a new synth with new partials, cuteSine being the defaults.
+
   polySynth = new Tone.PolySynth(Tone.Synth, {
     volume: -9,
     detune: 0,
@@ -56,7 +57,7 @@ function CreateSynth(
       attackCurve: "linear",
       decay: 0.2,
       decayCurve: "exponential",
-      release: 1,
+      release: 4,
       releaseCurve: "exponential",
       sustain: 0.3,
     },
@@ -65,21 +66,22 @@ function CreateSynth(
       phase: 0,
       type: "custom",
     },
-  });
-
-  // See https://github.com/Tonejs/Tone.js/wiki/Performance#contextlatencyhint
-  // Tone.setContext(new Tone.Context({ latencyHint: "balanced" }));
-
-  const gain = new Tone.Gain(0.6).toDestination();
-  polySynth.connect(gain);
+  }).toDestination();
 }
 
 export function SetSynthSound(synthSound: string): void {
+  if (synthSound === activeSynthType) return;
+  activeSynthType = synthSound;
+
   switch (synthSound) {
     case "cuteSine":
       CreateSynth(synthSounds.cuteSinePartials);
+      break;
     case "imperatrice":
       CreateSynth(synthSounds.imperatricePartials);
+      break;
+    default:
+      console.warn(`Unknown synth sound: ${synthSound}`);
   }
 }
 
@@ -93,9 +95,8 @@ SetupTempo();
 export function PlaySynthChords(chordNotes: string[]): void {
   if (!chordNotes || !polySynth) return;
 
-  Tone.start().then(() => {
-    polySynth.releaseAll();
-    polySynth.triggerAttackRelease(chordNotes, "+0.1", 1);
+  Tone.context.resume().then(() => {
+    polySynth!.triggerAttackRelease(chordNotes, "0.2");
   });
 }
 
@@ -117,62 +118,75 @@ function AddGridHighlight(posId: number): any {
 function PlayChordLoopEvent(
   chordArr: string[],
   progressionLength: number,
-  noteStart: string = "0:0:0"
+  noteStart: string = "0:0:0",
 ): void {
-  Tone.start();
-  
-  chordEvent = new Tone.ToneEvent((time) => {
-    polySynth.triggerAttackRelease(chordArr, "1n", time);
+  if (!polySynth) return;
 
-    // Draw the grid highlight - need Draw to sync visuals with Tone.transport
+  Tone.context.resume();
+
+  chordEvent = new Tone.ToneEvent((time) => {
+    polySynth!.triggerAttackRelease(chordArr, "1n", time);
+
+    // Sync visuals with Tone.transport
     Tone.Draw.schedule(() => {
       const posId: number = parseInt(noteStart.split(":")[0]) + 1;
       AddGridHighlight(posId);
-      // TODO: update the piano display.
     }, time);
-  }, "");
-  // start the chord at the beginning of the Tone.transport timeline
+  });
+
   chordEvent.start(noteStart);
-  // loop it every measure, depending on the number of chords to play.
-  const measuresToPlay: string = progressionLength.toString() + "m";
-  // Loop the progression forever and set its length.
   chordEvent.loop = true;
-  chordEvent.loopEnd = measuresToPlay;
+  chordEvent.loopEnd = `${progressionLength}m`;
 }
 
-function PlayChordSequence(
-  chordArr: string[],
-  progressionLength: number,
-  noteStart: string,
-  id: number
-): void {
-  // let chordSeqEvent = new Tone.ToneEvent((time) => {
-  let seq = new Tone.Sequence(
+//------ Stop playback safely
+
+export function StopPlayback(): void {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+  if (chordEvent) {
+    chordEvent.cancel();
+    chordEvent.dispose();
+    chordEvent = null;
+  }
+}
+
+//------ Play Chord Sequence (Using Tone.Sequence)
+
+let activeSequence: Tone.Sequence | null = null;
+
+function PlayChordSequence(chordArr: string[], noteStart: string): void {
+  if (!polySynth) return;
+
+  StopPlayback();
+
+  activeSequence = new Tone.Sequence(
     (time, note) => {
-      polySynth.triggerAttackRelease(note, "16n", time);
+      polySynth!.triggerAttackRelease(note, "16n", time);
     },
     chordArr,
-    "+0.1"
+    "4n",
   );
-  // }, "+0.1");
 
-  seq.start(noteStart);
-  seq.loop = chordArr.length * 2;
+  activeSequence.start(noteStart);
+  activeSequence.loop = true;
 }
 
-export function PlayLoop(chordArr: string[]): void {
-  // Build the chord arrays in simplified notation
-  let chordsToLoop: { [key: number]: string[] } = {};
-  for (let i = 0; i < chordArr.length; i++) {
-    if (chordArr[i]) {
-      chordsToLoop[i + 1] = ShowChord(chordArr[i]);
-    }
-  }
+//------ Main Playback Function
 
-  // Schedule the loop events
+export function PlayLoop(chordArr: string[]): void {
+  if (!chordArr.length) return;
+
+  StopPlayback();
+
+  let chordsToLoop: { [key: number]: string[] } = {};
+  chordArr.forEach((chord, i) => {
+    chordsToLoop[i + 1] = ShowChord(chord);
+  });
+
   const progressionLength: number = chordArr.length;
   for (let i = 1; i <= progressionLength; i++) {
-    const noteStart = (i - 1).toString() + ":0:0";
+    const noteStart = `${i - 1}:0:0`;
     PlayChordLoopEvent(chordsToLoop[i], progressionLength, noteStart);
   }
 }
