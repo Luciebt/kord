@@ -2,43 +2,6 @@
   text-align: center;
 }
 
-.buttons-container {
-  display: flex;
-  flex-wrap: wrap; /* Allows the sections to adjust naturally */
-  justify-content: space-around; /* Ensures spacing */
-  gap: 10px;
-  padding: 10px;
-  width: 100%;
-}
-
-.buttons-section {
-  text-align: center;
-}
-
-/* First section takes the full width */
-.buttons-section:first-child {
-  width: 100%;
-}
-
-/* Second and third sections share the row */
-.buttons-section:nth-child(2),
-.buttons-section:nth-child(3) {
-  min-width: 90px; /* Prevents sections from shrinking too much */
-}
-
-/* 📱 MOBILE VIEW: Stack all sections on top of each other */
-@media (max-width: 768px) {
-  .buttons-container {
-    flex-direction: column; /* Forces all sections to stack */
-    align-items: center; /* Centers them */
-  }
-
-  .buttons-section {
-    flex-basis: 100%; /* Each section takes full width */
-    max-width: 90%; /* Prevents overflow */
-  }
-}
-
 /* Progression box display */
 
 .prog-grid-results {
@@ -75,4 +38,3 @@
 .highlight-chord-div .btn-caption {
   color: antiquewhite;
 }
-

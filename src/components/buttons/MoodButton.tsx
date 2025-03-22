@@ -31,7 +31,7 @@ const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => {} }) => {
   return (
     <section
       aria-label="Choose a mood for your chord progression"
-      className="buttons-section"
+      className="buttons-section mood-btn-section"
     >
       {moods.map((mood) => (
         <button

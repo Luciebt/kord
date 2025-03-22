@@ -22,7 +22,7 @@ const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => {} }) => {
   return (
     <section
       aria-label="Choose a mode for your chord progression"
-      className="buttons-section"
+      className="buttons-section mode-btn-section"
     >
       {modes.map((mode) => (
         <button

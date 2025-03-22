@@ -35,7 +35,7 @@ const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
   return (
     <section
       aria-label="Choose a key for your chord progression"
-      className="buttons-section"
+      className="buttons-section key-btn-section"
     >
       {keys.map((note) => (
         <button

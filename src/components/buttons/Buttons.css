@@ -14,6 +14,74 @@ button {
   border-radius: 4px !important;
 }
 
+.key-btn,
+.mode-btn,
+.mood-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid #ddd;
+  min-height: 60px; /* Ensures height for emoji & text */
+  max-width: 150px; /* Prevents buttons from getting too large */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflowing content */
+}
+
+.key-btn {
+  font-size: 1.2em;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.mode-btn {
+  font-size: 1.1em;
+}
+
+.mood-btn {
+  font-size: 1em;
+  min-width: 120px;
+}
+
+.buttons-container {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column; /* Keeps rows stacked */
+  align-items: center; /* Centers them horizontally */
+  gap: 12px; /* Spacing between rows */
+}
+
+.buttons-section {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mode-btn-section {
+  grid-template-columns: repeat(2, 1fr); /* 4 columns per row */
+}
+
+.key-btn-section {
+  grid-template-columns: repeat(6, 1fr); /* 4 columns per row */
+}
+
+.mood-btn-section {
+  grid-template-columns: repeat(3, 1fr); /* 4 columns per row */
+}
+
+/* 📱 Responsive: On mobile, switch to 3 columns */
+@media (max-width: 768px) {
+  .buttons-section {
+    grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
+    max-width: 240px;
+  }
+  .mood-btn-section {
+    grid-template-columns: repeat(2, 1fr); /* 4 columns per row */
+  }
+}
+
 button:hover {
   color: #fffffc;
   transition: all 0.2s ease-in-out;
@@ -42,7 +110,6 @@ input[type="number"] {
 .mood-btn-pressed,
 .prog-btn-pressed,
 .chordbuild-btn-pressed {
-  /* color: #f4eeff; */
   color: var(--dominant-light);
   transition: all 0.2s ease-in-out;
   background-color: var(--dominant-dark);
