@@ -5,12 +5,18 @@
 }
 
 #keyboard li {
-  border-radius: .25em;
+  border-radius: 0.25em;
 }
 
 .keyboard-box {
   margin-left: -2.2em;
 }
+
+$key-height-white: 12.5rem;
+$key-width-white: 3.5rem;
+$key-height-black: 8rem;
+$key-width-black: 2rem;
+$key-shadow: 0px 2px 0px 2px #d9d9d9;
 
 .white,
 .black {
@@ -24,36 +30,40 @@
 }
 
 .white {
-  height: 12.5rem;
-  width: 3.5rem;
+  height: $key-height-white;
+  width: $key-width-white;
   z-index: 1;
   background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
   color: var(--black-30);
-  box-shadow: 0px 2px 0px 2px #d9d9d9;
+  box-shadow: $key-shadow;
 }
 
 .black {
-  height: 8rem;
-  width: 2rem;
+  height: $key-height-black;
+  width: $key-width-black;
   margin: 0 0 0 -1rem;
   z-index: 2;
   background-color: var(--piano-dark);
   color: var(--white-80);
-  box-shadow: 0px 2px 0px 2px #d9d9d9;
-
+  box-shadow: $key-shadow;
 }
 
-.white.pressed {
+@mixin pressed-key {
   border-top: 1px solid hsl(0, 0%, 47%);
   border-left: 1px solid hsl(0, 0%, 60%);
   border-bottom: 1px solid hsl(0, 0%, 60%);
   color: var(--white-80);
   background: var(--pressed-color);
   outline: none;
-  
 }
 
-.black.pressed {
+.white.pressed,
+.white.s-pressed {
+  @include pressed-key;
+}
+
+.black.pressed,
+.black.s-pressed {
   background: var(--pressed-color);
   outline: none;
 }
@@ -62,30 +72,12 @@
   margin: 0 0 0 -1rem;
 }
 
-/* ScalePianoDisplay */
-.white.s-pressed {
-  border-top: 1px solid hsl(0, 0%, 47%);
-  border-left: 1px solid hsl(0, 0%, 60%);
-  border-bottom: 1px solid hsl(0, 0%, 60%);
-  color: var(--white-80);
-  background: var(--pressed-color);
-  outline: none;
-}
-
-.black.s-pressed {
-  background: var(--pressed-color);
-  outline: none;
-}
-
 /* On screens that are 600px or less make the piano smaller and more visible */
 @media screen and (max-width: 600px) {
-  #keyboard li {
-    font-size: .76em;
-    padding-right: .2rem;
-  }
+  #keyboard li,
   #scale-keyboard li {
-    font-size: .76em;
-    padding-right: .2rem;
+    font-size: 0.76em;
+    padding-right: 0.2rem;
   }
   .white {
     height: 8.3rem;
@@ -99,3 +91,4 @@
     margin: 0 0 0 -0.6rem;
   }
 }
+
