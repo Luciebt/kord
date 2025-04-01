@@ -1,16 +1,18 @@
 .bpm-box {
   display: flex;
   flex-direction: column;
-  gap: .6em;
+  gap: 0.6em;
   align-items: center;
 }
 
-#bpm-input {
-  width: 6em;
+$bpm-input-width: 6em;
+
+#bpm-input,
+#range-number-bpm-input {
+  width: $bpm-input-width;
 }
 
 #range-number-bpm-input {
-  width: 6em;
   height: 2em;
 }
 
@@ -21,3 +23,4 @@ input[type="range"] {
   overflow: hidden;
   background: transparent;
 }
+
