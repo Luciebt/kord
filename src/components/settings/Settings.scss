@@ -12,14 +12,17 @@
 
 /* Settings Buttons */
 
-#audio-btn,
-#shortcuts-btn {
+%button-style {
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
-  /*width: 100%;*/
   width: 30%;
   margin: 0.3em;
+}
+
+#audio-btn,
+#shortcuts-btn {
+  @extend %button-style;
 }
 
 #audio-btn:hover,
@@ -53,11 +56,11 @@
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
-}
 
-.sound-select option:hover {
-  color: white !important;
-  background-color: var(--dominant-dark) !important;
+  &:hover {
+    color: white !important;
+    background-color: var(--dominant-dark) !important;
+  }
 }
 
 /* Shortcut panel */
@@ -75,4 +78,3 @@ mark {
   background-color: rgb(234, 234, 234);
   padding: 0.16em;
 }
-
