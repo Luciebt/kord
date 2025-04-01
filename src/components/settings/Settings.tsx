@@ -3,30 +3,17 @@ import useKeypress from "react-use-keypress";
 import { useToggle } from "../../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
 import { SetSynthSound } from "../../audio/Play";
-import "./Settings.css";
+import "./Settings.scss";
 
 interface ISettings {
   onSettings?: any;
-  onSoundOn: (sound: boolean) => void;
 }
 
-const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
-  // Whether the audio is on or off
-  const [audioPref, setAudioPref] = useState(false);
-
-  const handleClick = (event: any) => {
-    setAudioPref(!audioPref);
-    onSoundOn(audioPref);
-  };
-
+const Settings = ({ onSettings }: ISettings): JSX.Element => {
   const [toggleShortcutsPanel, setToggleShortcutsPanel] = useToggle(false);
 
   useKeypress(["Escape", "?"], () => {
     setToggleShortcutsPanel();
-  });
-
-  useKeypress("m", () => {
-    setAudioPref(!audioPref);
   });
 
   const ChooseSynth = (event: any): void => {
@@ -37,13 +24,6 @@ const Settings = ({ onSettings, onSoundOn }: ISettings): JSX.Element => {
   return (
     <section>
       <section aria-label="settings" id="settings-box">
-        <button
-          aria-label="Turn audio on or off"
-          id="audio-btn"
-          onClick={(e) => handleClick(e)}
-        >
-          {audioPref ? "Audio OFF 🔇" : "Audio ON 🔊"}
-        </button>
         {/* <select
           name="synthPartials"
           onChange={(e) => ChooseSynth(e)}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./GenerateProgBuilder.css";
+import "./GenerateProgBuilder.scss";
 import { GenerateProg } from "./ProgGenerator";
 
 export interface INextChordDisplayProps {

@@ -3,7 +3,7 @@
 #settings-box {
   display: flex;
   justify-content: center;
-  font-size: .9em;
+  font-size: 0.9em;
   margin: 0 auto;
   padding: 0.3em;
   width: 322px;
@@ -12,13 +12,17 @@
 
 /* Settings Buttons */
 
-#audio-btn,
-#shortcuts-btn {
+%button-style {
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
-  width: 100%;
-  margin: .3em;
+  width: 30%;
+  margin: 0.3em;
+}
+
+#audio-btn,
+#shortcuts-btn {
+  @extend %button-style;
 }
 
 #audio-btn:hover,
@@ -52,11 +56,11 @@
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
-}
 
-.sound-select option:hover {
-  color: white !important;
-  background-color: var(--dominant-dark) !important;
+  &:hover {
+    color: white !important;
+    background-color: var(--dominant-dark) !important;
+  }
 }
 
 /* Shortcut panel */
@@ -65,12 +69,12 @@
   text-align: left;
   display: flex;
   align-items: center;
-  font-size: .83em;
+  font-size: 0.83em;
   margin: 0 auto;
   width: 390px;
 }
 
 mark {
   background-color: rgb(234, 234, 234);
-  padding: .16em;
+  padding: 0.16em;
 }

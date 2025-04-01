@@ -1,6 +1,6 @@
 import React from "react";
 import { GenerateMidi, DownloadMidi } from "../../midi/MidiWriter";
-import "./Buttons.css";
+import "./Buttons.scss";
 
 interface IMidiButtonProps {
   chordsList: string[];

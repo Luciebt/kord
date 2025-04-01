@@ -1,4 +1,5 @@
-import { Note, Interval } from "@tonaljs/tonal";
+import { transpose } from "@tonaljs/note";
+import { fromSemitones } from "@tonaljs/interval";
 
 type TProbability = number | string;
 export type TChord = string;
@@ -70,8 +71,8 @@ export const FindNextChords = (
     return null;
   }
 
-  const interval = Interval.fromSemitones(nextChord.interval);
-  const newNote = Note.transpose(referenceKey, interval);
+  const interval = fromSemitones(nextChord.interval);
+  const newNote = transpose(referenceKey, interval);
 
   return newNote + nextChord.quality;
 };
@@ -84,7 +85,7 @@ export const SuggestNextChords = (
   semitones: number,
   quality: string,
 ): string => {
-  const interval = Interval.fromSemitones(semitones);
-  const newNote = Note.transpose(referenceKey, interval);
+  const interval = fromSemitones(semitones);
+  const newNote = transpose(referenceKey, interval);
   return newNote + quality;
 };

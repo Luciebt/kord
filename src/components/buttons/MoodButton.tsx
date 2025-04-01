@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import { TMood } from "../../type";
+import { TMood } from "../../types";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Buttons.css";
+import "./Buttons.scss";
 
 interface IMoodButton {
   onPressMood?: (mood: TMood) => void;
@@ -29,8 +29,10 @@ const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => {} }) => {
   );
 
   return (
-    <section aria-label="Choose a mood for your chord progression">
-      <h2>Mood</h2>
+    <section
+      aria-label="Choose a mood for your chord progression"
+      className="buttons-section mood-btn-section"
+    >
       {moods.map((mood) => (
         <button
           key={mood}

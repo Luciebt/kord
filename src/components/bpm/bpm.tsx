@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SetupTempo, GetTempo, SetTempo } from "../../audio/Play";
-import "./Bpm.css";
+import "./Bpm.scss";
 
 interface IBpmRange {
   onBpmRange?: any;

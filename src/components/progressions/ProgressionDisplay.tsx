@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
-import "./Progressions.css";
+import "./Progressions.scss";
 
 export interface IProgressionDisplayProps {
   tonic: string;

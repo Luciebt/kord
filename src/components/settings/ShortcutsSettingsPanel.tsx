@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import "./Settings.css";
+import "./Settings.scss";
 
 interface IShortcutsProps {}
-
-// TODO: Handle click outside.
 
 const ShortcutsPanel = ({}: IShortcutsProps): JSX.Element => {
   // Move keyboard focus to the panel when Shortcut button toggled
   useEffect(() => {
     const shortcutsSettingsDiv = document.getElementById(
-      "shortcuts-settings-panel"
+      "shortcuts-settings-panel",
     ) as HTMLElement;
     if (shortcutsSettingsDiv) {
       shortcutsSettingsDiv.focus();
@@ -24,9 +22,6 @@ const ShortcutsPanel = ({}: IShortcutsProps): JSX.Element => {
       id="shortcuts-settings-panel"
     >
       <p>
-        <ul>
-          - <mark>M</mark> to mute/unmute the sound.
-        </ul>
         <ul>
           - <mark>1</mark> to <mark>8</mark> (or <mark>azerty</mark>) to play
           chords.

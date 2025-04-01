@@ -5,9 +5,8 @@ import PianoDisplay from "../piano/PianoDisplay";
 import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import { SoundOnContext } from "../../App";
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
-import "./Progressions.css";
+import "./Progressions.scss";
 
 export interface IChordDisplayProps {
   tonic: string;
@@ -18,7 +17,6 @@ const ChordDisplayComponent = ({
   tonic,
   chord,
 }: IChordDisplayProps): JSX.Element => {
-  const SoundOn = useContext(SoundOnContext);
   const [chordState, setChordState] = useState<boolean>(false);
   const [chordSelected, setChordSelected] = useState<string | null>(chord);
   let chordArr: string[] = chord.split(",");
@@ -48,7 +46,7 @@ const ChordDisplayComponent = ({
     const chordBtn = document.getElementById(`btn-${posId}`);
     chordBtn?.classList.add("chord-btn-pressed");
 
-    if (SoundOn) PlayChord(chordFound);
+    PlayChord(chordFound);
     setChordState(true);
     setChordSelected(chordFound);
   };

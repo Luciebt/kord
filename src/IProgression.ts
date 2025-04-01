@@ -1,5 +1,5 @@
 import { ProgressionCollection } from "./ProgressionStore";
-import { TProgression } from "./type.d";
+import { TProgression } from "./types";
 import { Progression } from "@tonaljs/tonal";
 import { CleanChords } from "./utils/NoteUtils";
 import { BuildChordsMap } from "./utils/ProgressionUtils";

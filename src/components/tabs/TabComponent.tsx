@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProgressionDictionnaryTab from "../tabs/ProgressionDictionnaryTab";
 import ProgressionBuilderTab from "../tabs/ProgressionBuilderTab";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Tab.css";
+import "./Tab.scss";
 
 const TabComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("tab-id-1");
@@ -27,17 +27,15 @@ const TabComponent = (): JSX.Element => {
 
   return (
     <div className="content">
-      <ul arial-label="tabs" className="box tab-nav">
-        <button id="id-1" onClick={handleTab} className="active-tab">
-          Progressions List
-        </button>
-        <button id="id-2" onClick={handleTab}>
-          Progressions Builder
-        </button>
-      </ul>
-      <div className="outlet">
-        {renderTabContent()}
-      </div>
+      {/* <ul arial-label="tabs" className="box tab-nav"> */}
+      {/*   <button id="id-1" onClick={handleTab} className="active-tab"> */}
+      {/*     Progressions List */}
+      {/*   </button> */}
+      {/*   <button id="id-2" onClick={handleTab}> */}
+      {/*     Progressions Builder */}
+      {/*   </button> */}
+      {/* </ul> */}
+      <div className="outlet">{renderTabContent()}</div>
     </div>
   );
 };

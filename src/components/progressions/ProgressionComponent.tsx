@@ -6,7 +6,7 @@ import ModeButton from "../buttons/ModeButton";
 import MoodButton from "../buttons/MoodButton";
 import ProgressionDisplayComponent from "./ProgressionDisplay";
 import ChordsScaleDisplayComponent from "../scales/ScaleDisplay";
-import "./Progressions.css";
+import "./Progressions.scss";
 
 const ProgressionComponent = (): JSX.Element => {
   const [tonic, setTonic] = useState("");
@@ -39,9 +39,9 @@ const ProgressionComponent = (): JSX.Element => {
 
   return (
     <section className="centered-box">
-      <div className="prog-chooser-box">
-        <KeyButton onPressKey={KeyCallback} />
+      <div className="buttons-container">
         <ModeButton onPressMode={ModeCallback} />
+        <KeyButton onPressKey={KeyCallback} />
         <MoodButton onPressMood={MoodCallback} />
       </div>
       <ProgressionDisplayComponent
@@ -61,4 +61,3 @@ const ProgressionComponent = (): JSX.Element => {
 };
 
 export default ProgressionComponent;
-

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useKeypress from "react-use-keypress";
-import "..//progressions/ProgressionGridDisplay.css";
+import "..//progressions/ProgressionGridDisplay.scss";
 import MidiButtonComponent from "../buttons/MidiButton";
 import PianoDisplay from "../piano/PianoDisplay";
 import LoopButton from "../buttons/LoopButton";
@@ -28,7 +28,7 @@ const ProgressionGridDisplayComponent = ({
 
     const newChord = progressionMap.get(posId);
 
-    // Handle css to apply the selection color
+    // Handle.scss to apply the selection color
     unPressElementsStyleWithoutEvent("selected-position");
     unPressElementsStyleWithoutEvent("selected-position-without-chord");
     const gridDiv = document.getElementById("pos-" + posId);

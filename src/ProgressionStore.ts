@@ -1,5 +1,5 @@
-import { TProgression, TMode } from "./type.d";
-import { TMood } from "./type.d";
+import { TProgression, TMode } from "./types";
+import { TMood } from "./types";
 
 const MoodLabels: Record<string, TMood> = {
   happy: "Happy 🌻",

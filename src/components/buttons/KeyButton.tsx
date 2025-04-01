@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import { TKey } from "../../type";
+import { TKey } from "../../types";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Buttons.css";
+import "./Buttons.scss";
 
 interface IKeyButton {
   onPressKey?: (note: string) => void;
@@ -33,8 +33,10 @@ const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
   );
 
   return (
-    <section aria-label="Choose a key for your chord progression">
-      <h2>Key</h2>
+    <section
+      aria-label="Choose a key for your chord progression"
+      className="buttons-section key-btn-section"
+    >
       {keys.map((note) => (
         <button
           id={note}
@@ -51,4 +53,3 @@ const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
 };
 
 export default KeyButton;
-

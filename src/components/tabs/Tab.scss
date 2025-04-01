@@ -1,0 +1,17 @@
+.tab-nav {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto 0.2rem;
+  font-size: 0.9em;
+  padding: 0.3em;
+  width: 322px;
+  background-color: rgb(234, 234, 234);
+  text-align: center;
+  border-radius: 0.25em;
+
+  .active-tab {
+    font-weight: 500;
+    color: antiquewhite;
+    background-color: var(--dominant-dark);
+  }
+}
