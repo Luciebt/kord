@@ -17,7 +17,7 @@ const App = () => {
   };
 
   return (
-    <main className="App">
+    <main className="App app-container">
       <h1>
         <a href="#" className="app-title">
           Kord

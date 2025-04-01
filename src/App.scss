@@ -8,14 +8,23 @@ body {
   max-width: 888px;
 }
 
-section, input, select {
-  border-radius: .25em;
+.app-container {
+  max-width: 600px; /* md width */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+
+section,
+input,
+select {
+  border-radius: 0.25em;
 }
 
 input {
   border: 1px solid var(--border-color);
-  border-radius: .25em;
-  transition: all .2s ease-in-out;
+  border-radius: 0.25em;
+  transition: all 0.2s ease-in-out;
   background-color: var(--white-50);
 }
 
@@ -30,10 +39,13 @@ html {
   box-sizing: inherit;
 }
 
-.app-title, .app-title:hover, .app-title:visited, .app-title:active {
+.app-title,
+.app-title:hover,
+.app-title:visited,
+.app-title:active {
   color: inherit;
   text-decoration: none;
- }
+}
 
 h1 {
   font-size: 4.8em;
@@ -62,11 +74,10 @@ h1 {
   --white-50: hsla(0, 0%, 100%, 0.5);
   --white-80: hsla(0, 0%, 100%, 0.8);
   --piano-dark: #716f81;
-  --border-color:var(--dominant-dark);
+  --border-color: var(--dominant-dark);
   --section-box: #ffc8dd;
-  --dominant-light:#ffafcc;
+  --dominant-light: #ffafcc;
   --main-background: #fffffc;
   --dominant-dark: #6d6875;
   --pressed-color: #8b96dd;
 }
-
