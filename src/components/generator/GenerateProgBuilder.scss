@@ -1,9 +1,10 @@
 .generate-btn {
-    height: 3em;
-    width: 3em;
-    background-color: var(--section-box);
+  height: 3em;
+  width: 3em;
+  background-color: var(--section-box);
+
+  &:hover {
+    background-color: var(--dominant-light);
+  }
 }
 
-.generate-btn:hover {
-    background-color: var(--dominant-light);
-}
