@@ -8,90 +8,93 @@
   display: none;
 }
 
+/* Container styles */
+.selection-panel {
+  background-color: #fff0f3;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem !important;
+  box-sizing: border-box;
+}
+.section-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+h4 {
+  margin: 0;
+}
+
 /* General button style */
 
-button {
+%button-prog-style {
+  border-radius: 0.25rem;
+  box-shadow: none;
+  cursor: pointer;
   font-family: "DM Mono", monospace;
   color: var(--dominant-dark);
   border: none;
-  transition: all 0.2s ease-in-out;
-  min-width: 3em;
   font-size: 1em;
-  padding: 0.5em;
-  margin: 0.3em;
-  cursor: pointer;
-  box-shadow: 0px 2px 0px 2px #d9d9d9;
-  border-radius: 4px !important;
+  transition: background-color 0.15s ease;
 
   &:hover {
-    color: #fffffc;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--dominant-dark);
+    color: var(--dominant-dark);
+    background-color: #ced4da;
+    transition: background-color 0.15s ease;
   }
+}
+
+button {
+  @extend %button-prog-style;
 }
 
 /* Mixin for shared button styles */
 @mixin btn-style($font-size, $min-width: auto) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 2px solid #ddd;
   font-size: $font-size;
-  min-height: 60px;
   min-width: $min-width;
-  max-width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .key-btn {
   @include btn-style(1.2em, 60px);
+  padding: 0.5rem 0.25rem;
+  font-size: 0.875rem;
 }
 .mode-btn {
   @include btn-style(1.1em);
+  padding: 0.5rem;
+  font-size: 0.875rem;
 }
 .mood-btn {
   @include btn-style(1em, 120px);
+  padding: 0.5rem 0.25rem;
+  font-size: 0.75rem;
 }
 
-/* Button containers */
-.buttons-container {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.buttons-section {
-  display: grid;
-  grid-template-rows: auto;
-  gap: 3px;
-  justify-content: center;
-  align-items: center;
+div {
+  display: block;
 }
 
 /* Grid layouts */
 .mode-btn-section {
-  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
 }
 .key-btn-section {
-  grid-template-columns: repeat(6, 1fr);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.25rem;
 }
 .mood-btn-section {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .buttons-section {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 240px;
-  }
-  .mood-btn-section {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25rem;
 }
 
 input[type="number"] {
@@ -109,9 +112,8 @@ input[type="number"] {
 
 /* Pressed button styles */
 @mixin pressed-style {
-  color: var(--dominant-light);
+  color: antiquewhite;
   background-color: var(--dominant-dark);
-  box-shadow: 0 2px 0 2px var(--dominant-light);
 }
 
 .key-btn-pressed,
@@ -123,15 +125,27 @@ input[type="number"] {
 }
 
 .prog-btn {
+  margin: 0.15rem;
   width: 11em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Scale and Chord buttons */
 
 .scale-chord-btn,
 .chord-btn {
+  margin: 0.25rem;
+  padding: 0.25rem;
   font-size: 1.2em;
   min-width: 4em;
+  min-height: 70px;
 }
 
 @media (max-width: 600px) {
@@ -191,7 +205,6 @@ input[type="number"] {
   font-size: 1.4em;
   background-color: var(--dominant-dark);
   color: var(--dominant-light);
-  box-shadow: 0px 2px 0px 2px var(--dominant-light) !important;
 }
 
 /* Export to MIDI button */
@@ -200,4 +213,28 @@ input[type="number"] {
   font-size: 1em;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+  .key-btn-section {
+    grid-template-columns: repeat(3, 1fr); /* 3 keys per row */
+  }
+
+  .mood-btn-section {
+    grid-template-columns: repeat(2, 1fr); /* 2 moods per row */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .key-button,
+  .mode-button,
+  .mood-button {
+    padding: 0.375rem 0.25rem; /* Slightly smaller padding */
+  }
+
+  .section-label {
+    font-size: 0.8125rem; /* Slightly smaller label text */
+  }
 }
