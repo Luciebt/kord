@@ -92,15 +92,16 @@ const ChordDisplayComponent = ({
 
   return (
     <section id="chords-box-id" className="chords-box">
-      <section className="box chord-box">
-        <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
+      <section className="box progression-results-box">
         {chordsList && chordsList}
         <br />
-
+        <div className="prog-settings-box">
+          <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
+          <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
+        </div>
         {chordState && chordSelected ? (
           <PianoDisplay chord={chordSelected} />
-        ) : null}
-        <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
+        ) : null}{" "}
       </section>
     </section>
   );

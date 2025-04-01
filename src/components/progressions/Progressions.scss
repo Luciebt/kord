@@ -17,11 +17,12 @@
   padding: 1.8rem;
 }
 
-.chord-box {
-  background-color: antiquewhite;
-  padding: 0.6em;
+.progression-results-box {
+  background-color: #dee2ff;
+  padding: 1em;
   margin-top: 0.6em;
   margin-bottom: 0.6em;
+  border-radius: 0.5em;
 }
 
 .highlight-chord-div {
@@ -32,4 +33,25 @@
 
 .highlight-chord-div .btn-caption {
   color: antiquewhite;
+}
+
+.prog-settings-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  margin: 0.9em;
+
+  button,
+  input {
+    min-height: 56px;
+    min-width: 56px;
+    padding: 0.6em;
+    margin: 0.3rem;
+  }
+}
+
+.results-container {
+  background-color: #dee2ff;
+  padding: 1em;
 }

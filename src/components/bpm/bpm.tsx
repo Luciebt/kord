@@ -24,16 +24,16 @@ const BpmRange = ({ onBpmRange }: IBpmRange): JSX.Element => {
 
   return (
     <section className="bpm-box">
-      <input
-        aria-label="Set a bpm for the loop"
-        title="Set a bpm for the loop"
-        type="range"
-        min="60"
-        max="200"
-        value={bpm}
-        onChange={handleChange}
-        id="bpm-input"
-      />
+      {/* <input */}
+      {/*   aria-label="Set a bpm for the loop" */}
+      {/*   title="Set a bpm for the loop" */}
+      {/*   type="range" */}
+      {/*   min="60" */}
+      {/*   max="200" */}
+      {/*   value={bpm} */}
+      {/*   onChange={handleChange} */}
+      {/*   id="bpm-input" */}
+      {/* /> */}
       <input
         type="number"
         aria-label="Set a bpm for the loop"

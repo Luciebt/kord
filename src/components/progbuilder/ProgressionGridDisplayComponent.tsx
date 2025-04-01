@@ -138,7 +138,7 @@ const ProgressionGridDisplayComponent = ({
 
   return (
     <div>
-      <section className="box chord-box">
+      <section className="box progression-results-box">
         <h2>Progression Builder</h2>
         <div className="top-chord-box">
           {progressionMap ? (

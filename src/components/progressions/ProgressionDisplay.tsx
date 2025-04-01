@@ -40,6 +40,7 @@ const ProgressionDisplayComponent = ({
 
   return (
     <section>
+      <h3>...</h3>
       <h3>Progressions</h3>
       <section
         aria-label="Progressions found for your criteria"

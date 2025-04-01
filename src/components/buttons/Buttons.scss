@@ -10,10 +10,10 @@
 
 /* Container styles */
 .selection-panel {
-  background-color: #fff0f3;
+  margin-top: 0.8em;
+  border: 3px dotted #dee2ff;
   border-radius: 0.5rem;
   padding: 0.75rem;
-  margin: 0;
   box-sizing: border-box;
 }
 .buttons-container {
@@ -97,11 +97,6 @@ div {
   gap: 0.25rem;
 }
 
-input[type="number"] {
-  box-shadow: 0px 2px 0px 2px #d9d9d9;
-  border-radius: 4px !important;
-}
-
 .btn-caption {
   font-size: 0.6em;
   font-weight: bold;
@@ -131,8 +126,8 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 60px;
-  max-width: 150px;
+  min-height: 46px;
+  max-width: 188px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -142,7 +137,7 @@ input[type="number"] {
 .scale-chord-btn,
 .chord-btn {
   margin: 0.25rem;
-  padding: 0.25rem;
+  padding: 0.8rem;
   font-size: 1.2em;
   min-width: 4em;
   min-height: 70px;
@@ -169,19 +164,10 @@ input[type="number"] {
 
 /* Loop button */
 
-#loop {
-  height: 2.3em;
-  width: 2.3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 600px) {
-  #loop {
-    width: 2em;
-    height: 2em;
-  }
+#loop,
+.loop-btn,
+.loop-btn-pressed {
+  font-size: 1.4em;
 }
 
 .loop-box {
@@ -191,28 +177,13 @@ input[type="number"] {
   align-items: center;
 }
 
-.loop-btn {
-  font-size: 1.4em;
-  color: var(--dominant-dark);
-
-  &:hover {
-    background-color: var(--dominant-dark);
-    color: var(--dominant-light);
-  }
-}
-
-.loop-btn-pressed {
-  font-size: 1.4em;
-  background-color: var(--dominant-dark);
-  color: var(--dominant-light);
-}
-
 /* Export to MIDI button */
 
 #export-midi-btn {
-  font-size: 1em;
   font-weight: bold;
-  transition: all 0.2s ease-in-out;
+  max-height: 40px;
+  padding: 0.6em;
+  margin: 0.3rem;
 }
 
 /* Mobile-specific styles */

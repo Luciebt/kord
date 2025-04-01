@@ -5,22 +5,15 @@
   align-items: center;
 }
 
-$bpm-input-width: 6em;
-
-#bpm-input,
 #range-number-bpm-input {
-  width: $bpm-input-width;
-}
-
-#range-number-bpm-input {
-  height: 2em;
+  min-height: 56px;
+  min-width: 56px;
+  border: none;
+  margin: 0.3rem;
 }
 
 input[type="range"] {
-  width: 90px;
-  height: 7px;
   border-radius: 5px;
   overflow: hidden;
   background: transparent;
 }
-
