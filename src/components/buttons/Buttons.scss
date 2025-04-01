@@ -1,3 +1,13 @@
+/* Utility classes */
+
+.visible {
+  display: inline-block;
+}
+
+.invisible {
+  display: none;
+}
+
 /* General button style */
 
 button {
@@ -12,43 +22,46 @@ button {
   cursor: pointer;
   box-shadow: 0px 2px 0px 2px #d9d9d9;
   border-radius: 4px !important;
+
+  &:hover {
+    color: #fffffc;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--dominant-dark);
+  }
 }
 
-.key-btn,
-.mode-btn,
-.mood-btn {
+/* Mixin for shared button styles */
+@mixin btn-style($font-size, $min-width: auto) {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border: 2px solid #ddd;
-  min-height: 60px; /* Ensures height for emoji & text */
-  max-width: 150px; /* Prevents buttons from getting too large */
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Hides overflowing content */
+  font-size: $font-size;
+  min-height: 60px;
+  min-width: $min-width;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .key-btn {
-  font-size: 1.2em;
-  min-width: 60px;
-  min-height: 60px;
+  @include btn-style(1.2em, 60px);
 }
-
 .mode-btn {
-  font-size: 1.1em;
+  @include btn-style(1.1em);
 }
-
 .mood-btn {
-  font-size: 1em;
-  min-width: 120px;
+  @include btn-style(1em, 120px);
 }
 
+/* Button containers */
 .buttons-container {
   margin-top: 1em;
   display: flex;
-  flex-direction: column; /* Keeps rows stacked */
-  align-items: center; /* Centers them horizontally */
-  gap: 12px; /* Spacing between rows */
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .buttons-section {
@@ -59,33 +72,26 @@ button {
   align-items: center;
 }
 
+/* Grid layouts */
 .mode-btn-section {
-  grid-template-columns: repeat(2, 1fr); /* 4 columns per row */
+  grid-template-columns: repeat(2, 1fr);
 }
-
 .key-btn-section {
-  grid-template-columns: repeat(6, 1fr); /* 4 columns per row */
+  grid-template-columns: repeat(6, 1fr);
 }
-
 .mood-btn-section {
-  grid-template-columns: repeat(3, 1fr); /* 4 columns per row */
+  grid-template-columns: repeat(3, 1fr);
 }
 
-/* 📱 Responsive: On mobile, switch to 3 columns */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .buttons-section {
-    grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
+    grid-template-columns: repeat(3, 1fr);
     max-width: 240px;
   }
   .mood-btn-section {
-    grid-template-columns: repeat(2, 1fr); /* 4 columns per row */
+    grid-template-columns: repeat(2, 1fr);
   }
-}
-
-button:hover {
-  color: #fffffc;
-  transition: all 0.2s ease-in-out;
-  background-color: var(--dominant-dark);
 }
 
 input[type="number"] {
@@ -101,8 +107,11 @@ input[type="number"] {
 
 /* Key, Mod, Mood and Progression main buttons */
 
-.prog-btn {
-  width: 11em;
+/* Pressed button styles */
+@mixin pressed-style {
+  color: var(--dominant-light);
+  background-color: var(--dominant-dark);
+  box-shadow: 0 2px 0 2px var(--dominant-light);
 }
 
 .key-btn-pressed,
@@ -110,21 +119,14 @@ input[type="number"] {
 .mood-btn-pressed,
 .prog-btn-pressed,
 .chordbuild-btn-pressed {
-  color: var(--dominant-light);
-  transition: all 0.2s ease-in-out;
-  background-color: var(--dominant-dark);
-  box-shadow: 0px 2px 0px 2px var(--dominant-light);
+  @include pressed-style;
+}
+
+.prog-btn {
+  width: 11em;
 }
 
 /* Scale and Chord buttons */
-
-.visible {
-  display: inline-block;
-}
-
-.invisible {
-  display: none;
-}
 
 .scale-chord-btn,
 .chord-btn {
@@ -132,13 +134,9 @@ input[type="number"] {
   min-width: 4em;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
+  .scale-chord-btn,
   .chord-btn {
-    font-size: 1.2em;
-    min-width: 3.1em;
-  }
-  .scale-chord-btn {
-    font-size: 1.2em;
     min-width: 3.1em;
   }
 }
@@ -165,9 +163,8 @@ input[type="number"] {
   justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   #loop {
-    /* font-size: .9em; */
     width: 2em;
     height: 2em;
   }
@@ -178,17 +175,18 @@ input[type="number"] {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 1.2em; */
 }
 
 .loop-btn {
   font-size: 1.4em;
   color: var(--dominant-dark);
+
+  &:hover {
+    background-color: var(--dominant-dark);
+    color: var(--dominant-light);
+  }
 }
-.loop-btn:hover {
-  background-color: var(--dominant-dark);
-  color: var(--dominant-light);
-}
+
 .loop-btn-pressed {
   font-size: 1.4em;
   background-color: var(--dominant-dark);
