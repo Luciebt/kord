@@ -39,8 +39,8 @@ const ProgressionDisplayComponent = ({
   }, [tonic, mode, mood]);
 
   return (
-    <section className="box prog-box">
-      <h2>Progressions</h2>
+    <section>
+      <h3>Progressions</h3>
       <section
         aria-label="Progressions found for your criteria"
         className="prog-btn-box"

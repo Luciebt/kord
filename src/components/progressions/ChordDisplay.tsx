@@ -96,12 +96,12 @@ const ChordDisplayComponent = ({
         <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
         {chordsList && chordsList}
         <br />
-      </section>
 
-      {chordState && chordSelected ? (
-        <PianoDisplay chord={chordSelected} />
-      ) : null}
-      <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
+        {chordState && chordSelected ? (
+          <PianoDisplay chord={chordSelected} />
+        ) : null}
+        <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
+      </section>
     </section>
   );
 };

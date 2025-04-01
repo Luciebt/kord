@@ -39,21 +39,21 @@ const ProgressionComponent = (): JSX.Element => {
 
   return (
     <section className="centered-box">
-      <div className="buttons-container">
-        <ModeButton onPressMode={ModeCallback} />
-        <KeyButton onPressKey={KeyCallback} />
-        <MoodButton onPressMood={MoodCallback} />
+      <div className="selection-panel">
+        <div className="buttons-container">
+          <h4 className="selection-label">Key</h4>
+          <KeyButton onPressKey={KeyCallback} />
+          <h4 className="selection-label">Mode</h4>
+          <ModeButton onPressMode={ModeCallback} />
+          <h4 className="selection-label">Mood</h4>
+          <MoodButton onPressMood={MoodCallback} />
+        </div>
       </div>
       <ProgressionDisplayComponent
         tonic={tonic}
         mode={mode}
         mood={mood ? mood : ""}
         chordsList={chordsList ? chordsList : ""}
-      />
-      <ChordsScaleDisplayComponent
-        tonic={tonic}
-        mode={mode}
-        chordsScale={chordsScale}
       />
       <br />
     </section>

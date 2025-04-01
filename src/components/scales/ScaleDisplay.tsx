@@ -77,10 +77,10 @@ const ChordsScaleDisplayComponent = ({
       aria-label="Suggested chords for the key and mode choosen"
       className="box scale-box"
     >
-      <h2>
+      <h3>
         {chordsScale ? "Chords on Scale " + tonic + " " + mode : ""}{" "}
         {mode == "Minor" ? " (harmonic)" : ""}
-      </h2>
+      </h3>
       {/* {notesOnScale} <br /> */}
       {chordsScaleList}
       {chordState ? <ScalePianoDisplay chord={chordSelected} /> : null}
