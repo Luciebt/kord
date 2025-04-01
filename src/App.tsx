@@ -2,7 +2,7 @@ import { hot } from "react-hot-loader";
 import React, { createContext, useState } from "react";
 import Settings from "./components/settings/Settings";
 import TabComponent from "./components/tabs/TabComponent";
-import "./App.css";
+import "./App.scss";
 
 export const BpmValueContext = createContext({
   bpm: 120,

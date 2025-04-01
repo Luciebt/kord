@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { TMood } from "../../types";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Buttons.css";
+import "./Buttons.scss";
 
 interface IMoodButton {
   onPressMood?: (mood: TMood) => void;

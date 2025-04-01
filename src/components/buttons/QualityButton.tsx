@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { TChords } from "../../types";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Buttons.css";
+import "./Buttons.scss";
 
 interface IChordButton {
   onPressKey?: (quality: TChords) => void;

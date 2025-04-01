@@ -6,7 +6,7 @@ import MidiButton from "../buttons/MidiButton";
 import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
-import "./Progressions.css";
+import "./Progressions.scss";
 
 export interface IChordDisplayProps {
   tonic: string;

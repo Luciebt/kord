@@ -3,7 +3,7 @@ import useKeypress from "react-use-keypress";
 import { useToggle } from "../../hooks/useToggle";
 import ShortcutsPanel from "./ShortcutsSettingsPanel";
 import { SetSynthSound } from "../../audio/Play";
-import "./Settings.css";
+import "./Settings.scss";
 
 interface ISettings {
   onSettings?: any;

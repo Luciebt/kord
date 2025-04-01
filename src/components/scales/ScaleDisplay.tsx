@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import { PlayChord } from "../../Chords";
 import ScalePianoDisplay from "../piano/ScalePianoDisplay";
-import "./Scales.css";
+import "./Scales.scss";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 
 export interface IChordsScaleDisplayComponent {

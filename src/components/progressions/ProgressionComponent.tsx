@@ -6,7 +6,7 @@ import ModeButton from "../buttons/ModeButton";
 import MoodButton from "../buttons/MoodButton";
 import ProgressionDisplayComponent from "./ProgressionDisplay";
 import ChordsScaleDisplayComponent from "../scales/ScaleDisplay";
-import "./Progressions.css";
+import "./Progressions.scss";
 
 const ProgressionComponent = (): JSX.Element => {
   const [tonic, setTonic] = useState("");

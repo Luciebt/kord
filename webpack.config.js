@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
@@ -24,13 +25,17 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.scss$/, // Match SCSS files
+        use: [
+          MiniCssExtractPlugin.loader, // Extracts CSS instead of injecting
+          "css-loader", // Resolves CSS imports
+          "sass-loader", // Compiles SCSS to CSS
+        ],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js", ".json", ".tsx", ".css"],
+    extensions: [".ts", ".js", ".json", ".tsx", ".scss"],
   },
   devServer: {
     port: 3000,
@@ -43,5 +48,6 @@ module.exports = {
       hash: true, // cache busting
       filename: "../dist/index.html",
     }),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
   ],
 };

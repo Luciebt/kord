@@ -3,7 +3,7 @@ import useKeypress from "react-use-keypress";
 import { useToggle } from "../../hooks/useToggle";
 import { PlayLoop } from "../../audio/Play";
 import { Transport } from "tone";
-import "./Buttons.css";
+import "./Buttons.scss";
 import { BpmValueContext } from "../../App";
 import BpmRange from "../bpm/bpm";
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProgressionDictionnaryTab from "../tabs/ProgressionDictionnaryTab";
 import ProgressionBuilderTab from "../tabs/ProgressionBuilderTab";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import "./Tab.css";
+import "./Tab.scss";
 
 const TabComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("tab-id-1");
