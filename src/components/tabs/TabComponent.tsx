@@ -27,14 +27,14 @@ const TabComponent = (): JSX.Element => {
 
   return (
     <div className="content">
-      <ul arial-label="tabs" className="box tab-nav">
-        <button id="id-1" onClick={handleTab} className="active-tab">
-          Progressions List
-        </button>
-        <button id="id-2" onClick={handleTab}>
-          Progressions Builder
-        </button>
-      </ul>
+      {/* <ul arial-label="tabs" className="box tab-nav"> */}
+      {/*   <button id="id-1" onClick={handleTab} className="active-tab"> */}
+      {/*     Progressions List */}
+      {/*   </button> */}
+      {/*   <button id="id-2" onClick={handleTab}> */}
+      {/*     Progressions Builder */}
+      {/*   </button> */}
+      {/* </ul> */}
       <div className="outlet">{renderTabContent()}</div>
     </div>
   );
