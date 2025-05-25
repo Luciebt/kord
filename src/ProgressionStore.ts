@@ -10,7 +10,7 @@ const MoodLabels: Record<string, TMood> = {
   suspenseful: "Suspenseful 🎭",
 };
 
-export const ProgressionCollection: Record<TMode, TProgression[]> = {
+const ProgressionCollection: Record<TMode, TProgression[]> = {
   Major: [
     { progression_list: "I, I, IV, V", mood: MoodLabels.happy },
     { progression_list: "IV, I, V, VIm", mood: MoodLabels.happy },
@@ -80,4 +80,13 @@ export const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "VI, VI, Im, VII", mood: MoodLabels.suspenseful },
     { progression_list: "VI, VII, Im, III", mood: MoodLabels.hopeful },
   ],
+};
+
+// Convert arrays to Maps
+const MajorMap = new Map<string, TProgression>(ProgressionCollection.Major.map(prog => [prog.progression_list, prog]));
+const MinorMap = new Map<string, TProgression>(ProgressionCollection.Minor.map(prog => [prog.progression_list, prog]));
+
+export const ProgressionCollectionMap: Record<TMode, Map<string, TProgression>> = {
+  Major: MajorMap,
+  Minor: MinorMap,
 };

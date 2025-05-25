@@ -1,4 +1,4 @@
-import { ProgressionCollection } from "./ProgressionStore";
+import { ProgressionCollectionMap } from "./ProgressionStore";
 import { TProgression } from "./types";
 import { Progression } from "@tonaljs/tonal";
 import { CleanChords } from "./utils/NoteUtils";
@@ -16,59 +16,36 @@ export default interface IProgression {
 //------- Find progressions helpers
 
 function FindProgListFromMode(
-  progressionCollectionForMode: TProgression[],
+  progressionCollectionForMode: Map<string, TProgression>,
+  mood?: string
 ): string[] {
-  let ProgressionsFound: string[] = [];
-  for (const v of Object.values(progressionCollectionForMode)) {
-    const ProgList: string = v["progression_list"];
-    if (ProgList) {
-      ProgressionsFound.push(ProgList);
+  const results: string[] = [];
+
+  for (const [progressionList, progression] of progressionCollectionForMode) {
+    if (!mood || progression.mood === mood) {
+      results.push(progressionList);
     }
   }
 
-  return ProgressionsFound;
+  return results;
 }
 
-function FindProgListWithoutMood(mode: string): string[] {
+function FindProgList(mode: string, mood?: string): string[] {
   switch (mode) {
     case "Major":
     case "M":
-      return FindProgListFromMode(ProgressionCollection.Major);
+      return FindProgListFromMode(ProgressionCollectionMap.Major, mood);
     case "Minor":
     case "m":
-      return FindProgListFromMode(ProgressionCollection.Minor);
+      return FindProgListFromMode(ProgressionCollectionMap.Minor, mood);
     default:
       throw new Error("Unknown Mode");
   }
 }
 
-function FindProgListWithMood(mode: string, mood: string): string[] {
-  let Progressions: TProgression[] | undefined = undefined;
-  let Results: string[] = [];
-
-  switch (mode) {
-    case "Major":
-      Progressions = ProgressionCollection.Major;
-      break;
-    case "Minor":
-      Progressions = ProgressionCollection.Minor;
-      break;
-  }
-
-  if (Progressions) {
-    for (const v of Object.values(Progressions)) {
-      if (v["mood"] == mood) {
-        Results.push(v["progression_list"]);
-      }
-    }
-  }
-
-  return Results;
-}
-
 function ConvertProgToChords(tonic: string, progArr: string[]): string {
   // Filter progression array from empty elements
-  progArr = progArr.filter((e) => e);
+  progArr = progArr.filter(Boolean);
 
   const chordsArr: string[] = progArr.map((prog) => {
     // Build an array with progression nums, separated by commas for tonals js.
@@ -92,15 +69,7 @@ export function DetermineChordsList(
 ): string {
   if (!tonic || !mode) return "";
 
-  let ProgList: string[] | string | undefined = undefined;
-
-  if (mood == "All" || !mood) {
-    ProgList = FindProgListWithoutMood(mode);
-  } else if (mood) {
-    ProgList = FindProgListWithMood(mode, mood);
-  } else {
-    return "";
-  }
+  const ProgList = FindProgList(mode, mood);
 
   return ConvertProgToChords(tonic, ProgList);
 }
