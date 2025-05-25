@@ -32,6 +32,13 @@ module.exports = {
           "sass-loader", // Compiles SCSS to CSS
         ],
       },
+      // Add rule for TypeScript test files
+      {
+        test: /\.(ts|tsx)?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, '__tests__')], // Include test files
+      },
     ],
   },
   resolve: {
