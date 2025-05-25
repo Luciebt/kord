@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import ChordDisplay from "./ChordDisplay";
@@ -19,8 +19,8 @@ const ProgressionDisplayComponent = ({
 }: IProgressionDisplayProps): JSX.Element => {
   const [chordsState, setChordsState] = useState(false);
   const [chordSelected, setChordSelected] = useState("");
-
-  const chordsArr: string[] = chordsList ? chordsList.split(" | ") : [];
+  
+  const chordsArr = useMemo(() => chordsList ? chordsList.split(" | ") : [], [chordsList]);
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, chords: string) => {
@@ -33,10 +33,10 @@ const ProgressionDisplayComponent = ({
     [],
   );
 
-  // Reset chord selection when tonality or mode changes
+  // Reset chord selection when progression list changes
   useDidUpdate(() => {
     setChordsState(false);
-  }, [tonic, mode, mood]);
+  }, [chordsList]);
 
   return (
     <section>

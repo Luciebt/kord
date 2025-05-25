@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { PlayChord } from "../../Chords";
 import KeyButton from "../buttons/KeyButton";
 import QualityButton from "../buttons/QualityButton";

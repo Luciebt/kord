@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
 import PianoDisplay from "../piano/PianoDisplay";
@@ -19,8 +19,10 @@ const ChordDisplayComponent = ({
 }: IChordDisplayProps): JSX.Element => {
   const [chordState, setChordState] = useState<boolean>(false);
   const [chordSelected, setChordSelected] = useState<string | null>(chord);
-  let chordArr: string[] = chord.split(",");
-  let romanNumerals: string[] = GetRomansForChord(chordArr);
+  const [pressedButtonId, setPressedButtonId] = useState<number | null>(null);
+
+  let chordArr = useMemo(() => chord.split(","), [chord]);
+  let romanNumerals = useMemo(() => GetRomansForChord(chordArr), [chordArr]);
 
   // Move keyboard focus to the chords box when mounted.
   useEffect(() => {
@@ -33,22 +35,12 @@ const ChordDisplayComponent = ({
     }
   }, []);
 
-  const handleClickAndKeyPress = (
-    posId: number,
-    chord?: string,
-    event?: any,
-  ) => {
-    let chordFound: string | undefined = chord;
-    if (!chordFound) chordFound = chordArr[posId - 1];
-
+  const handleClickAndKeyPress = (posId: number, chord?: string, event?: any) => {
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
-    unPressElementsStyleWithoutEvent("highlight-chord-div");
-    const chordBtn = document.getElementById(`btn-${posId}`);
-    chordBtn?.classList.add("chord-btn-pressed");
-
-    PlayChord(chordFound);
+    setPressedButtonId(posId); // Store the ID of the pressed button
+    PlayChord(chord || chordArr[posId - 1]);
     setChordState(true);
-    setChordSelected(chordFound);
+    setChordSelected(chord || chordArr[posId - 1]);
   };
 
   useEffect(() => {
@@ -76,19 +68,20 @@ const ChordDisplayComponent = ({
     });
   });
 
-  const chordsList: JSX.Element[] = chordArr.map((c, i) => (
-    <button
-      key={i}
-      id={"btn-" + (i + 1).toString()}
-      onClick={(e) => {
-        handleClickAndKeyPress(i + 1, c, e);
-      }}
-      className="chord-btn"
-    >
-      {c}
-      <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
-    </button>
-  ));
+  const chordsList = useMemo(() => {
+    return chordArr.map((c, i) => (
+      <button
+        key={i}
+        id={"btn-" + (i + 1).toString()}
+        onClick={(e) => handleClickAndKeyPress(i + 1, c, e)}
+        className={`chord-btn ${pressedButtonId === i + 1 ? "chord-btn-pressed" : ""}`}
+      >
+        {c}
+        <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
+      </button>
+    ));
+  }, [chordArr, romanNumerals, pressedButtonId]);
+
 
   return (
     <section id="chords-box-id" className="chords-box">
