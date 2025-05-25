@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { DetermineChordsList } from "../../IProgression";
 import { findChordsScale } from "../../Scale";
 import KeyButton from "../buttons/KeyButton";
@@ -8,7 +8,8 @@ import ProgressionDisplayComponent from "./ProgressionDisplay";
 import ChordsScaleDisplayComponent from "../scales/ScaleDisplay";
 import "./Progressions.scss";
 
-const ProgressionComponent = (): JSX.Element => {
+// const ProgressionComponent = (): JSX.Element => {
+const ProgressionComponent: React.FC<{  }> = ({  }) => {
   const [tonic, setTonic] = useState("");
   const [mode, setMode] = useState("");
   const [mood, setMood] = useState("");
@@ -22,20 +23,20 @@ const ProgressionComponent = (): JSX.Element => {
     }
   };
 
-  const ModeCallback = (mode: string) => {
+  const ModeCallback = useCallback((mode: string) => {
     setMode(mode);
     updateChords(tonic, mode, mood);
-  };
+  }, [tonic, mode, mood]);
 
-  const KeyCallback = (tonic: string) => {
+  const KeyCallback = useCallback((tonic: string) => {
     setTonic(tonic);
     updateChords(tonic, mode, mood);
-  };
+  }, [tonic, mode, mood]);
 
-  const MoodCallback = (mood: string) => {
+  const MoodCallback = useCallback((mood: string) => {
     setMood(mood);
     updateChords(tonic, mode, mood);
-  };
+  }, [tonic, mode, mood]);
 
   return (
     <section className="centered-box">

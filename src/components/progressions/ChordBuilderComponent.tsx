@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { PlayChord } from "../../Chords";
 import KeyButton from "../buttons/KeyButton";
 import QualityButton from "../buttons/QualityButton";
@@ -18,17 +18,17 @@ const ChordBuilderComponent = (): JSX.Element => {
     }
   };
 
-  const KeyCallback = (key: string) => {
+  const KeyCallback = useCallback((key: string) => {
     setChordKey(key);
     updateChordSelected();
-  };
+  }, [chordKey, chordQuality]);
 
-  const ChordQualityCallback = (quality: string) => {
+  const ChordQualityCallback = useCallback((quality: string) => {
     setChordQuality(quality);
     updateChordSelected();
-  };
+  }, [chordKey, chordQuality]);
 
-  const newChordCallback = (newChord: string) => {
+  const newChordCallback = useCallback((newChord: string) => {
     if (!newChord) return;
     const [key, quality] = FullChordStringToArray(newChord);
 
@@ -44,7 +44,7 @@ const ChordBuilderComponent = (): JSX.Element => {
 
     PlayChord(key + quality);
     setShouldPlay(false);
-  };
+  }, [chordKey, chordQuality]);
 
   useEffect(() => {
     const chordToBuild = chordKey + chordQuality;
