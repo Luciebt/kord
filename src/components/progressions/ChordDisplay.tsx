@@ -48,7 +48,6 @@ const ChordDisplayComponent = ({
       // cleanups.
       setChordState(false);
       unPressElementsStyleWithoutEvent("chord-btn-pressed");
-      chordArr = [];
     };
   }, [chord]);
 

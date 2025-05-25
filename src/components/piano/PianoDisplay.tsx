@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { ShowChord } from "../../PianoChart";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import "../progressions/Progressions.scss";
@@ -9,7 +9,7 @@ export interface IPianoDisplayProps {
 }
 
 const PianoDisplayComponent = ({ chord }: IPianoDisplayProps): JSX.Element => {
-  let chordsArray: string[] = ShowChord(chord);
+  let chordsArray = useMemo(() => ShowChord(chord), [chord]);
 
   useEffect(() => {
     if (chordsArray) {
