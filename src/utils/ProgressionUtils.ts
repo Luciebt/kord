@@ -1,4 +1,4 @@
-let progMap = new Map();
+let progMap = new Map<string, string>();
 
 export function BuildChordsMap(progArr: string[], chordsArr: string[]): void {
   progMap.clear();
@@ -8,6 +8,7 @@ export function BuildChordsMap(progArr: string[], chordsArr: string[]): void {
 }
 
 export function GetRomansForChord(chordsArr: string[]): string[] {
-  const romansNumeralFound: string = progMap.get(chordsArr.join(","));
+  const chordKey = chordsArr.join(",");
+  const romansNumeralFound: string | undefined = progMap.get(chordKey);
   return romansNumeralFound ? romansNumeralFound.split(",") : [];
 }
