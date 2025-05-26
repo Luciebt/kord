@@ -1,7 +1,7 @@
 import { TProgression, TMode } from "./types";
 import { TMood } from "./types";
 
-const MoodLabels: Record<string, TMood> = {
+export const MoodLabels: Record<string, TMood> = {
   happy: "Happy 🌻",
   hopeful: "Hopeful 🌈",
   dark: "Dark 👻",

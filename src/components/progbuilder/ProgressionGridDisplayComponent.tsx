@@ -57,12 +57,12 @@ const ProgressionGridDisplayComponent = ({
 
   // TODO: random progression generation
   const progGenCallback = (newProg: string[]) => {
-    console.log("progGenCallback", newProg);
+    // console.log("progGenCallback", newProg);
 
     const newProgressionMap = new Map(
       newProg.map((str, index) => [index + 1, str]),
     );
-    console.log(newProgressionMap);
+    // console.log(newProgressionMap);
     progressionMap.clear();
     setProgressionMap(newProgressionMap);
     setSelectedChord(newProg[0]);

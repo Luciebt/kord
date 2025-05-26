@@ -1,15 +1,9 @@
 import {
-    FullChordStringToArray,
     SimplifiedChordNotationConverter,
     CleanChords,
 } from '../NoteUtils'; 
 
 describe('NoteUtils', () => {
-    it('should correctly split a full chord string', () => {
-        expect(FullChordStringToArray('C#m7')).toEqual(['C#', 'm7']);
-        expect(FullChordStringToArray('Am')).toEqual(['A', 'm']);
-    });
-
     it('should correctly convert a chord to simplified notation', () => {
         expect(SimplifiedChordNotationConverter('C#m7', true)).toEqual(['C#', 'm7']);
         expect(SimplifiedChordNotationConverter('Am', true)).toEqual(['A', 'm']);

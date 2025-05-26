@@ -44,19 +44,20 @@ function FindProgList(mode: string, mood?: string): string[] {
 }
 
 function ConvertProgToChords(tonic: string, progArr: string[]): string {
-  // Filter progression array from empty elements
-  progArr = progArr.filter(Boolean);
+  // Filter and map in a single pass
+  const chordsArr: string[] = progArr.reduce((acc, prog) => {
+    if (!prog) return acc; // Skip empty elements
 
-  const chordsArr: string[] = progArr.map((prog) => {
-    // Build an array with progression nums, separated by commas for tonals js.
-    const newList: string[] = prog.split(", ");
-    // Convert the progression to actual chords.
-    const newProg: string[] = Progression.fromRomanNumerals(tonic, newList);
-    return CleanChords(newProg.toString());
-  });
+    // Convert the progression to actual chords
+    const newProg = Progression.fromRomanNumerals(tonic, prog.split(", "));
+    const cleanedChords = CleanChords(newProg.join(","));
+    
+    acc.push(cleanedChords);
+    return acc;
+  }, [] as string[]);
 
   // Build the map
-  BuildChordsMap(progArr, chordsArr);
+  BuildChordsMap(progArr.filter(Boolean), chordsArr); // Ensure only non-empty progArr is passed
 
   return chordsArr.join(" | ");
 }
@@ -73,3 +74,6 @@ export function DetermineChordsList(
 
   return ConvertProgToChords(tonic, ProgList);
 }
+
+// Export for testing only
+export { FindProgList, FindProgListFromMode, ConvertProgToChords } 
