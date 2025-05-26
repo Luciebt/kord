@@ -7,7 +7,8 @@ const ProgressionBuilderTab = (): JSX.Element => {
   return showComingSoon ? (
     <h2 style={{ textAlign: "center", marginTop: "20px" }}>COMING SOON</h2>
   ) : (
-    <ChordBuilderComponent />
+   <div></div> 
+    // <ChordBuilderComponent />
   );
 };
 

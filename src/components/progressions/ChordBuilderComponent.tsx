@@ -4,7 +4,6 @@ import KeyButton from "../buttons/KeyButton";
 import QualityButton from "../buttons/QualityButton";
 import ProgressionGridDisplayComponent from "../progbuilder/ProgressionGridDisplayComponent";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
-import { FullChordStringToArray } from "../../utils/NoteUtils";
 
 const ChordBuilderComponent = (): JSX.Element => {
   const [chordKey, setChordKey] = useState("");
@@ -30,7 +29,7 @@ const ChordBuilderComponent = (): JSX.Element => {
 
   const newChordCallback = useCallback((newChord: string) => {
     if (!newChord) return;
-    const [key, quality] = FullChordStringToArray(newChord);
+    const [key, quality] = ["", ""]
 
     unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
     const qualityBtn = document.getElementById(quality);

@@ -1,15 +1,4 @@
 //--------- NOTE UTILS
-
-export function FullChordStringToArray(fullChord: string): string[] {
-  let [key, quality] = fullChord.split("#");
-  if (!quality) {
-    key += key.endsWith("b") ? quality : "";
-    quality = key.endsWith("b") ? key.slice(1) : key.slice(1);
-    key = key.endsWith("b") ? key.slice(0, -1) : key.slice(0);
-  }
-  return [key, quality];
-}
-
 export function SimplifiedChordNotationConverter(
   fullChord: string,
   toSimpleNotation: boolean
