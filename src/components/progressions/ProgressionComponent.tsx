@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { DetermineChordsList } from "../../IProgression";
+import { DetermineChordsList } from "../../ProgressionLogic";
 import { findChordsScale } from "../../Scale";
 import KeyButton from "../buttons/KeyButton";
 import ModeButton from "../buttons/ModeButton";

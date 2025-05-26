@@ -1,4 +1,4 @@
-import { DetermineChordsList } from "../../IProgression";
+import { DetermineChordsList } from "../../ProgressionLogic";
 import { SimplifiedChordNotationConverter } from "../../utils/NoteUtils";
 
 export function GenerateProg(
