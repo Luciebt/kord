@@ -26,29 +26,33 @@ function PlayMidiNotes(
   }
 }
 
+const chordCache: Record<string, string[]> = {};
+
 export function PlayChord(chord: string) {
-  const chordNotes: string[] = BuildChordNotes(chord);
-  if (chordNotes) PlayMidiNotes(chordNotes, InstrumentType.Synth);
+  if (chordCache[chord]) {
+    PlayMidiNotes(chordCache[chord], InstrumentType.Synth);
+    return;
+  }
+
+  const chordNotes = BuildChordNotes(chord);
+  chordCache[chord] = chordNotes; // Cache the result
+  PlayMidiNotes(chordNotes, InstrumentType.Synth);
 }
 
 export function GetSimplifiedChordFromFullChord(
   fullChord: string,
   octave?: number,
 ): string[] {
-  let [homeNote, chordMode] = SimplifiedChordNotationConverter(fullChord, true);
-
-  if (octave) return [chordMode, (homeNote += octave)];
-  return [chordMode, homeNote];
+  const [homeNote, chordMode] = SimplifiedChordNotationConverter(fullChord, true);
+  const noteWithOctave = octave ? `${homeNote}${octave}` : homeNote;
+  return [chordMode, noteWithOctave];
 }
 
 export function BuildChordNotes(chord: string, octave: number = 3): string[] {
-  const [chordMode, homeNote]: string[] = GetSimplifiedChordFromFullChord(
-    chord,
-    octave,
-  );
-  let chordNotesArr = getChord(chordMode, homeNote).notes;
+  const [chordMode, homeNote] = GetSimplifiedChordFromFullChord(chord, octave);
+  const chordNotesArr = getChord(chordMode, homeNote).notes;
 
-  return chordNotesArr.map(
-    (chord) => simplifyNote(chord) && CleanChords(chord),
-  );
+  return chordNotesArr
+    .map(chord => CleanChords(simplifyNote(chord)))
+    .filter(Boolean); // Filter out any undefined or null values
 }
