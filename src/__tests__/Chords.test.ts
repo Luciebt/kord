@@ -1,5 +1,4 @@
-import { PlayChord, GetSimplifiedChordFromFullChord, BuildChordNotes } from '../Chords';
-import { PlaySynthChords } from "../audio/Play"; 
+import { GetSimplifiedChordFromFullChord } from '../Chords';
 
 // Mock the PlaySynthChords function
 jest.mock('../audio/Play', () => ({

@@ -1,8 +1,8 @@
+import "./App.scss";
 import { hot } from "react-hot-loader";
 import React, { createContext, useState } from "react";
 import Settings from "./components/settings/Settings";
-import TabComponent from "./components/tabs/TabComponent";
-import "./App.scss";
+import ProgressionComponent from "./components/progressions/ProgressionComponent";
 
 export const BpmValueContext = createContext({
   bpm: 120,
@@ -26,7 +26,7 @@ const App = () => {
 
       <Settings />
       <BpmValueContext.Provider value={{ bpm, updateBpm }}>
-        <TabComponent />
+        <ProgressionComponent />
       </BpmValueContext.Provider>
     </main>
   );

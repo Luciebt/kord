@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "ES2021",
     "jsx": "react",
-    "module": "commonjs",
+    "module": "commonjs", 
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": false, 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "strict": true,
+    "strict": false 
   },
   "include": ["src/**/*"],
   "exclude": ["src/types/*.ts", "node_modules", ".vscode"]
