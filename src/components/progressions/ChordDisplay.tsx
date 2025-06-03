@@ -2,11 +2,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
 import PianoDisplay from "../piano/PianoDisplay";
-import MidiButton from "../buttons/MidiButton";
-import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
 import "./Progressions.scss";
+import ProgressionSettingsComponent from "./ProgressionSettings";
 
 export interface IChordDisplayProps {
   tonic: string;
@@ -87,10 +86,7 @@ const ChordDisplayComponent = ({
       <section className="box progression-results-box">
         {chordsList && chordsList}
         <br />
-        <div className="prog-settings-box">
-          <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
-          <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
-        </div>
+        <ProgressionSettingsComponent chords={chordArr} loopId="prog-dict" />
         {chordState && chordSelected ? (
           <PianoDisplay chord={chordSelected} />
         ) : null}{" "}
