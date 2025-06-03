@@ -5,11 +5,11 @@ import "./Buttons.scss";
 
 interface IModeButton {
   onPressMode?: (mode: TMode) => void;
+  fullModes?: boolean;
 }
 
-const modes: TMode[] = ["Major", "Minor"];
-
-const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => {} }) => {
+const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => { }, fullModes = false }) => {
+  const modes: TMode[] = fullModes ? ["Major", "Minor", "Dorian", "Mixolydian", "Phrygian", "Lydian", "Locrian"] : ["Major", "Minor"];
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, mode: TMode) => {
       onPressMode(mode);

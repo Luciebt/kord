@@ -3,10 +3,11 @@ import { hot } from "react-hot-loader";
 import React, { createContext, useState } from "react";
 import Settings from "./components/settings/Settings";
 import ProgressionComponent from "./components/progressions/ProgressionComponent";
+import ProgressionBuilderComponent from "./components/builder/ProgressionBuilderComponent";
 
 export const BpmValueContext = createContext({
   bpm: 120,
-  updateBpm: (newBpm) => {},
+  updateBpm: (newBpm) => { },
 });
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
 
       <Settings />
       <BpmValueContext.Provider value={{ bpm, updateBpm }}>
+        <ProgressionBuilderComponent />
         <ProgressionComponent />
       </BpmValueContext.Provider>
     </main>

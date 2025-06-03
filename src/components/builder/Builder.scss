@@ -1,0 +1,16 @@
+.results-container {
+    background-color: #dee2ff;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: 100px;
+    border: 3px dotted #dee2ff;
+    align-items: center;
+    border-radius: 0.5rem;
+}
+
+.results-btn {
+    border-radius: 0.25rem;
+    background-color: antiquewhite;
+}

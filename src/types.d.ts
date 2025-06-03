@@ -1,4 +1,4 @@
-export type TMode = "Major" | "Minor";
+export type TMode = "Major" | "Minor" | "Dorian" | "Mixolydian" | "Phrygian" | "Lydian" | "Locrian";
 
 export type TMood =
   | "Happy 🌻"

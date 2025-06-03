@@ -80,6 +80,11 @@ const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "VI, VI, Im, VII", mood: MoodLabels.suspenseful },
     { progression_list: "VI, VII, Im, III", mood: MoodLabels.hopeful },
   ],
+  Dorian: [],
+  Mixolydian: [],
+  Phrygian: [],
+  Lydian: [],
+  Locrian: [],
 };
 
 // Convert arrays to Maps
@@ -89,4 +94,9 @@ const MinorMap = new Map<string, TProgression>(ProgressionCollection.Minor.map(p
 export const ProgressionCollectionMap: Record<TMode, Map<string, TProgression>> = {
   Major: MajorMap,
   Minor: MinorMap,
+  Dorian: new Map<string, TProgression>(),
+  Mixolydian: new Map<string, TProgression>(),
+  Phrygian: new Map<string, TProgression>(),
+  Lydian: new Map<string, TProgression>(),
+  Locrian: new Map<string, TProgression>(),
 };
