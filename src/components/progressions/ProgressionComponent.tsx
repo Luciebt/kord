@@ -1,25 +1,20 @@
 import React, { useState, useCallback } from "react";
 import { DetermineChordsList } from "../../ProgressionLogic";
-import { findChordsScale } from "../../Scale";
 import KeyButton from "../buttons/KeyButton";
 import ModeButton from "../buttons/ModeButton";
 import MoodButton from "../buttons/MoodButton";
 import ProgressionDisplayComponent from "./ProgressionDisplay";
-import ChordsScaleDisplayComponent from "../scales/ScaleDisplay";
 import "./Progressions.scss";
 
-// const ProgressionComponent = (): JSX.Element => {
-const ProgressionComponent: React.FC<{  }> = ({  }) => {
+const ProgressionComponent: React.FC<{}> = ({ }) => {
   const [tonic, setTonic] = useState("");
   const [mode, setMode] = useState("");
   const [mood, setMood] = useState("");
   const [chordsList, setChordsList] = useState("");
-  const [chordsScale, setchordsScale] = useState([""]);
 
   const updateChords = (tonic: string, mode: string, mood: string) => {
     if (tonic && mode) {
       setChordsList(DetermineChordsList(tonic, mode, mood));
-      setchordsScale(findChordsScale(tonic, mode));
     }
   };
 
