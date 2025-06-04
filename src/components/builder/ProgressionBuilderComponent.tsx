@@ -3,9 +3,9 @@ import KeyButton from "../buttons/KeyButton";
 import ModeButton from "../buttons/ModeButton";
 import ProgressionSettingsComponent from "../progressions/ProgressionSettings";
 import "./Builder.scss";
-import { chordPatterns, keys, modes } from "./ProgressionBuilder";
-import { TKey, TMode } from "../../types";
 import { PlayChord } from "../../Chords";
+import { getRecommendedChordsForMode } from "../../utils/ChordUtils";
+import { getSimplifiedChordLabel } from "../../utils/TextUtils";
 
 const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
     const [selectedKey, setSelectedKey] = useState("");
@@ -23,12 +23,10 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
     const [progression, setProgression] = useState<Chord[]>([]);
 
     const KeyCallback = useCallback((tonic: string) => {
-        console.log("Selected Key:", tonic);
         setSelectedKey(tonic);
     }, [selectedKey, selectedMode]);
 
     const ModeCallback = useCallback((mode: string) => {
-        console.log("Selected Mode:", mode);
         setSelectedMode(mode);
     }, [selectedKey, selectedMode]);
 
@@ -40,28 +38,12 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
 
     const generateChords = useCallback(() => {
         if (!selectedKey || !selectedMode) return [];
-        const pattern = chordPatterns[selectedMode.toLowerCase()];
-        if (!pattern) return [];
-
-        const newChords = pattern.map((romanNumeral, index) => {
-            let quality = '';
-            if (romanNumeral.includes('°')) quality = 'dim';
-            else if (romanNumeral === romanNumeral.toLowerCase()) quality = 'm';
-
-            return {
-                id: `${selectedKey}${quality}-${index}`,
-                name: `${selectedKey}${quality}`,
-                romanNumeral,
-                root: selectedKey,
-                quality,
-                degree: index + 1
-            };
-        });
-
-        setAvailableChords(newChords);
-        console.log("Available Chords:", newChords);
-
-        return availableChords;
+        const chords = getRecommendedChordsForMode(selectedKey, selectedMode.toLocaleLowerCase()).map(chord => ({
+            ...chord,
+            name: getSimplifiedChordLabel(chord)
+        }));
+        console.log("Recommended Chords:", chords);
+        setAvailableChords(chords);
 
     }, [selectedKey, selectedMode]);
 
@@ -73,16 +55,9 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
         return acc;
     }, {} as Record<string, Chord[]>);
 
-    // const updateSelectedChord = useCallback(() => {
-    //     const newChord = `${selectedKey}${selectedMode}`
-    //     console.log("New Chord:", newChord);
-    //     setSelectedChord(newChord);
-    // }, [selectedKey, selectedMode]);
-
     const currentProgression = useMemo(() => {
         return progression.map(chord => chord.name);
     }, [progression]);
-
 
     const addChordToProgression = useCallback((chord: Chord) => {
         console.log("Adding Chord to Progression:", chord);
@@ -90,13 +65,8 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
     }, [progression]);
 
     const playChord = useCallback((chord: Chord) => {
-        console.log("Playing Chord:", chord);
-        console.log("Chord Name:", chord.name);
         PlayChord(chord.name);
     }, []);
-
-
-
 
     return (
         <div>
@@ -106,14 +76,14 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                 <ModeButton onPressMode={ModeCallback} fullModes={true} />
             </div>
 
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
                 {Object.entries(groupedChords).map(([chordName, chords]) => (
-                    <div key={chordName} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                    <div key={chordName} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
                         {chords.map((chord) => (
                             <button
                                 key={chord.id}
                                 className="chord-btn"
-                                onClick={() => playChord(chord)} // Play chord on click
+                                onClick={() => playChord(chord)}
                             >
                                 {chord.name}
                                 <p className="btn-caption">{chord.romanNumeral}</p>

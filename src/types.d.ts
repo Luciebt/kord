@@ -17,6 +17,16 @@ export type TChords =
   | "Diminished"
   | "Minor7Flat5";
 
+export type Chord = {
+  id: string; // A unique identifier for the chord
+  name: string; // The full name of the chord (e.g., "Cmaj7", "Dm")
+  romanNumeral: string; // The Roman numeral for the chord's position in the scale (e.g., "I", "ii")
+  root: string; // The root note of the chord (e.g., "C", "D")
+  quality: string; // The quality of the chord (e.g., "Major", "Minor 7th", "Diminished")
+  degree: number; // The scale degree (1-7)
+  progressionId?: number; // Optional: To link to a specific progression later
+};
+
 export type TKey =
   | "C"
   | "C#"
