@@ -273,21 +273,21 @@ div {
 
 .delete-btn {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 2px;
+  left: 2px;
 
   padding: 0.2em 0.5em;
   font-size: 0.8em;
   border-radius: 0.15rem;
 
-  background-color: #dc3545;
+  background-color: #c05d67;
   color: white;
   box-shadow: none;
   z-index: 2;
   cursor: pointer;
 
   &:hover {
-    background-color: #c82333;
+    background-color: #c05d67;
     color: white;
     transition: background-color 0.15s ease;
   }

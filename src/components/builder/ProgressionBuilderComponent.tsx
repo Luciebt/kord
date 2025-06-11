@@ -7,6 +7,7 @@ import "./Builder.scss";
 import { PlayChord } from "../../Chords";
 import { getRecommendedChordsForMode } from "../../utils/ChordUtils";
 import { getSimplifiedChordLabel } from "../../utils/TextUtils";
+import ChordButton from "../progressions/ChordButton";
 
 const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
     const [selectedKey, setSelectedKey] = useState("");
@@ -107,24 +108,29 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
             </div>
 
             <h3>Your Progression</h3>
-            <div className="results-container">
-                {progression.length > 0 ? (
-                    progression.map((chord, index) => (
-                        <ChordButton
-                            key={index}
-                            chordname={chord.name}
-                            btnId={index}
-                            romanNumeral={chord.romanNumeral}
-                            onClick={() => playChord(chord)}
-                            onRemove={() => removeChordFromProgression(chord)}
-                            showRemove
-                            className="prog-builder-chord-btn-added"
-                        />
-                    ))
-                ) : null}
-            </div>
+            <section className="box chords-box results-container progression-results-box">
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                    {progression.length > 0 ? (
+                        progression.map((chord, index) => (
+                            <ChordButton
+                                key={index}
+                                chordname={chord.name}
+                                btnId={index + 1}
+                                romanNumeral={chord.romanNumeral}
+                                onClick={() => playChord(chord)}
+                                onRemove={() => removeChordFromProgression(chord)}
+                                showRemove
+                                className="prog-builder-chord-btn-added"
+                            />
+                        ))
+                    ) : null}
+                </div>
+                <br />
+                <div>
+                    <ProgressionSettingsComponent chords={currentProgression} loopId="prog-builder" />
+                </div>
+            </section>
 
-            <ProgressionSettingsComponent chords={currentProgression} loopId="prog-builder" />
         </div>
     );
 }

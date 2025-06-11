@@ -84,7 +84,7 @@ const ChordDisplayComponent = ({
 
 
   return (
-    <section id="chords-box-id" className="chords-box">
+    <section id="chords-box-id">
       <section className="box progression-results-box">
         {chordsList && chordsList}
         <br />

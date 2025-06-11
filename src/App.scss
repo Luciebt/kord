@@ -9,7 +9,8 @@ body {
 }
 
 .app-container {
-  max-width: 600px; /* md width */
+  max-width: 600px;
+  /* md width */
   margin-left: auto;
   margin-right: auto;
   padding: 0.5rem;
@@ -55,7 +56,7 @@ h1 {
 }
 
 .box {
-  border-radius: 4px !important;
+  border-radius: 0.4em !important;
 }
 
 .centered-box {
