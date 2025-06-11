@@ -6,6 +6,7 @@ import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyl
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
 import "./Progressions.scss";
 import ProgressionSettingsComponent from "./ProgressionSettings";
+import ChordButton from "./ChordButton";
 
 export interface IChordDisplayProps {
   tonic: string;
@@ -34,7 +35,7 @@ const ChordDisplayComponent = ({
     }
   }, []);
 
-  const handleClickAndKeyPress = (posId: number, chord?: string, event?: any) => {
+  const handleClickAndKeyPress = (posId: number, chord?: string) => {
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
     setPressedButtonId(posId); // Store the ID of the pressed button
     PlayChord(chord || chordArr[posId - 1]);
@@ -68,15 +69,16 @@ const ChordDisplayComponent = ({
 
   const chordsList = useMemo(() => {
     return chordArr.map((c, i) => (
-      <button
+      <ChordButton
         key={i}
-        id={"btn-" + (i + 1).toString()}
-        onClick={(e) => handleClickAndKeyPress(i + 1, c, e)}
-        className={`chord-btn ${pressedButtonId === i + 1 ? "chord-btn-pressed" : ""}`}
+        btnId={i + 1}
+        chordname={c}
+        romanNumeral={romanNumerals ? romanNumerals[i] : ""}
+        isPressed={pressedButtonId === i + 1}
+        onClick={() => handleClickAndKeyPress(i + 1, c)}
+        className="chord-btn"
       >
-        {c}
-        <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
-      </button>
+      </ChordButton>
     ));
   }, [chordArr, romanNumerals, pressedButtonId]);
 

@@ -91,20 +91,16 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                 {Object.entries(groupedChords).map(([chordName, chords]) => (
                     <div key={chordName} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
                         {chords.map((chord) => (
-                            <button
+                            <ChordButton
                                 key={chord.id}
-                                className="chord-btn prog-builder-chord-btn"
+                                chordname={chord.name}
+                                romanNumeral={chord.romanNumeral}
                                 onClick={() => playChord(chord)}
-                            >
-                                {chord.name}
-                                <p className="btn-caption">{chord.romanNumeral}</p>
-                                <button
-                                    className="add-chord-btn"
-                                    onClick={(e) => {
-                                        e.stopPropagation(); // Stop the event from bubbling up to the parent button
-                                        addChordToProgression(chord);
-                                    }}>+</button>
-                            </button>
+                                onAdd={() => addChordToProgression(chord)}
+                                showAdd
+                                className="prog-builder-chord-btn"
+                            />
+
                         ))}
                     </div>
                 ))}
@@ -114,16 +110,16 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
             <div className="results-container">
                 {progression.length > 0 ? (
                     progression.map((chord, index) => (
-                        <button key={index} className="chord-btn prog-builder-chord-btn-added" onClick={() => playChord(chord)}>
-                            <button
-                                className="delete-btn"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    removeChordFromProgression(chord);
-                                }}
-                            >x</button>
-                            <span>{chord.name}</span>
-                        </button>
+                        <ChordButton
+                            key={index}
+                            chordname={chord.name}
+                            btnId={index}
+                            romanNumeral={chord.romanNumeral}
+                            onClick={() => playChord(chord)}
+                            onRemove={() => removeChordFromProgression(chord)}
+                            showRemove
+                            className="prog-builder-chord-btn-added"
+                        />
                     ))
                 ) : null}
             </div>
