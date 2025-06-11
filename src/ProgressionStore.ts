@@ -43,6 +43,14 @@ const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "I, IV, V, V", mood: MoodLabels.happy },
     { progression_list: "I, V, bVII, IV", mood: MoodLabels.hopeful },
     { progression_list: "I, V, I, IV", mood: MoodLabels.happy },
+    { progression_list: "I, V, VIm, IV", mood: MoodLabels.hopeful }, // Axis of Awesome / "Let It Be" / "No One" by Alicia Keys
+    { progression_list: "I, VIm, IV, I", mood: MoodLabels.hopeful }, // Used in ballads / uplifting choruses
+    { progression_list: "I, V, VIm, V", mood: MoodLabels.hopeful }, // Romantic, dramatic ballads
+    { progression_list: "IV, V, I, VIm", mood: MoodLabels.hopeful }, // Journey - "Don’t Stop Believin’"
+    { progression_list: "I, IV, I, V", mood: MoodLabels.happy }, // Very basic but effective
+    { progression_list: "VIm, IV, I, V", mood: MoodLabels.hopeful }, // Pop-rock favorite (e.g. Green Day)
+    { progression_list: "I, I, VIm, V", mood: MoodLabels.sad }, // "If I Ain’t Got You" style
+
   ],
   Minor: [
     { progression_list: "Im, IV, VI, Vm", mood: MoodLabels.happy },
@@ -79,24 +87,48 @@ const ProgressionCollection: Record<TMode, TProgression[]> = {
     { progression_list: "VI, IVm, Im, Vm", mood: MoodLabels.sad },
     { progression_list: "VI, VI, Im, VII", mood: MoodLabels.suspenseful },
     { progression_list: "VI, VII, Im, III", mood: MoodLabels.hopeful },
+    { progression_list: "Im, VII, VI, VII", mood: MoodLabels.suspenseful }, // Popular in cinematic/synthwave
+    { progression_list: "Im, VI, III, VII", mood: MoodLabels.hopeful }, // Evanescence / metal and emotional rock
+    { progression_list: "Im, bVII, bVI, bVII", mood: MoodLabels.dark }, // Post-rock and dark ambient
+    { progression_list: "Im, IV, VII, III", mood: MoodLabels.hopeful }, // Emotional, builds tension/resolution
+    { progression_list: "VIm, V, IV, I", mood: MoodLabels.hopeful }, // Emotional and uplifting, backward resolution
+
   ],
-  Dorian: [],
-  Mixolydian: [],
-  Phrygian: [],
-  Lydian: [],
+  Dorian: [
+    { progression_list: "Im, IV, IIm, V", mood: MoodLabels.hopeful }, // Smooth and jazzy, common in fusion
+    { progression_list: "Im, IV, VII, III", mood: MoodLabels.dark }, // Modal jams (Miles Davis kind of vibe)
+
+  ],
+  Mixolydian: [
+    { progression_list: "I, bVII, IV, I", mood: MoodLabels.hopeful }, // Classic rock vibe (e.g. Sweet Home Alabama)
+    { progression_list: "I, IV, bVII, IV", mood: MoodLabels.happy }, // Funk and blues rock (Red Hot Chili Peppers)
+
+  ],
+  Phrygian: [
+    { progression_list: "Im, bII, bVII, Im", mood: MoodLabels.dark }, // Flamenco/metal vibe
+    { progression_list: "Im, bII, bIII, IVm", mood: MoodLabels.weird }, // Middle Eastern/modal character
+  ],
+  Lydian: [
+    { progression_list: "I, II, VIm, IV", mood: MoodLabels.hopeful }, // Dreamy pop
+    { progression_list: "I, II, IV, V", mood: MoodLabels.happy }, // Floating, ethereal
+  ],
   Locrian: [],
 };
 
 // Convert arrays to Maps
 const MajorMap = new Map<string, TProgression>(ProgressionCollection.Major.map(prog => [prog.progression_list, prog]));
 const MinorMap = new Map<string, TProgression>(ProgressionCollection.Minor.map(prog => [prog.progression_list, prog]));
+const DorianMap = new Map<string, TProgression>(ProgressionCollection.Dorian.map(prog => [prog.progression_list, prog]));
+const MixolydianMap = new Map<string, TProgression>(ProgressionCollection.Mixolydian.map(prog => [prog.progression_list, prog]));
+const PhrygianMap = new Map<string, TProgression>(ProgressionCollection.Phrygian.map(prog => [prog.progression_list, prog]));
+const LydianMap = new Map<string, TProgression>(ProgressionCollection.Lydian.map(prog => [prog.progression_list, prog]));
 
 export const ProgressionCollectionMap: Record<TMode, Map<string, TProgression>> = {
   Major: MajorMap,
   Minor: MinorMap,
-  Dorian: new Map<string, TProgression>(),
-  Mixolydian: new Map<string, TProgression>(),
-  Phrygian: new Map<string, TProgression>(),
-  Lydian: new Map<string, TProgression>(),
+  Dorian: DorianMap,
+  Mixolydian: MixolydianMap,
+  Phrygian: PhrygianMap,
+  Lydian: LydianMap,
   Locrian: new Map<string, TProgression>(),
 };
