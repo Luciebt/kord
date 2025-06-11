@@ -65,15 +65,8 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
         setProgression((prev) => [...prev, chord]);
     }, [progression]);
 
-    const removeChordFromProgression = useCallback((chordToRemove: TChord) => {
-        setProgression((prev) => prev.filter((chord) => chord.id !== chordToRemove.id));
-
-        // If TChord might not have a unique ID, or if you want to remove a specific instance
-        // when there are duplicates, you might need to pass the index:
-        // const removeChordByIndex = useCallback((indexToRemove: number) => {
-        //   setProgression((prev) => prev.filter((_, index) => index !== indexToRemove));
-        // }, []);
-
+    const removeChordFromProgression = useCallback((indexToRemove: number) => {
+        setProgression((prev) => prev.filter((_, index) => index !== indexToRemove));
     }, []);
 
     const playChord = useCallback((chord: TChord) => {
@@ -118,7 +111,7 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                                 btnId={index + 1}
                                 romanNumeral={chord.romanNumeral}
                                 onClick={() => playChord(chord)}
-                                onRemove={() => removeChordFromProgression(chord)}
+                                onRemove={() => removeChordFromProgression(index)}
                                 showRemove
                                 className="prog-builder-chord-btn-added"
                             />
