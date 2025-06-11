@@ -1,4 +1,4 @@
-import { Chord, TMode, TKey } from "../types";
+import { TChord, TMode, TKey } from "../types";
 
 export const keys: TKey[] = [
     "C",
@@ -287,7 +287,7 @@ export function getRecommendedChordsForMode(
     tonic: string,
     modeName: keyof typeof recommendedModeChords,
     chordTypePreference: 'triads' | '7ths' = 'triads'
-): Chord[] { // <--- Changed return type here
+): TChord[] {
     const recommended = recommendedModeChords[modeName];
     if (!recommended) {
         console.warn(`No recommendations for mode: ${modeName}`);
@@ -300,7 +300,7 @@ export function getRecommendedChordsForMode(
         return [];
     }
 
-    const generatedChords: Chord[] = [];
+    const generatedChords: TChord[] = [];
 
     console.log("recommended.romanNumerals:", recommended.romanNumerals);
     console.log("scaleNotes:", scaleNotes);

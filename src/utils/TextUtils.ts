@@ -1,4 +1,4 @@
-import { Chord } from '../types';
+import { TChord } from '../types';
 
 const qualityShorthands: { [key: string]: string } = {
     'Major': '',              // C Major is simply "C"
@@ -38,7 +38,7 @@ const qualityShorthands: { [key: string]: string } = {
     'Dominant 7 Altered': '7alt', // C Dominant 7 Altered is "C7alt"
 };
 
-export function getSimplifiedChordLabel(chord: Chord): string {
+export function getSimplifiedChordLabel(chord: TChord): string {
     const shorthand = qualityShorthands[chord.quality];
 
     if (shorthand !== undefined) {
