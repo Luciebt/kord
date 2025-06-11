@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { TChord } from "../../types";
 import KeyButton from "../buttons/KeyButton";
 import ModeButton from "../buttons/ModeButton";
 import ProgressionSettingsComponent from "../progressions/ProgressionSettings";
@@ -47,24 +48,34 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
 
     }, [selectedKey, selectedMode]);
 
-    const groupedChords = (availableChords ?? []).reduce((acc, chord) => {
+    const groupedChords: Record<string, TChord[]> = (availableChords ?? []).reduce((acc: Record<string, TChord[]>, chord: TChord) => {
         if (!acc[chord.name]) {
             acc[chord.name] = [];
         }
         acc[chord.name].push(chord);
         return acc;
-    }, {} as Record<string, Chord[]>);
+    }, {});
 
     const currentProgression = useMemo(() => {
         return progression.map(chord => chord.name);
     }, [progression]);
 
-    const addChordToProgression = useCallback((chord: Chord) => {
-        console.log("Adding Chord to Progression:", chord);
+    const addChordToProgression = useCallback((chord: TChord) => {
         setProgression((prev) => [...prev, chord]);
     }, [progression]);
 
-    const playChord = useCallback((chord: Chord) => {
+    const removeChordFromProgression = useCallback((chordToRemove: TChord) => {
+        setProgression((prev) => prev.filter((chord) => chord.id !== chordToRemove.id));
+
+        // If TChord might not have a unique ID, or if you want to remove a specific instance
+        // when there are duplicates, you might need to pass the index:
+        // const removeChordByIndex = useCallback((indexToRemove: number) => {
+        //   setProgression((prev) => prev.filter((_, index) => index !== indexToRemove));
+        // }, []);
+
+    }, []);
+
+    const playChord = useCallback((chord: TChord) => {
         PlayChord(chord.name);
     }, []);
 
@@ -82,11 +93,17 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                         {chords.map((chord) => (
                             <button
                                 key={chord.id}
-                                className="chord-btn"
+                                className="chord-btn prog-builder-chord-btn"
                                 onClick={() => playChord(chord)}
                             >
                                 {chord.name}
                                 <p className="btn-caption">{chord.romanNumeral}</p>
+                                <button
+                                    className="add-chord-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Stop the event from bubbling up to the parent button
+                                        addChordToProgression(chord);
+                                    }}>+</button>
                             </button>
                         ))}
                     </div>
@@ -96,10 +113,17 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
             <h3>Your Progression</h3>
             <div className="results-container">
                 {progression.length > 0 ? (
-                    currentProgression.map((chord, index) => (
-                        <div key={index} className="chord-item">
-                            <span>{chord}</span>
-                        </div>
+                    progression.map((chord, index) => (
+                        <button key={index} className="chord-btn prog-builder-chord-btn-added" onClick={() => playChord(chord)}>
+                            <button
+                                className="delete-btn"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    removeChordFromProgression(chord);
+                                }}
+                            >x</button>
+                            <span>{chord.name}</span>
+                        </button>
                     ))
                 ) : null}
             </div>

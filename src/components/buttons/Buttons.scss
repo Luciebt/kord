@@ -142,6 +142,7 @@ div {
 
 .scale-chord-btn,
 .chord-btn {
+  /* Keep your existing styles for margin, padding, font-size, min-width, min-height */
   margin: 0.25rem;
   padding: 0.8rem;
   font-size: 1.2em;
@@ -222,5 +223,72 @@ div {
   .section-label {
     font-size: 0.8125rem;
     /* Slightly smaller label text */
+  }
+}
+
+/* Progression Builder buttons */
+
+.add-chord-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin-bottom: 4px;
+  padding: 0.2em 0.5em;
+  font-size: 0.8em;
+  border-radius: 0.15rem;
+
+  background-color: #6c757d;
+  color: white;
+  box-shadow: none;
+
+  &:hover {
+    background-color: #495057;
+    color: white;
+    transition: background-color 0.15s ease;
+  }
+}
+
+.prog-builder-chord-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px !important;
+  border: #dee2ff 3px solid !important;
+}
+
+.prog-builder-chord-btn-added {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 4em;
+  padding: 30px !important;
+  border: #6c757d 3px solid !important;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+
+  padding: 0.2em 0.5em;
+  font-size: 0.8em;
+  border-radius: 0.15rem;
+
+  background-color: #dc3545;
+  color: white;
+  box-shadow: none;
+  z-index: 2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c82333;
+    color: white;
+    transition: background-color 0.15s ease;
   }
 }
