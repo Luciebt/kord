@@ -8,11 +8,15 @@ import { PlayChord } from "../../Chords";
 import { getRecommendedChordsForMode } from "../../utils/ChordUtils";
 import { getSimplifiedChordLabel } from "../../utils/TextUtils";
 import ChordButton from "../progressions/ChordButton";
+import PianoDisplay from "../piano/PianoDisplay";
+import "../progressions/Progressions.scss";
 
 const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
-    const [selectedKey, setSelectedKey] = useState("");
-    const [selectedMode, setSelectedMode] = useState("");
+    const [selectedKey, setSelectedKey] = useState("D#");
+    const [selectedMode, setSelectedMode] = useState("Minor");
     const [availableChords, setAvailableChords] = useState<Chord[]>();
+    const [chordSelected, setChordSelected] = useState<string | null>();
+
     type Chord = {
         id: string;
         name: string;
@@ -88,8 +92,8 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                             <ChordButton
                                 key={chord.id}
                                 chordname={chord.name}
-                                romanNumeral={chord.romanNumeral}
                                 onClick={() => playChord(chord)}
+                                romanNumeral={chord.romanNumeral}
                                 onAdd={() => addChordToProgression(chord)}
                                 showAdd
                                 className="prog-builder-chord-btn"
@@ -100,8 +104,8 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                 ))}
             </div>
 
-            <h3>Your Progression</h3>
             <section className="box chords-box results-container progression-results-box">
+                <h3>Your Progression</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                     {progression.length > 0 ? (
                         progression.map((chord, index) => (
@@ -110,7 +114,10 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                                 chordname={chord.name}
                                 btnId={index + 1}
                                 romanNumeral={chord.romanNumeral}
-                                onClick={() => playChord(chord)}
+                                onClick={() => {
+                                    playChord(chord);
+                                    setChordSelected(chord.name);
+                                }}
                                 onRemove={() => removeChordFromProgression(index)}
                                 showRemove
                                 className="prog-builder-chord-btn-added"
@@ -119,9 +126,10 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                     ) : null}
                 </div>
                 <br />
-                <div>
-                    <ProgressionSettingsComponent chords={currentProgression} loopId="prog-builder" />
-                </div>
+                <ProgressionSettingsComponent chords={currentProgression} loopId="prog-builder" />
+                {chordSelected && (
+                    <PianoDisplay chord={chordSelected} builderKeyboard={true} />
+                )}
             </section>
 
         </div>
