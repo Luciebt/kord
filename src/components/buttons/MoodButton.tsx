@@ -16,7 +16,7 @@ const moods: TMood[] = [
   "Suspenseful 🎭",
 ];
 
-const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => {} }) => {
+const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => { } }) => {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, mood: TMood) => {
       onPressMood(mood);
@@ -31,7 +31,7 @@ const MoodButton: React.FC<IMoodButton> = ({ onPressMood = () => {} }) => {
   return (
     <section
       aria-label="Choose a mood for your chord progression"
-      className="buttons-section mood-btn-section"
+      className="mood-btn-section"
     >
       {moods.map((mood) => (
         <button

@@ -20,7 +20,7 @@
 .buttons-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem !important;
+  gap: 0.72rem !important;
   box-sizing: border-box;
 }
 
@@ -78,6 +78,7 @@ button {
   @include btn-style(1em, 120px);
   padding: 0.5rem 0.25rem;
   font-size: 0.75rem;
+  background-color: #faebb6;
 }
 
 div {
@@ -85,21 +86,29 @@ div {
 }
 
 /* Grid layouts */
+
+.main-mode-btn-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
 .mode-btn-section {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.25rem;
+  grid-template-columns: repeat(7, auto);
+  font-size: 0.7rem;
 }
 
 .key-btn-section {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, auto);
   gap: 0.25rem;
 }
 
 .mood-btn-section {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, auto);
   gap: 0.25rem;
 }
 
@@ -132,7 +141,7 @@ div {
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 46px;
+  min-height: 36px;
   max-width: 188px;
   white-space: nowrap;
   overflow: hidden;
@@ -141,18 +150,21 @@ div {
 /* Scale and Chord buttons */
 
 .chord-btn {
-  /* Keep your existing styles for margin, padding, font-size, min-width, min-height */
+  position: relative;
   margin: 0.25rem;
   padding: 0.8rem;
-  font-size: 1.2em;
-  min-width: 4em;
+  font-size: 1.1em;
+  min-width: 3.8em;
   min-height: 70px;
 }
 
 @media (max-width: 600px) {
-
   .chord-btn {
     min-width: 3.1em;
+  }
+
+  .mode-btn-section {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -203,7 +215,18 @@ div {
 
   .mood-btn-section {
     grid-template-columns: repeat(2, 1fr);
-    /* 2 moods per row */
+  }
+
+  .mode-btn-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #export-midi-btn {
+    font-weight: bold;
+    max-height: 40px;
+    padding: 0.6em;
+    margin: 0.3rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -225,67 +248,68 @@ div {
 
 /* Progression Builder buttons */
 
+.prog-build-btn {
+  position: relative;
+  min-height: 100px;
+}
+
+.prog-builder-chord-btn {
+  padding-bottom: 1.5rem !important;
+}
+
+.prog-builder-chord-btn-added {
+  padding-top: 2.2rem;
+  border: #495057 solid !important;
+}
+
 .add-chord-btn {
   position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
-  margin-bottom: 4px;
   padding: 0.2em 0.5em;
-  font-size: 0.8em;
-  border-radius: 0.15rem;
+  font-size: 0.9em;
+  border-radius: 0.25rem;
 
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--dominant-dark);
+  color: antiquewhite;
   box-shadow: none;
 
   &:hover {
     background-color: #495057;
-    color: white;
+    color: navajowhite;
     transition: background-color 0.15s ease;
   }
 }
 
-.prog-builder-chord-btn {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 30px !important;
-  border: #dee2ff 3px solid !important;
-}
-
-.prog-builder-chord-btn-added {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 4em;
-  padding: 30px !important;
-  border: #6c757d 3px solid !important;
-}
 
 .delete-btn {
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
 
-  padding: 0.2em 0.5em;
-  font-size: 0.8em;
-  border-radius: 0.15rem;
+  padding: 0.1em 0;
+  font-size: 0.7em;
 
   background-color: #c05d67;
-  color: white;
+  color: antiquewhite;
   box-shadow: none;
   z-index: 2;
   cursor: pointer;
 
+  opacity: 0.8;
+
   &:hover {
-    background-color: #c05d67;
-    color: white;
+    opacity: 1;
+    background-color: #973a43;
+    color: navajowhite;
     transition: background-color 0.15s ease;
   }
+}
+
+.icon {
+  font-size: 0.9em;
 }

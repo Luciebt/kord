@@ -7,7 +7,7 @@ import "./Builder.scss";
 import { PlayChord } from "../../Chords";
 import { getRecommendedChordsForMode } from "../../utils/ChordUtils";
 import { getSimplifiedChordLabel } from "../../utils/TextUtils";
-import ChordButton from "../progressions/ChordButton";
+import ChordButton from "../buttons/ChordButton";
 import PianoDisplay from "../piano/PianoDisplay";
 import "../progressions/Progressions.scss";
 
@@ -77,62 +77,70 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
         PlayChord(chord.name);
     }, []);
 
+    const suggestNextChord = useCallback(() => {
+        if (progression.length === 0) return;
+        console.log("Suggesting next chord based on current progression:", progression);
+    }, [progression]);
+
     return (
-        <div>
-            <h3>Available Chords</h3>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '30px' }}>
+        <div className="centered-box">
+            <h3>Pick chords</h3>
+            <div className="buttons-container">
+                <h4>Key</h4>
                 <KeyButton onPressKey={KeyCallback} />
+                <h4>Mode</h4>
                 <ModeButton onPressMode={ModeCallback} fullModes={true} />
-            </div>
 
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                {Object.entries(groupedChords).map(([chordName, chords]) => (
-                    <div key={chordName} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-                        {chords.map((chord) => (
-                            <ChordButton
-                                key={chord.id}
-                                chordname={chord.name}
-                                onClick={() => playChord(chord)}
-                                romanNumeral={chord.romanNumeral}
-                                onAdd={() => addChordToProgression(chord)}
-                                showAdd
-                                className="prog-builder-chord-btn"
-                            />
-
-                        ))}
-                    </div>
-                ))}
-            </div>
-
-            <section className="box chords-box results-container progression-results-box">
-                <h3>Your Progression</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                    {progression.length > 0 ? (
-                        progression.map((chord, index) => (
-                            <ChordButton
-                                key={index}
-                                chordname={chord.name}
-                                btnId={index + 1}
-                                romanNumeral={chord.romanNumeral}
-                                onClick={() => {
-                                    playChord(chord);
-                                    setChordSelected(chord.name);
-                                }}
-                                onRemove={() => removeChordFromProgression(index)}
-                                showRemove
-                                className="prog-builder-chord-btn-added"
-                            />
-                        ))
-                    ) : null}
+                <h4>Chords</h4>
+                <div className="centered-box suggested-chords-container">
+                    {Object.entries(groupedChords).map(([chordName, chords]) => (
+                        <div key={chordName} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+                            {chords.map((chord) => (
+                                <ChordButton
+                                    key={chord.id}
+                                    chordname={chord.name}
+                                    onClick={() => playChord(chord)}
+                                    romanNumeral={chord.romanNumeral}
+                                    onAdd={() => addChordToProgression(chord)}
+                                    showAdd
+                                    className="prog-build-btn prog-builder-chord-btn"
+                                />
+                            ))}
+                        </div>
+                    ))}
                 </div>
-                <br />
+
+            </div>
+
+            <h3>Your progression</h3>
+            <div className="">
+                <section className="box chords-box results-container progression-results-box">
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                        {progression.length > 0 ? (
+                            progression.map((chord, index) => (
+                                <ChordButton
+                                    key={index}
+                                    chordname={chord.name}
+                                    btnId={index + 1}
+                                    romanNumeral=""
+                                    onClick={() => {
+                                        playChord(chord);
+                                        setChordSelected(chord.name);
+                                    }}
+                                    onRemove={() => removeChordFromProgression(index)}
+                                    showRemove
+                                    className="prog-build-btn prog-builder-chord-btn-added"
+                                />
+                            ))
+                        ) : null}
+                    </div>
+                    <br />
+                </section>
                 <ProgressionSettingsComponent chords={currentProgression} loopId="prog-builder" />
                 {chordSelected && (
                     <PianoDisplay chord={chordSelected} builderKeyboard={true} />
                 )}
-            </section>
-
-        </div>
+            </div></div>
     );
 }
 

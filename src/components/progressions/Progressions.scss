@@ -1,10 +1,9 @@
 /* Progression box display */
 
 .prog-grid-results {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.25rem;
 }
 
 .prog-box {
@@ -13,6 +12,7 @@
 }
 
 .progression-results-box {
+  text-align: center;
   background-color: #dee2ff;
   padding: 1em;
   margin-top: 0.6em;

@@ -37,12 +37,12 @@ const ProgressionComponent: React.FC<{}> = ({ }) => {
     <section className="centered-box">
       <div className="selection-panel">
         <div className="buttons-container">
-          <h4 className="selection-label">Key</h4>
-          <KeyButton onPressKey={KeyCallback} />
-          <h4 className="selection-label">Mode</h4>
-          <ModeButton onPressMode={ModeCallback} />
-          <h4 className="selection-label">Mood</h4>
+          <h4>Mood</h4>
           <MoodButton onPressMood={MoodCallback} />
+          <h4>Key</h4>
+          <KeyButton onPressKey={KeyCallback} />
+          <h4>Mode</h4>
+          <ModeButton onPressMode={ModeCallback} />
         </div>
       </div>
       <ProgressionDisplayComponent

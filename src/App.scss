@@ -59,7 +59,8 @@ h1 {
 }
 
 .centered-box {
-  text-align: center;
+  text-align: left;
+  padding: 0.75rem;
 }
 
 /* Color variables */
@@ -75,7 +76,7 @@ h1 {
   --white-80: hsla(0, 0%, 100%, 0.8);
   --piano-dark: #716f81;
   --border-color: var(--dominant-dark);
-  --section-box: #ffc8dd;
+  --section-box: #fcdfeabc;
   --dominant-light: #ffafcc;
   --main-background: #fffffc;
   --dominant-dark: #6d6875;

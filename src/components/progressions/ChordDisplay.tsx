@@ -6,7 +6,7 @@ import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyl
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
 import "./Progressions.scss";
 import ProgressionSettingsComponent from "./ProgressionSettings";
-import ChordButton from "./ChordButton";
+import ChordButton from "../buttons/ChordButton";
 
 export interface IChordDisplayProps {
   tonic: string;

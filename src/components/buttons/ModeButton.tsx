@@ -27,15 +27,15 @@ const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => { }, fullModes 
       case "Minor":
         return "dark, melancholic.";
       case "Dorian":
-        return "Jazzy, soulful.";
+        return "jazzy, soulful.";
       case "Mixolydian":
-        return "Bluesy, rock.";
+        return "bluesy, rock.";
       case "Phrygian":
-        return "Exotic, spanish.";
+        return "exotic, spanish.";
       case "Lydian":
-        return "Dreamy and ethereal.";
+        return "dreamy, ethereal.";
       case "Locrian":
-        return "Tense and unstable.";
+        return "tense, unstable.";
       default:
         return "";
     }
@@ -44,7 +44,7 @@ const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => { }, fullModes 
   return (
     <section
       aria-label="Choose a mode for your chord progression"
-      className="buttons-section mode-btn-section"
+      className={fullModes ? "mode-btn-section" : "main-mode-btn-section"}
     >
       {modes.map((mode) => (
         <button

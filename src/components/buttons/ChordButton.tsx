@@ -8,7 +8,7 @@ type IChordButtonProps = {
     isPressed?: boolean;
     showAdd?: boolean;
     showRemove?: boolean;
-    onClick?: (chord: string) => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, chord: any) => void;
     onAdd?: (chord: string) => void;
     onRemove?: (chord: string) => void;
     className?: string;
@@ -27,8 +27,8 @@ const ChordButton: React.FC<IChordButtonProps> = ({
     onRemove,
     className = "",
 }) => {
-    const handleClick = () => {
-        onClick?.(chordname);
+    const handleClick = (event) => {
+        onClick?.(event, chordname);
     };
 
     const handleAdd = (e: React.MouseEvent) => {
@@ -47,23 +47,24 @@ const ChordButton: React.FC<IChordButtonProps> = ({
             className={`chord-btn ${isPressed ? "chord-btn-pressed" : ""} ${className}`}
             onClick={handleClick}
         >
+            <span className="icon" title="Play">
+                🔊
+            </span>
+            <br />
+
             <span>{chordname}</span>
             <p className="btn-caption">{romanNumeral}</p>
 
-            {/* <span className="icon" title="Play">
-                🔊
-            </span> */}
-
             {showAdd && (
-                <button className="add-chord-btn" onClick={handleAdd}>
+                <span className="add-chord-btn" onClick={handleAdd}>
                     +
-                </button>
+                </span>
             )}
 
             {showRemove && (
-                <button className="delete-btn" onClick={handleRemove}>
+                <span className="delete-btn" onClick={handleRemove}>
                     x
-                </button>
+                </span>
             )}
         </button>
     );

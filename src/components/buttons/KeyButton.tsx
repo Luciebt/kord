@@ -22,7 +22,7 @@ const keys: TKey[] = [
   "B",
 ];
 
-const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
+const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => { } }) => {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, note: string) => {
       onPressKey(note);
@@ -35,7 +35,7 @@ const KeyButton: React.FC<IKeyButton> = ({ onPressKey = () => {} }) => {
   return (
     <section
       aria-label="Choose a key for your chord progression"
-      className="buttons-section key-btn-section"
+      className="key-btn-section"
     >
       {keys.map((note) => (
         <button
