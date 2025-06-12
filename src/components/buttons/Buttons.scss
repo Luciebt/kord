@@ -140,7 +140,6 @@ div {
 
 /* Scale and Chord buttons */
 
-.scale-chord-btn,
 .chord-btn {
   /* Keep your existing styles for margin, padding, font-size, min-width, min-height */
   margin: 0.25rem;
@@ -152,14 +151,12 @@ div {
 
 @media (max-width: 600px) {
 
-  .scale-chord-btn,
   .chord-btn {
     min-width: 3.1em;
   }
 }
 
-.chord-btn-pressed,
-.scale-chord-btn-pressed {
+.chord-btn-pressed {
   transition: background-color 0.2s ease;
   color: #f4eeff;
   background-color: var(--pressed-color);

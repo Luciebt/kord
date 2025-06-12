@@ -79,22 +79,23 @@
 
 /* On screens that are 600px or less make the piano smaller and more visible */
 @media screen and (max-width: 600px) {
-  #keyboard li {
+
+  .keyboard,
+  li {
     font-size: .76em;
     padding-right: .2rem;
   }
-  #scale-keyboard li {
-    font-size: .76em;
-    padding-right: .2rem;
-  }
+
   .white {
     height: 8.3rem;
     width: 2.4rem;
   }
+
   .black {
     height: 5rem;
     width: 1.3rem;
   }
+
   .offset {
     margin: 0 0 0 -0.6rem;
   }
