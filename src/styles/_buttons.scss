@@ -1,0 +1,165 @@
+/* Base button style */
+%base-button-style {
+  border-radius: 0.25rem;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: "DM Mono", monospace;
+  color: var(--dominant-dark);
+  border: none;
+  font-size: 1em;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #ced4da;
+    transition: background-color 0.15s ease;
+  }
+}
+
+button {
+  @extend %base-button-style;
+}
+
+/* Mixin for button sizing */
+@mixin button-size($font-size, $padding, $min-width: auto) {
+  font-size: $font-size;
+  padding: $padding;
+  min-width: $min-width;
+}
+
+/* Pressed button styles */
+@mixin pressed-style {
+  color: antiquewhite;
+  background-color: var(--dominant-dark) !important;
+}
+
+.key-btn-pressed,
+.mode-btn-pressed,
+.mood-btn-pressed,
+.prog-btn-pressed,
+.chordbuild-btn-pressed {
+  @include pressed-style;
+}
+
+/* Specific button styles */
+.key-btn {
+  @include button-size(0.875rem, 0.5rem 0.25rem, 60px);
+}
+
+.mode-btn {
+  @include button-size(0.875rem, 0.5rem);
+}
+
+.mood-btn {
+  @include button-size(0.75rem, 0.5rem 0.25rem, 120px);
+  background-color: #faebb6;
+}
+
+.prog-btn {
+  margin: 0.15rem;
+  width: 11em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 36px;
+  max-width: 188px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.chord-btn {
+  position: relative;
+  margin: 0.25rem;
+  padding: 0.8rem;
+  font-size: 1.1em;
+  min-width: 3.8em;
+  min-height: 70px;
+}
+
+.chord-btn-pressed {
+  transition: background-color 0.2s ease;
+  color: #f4eeff;
+  background-color: var(--pressed-color);
+  transition: all 0.2s ease-in-out;
+
+  p {
+    color: #f4eeff;
+  }
+}
+
+.loop-btn,
+.loop-btn-pressed {
+  font-size: 1.4em;
+  min-height: 56px;
+  min-width: 56px;
+  padding: 0.6em;
+  margin: 0.3rem;
+}
+
+#export-midi-btn {
+  font-weight: bold;
+  max-height: 40px;
+  padding: 0.6em;
+  margin: 0.3rem;
+}
+
+.prog-build-btn {
+  position: relative;
+  min-height: 100px;
+}
+
+.prog-builder-chord-btn {
+  padding-bottom: 1.5rem !important;
+}
+
+.prog-builder-chord-btn-added {
+  padding-top: 2.2rem;
+  border: #495057 solid !important;
+}
+
+.add-chord-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.2em 0.5em;
+  font-size: 0.9em;
+  border-radius: 0.25rem;
+  background-color: var(--dominant-dark);
+  color: antiquewhite;
+  box-shadow: none;
+
+  &:hover {
+    background-color: #495057;
+    color: navajowhite;
+    transition: background-color 0.15s ease;
+  }
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.1em 0;
+  border-radius: 0;
+  font-size: 0.7em;
+  background-color: #c05d67;
+  color: antiquewhite;
+  box-shadow: none;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    background-color: #973a43;
+    color: navajowhite;
+    transition: background-color 0.15s ease;
+  }
+}
+
+.icon {
+  font-size: 0.9em;
+}

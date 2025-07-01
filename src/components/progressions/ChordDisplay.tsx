@@ -2,11 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 import useKeypress from "react-use-keypress";
 import { PlayChord } from "../../Chords";
 import PianoDisplay from "../piano/PianoDisplay";
-import MidiButton from "../buttons/MidiButton";
-import LoopButton from "../buttons/LoopButton";
 import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
 import { GetRomansForChord } from "../../utils/ProgressionUtils";
 import "./Progressions.scss";
+import ProgressionSettingsComponent from "./ProgressionSettings";
+import ChordButton from "../buttons/ChordButton";
 
 export interface IChordDisplayProps {
   tonic: string;
@@ -35,7 +35,7 @@ const ChordDisplayComponent = ({
     }
   }, []);
 
-  const handleClickAndKeyPress = (posId: number, chord?: string, event?: any) => {
+  const handleClickAndKeyPress = (posId: number, chord?: string) => {
     unPressElementsStyleWithoutEvent("chord-btn-pressed");
     setPressedButtonId(posId); // Store the ID of the pressed button
     PlayChord(chord || chordArr[posId - 1]);
@@ -69,28 +69,26 @@ const ChordDisplayComponent = ({
 
   const chordsList = useMemo(() => {
     return chordArr.map((c, i) => (
-      <button
+      <ChordButton
         key={i}
-        id={"btn-" + (i + 1).toString()}
-        onClick={(e) => handleClickAndKeyPress(i + 1, c, e)}
-        className={`chord-btn ${pressedButtonId === i + 1 ? "chord-btn-pressed" : ""}`}
+        btnId={i + 1}
+        chordname={c}
+        romanNumeral={romanNumerals ? romanNumerals[i] : ""}
+        isPressed={pressedButtonId === i + 1}
+        onClick={() => handleClickAndKeyPress(i + 1, c)}
+        className="chord-btn"
       >
-        {c}
-        <p className="btn-caption">{romanNumerals ? romanNumerals[i] : ""}</p>
-      </button>
+      </ChordButton>
     ));
   }, [chordArr, romanNumerals, pressedButtonId]);
 
 
   return (
-    <section id="chords-box-id" className="chords-box">
+    <section id="chords-box-id">
       <section className="box progression-results-box">
         {chordsList && chordsList}
         <br />
-        <div className="prog-settings-box">
-          <b>{chordArr ? <LoopButton chordsList={chordArr} /> : null}</b>
-          <b>{chordArr ? <MidiButton chordsList={chordArr} /> : null}</b>
-        </div>
+        <ProgressionSettingsComponent chords={chordArr} loopId="prog-dict" />
         {chordState && chordSelected ? (
           <PianoDisplay chord={chordSelected} />
         ) : null}{" "}

@@ -1,4 +1,4 @@
-export type TMode = "Major" | "Minor";
+export type TMode = "Major" | "Minor" | "Dorian" | "Mixolydian" | "Phrygian" | "Lydian" | "Locrian";
 
 export type TMood =
   | "Happy 🌻"
@@ -16,6 +16,17 @@ export type TChords =
   | "Dominant7"
   | "Diminished"
   | "Minor7Flat5";
+
+
+type TChord = {
+  id: string;
+  name: string;
+  romanNumeral: string;
+  root: string;
+  quality: string;
+  degree: number;
+  progressionId?: number;
+};
 
 export type TKey =
   | "C"

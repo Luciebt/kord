@@ -1,0 +1,47 @@
+/* The button itself, acting as the tooltip container */
+.btn-w-tooltip {
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-w-tooltip:hover {
+    background-color: #e0e0e0;
+}
+
+/* The actual tooltip text element */
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 180px;
+    background-color: #716f81;
+    color: antiquewhite;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 0.7em;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #716f81 transparent transparent transparent;
+}
+
+/* Show the tooltip when hovering over the parent container (the button) */
+.btn-w-tooltip:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}

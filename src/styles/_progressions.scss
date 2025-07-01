@@ -1,0 +1,148 @@
+/* Progression build settings */
+
+.prog-settings {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.16em;
+}
+
+.prog-gridsize-input {
+  outline: none;
+  max-width: 3.6em;
+  height: 3em;
+  width: 3.6em;
+  padding: 0.6em;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  resize: none;
+}
+
+/* Progression grid */
+
+.prog-grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Space Mono", monospace;
+    color: var(--dominant-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25em;
+    transition: all 0.2s ease-in-out;
+    min-width: 6em;
+    min-height: 6em;
+    font-size: 1.2em;
+    padding: 0.4em;
+    margin: 0.3em;
+    cursor: pointer;
+  }
+
+  > button {
+    padding: 0 !important;
+  }
+}
+
+@mixin selected-style($shadow-color) {
+  background-color: var(--dominant-dark);
+  color: antiquewhite !important;
+  box-shadow: 0px 2px 0px 2px $shadow-color !important;
+}
+
+.selected-position {
+  @include selected-style(var(--dominant-light));
+
+  > div {
+    color: var(--dominant-light);
+  }
+}
+
+.selected-position-without-chord {
+  @include selected-style(#d9d9d9);
+
+  > div {
+    color: var(--dominant-light);
+  }
+}
+
+.filled-position {
+  background-color: var(--dominant-dark);
+}
+
+/* Grid items (chords) */
+
+.caption {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.mini-btn {
+  height: 3em;
+  width: 3em;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.top-chord-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+
+/* Progression box display */
+
+.prog-grid-results {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.25rem;
+}
+
+.prog-box {
+  margin-top: 1em;
+  padding: 0.75rem;
+}
+
+.progression-results-box {
+  text-align: center;
+  background-color: #dee2ff;
+  padding: 1em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
+.highlight-chord-div {
+  background-color: var(--pressed-color) !important;
+  border: 1px solid var(--pressed-color) !important;
+  color: antiquewhite !important;
+}
+
+.highlight-chord-div .btn-caption {
+  color: antiquewhite;
+}
+
+.prog-settings-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  margin: 0.9em;
+
+  button,
+  input {
+    min-height: 56px;
+    min-width: 56px;
+    padding: 0.6em;
+    margin: 0.3rem;
+  }
+}

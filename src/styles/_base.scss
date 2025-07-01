@@ -1,0 +1,67 @@
+/* General styles */
+
+body {
+  font-family: "DM Mono", monospace;
+  color: var(--dominant-dark);
+  margin: 0 auto;
+  max-width: 888px;
+}
+
+.app-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+
+section,
+input,
+select {
+  border-radius: 0.25em;
+}
+
+input {
+  border: 1px solid var(--border-color);
+  border-radius: 0.25em;
+  transition: all 0.2s ease-in-out;
+  background-color: var(--white-50);
+}
+
+html {
+  box-sizing: border-box;
+  background-color: #fff8e89a;
+}
+
+div {
+  display: block;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.app-title,
+.app-title:hover,
+.app-title:visited,
+.app-title:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 4.8em;
+  text-align: center;
+  color: var(--dominant-dark);
+  margin: 0 auto;
+}
+
+.box {
+  border-radius: 0.4em !important;
+}
+
+.centered-box {
+  text-align: left;
+  padding: 0.75rem;
+}

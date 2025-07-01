@@ -1,15 +1,19 @@
 /* PIANO STYLING */
 
-#keyboard {
+.keyboard {
   display: flex;
 }
 
-#keyboard li {
+.keyboard,
+li {
   border-radius: .25em;
 }
 
 .keyboard-box {
-  margin-left: -2.2em;
+  margin-left: -1rem;
+  margin-right: auto;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .white,
@@ -43,17 +47,19 @@
 
 }
 
-.white.pressed {
+.white.pressed,
+.white.b-pressed {
   border-top: 1px solid hsl(0, 0%, 47%);
   border-left: 1px solid hsl(0, 0%, 60%);
   border-bottom: 1px solid hsl(0, 0%, 60%);
   color: var(--white-80);
   background: var(--pressed-color);
   outline: none;
-  
+
 }
 
-.black.pressed {
+.black.pressed,
+.black.b-pressed {
   background: var(--pressed-color);
   outline: none;
 }
@@ -62,39 +68,25 @@
   margin: 0 0 0 -1rem;
 }
 
-/* ScalePianoDisplay */
-.white.s-pressed {
-  border-top: 1px solid hsl(0, 0%, 47%);
-  border-left: 1px solid hsl(0, 0%, 60%);
-  border-bottom: 1px solid hsl(0, 0%, 60%);
-  color: var(--white-80);
-  background: var(--pressed-color);
-  outline: none;
-}
-
-.black.s-pressed {
-  background: var(--pressed-color);
-  outline: none;
-}
-
 /* On screens that are 600px or less make the piano smaller and more visible */
 @media screen and (max-width: 600px) {
-  #keyboard li {
+
+  .keyboard,
+  li {
     font-size: .76em;
     padding-right: .2rem;
   }
-  #scale-keyboard li {
-    font-size: .76em;
-    padding-right: .2rem;
-  }
+
   .white {
     height: 8.3rem;
     width: 2.4rem;
   }
+
   .black {
     height: 5rem;
     width: 1.3rem;
   }
+
   .offset {
     margin: 0 0 0 -0.6rem;
   }

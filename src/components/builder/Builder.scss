@@ -1,0 +1,28 @@
+.suggested-chords-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 240, 250);
+}
+
+.results-container {
+    background-color: rgb(248, 247, 247);
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 170px;
+    border: 3px dotted var(--black-30);
+
+    align-items: left;
+    border-radius: 0.5rem;
+}
+
+.results-btn {
+    border-radius: 0.25rem;
+    background-color: antiquewhite;
+}

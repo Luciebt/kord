@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, memo } from "react";
 import { TChords } from "../../types";
-import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
+import { usePressedState } from "../../hooks/usePressedState";
+import GenericButton from "./GenericButton";
 import "./Buttons.scss";
 
 interface IChordButton {
@@ -16,33 +17,34 @@ const chordsQualities: TChords[] = [
   "Minor7Flat5",
 ];
 
-const ChordButton: React.FC<IChordButton> = ({ onPressKey = () => {} }) => {
+const ChordButton: React.FC<IChordButton> = memo(({ onPressKey = () => {} }) => {
+  const handlePress = usePressedState("chordbuild-btn-pressed");
+
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, quality: TChords) => {
       onPressKey(quality);
-      unPressElementsStyleWithoutEvent("chordbuild-btn-pressed");
-      event.currentTarget.classList.add("chordbuild-btn-pressed");
+      handlePress(event);
     },
-    [onPressKey],
+    [onPressKey, handlePress],
   );
 
   return (
     <section aria-label="Choose a chord quality">
       <h2>Quality</h2>
       {chordsQualities.map((quality) => (
-        <button
+        <GenericButton
           key={quality}
           id={quality}
           value={quality}
-          aria-label={`Select ${quality} chord`}
+          ariaLabel={`Select ${quality} chord`}
           onClick={(e) => handleClick(e, quality)}
           className="key-btn"
         >
           {quality}
-        </button>
+        </GenericButton>
       ))}
     </section>
   );
-};
+});
 
 export default ChordButton;

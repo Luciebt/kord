@@ -29,7 +29,14 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader, // Extracts CSS instead of injecting
           "css-loader", // Resolves CSS imports
-          "sass-loader", // Compiles SCSS to CSS
+          {
+            loader: "sass-loader", // Compiles SCSS to CSS
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, "src/styles")],
+              },
+            },
+          },
         ],
       },
     ],
