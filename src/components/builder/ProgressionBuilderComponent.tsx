@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
-import { TChord } from "../../types";
+import React, { useCallback, useMemo, useEffect, useState } from "react";
+import { useProgressionStore } from "../../ProgressionStore";
 import KeyButton from "../buttons/KeyButton";
 import ModeButton from "../buttons/ModeButton";
 import ProgressionSettingsComponent from "../progressions/ProgressionSettings";
@@ -12,48 +12,35 @@ import PianoDisplay from "../piano/PianoDisplay";
 import "../progressions/Progressions.scss";
 
 const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
-    const [selectedKey, setSelectedKey] = useState("D#");
-    const [selectedMode, setSelectedMode] = useState("Minor");
-    const [availableChords, setAvailableChords] = useState<Chord[]>();
+    const {
+        key,
+        mode,
+        progression,
+        setKey,
+        setMode,
+        addChord,
+        removeChord,
+    } = useProgressionStore();
+    const [availableChords, setAvailableChords] = useState<any[]>([]);
     const [chordSelected, setChordSelected] = useState<string | null>();
 
-    type Chord = {
-        id: string;
-        name: string;
-        romanNumeral: string;
-        root: string;
-        quality: string;
-        degree: number;
-        progressionId?: number;
-    };
-    const [progression, setProgression] = useState<Chord[]>([]);
-
-    const KeyCallback = useCallback((tonic: string) => {
-        setSelectedKey(tonic);
-    }, [selectedKey, selectedMode]);
-
-    const ModeCallback = useCallback((mode: string) => {
-        setSelectedMode(mode);
-    }, [selectedKey, selectedMode]);
-
     useEffect(() => {
-        if (selectedKey && selectedMode) {
+        if (key && mode) {
             generateChords();
         }
-    }, [selectedKey, selectedMode]);
+    }, [key, mode]);
 
     const generateChords = useCallback(() => {
-        if (!selectedKey || !selectedMode) return [];
-        const chords = getRecommendedChordsForMode(selectedKey, selectedMode.toLocaleLowerCase()).map(chord => ({
+        if (!key || !mode) return [];
+        const chords = getRecommendedChordsForMode(key, mode.toLocaleLowerCase()).map(chord => ({
             ...chord,
             name: getSimplifiedChordLabel(chord)
         }));
-        console.log("Recommended Chords:", chords);
         setAvailableChords(chords);
 
-    }, [selectedKey, selectedMode]);
+    }, [key, mode]);
 
-    const groupedChords: Record<string, TChord[]> = (availableChords ?? []).reduce((acc: Record<string, TChord[]>, chord: TChord) => {
+    const groupedChords = (availableChords ?? []).reduce((acc: Record<string, any[]>, chord: any) => {
         if (!acc[chord.name]) {
             acc[chord.name] = [];
         }
@@ -65,31 +52,18 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
         return progression.map(chord => chord.name);
     }, [progression]);
 
-    const addChordToProgression = useCallback((chord: TChord) => {
-        setProgression((prev) => [...prev, chord]);
-    }, [progression]);
-
-    const removeChordFromProgression = useCallback((indexToRemove: number) => {
-        setProgression((prev) => prev.filter((_, index) => index !== indexToRemove));
-    }, []);
-
-    const playChord = useCallback((chord: TChord) => {
+    const playChord = useCallback((chord: any) => {
         PlayChord(chord.name);
     }, []);
-
-    const suggestNextChord = useCallback(() => {
-        if (progression.length === 0) return;
-        console.log("Suggesting next chord based on current progression:", progression);
-    }, [progression]);
 
     return (
         <div className="centered-box">
             <h3>Pick chords</h3>
             <div className="buttons-container">
                 <h4>Key</h4>
-                <KeyButton onPressKey={KeyCallback} />
+                <KeyButton onPressKey={setKey} />
                 <h4>Mode</h4>
-                <ModeButton onPressMode={ModeCallback} fullModes={true} />
+                <ModeButton onPressMode={setMode} fullModes={true} />
 
                 <h4>Chords</h4>
                 <div className="centered-box suggested-chords-container">
@@ -101,7 +75,7 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                                     chordname={chord.name}
                                     onClick={() => playChord(chord)}
                                     romanNumeral={chord.romanNumeral}
-                                    onAdd={() => addChordToProgression(chord)}
+                                    onAdd={() => addChord(chord)}
                                     showAdd
                                     className="prog-build-btn prog-builder-chord-btn"
                                 />
@@ -127,7 +101,7 @@ const ProgressionBuilderComponent: React.FC<{}> = ({ }) => {
                                         playChord(chord);
                                         setChordSelected(chord.name);
                                     }}
-                                    onRemove={() => removeChordFromProgression(index)}
+                                    onRemove={() => removeChord(index)}
                                     showRemove
                                     className="prog-build-btn prog-builder-chord-btn-added"
                                 />

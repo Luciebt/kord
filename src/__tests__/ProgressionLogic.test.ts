@@ -1,5 +1,5 @@
 import { DetermineChordsList, FindProgList, FindProgListFromMode, ConvertProgToChords } from '../ProgressionLogic';
-import { ProgressionCollectionMap } from '../ProgressionStore';
+import { ProgressionCollectionMap } from '../ProgressionBase';
 import { TProgression } from '../types';
 
 jest.mock('../ProgressionStore', () => {

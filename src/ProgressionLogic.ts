@@ -1,4 +1,4 @@
-import { ProgressionCollectionMap } from "./ProgressionStore";
+import { ProgressionCollectionMap } from "./ProgressionBase";
 import { TProgression } from "./types";
 import { Progression } from "@tonaljs/tonal";
 import { CleanChords } from "./utils/NoteUtils";
@@ -51,7 +51,7 @@ function ConvertProgToChords(tonic: string, progArr: string[]): string {
     // Convert the progression to actual chords
     const newProg = Progression.fromRomanNumerals(tonic, prog.split(", "));
     const cleanedChords = CleanChords(newProg.join(","));
-    
+
     acc.push(cleanedChords);
     return acc;
   }, [] as string[]);
