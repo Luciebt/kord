@@ -12,6 +12,7 @@ type IChordButtonProps = {
     onAdd?: (chord: string) => void;
     onRemove?: (chord: string) => void;
     className?: string;
+    children?: React.ReactNode;
 };
 
 
