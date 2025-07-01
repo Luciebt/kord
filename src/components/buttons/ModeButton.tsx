@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, memo } from "react";
 import { TMode } from "../../types";
-import { unPressElementsStyleWithoutEvent } from "../../hooks/unPressElementStyle";
+import { usePressedState } from "../../hooks/usePressedState";
+import GenericButton from "./GenericButton";
 import "./Buttons.scss";
 import "./Tooltips.scss";
 
@@ -9,15 +10,16 @@ interface IModeButton {
   fullModes?: boolean;
 }
 
-const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => { }, fullModes = false }) => {
+const ModeButton: React.FC<IModeButton> = memo(({ onPressMode = () => { }, fullModes = false }) => {
   const modes: TMode[] = fullModes ? ["Major", "Minor", "Dorian", "Mixolydian", "Phrygian", "Lydian", "Locrian"] : ["Major", "Minor"];
+  const handlePress = usePressedState("mode-btn-pressed");
+
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>, mode: TMode) => {
       onPressMode(mode);
-      unPressElementsStyleWithoutEvent("mode-btn-pressed");
-      event.currentTarget.classList.add("mode-btn-pressed");
+      handlePress(event);
     },
-    [onPressMode],
+    [onPressMode, handlePress],
   );
 
   const ModesToolTip = (mode: TMode): string => {
@@ -47,17 +49,17 @@ const ModeButton: React.FC<IModeButton> = ({ onPressMode = () => { }, fullModes 
       className={fullModes ? "mode-btn-section" : "main-mode-btn-section"}
     >
       {modes.map((mode) => (
-        <button
+        <GenericButton
           key={mode}
           className={`chord-btn ${fullModes ? "btn-w-tooltip" : ""}`}
           onClick={(e) => handleClick(e, mode)}
         >
           {mode}
           {fullModes ? <span className="tooltip">{ModesToolTip(mode)}</span> : null}
-        </button>
+        </GenericButton>
       ))}
     </section>
   );
-};
+});
 
 export default ModeButton;
