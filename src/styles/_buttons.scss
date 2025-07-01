@@ -10,7 +10,6 @@
   transition: background-color 0.15s ease;
 
   &:hover {
-    color: var(--dominant-dark);
     background-color: #ced4da;
     transition: background-color 0.15s ease;
   }
@@ -30,7 +29,7 @@ button {
 /* Pressed button styles */
 @mixin pressed-style {
   color: antiquewhite;
-  background-color: var(--dominant-dark);
+  background-color: var(--dominant-dark) !important;
 }
 
 .key-btn-pressed,
