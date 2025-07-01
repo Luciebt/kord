@@ -1,9 +1,10 @@
 import "./App.scss";
 import { hot } from "react-hot-loader";
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, lazy, Suspense } from "react";
 import Settings from "./components/settings/Settings";
-import ProgressionComponent from "./components/progressions/ProgressionComponent";
-import ProgressionBuilderComponent from "./components/builder/ProgressionBuilderComponent";
+
+const ProgressionComponent = lazy(() => import("./components/progressions/ProgressionComponent"));
+const ProgressionBuilderComponent = lazy(() => import("./components/builder/ProgressionBuilderComponent"));
 
 export const BpmValueContext = createContext({
   bpm: 120,
@@ -27,8 +28,10 @@ const App = () => {
 
       <Settings />
       <BpmValueContext.Provider value={{ bpm, updateBpm }}>
-        <ProgressionBuilderComponent />
-        <ProgressionComponent />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProgressionBuilderComponent />
+          <ProgressionComponent />
+        </Suspense>
       </BpmValueContext.Provider>
     </main>
   );
