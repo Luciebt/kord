@@ -1,5 +1,4 @@
 import "./App.scss";
-import { hot } from "react-hot-loader";
 import React, { createContext, useState, lazy, Suspense } from "react";
 import Settings from "./components/settings/Settings";
 
@@ -37,4 +36,4 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+export default App;
