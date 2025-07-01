@@ -1,3 +1,6 @@
+@use "../../styles/_buttons.scss";
+@use "./Tooltips.scss";
+
 /* Utility classes */
 
 .visible {
@@ -33,58 +36,6 @@ h4 {
   margin: 0;
 }
 
-/* General button style */
-
-%button-prog-style {
-  border-radius: 0.25rem;
-  box-shadow: none;
-  cursor: pointer;
-  font-family: "DM Mono", monospace;
-  color: var(--dominant-dark);
-  border: none;
-  font-size: 1em;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    color: var(--dominant-dark);
-    background-color: #ced4da;
-    transition: background-color 0.15s ease;
-  }
-}
-
-button {
-  @extend %button-prog-style;
-}
-
-/* Mixin for shared button styles */
-@mixin btn-style($font-size, $min-width: auto) {
-  font-size: $font-size;
-  min-width: $min-width;
-}
-
-.key-btn {
-  @include btn-style(1.2em, 60px);
-  padding: 0.5rem 0.25rem;
-  font-size: 0.875rem;
-}
-
-.mode-btn {
-  @include btn-style(1.1em);
-  padding: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.mood-btn {
-  @include btn-style(1em, 120px);
-  padding: 0.5rem 0.25rem;
-  font-size: 0.75rem;
-  background-color: #faebb6;
-}
-
-div {
-  display: block;
-}
-
 /* Grid layouts */
 
 .main-mode-btn-section {
@@ -118,46 +69,7 @@ div {
   color: var(--pressed-color);
 }
 
-/* Key, Mod, Mood and Progression main buttons */
-
-/* Pressed button styles */
-@mixin pressed-style {
-  color: antiquewhite;
-  background-color: var(--dominant-dark);
-}
-
-.key-btn-pressed,
-.mode-btn-pressed,
-.mood-btn-pressed,
-.prog-btn-pressed,
-.chordbuild-btn-pressed {
-  @include pressed-style;
-}
-
-.prog-btn {
-  margin: 0.15rem;
-  width: 11em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 36px;
-  max-width: 188px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* Scale and Chord buttons */
-
-.chord-btn {
-  position: relative;
-  margin: 0.25rem;
-  padding: 0.8rem;
-  font-size: 1.1em;
-  min-width: 3.8em;
-  min-height: 70px;
-}
-
+/* Mobile-specific styles */
 @media (max-width: 600px) {
   .chord-btn {
     min-width: 3.1em;
@@ -168,49 +80,9 @@ div {
   }
 }
 
-.chord-btn-pressed {
-  transition: background-color 0.2s ease;
-  color: #f4eeff;
-  background-color: var(--pressed-color);
-  transition: all 0.2s ease-in-out;
-}
-
-.chord-btn-pressed p {
-  color: #f4eeff;
-}
-
-/* Loop button */
-
-.loop-btn,
-.loop-btn-pressed {
-  font-size: 1.4em;
-  min-height: 56px;
-  min-width: 56px;
-  padding: 0.6em;
-  margin: 0.3rem;
-}
-
-.loop-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Export to MIDI button */
-
-#export-midi-btn {
-  font-weight: bold;
-  max-height: 40px;
-  padding: 0.6em;
-  margin: 0.3rem;
-}
-
-/* Mobile-specific styles */
 @media (max-width: 480px) {
   .key-btn-section {
     grid-template-columns: repeat(3, 1fr);
-    /* 3 keys per row */
   }
 
   .mood-btn-section {
@@ -230,87 +102,15 @@ div {
   }
 }
 
-/* Extra small screens */
 @media (max-width: 360px) {
 
   .key-button,
   .mode-button,
   .mood-button {
     padding: 0.375rem 0.25rem;
-    /* Slightly smaller padding */
   }
 
   .section-label {
     font-size: 0.8125rem;
-    /* Slightly smaller label text */
   }
-}
-
-/* Progression Builder buttons */
-
-.prog-build-btn {
-  position: relative;
-  min-height: 100px;
-}
-
-.prog-builder-chord-btn {
-  padding-bottom: 1.5rem !important;
-}
-
-.prog-builder-chord-btn-added {
-  padding-top: 2.2rem;
-  border: #495057 solid !important;
-}
-
-.add-chord-btn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  padding: 0.2em 0.5em;
-  font-size: 0.9em;
-  border-radius: 0.25rem;
-
-  background-color: var(--dominant-dark);
-  color: antiquewhite;
-  box-shadow: none;
-
-  &:hover {
-    background-color: #495057;
-    color: navajowhite;
-    transition: background-color 0.15s ease;
-  }
-}
-
-
-.delete-btn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-
-  padding: 0.1em 0;
-  border-radius: 0;
-  font-size: 0.7em;
-
-  background-color: #c05d67;
-  color: antiquewhite;
-  box-shadow: none;
-  z-index: 2;
-  cursor: pointer;
-
-  opacity: 0.8;
-
-  &:hover {
-    opacity: 1;
-    background-color: #973a43;
-    color: navajowhite;
-    transition: background-color 0.15s ease;
-  }
-}
-
-.icon {
-  font-size: 0.9em;
 }
